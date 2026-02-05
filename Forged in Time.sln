@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forged in Time", "Forged in Time.csproj", "{EFB4A7A5-BA40-4B28-908B-DDE7B6898543}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFB4A7A5-BA40-4B28-908B-DDE7B6898543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB4A7A5-BA40-4B28-908B-DDE7B6898543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB4A7A5-BA40-4B28-908B-DDE7B6898543}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{EFB4A7A5-BA40-4B28-908B-DDE7B6898543}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{EFB4A7A5-BA40-4B28-908B-DDE7B6898543}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{EFB4A7A5-BA40-4B28-908B-DDE7B6898543}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
