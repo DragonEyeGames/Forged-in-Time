@@ -20,9 +20,10 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h2yge")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lquwl"]
-vertices = PackedVector2Array(1143.01, 645, 10.9766, 645.992, 10.0078, 9.99219, 1143.98, 9)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+vertices = PackedVector2Array(1152.99, 0, 1152, 654, 113, 98, 113, 80, 1.99219, 654.992, 95, 98, 1, 0.992188, 95, 80)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 0, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1154, -1, 1153, 655, 1, 656)])
+agent_radius = 1.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -53,3 +54,8 @@ offset = Vector2(-64, -2)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_lquwl")
+
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
+position = Vector2(96, 81)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16)
