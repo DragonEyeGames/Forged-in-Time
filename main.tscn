@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=10 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Texture2D" uid="uid://b0lycq64nohhx" path="res://Tiles.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://cnbfdoaq7dbne" path="res://Placement.cs" id="2_0xm2m"]
@@ -21,6 +21,12 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h2yge")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lquwl"]
+vertices = PackedVector2Array(1145.51, 647.5, 8.47656, 648.492, 7.50781, 7.49219, 1146.48, 6.5)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1154, -1, 1153, 655, 1, 656)])
+agent_radius = 7.5
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7mycd"]
 vertices = PackedVector2Array(1145.51, 647.5, 8.47656, 648.492, 7.50781, 7.49219, 1146.48, 6.5)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1154, -1, 1153, 655, 1, 656)])
@@ -65,7 +71,7 @@ color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16)
 
 [node name="TestRegion" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_lquwl")
+navigation_polygon = SubResource("NavigationPolygon_7mycd")
 navigation_layers = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="TestRegion"]

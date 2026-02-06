@@ -26,12 +26,12 @@ public partial class Placement : TileMapLayer
 			navRegion.BakeNavigationPolygon();
 		}
 		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
-		GetNode<NavigationRegion2D>("../TestRegion").BakeNavigationPolygon();
 		Vector2 mouseWorldPos = GetGlobalMousePosition();
 		Vector2I cell = LocalToMap(mouseWorldPos);
 		Vector2I hoverCoords = new Vector2I(0, 1);
 		Vector2I placedCoords = new Vector2I(1, 1);
 		if(cell!=hoveredCell && GetCellSourceId(cell) != -1){
+			GetNode<NavigationRegion2D>("../TestRegion").BakeNavigationPolygon();
 			Vector2I atlasCoords = GetCellAtlasCoords(cell);
 			if(atlasCoords!=placedCoords){
 				Vector2I baseCoords = new Vector2I(0, 0);
@@ -42,9 +42,7 @@ public partial class Placement : TileMapLayer
 				SetCell(cell, 0, hoverCoords);
 				hoveredCell=cell;
 				if(Input.IsActionPressed("Click")){
-					GD.Print("preClick");
 					SetCell(cell, 0, placedCoords);
-					GD.Print("REad");
 					UpdateNav();
 				}
 			} else if (hoveredCell!=cell) {
@@ -52,7 +50,7 @@ public partial class Placement : TileMapLayer
 				SetCell(hoveredCell, 0, baseCoords);
 			}
 		}
-		if(Input.IsActionPressed("Click")){
+		if(Input.IsActionJustPressed("Click")){
 			SetCell(cell, 0, placedCoords);
 			UpdateNav();
 		}
@@ -64,7 +62,6 @@ public partial class Placement : TileMapLayer
 		newPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		navRegion.BakeNavigationPolygon();
 		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
-		GetNode<NavigationRegion2D>("../TestRegion").BakeNavigationPolygon();
 		selectedPolygon=null;
 	}
 	

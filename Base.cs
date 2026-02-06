@@ -24,7 +24,7 @@ public partial class Base : Sprite2D
 	
 	public void CheckValid(){
 		navAgent.TargetPosition=target.GlobalPosition;
-		navAgent.IsTargetReachable();
+		GD.Print(navAgent.IsTargetReachable());
 	}
 	
 	public bool Reachable(){
