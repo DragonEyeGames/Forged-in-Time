@@ -5,16 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://c4rbcqdc2dbak" path="res://icon.svg" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://bh5yqo3iapcor" path="res://Base.cs" id="4_lquwl"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_1bvp3"]
-vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)])
-agent_radius = 0.0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_ig7tw")
 0:0/0 = 0
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1bvp3")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
@@ -24,8 +17,12 @@ texture = ExtResource("1_ig7tw")
 
 [sub_resource type="TileSet" id="TileSet_1bvp3"]
 physics_layer_0/collision_layer = 1
-navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_h2yge")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lquwl"]
+vertices = PackedVector2Array(1143.01, 645, 10.9766, 645.992, 10.0078, 9.99219, 1143.98, 9)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1154, -1, 1153, 655, 1, 656)])
 
 [node name="Node2D" type="Node2D"]
 
@@ -53,3 +50,6 @@ position = Vector2(192, 338)
 scale = Vector2(1, 1)
 texture = ExtResource("3_1bvp3")
 offset = Vector2(-64, -2)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_lquwl")

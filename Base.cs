@@ -22,8 +22,8 @@ public partial class Base : Sprite2D
 	
 	public void CheckValid(){
 		navAgent.TargetPosition=target.GlobalPosition;
-		GD.Print(navAgent.IsTargetReachable());
-		GD.Print(Reachable());
+		navAgent.IsTargetReachable();
+		Reachable();
 	}
 	
 	public bool Reachable(){
@@ -31,7 +31,13 @@ public partial class Base : Sprite2D
 		for (int i = 0; i < path.Length-1; i++)
 		{
 			Vector2 basePoint = path[i];
+			ray.GlobalPosition=basePoint;
 			Vector2 targetPoint = path[i+1];
+			ray.TargetPosition=ray.ToLocal(targetPoint);
+			ray.ForceRaycastUpdate();
+			if(ray.IsColliding()){
+				GD.Print("true");
+			}
 			
 		}
 		return true;
