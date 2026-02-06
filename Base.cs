@@ -6,6 +6,8 @@ public partial class Base : Sprite2D
 	private RayCast2D ray;
 	private NavigationAgent2D navAgent;
 	private Node2D target;
+	[Export]
+	public PackedScene troop;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -23,7 +25,6 @@ public partial class Base : Sprite2D
 	public void CheckValid(){
 		navAgent.TargetPosition=target.GlobalPosition;
 		navAgent.IsTargetReachable();
-		Reachable();
 	}
 	
 	public bool Reachable(){
@@ -41,5 +42,12 @@ public partial class Base : Sprite2D
 			
 		}
 		return true;
+	}
+	
+	public void spawnTroop(){
+		Troop newTroop = troop.Instantiate() as Troop;
+		GetParent().AddChild(newTroop);
+		newTroop.GlobalPosition=GlobalPosition;
+		newTroop.target=target;
 	}
 }

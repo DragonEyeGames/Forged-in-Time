@@ -7,17 +7,26 @@ public partial class Placement : TileMapLayer
 {
 	private Vector2I hoveredCell = new Vector2I(0, 0);
 	private NavigationRegion2D navRegion;
+	private Polygon2D selectedPolygon = null;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		navRegion=GetNode<NavigationRegion2D>("../NavigationRegion2D");
+		navRegion=GetNode<NavigationRegion2D>("../NavRegion");
 		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(selectedPolygon==null) {
+			selectedPolygon = GetNode<Polygon2D>("../TestRegion/Polygon2D").Duplicate() as Polygon2D;
+			GetNode("../TestRegion").AddChild(selectedPolygon);
+			selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
+			navRegion.BakeNavigationPolygon();
+		}
+		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
+		GetNode<NavigationRegion2D>("../TestRegion").BakeNavigationPolygon();
 		Vector2 mouseWorldPos = GetGlobalMousePosition();
 		Vector2I cell = LocalToMap(mouseWorldPos);
 		Vector2I hoverCoords = new Vector2I(0, 1);
@@ -45,17 +54,18 @@ public partial class Placement : TileMapLayer
 		}
 		if(Input.IsActionPressed("Click")){
 			SetCell(cell, 0, placedCoords);
-			GD.Print("REad");
 			UpdateNav();
 		}
 	}
 	
 	public void UpdateNav(){
-		Polygon2D newPolygon = GetNode<Polygon2D>("../NavigationRegion2D/Polygon2D").Duplicate() as Polygon2D;
-		GetNode("../NavigationRegion2D").AddChild(newPolygon);
+		Polygon2D newPolygon = GetNode<Polygon2D>("../NavRegion/Polygon2D").Duplicate() as Polygon2D;
+		GetNode("../NavRegion").AddChild(newPolygon);
 		newPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		navRegion.BakeNavigationPolygon();
-		GD.Print("Made It");
+		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
+		GetNode<NavigationRegion2D>("../TestRegion").BakeNavigationPolygon();
+		selectedPolygon=null;
 	}
 	
 	Vector2 SnapToTopLeft(Vector2 position)

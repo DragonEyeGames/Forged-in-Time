@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=9 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Texture2D" uid="uid://b0lycq64nohhx" path="res://Tiles.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://cnbfdoaq7dbne" path="res://Placement.cs" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://c4rbcqdc2dbak" path="res://icon.svg" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://bh5yqo3iapcor" path="res://Base.cs" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://troop.tscn" id="5_lquwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_ig7tw")
@@ -20,10 +21,10 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h2yge")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lquwl"]
-vertices = PackedVector2Array(1152.99, 0, 1152, 654, 113, 98, 113, 80, 1.99219, 654.992, 95, 98, 1, 0.992188, 95, 80)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 0, 3)])
+vertices = PackedVector2Array(1145.51, 647.5, 8.47656, 648.492, 7.50781, 7.49219, 1146.48, 6.5)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1154, -1, 1153, 655, 1, 656)])
-agent_radius = 1.0
+agent_radius = 7.5
 
 [node name="Node2D" type="Node2D"]
 
@@ -34,28 +35,42 @@ script = ExtResource("2_0xm2m")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(896, 353)
-scale = Vector2(1, 1)
 texture = ExtResource("3_1bvp3")
 offset = Vector2(64, -1)
 script = ExtResource("4_lquwl")
+troop = ExtResource("5_lquwl")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="Icon"]
-path_postprocessing = 1
+navigation_layers = 2
 debug_enabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="Icon"]
 
+[node name="Timer" type="Timer" parent="Icon"]
+autostart = true
+
 [node name="Icon2" type="Sprite2D" parent="."]
 modulate = Color(0.760197, 4.00929e-05, 2.15626e-05, 1)
 position = Vector2(192, 338)
-scale = Vector2(1, 1)
 texture = ExtResource("3_1bvp3")
 offset = Vector2(-64, -2)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavRegion" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_lquwl")
 
-[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
-position = Vector2(96, 81)
+[node name="Polygon2D" type="Polygon2D" parent="NavRegion"]
+position = Vector2(-98, 97)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16)
+
+[node name="TestRegion" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_lquwl")
+navigation_layers = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="TestRegion"]
+position = Vector2(-98, 97)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16)
+
+[connection signal="timeout" from="Icon/Timer" to="Icon" method="spawnTroop"]
