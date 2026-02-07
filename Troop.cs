@@ -10,6 +10,7 @@ public partial class Troop : CharacterBody2D
 	
 	public override void _Ready(){
 		navAgent=GetNode<NavigationAgent2D>("NavAgent");
+		navAgent.PathMaxDistance=10.0f;
 	}
 	
 	public override void _PhysicsProcess(double delta)
