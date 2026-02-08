@@ -26,12 +26,13 @@ public partial class TestHandler : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		BakePoly();
 		if(!GameManager.placing){
 			return;
 		}
 		if(initializePlace){
 			initializePlace=false;
-			if(GameManager.validPlacement){
+			if(GameManager.validPlacement && tester.isValid() && GameManager.placing){
 				GameManager.placing=false;
 				GD.Print("Falzefi");
 				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
