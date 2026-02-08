@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=15 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Texture2D" uid="uid://b0lycq64nohhx" path="res://Tiles.png" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://c4rbcqdc2dbak" path="res://icon.svg" id="3_1bvp3"]
@@ -9,9 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c7h8excai5682" path="res://WallPoly.tscn" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://c4oqw678vduck" path="res://TestHandler.cs" id="7_272bh"]
 [ext_resource type="Script" uid="uid://crsyuig8br1j6" path="res://TestValid.cs" id="8_kek77"]
-[ext_resource type="Texture2D" uid="uid://bm67uhoq652mm" path="res://Turret.png" id="9_4c57u"]
-[ext_resource type="Texture2D" uid="uid://cbivv2klabu11" path="res://Buy.png" id="10_efxa6"]
-[ext_resource type="Texture2D" uid="uid://btpcqvfuot2ti" path="res://Arrow.png" id="11_dg77c"]
+[ext_resource type="PackedScene" uid="uid://c1d1jeujhaov2" path="res://hud.tscn" id="9_4c57u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_ig7tw")
@@ -100,104 +98,7 @@ use_edge_connections = false
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(566, 316)
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="HUD"]
-offset_left = 1016.0
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 2
-color = Color(0.508878, 0.29694, 0.0894001, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/ColorRect"]
-layout_mode = 0
-offset_right = 131.0
-offset_bottom = 648.0
-mouse_filter = 2
-
-[node name="Turret" type="Control" parent="HUD/ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(1.13, 50.315)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="HUD/ColorRect/VBoxContainer/Turret"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 3.0
-offset_right = 131.0
-offset_bottom = 58.0
-mouse_filter = 2
-color = Color(0.78066, 0.704382, 0.474143, 1)
-
-[node name="Base" type="Sprite2D" parent="HUD/ColorRect/VBoxContainer/Turret"]
-position = Vector2(28.4, 29.4)
-scale = Vector2(2.925, 2.925)
-texture = ExtResource("9_4c57u")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
-
-[node name="Turret" type="Sprite2D" parent="HUD/ColorRect/VBoxContainer/Turret"]
-position = Vector2(28.4, 29.4)
-scale = Vector2(2.925, 2.925)
-texture = ExtResource("9_4c57u")
-region_enabled = true
-region_rect = Rect2(16, 0, 16, 16)
-
-[node name="Label" type="RichTextLabel" parent="HUD/ColorRect/VBoxContainer/Turret"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 2.0
-offset_right = 460.0
-offset_bottom = 147.0
-scale = Vector2(0.19, 0.19)
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 100
-text = "Turret"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="RichTextLabel" parent="HUD/ColorRect/VBoxContainer/Turret"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 22.0
-offset_right = 460.0
-offset_bottom = 140.0
-scale = Vector2(0.19, 0.19)
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 33
-text = "Shoots at the enemy furthest along the path."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="HUD/ColorRect/VBoxContainer/Turret"]
-layout_mode = 0
-offset_left = 71.0
-offset_top = 39.0
-offset_right = 111.0
-offset_bottom = 63.0
-scale = Vector2(0.895, 0.895)
-icon = ExtResource("10_efxa6")
-flat = true
-
-[node name="ColorRect" type="ColorRect" parent="HUD/ColorRect"]
-offset_left = 2.0
-offset_top = 632.0
-offset_right = 134.0
-offset_bottom = 646.0
-mouse_filter = 2
-color = Color(0.78066, 0.704382, 0.474143, 1)
-
-[node name="Arrow" type="Sprite2D" parent="HUD/ColorRect/ColorRect"]
-position = Vector2(61, 9)
-texture = ExtResource("11_dg77c")
-
-[node name="Button" type="Button" parent="HUD/ColorRect"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 632.0
-offset_right = 134.0
-offset_bottom = 646.0
-flat = true
+[node name="HUD" parent="." instance=ExtResource("9_4c57u")]
 
 [node name="Turret" parent="." instance=ExtResource("6_kek77")]
 position = Vector2(564, 338)

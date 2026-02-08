@@ -23,13 +23,18 @@ public partial class TestHandler : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(!GameManager.placing){
+			return;
+		}
 		if(selectedPolygon==null) {
+			GD.Print("new");
 			selectedPolygon = polygon.Instantiate() as Polygon2D;
 			testRegion.AddChild(selectedPolygon);
 		}
 		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		selectedPolygon.Position+=new Vector2(1300, 0);
 		if(Input.IsActionPressed("Click") && tester.isValid()){
+			GameManager.placing=false;
 			Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
 			navRegion.AddChild(selectedPolygon2);
 			selectedPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
