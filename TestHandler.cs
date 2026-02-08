@@ -14,6 +14,7 @@ public partial class TestHandler : Node2D
 	[Export] public TestValid tester;
 	[Export] public PackedScene turret;
 	private int baking = 0;
+	private bool initializePlace=false;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -27,6 +28,20 @@ public partial class TestHandler : Node2D
 	{
 		if(!GameManager.placing){
 			return;
+		}
+		if(initializePlace){
+			initializePlace=false;
+			if(GameManager.validPlacement){
+				GameManager.placing=false;
+				GD.Print("Falzefi");
+				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
+				navRegion.AddChild(selectedPolygon2);
+				selectedPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
+				selectedPolygon=null;
+				selectedTower.hovering=false;
+				selectedTower=null;
+				return;
+			}
 		}
 		if(selectedPolygon==null) {
 			GD.Print("new");
@@ -42,14 +57,8 @@ public partial class TestHandler : Node2D
 		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		selectedTower.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		selectedPolygon.Position+=new Vector2(1300, 0);
-		if(Input.IsActionPressed("Click") && tester.isValid()){
-			GameManager.placing=false;
-			Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
-			navRegion.AddChild(selectedPolygon2);
-			selectedPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
-			selectedPolygon=null;
-			selectedTower.hovering=false;
-			selectedTower=null;
+		if(Input.IsActionPressed("Click") && tester.isValid() && GameManager.placing && !initializePlace){
+			initializePlace=true;
 		}
 		BakePoly();
 	}

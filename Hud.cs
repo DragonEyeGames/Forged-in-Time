@@ -31,7 +31,8 @@ public partial class Hud : CanvasLayer
 		if(GameManager.placing==false){
 			GameManager.toPlace=GameManager.Towers.Turret;
 			GameManager.placing=true;
-			GD.Print(GameManager.placing);
+			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Turret/AnimationPlayer").Play("wobble");
+			toggle();
 		}
 		
 	}
