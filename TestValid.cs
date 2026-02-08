@@ -5,6 +5,7 @@ public partial class TestValid : Sprite2D
 {
 	private NavigationAgent2D navAgent;
 	private Node2D target;
+	private bool valid = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -15,12 +16,18 @@ public partial class TestValid : Sprite2D
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		CheckValid();
+		//CheckValid();
 	}
 	
 	public void CheckValid(){
 		navAgent.TargetPosition=target.GlobalPosition;
-		GD.Print(navAgent.IsTargetReachable());
+		valid=navAgent.IsTargetReachable();
+		GD.Print(valid);
+	}
+	
+	public bool isValid(){
+		CheckValid();
+		return valid;
 	}
 	
 }

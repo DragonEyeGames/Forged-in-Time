@@ -10,6 +10,7 @@ public partial class TestHandler : Node2D
 	private NavigationRegion2D navRegion;
 	private Polygon2D selectedPolygon = null;
 	[Export] public PackedScene polygon;
+	[Export] public TestValid tester;
 	private int baking = 0;
 	
 	// Called when the node enters the scene tree for the first time.
@@ -28,7 +29,7 @@ public partial class TestHandler : Node2D
 		}
 		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		selectedPolygon.Position+=new Vector2(1300, 0);
-		if(Input.IsActionPressed("Click")){
+		if(Input.IsActionPressed("Click") && tester.isValid()){
 			Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
 			navRegion.AddChild(selectedPolygon2);
 			selectedPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());

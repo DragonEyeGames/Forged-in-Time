@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjjy84kigbl4n"]
+[gd_scene load_steps=13 format=3 uid="uid://bjjy84kigbl4n"]
 
 [ext_resource type="Script" uid="uid://b7g71bjgyhu3w" path="res://Troop.cs" id="1_6da2i"]
 [ext_resource type="Texture2D" uid="uid://cdyfjrsjcm0kq" path="res://Armored Orc/Armored Orc_Walk.png" id="2_37opx"]
@@ -67,6 +67,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6da2i"]
+radius = 2.0
+
 [node name="Funny Guy" type="CharacterBody2D"]
 script = ExtResource("1_6da2i")
 
@@ -79,12 +82,12 @@ frame_progress = 0.701846
 flip_h = true
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
-path_desired_distance = 0.1
-path_max_distance = 10.0
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6da2i")
 
 [connection signal="timeout" from="Timer" to="." method="recalculate"]

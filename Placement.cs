@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public partial class Placement : TileMapLayer
 {
 	private Vector2I hoveredCell = new Vector2I(0, 0);
+	[Export] public TestValid tester;
 	
 	// Called when the node enters the scene tree for the first time.
 
@@ -16,6 +17,12 @@ public partial class Placement : TileMapLayer
 		Vector2I cell = LocalToMap(mouseWorldPos);
 		Vector2I hoverCoords = new Vector2I(0, 1);
 		Vector2I placedCoords = new Vector2I(1, 1);
+		Vector2I invalidCoords = new Vector2I(1, 0);
+		if(!tester.isValid()){
+			SetCell(cell, 0, invalidCoords);
+		} else if (GetCellAtlasCoords(cell)!=placedCoords){
+			SetCell(cell, 0, hoverCoords);
+		}
 		if(cell!=hoveredCell && GetCellSourceId(cell) != -1){
 			Vector2I atlasCoords = GetCellAtlasCoords(cell);
 			if(atlasCoords!=placedCoords){
@@ -27,7 +34,7 @@ public partial class Placement : TileMapLayer
 				SetCell(cell, 0, hoverCoords);
 				hoveredCell=cell;
 				if(Input.IsActionPressed("Click")){
-					SetCell(cell, 0, placedCoords);
+					Click();
 				}
 			} else if (hoveredCell!=cell) {
 				Vector2I baseCoords = new Vector2I(0, 0);
@@ -36,15 +43,26 @@ public partial class Placement : TileMapLayer
 					SetCell(hoveredCell, 0, baseCoords);
 				}
 				if(Input.IsActionPressed("Click")){
-					SetCell(hoveredCell, 0, placedCoords);
+					Click();
 				}
 			}
 		}
 		else if(Input.IsActionJustPressed("Click")){
-			SetCell(cell, 0, placedCoords);
+			Click();
 		}
 	}
 	
+	private void Click(){
+		Vector2 mouseWorldPos = GetGlobalMousePosition();
+		Vector2I cell = LocalToMap(mouseWorldPos);
+		Vector2I hoverCoords = new Vector2I(0, 1);
+		Vector2I placedCoords = new Vector2I(1, 1);
+		Vector2I invalidCoords = new Vector2I(1, 0);
+		Vector2I atlasCoords = GetCellAtlasCoords(cell);
+		if(atlasCoords!=invalidCoords && atlasCoords==hoverCoords){
+			SetCell(cell, 0, placedCoords);
+		}
+	}
 	
 	Vector2 SnapToTopLeft(Vector2 position)
 	{
