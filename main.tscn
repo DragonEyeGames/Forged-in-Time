@@ -67,6 +67,7 @@ autostart = true
 script = ExtResource("7_272bh")
 polygon = ExtResource("7_5vw27")
 tester = NodePath("Player")
+turret = ExtResource("6_kek77")
 
 [node name="Player" type="Sprite2D" parent="NavHandler"]
 position = Vector2(2195, 353)

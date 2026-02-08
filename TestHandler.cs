@@ -9,8 +9,10 @@ public partial class TestHandler : Node2D
 	private NavigationRegion2D testRegion;
 	private NavigationRegion2D navRegion;
 	private Polygon2D selectedPolygon = null;
+	private Tower selectedTower = null;
 	[Export] public PackedScene polygon;
 	[Export] public TestValid tester;
+	[Export] public PackedScene turret;
 	private int baking = 0;
 	
 	// Called when the node enters the scene tree for the first time.
@@ -31,7 +33,14 @@ public partial class TestHandler : Node2D
 			selectedPolygon = polygon.Instantiate() as Polygon2D;
 			testRegion.AddChild(selectedPolygon);
 		}
+		if(selectedTower==null){
+			if(GameManager.toPlace==GameManager.Towers.Turret){
+				selectedTower=turret.Instantiate() as Tower;
+				GetParent().AddChild(selectedTower);
+			}
+		}
 		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
+		selectedTower.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		selectedPolygon.Position+=new Vector2(1300, 0);
 		if(Input.IsActionPressed("Click") && tester.isValid()){
 			GameManager.placing=false;
@@ -39,6 +48,8 @@ public partial class TestHandler : Node2D
 			navRegion.AddChild(selectedPolygon2);
 			selectedPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 			selectedPolygon=null;
+			selectedTower.hovering=false;
+			selectedTower=null;
 		}
 		BakePoly();
 	}

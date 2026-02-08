@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public partial class Turret : Node2D
+public partial class Turret : Tower
 {
 	[Export] bool Player1 = false;
 	private List<CharacterBody2D> player1Colliding = new List<CharacterBody2D> {};
@@ -18,12 +18,16 @@ public partial class Turret : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(Player1 && player2Colliding.Count>0){
-			turret.LookAt(player2Colliding[0].GlobalPosition);
-			turret.GlobalRotation-=(float)Math.PI/2;
-			player2Colliding[0].QueueFree();
-			player2Colliding.RemoveAt(0);
+		TowerGenerics();
+		if(!hovering){
+			if(Player1 && player2Colliding.Count>0){
+				turret.LookAt(player2Colliding[0].GlobalPosition);
+				turret.GlobalRotation-=(float)Math.PI/2;
+				player2Colliding[0].QueueFree();
+				player2Colliding.RemoveAt(0);
+			}
 		}
+		
 	}
 	
 	public void Player1Entered(Node2D body){
