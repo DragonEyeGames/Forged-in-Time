@@ -10,12 +10,11 @@ public partial class Troop : CharacterBody2D
 	
 	public override void _Ready(){
 		navAgent=GetNode<NavigationAgent2D>("NavAgent");
-		navAgent.PathMaxDistance=10.0f;
+		navAgent.PathMaxDistance=15.0f;
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		navAgent.TargetPosition=target.GlobalPosition;
 		Vector2 velocity=Vector2.Zero;
 		var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
 		velocity = dir * 100;
@@ -23,5 +22,9 @@ public partial class Troop : CharacterBody2D
 		if(!navAgent.IsNavigationFinished()){
 			MoveAndSlide();
 		}
+	}
+	
+	public void recalculate(){
+		navAgent.TargetPosition=target.GlobalPosition;
 	}
 }
