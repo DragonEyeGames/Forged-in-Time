@@ -6,9 +6,11 @@ using System.Collections.Generic;
 public partial class Turret : Tower
 {
 	[Export] bool Player1 = false;
+	private bool canShoot = true;
 	private List<CharacterBody2D> player1Colliding = new List<CharacterBody2D> {};
 	private List<CharacterBody2D> player2Colliding = new List<CharacterBody2D> {};
 	private Sprite2D turret;
+	[Export] public Timer cooldown;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -19,12 +21,15 @@ public partial class Turret : Tower
 	public override void _Process(double delta)
 	{
 		TowerGenerics();
-		if(!hovering){
+		if(!hovering && canShoot){
 			if(Player1 && player2Colliding.Count>0){
+				canShoot=false;
+				cooldown.Start();
 				turret.LookAt(player2Colliding[0].GlobalPosition);
 				turret.GlobalRotation-=(float)Math.PI/2;
-				player2Colliding[0].QueueFree();
-				player2Colliding.RemoveAt(0);
+				Troop troop = player2Colliding[0] as Troop;
+				troop.health-=1;
+				GetNode<AnimationPlayer>("Animator").Play("pew");
 			}
 		}
 		
@@ -44,5 +49,9 @@ public partial class Turret : Tower
 	
 	public void Player2Exited(Node2D body){
 		player2Colliding.Remove(body as CharacterBody2D);
+	}
+	
+	public void cooled(){
+		canShoot=true;
 	}
 }
