@@ -22,7 +22,6 @@ public partial class TestValid : Sprite2D
 	public void CheckValid(){
 		navAgent.TargetPosition=target.GlobalPosition;
 		valid=navAgent.IsTargetReachable();
-		GD.Print(valid);
 	}
 	
 	public bool isValid(){

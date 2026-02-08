@@ -58,7 +58,7 @@ public partial class TestHandler : Node2D
 		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		selectedTower.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		selectedPolygon.Position+=new Vector2(1300, 0);
-		if(Input.IsActionPressed("Click") && tester.isValid() && GameManager.placing && !initializePlace){
+		if(Input.IsActionPressed("Click") && tester.isValid() && GameManager.placing && !initializePlace && GetNode<TerritoryChecker>("../Territory").IsTerritory(SnapToTopLeft(GetGlobalMousePosition()), 0)){
 			initializePlace=true;
 		}
 		BakePoly();

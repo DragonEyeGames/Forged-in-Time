@@ -14,9 +14,13 @@ public partial class TerritoryChecker : TileMapLayer
 	public override void _Process(double delta)
 	{
 		if(Input.IsActionJustPressed("Click")){
-			betterTerritory(3, 0);
-			betterTerritory(4, 1);
+			recalculate();
 		}
+	}
+	
+	public void recalculate(){
+		betterTerritory(3, 0);
+		betterTerritory(4, 1);
 	}
 	
 	private void betterTerritory(int layer, int pos){
@@ -56,4 +60,11 @@ public partial class TerritoryChecker : TileMapLayer
 		}
 
 	}
+	
+	public bool IsTerritory(Vector2 position, int pos){
+		Vector2I cell = LocalToMap(position);
+		Vector2I atlasCoords = GetCellAtlasCoords(cell);
+		return atlasCoords==new Vector2I(pos, 0);
+	}
+	
 }
