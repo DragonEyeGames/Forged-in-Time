@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Tower : Node2D
+public abstract partial class Tower : Node2D
 {
 	public bool hovering=true;
 	// Called when the node enters the scene tree for the first time.
@@ -24,6 +24,7 @@ public partial class Tower : Node2D
 				GetNode<CollisionShape2D>("Territory/CollisionShape2D").SetDeferred("disabled", false);
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 				GetNode<TerritoryChecker>("../Territory").recalculate();
+				GetNode<Hud>("../HUD").toggle();
 			}
 		}
 		Modulate=color;
