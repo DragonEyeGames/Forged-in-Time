@@ -4,7 +4,8 @@ using System;
 public partial class GameManager : Node
 {
 	public enum Towers{
-		Turret
+		Turret,
+		Tower
 	}
 	public static Towers toPlace;
 	public static bool placing=false;
