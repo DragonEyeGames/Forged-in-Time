@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=16 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://b5l5vavj0pj7v" path="res://Hud.cs" id="1_640wx"]
 [ext_resource type="Texture2D" uid="uid://bm67uhoq652mm" path="res://Turret.png" id="2_a2258"]
@@ -41,6 +41,67 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_61f8s"),
 &"wobble": SubResource("Animation_rftc2")
+}
+
+[sub_resource type="Animation" id="Animation_g10ll"]
+resource_name = "open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(-97, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Popout:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gpiub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Popout:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_amv7k"]
+_data = {
+&"RESET": SubResource("Animation_gpiub"),
+&"open": SubResource("Animation_g10ll")
 }
 
 [sub_resource type="Animation" id="Animation_a2258"]
@@ -219,8 +280,8 @@ offset_right = 460.0
 offset_bottom = 147.0
 scale = Vector2(0.19, 0.19)
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 100
-text = "Turret"
+theme_override_font_sizes/normal_font_size = 60
+text = "Basic Turret"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -253,6 +314,96 @@ flat = true
 libraries = {
 &"": SubResource("AnimationLibrary_g10ll")
 }
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Turret"]
+z_index = 1
+offset_top = 4.0
+offset_right = 54.0
+offset_bottom = 10.0
+rotation = 1.5708
+mouse_filter = 2
+color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Arrow" type="Sprite2D" parent="ColorRect/VBoxContainer/Turret/ColorRect2"]
+position = Vector2(25, 2.75695)
+rotation = 3.14159
+scale = Vector2(0.525, 0.555381)
+texture = ExtResource("4_640wx")
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret/ColorRect2"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 54.0
+offset_bottom = 8.0
+focus_mode = 0
+flat = true
+
+[node name="UpgradeSlider" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Turret"]
+libraries = {
+&"": SubResource("AnimationLibrary_amv7k")
+}
+
+[node name="Popout" type="ColorRect" parent="ColorRect/VBoxContainer/Turret"]
+layout_mode = 0
+offset_top = 57.0
+offset_right = 97.0
+offset_bottom = 111.0
+rotation = 3.14159
+color = Color(0.639216, 0.552941, 0.345098, 1)
+
+[node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/Turret/Popout"]
+position = Vector2(78.12, 27.12)
+rotation = 3.14159
+scale = Vector2(2.11, 2.11)
+texture = ExtResource("2_a2258")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Turret" type="Sprite2D" parent="ColorRect/VBoxContainer/Turret/Popout"]
+position = Vector2(78.12, 27.12)
+rotation = 3.14159
+scale = Vector2(2.11, 2.11)
+texture = ExtResource("2_a2258")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Label" type="RichTextLabel" parent="ColorRect/VBoxContainer/Turret/Popout"]
+offset_left = 69.0
+offset_top = 55.0
+offset_right = 478.0
+offset_bottom = 226.0
+rotation = 3.14159
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 43
+text = "Plasma Turret"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="ColorRect/VBoxContainer/Turret/Popout"]
+offset_left = 60.0
+offset_top = 36.0
+offset_right = 373.0
+offset_bottom = 146.0
+rotation = 3.14159
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "Does more damage and looks cooler."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret/Popout"]
+offset_left = 69.0
+offset_top = 37.0
+offset_right = 109.0
+offset_bottom = 61.0
+rotation = 3.14159
+scale = Vector2(0.895, 0.895)
+pivot_offset = Vector2(18.9944, 11.1732)
+focus_mode = 0
+icon = ExtResource("3_1xsix")
+flat = true
 
 [node name="Watch Tower" type="Control" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(1.13, 59.355)
@@ -344,5 +495,6 @@ focus_mode = 0
 flat = true
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button" to="." method="turret"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Popout/Button" to="." method="turret"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Watch Tower/Button" to="." method="tower"]
 [connection signal="pressed" from="ColorRect2/Button" to="." method="toggle"]
