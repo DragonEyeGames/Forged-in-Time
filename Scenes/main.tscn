@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=25 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Texture2D" uid="uid://b0lycq64nohhx" path="res://Assets/Tiles.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://cnbfdoaq7dbne" path="res://Scripts/Placement.cs" id="2_0xm2m"]
@@ -113,6 +113,7 @@ tester = NodePath("Player")
 turret = ExtResource("6_kek77")
 plasmaTurret = ExtResource("12_vivmo")
 tower = ExtResource("12_w48qg")
+wall = ExtResource("14_yaehf")
 
 [node name="Player" type="Sprite2D" parent="NavHandler"]
 position = Vector2(2195, 353)
