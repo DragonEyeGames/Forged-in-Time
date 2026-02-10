@@ -62,4 +62,14 @@ public partial class Hud : CanvasLayer
 		}
 		
 	}
+	
+	public void wall(){
+		if(GameManager.placing==false){
+			GameManager.toPlace=GameManager.Towers.Wall;
+			GameManager.placing=true;
+			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Wall/AnimationPlayer").Play("wobble");
+			toggle();
+		}
+		
+	}
 }
