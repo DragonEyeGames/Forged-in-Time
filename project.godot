@@ -15,6 +15,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://GameManager.cs"
+
 [display]
 
 window/size/mode=3
@@ -28,6 +32,11 @@ project/assembly_name="Forged in Time"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[global_group]
+
+Enemy=""
+Player=""
+
 [input]
 
 Click={
@@ -35,7 +44,7 @@ Click={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(316, 23),"global_position":Vector2(325, 71),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
-Poly={
+Territory={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
 ]
@@ -44,10 +53,15 @@ Poly={
 [layer_names]
 
 2d_navigation/layer_1="Basic"
+2d_physics/layer_2="Player 1 Troop"
 2d_navigation/layer_2="Testing"
+2d_physics/layer_3="Player 2 Troop"
+2d_physics/layer_4="Player 1 Territory"
+2d_physics/layer_5="Player 2 Territory"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.357459, 0.48894, 0.263345, 1)
