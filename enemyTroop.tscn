@@ -78,6 +78,7 @@ script = ExtResource("1_h2ops")
 modulate = Color(1, 0.273989, 0.21327, 1)
 texture_filter = 1
 position = Vector2(0, -3)
+scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_2cqfq")
 autoplay = "default"
 frame_progress = 0.701846

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=24 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Texture2D" uid="uid://b0lycq64nohhx" path="res://Tiles.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://cnbfdoaq7dbne" path="res://Placement.cs" id="2_0xm2m"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://85k4rxkavr5c" path="res://TerritoryTiles.png" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://plasmaTurret.tscn" id="12_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dtmcn270epgmd" path="res://tower.tscn" id="12_w48qg"]
+[ext_resource type="Texture2D" uid="uid://dypbsvj8172vm" path="res://PlasmaTurret.png" id="16_2cqfq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_ig7tw")
@@ -141,6 +142,7 @@ navigation_polygon = SubResource("NavigationPolygon_5vw27")
 use_edge_connections = false
 
 [node name="HUD" parent="." instance=ExtResource("9_4c57u")]
+turretUpgradeSprite = ExtResource("16_2cqfq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
