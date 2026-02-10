@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=25 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Texture2D" uid="uid://b0lycq64nohhx" path="res://Tiles.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://cnbfdoaq7dbne" path="res://Placement.cs" id="2_0xm2m"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://85k4rxkavr5c" path="res://TerritoryTiles.png" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://plasmaTurret.tscn" id="12_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dtmcn270epgmd" path="res://tower.tscn" id="12_w48qg"]
+[ext_resource type="PackedScene" uid="uid://bvym8b7sd7gh6" path="res://wall.tscn" id="14_yaehf"]
 [ext_resource type="Texture2D" uid="uid://dypbsvj8172vm" path="res://PlasmaTurret.png" id="16_2cqfq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
@@ -113,6 +114,7 @@ tester = NodePath("Player")
 turret = ExtResource("6_kek77")
 plasmaTurret = ExtResource("12_vivmo")
 tower = ExtResource("12_w48qg")
+wall = ExtResource("14_yaehf")
 
 [node name="Player" type="Sprite2D" parent="NavHandler"]
 position = Vector2(2195, 353)

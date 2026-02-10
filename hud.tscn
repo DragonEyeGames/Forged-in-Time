@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=21 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://b5l5vavj0pj7v" path="res://Hud.cs" id="1_640wx"]
 [ext_resource type="Texture2D" uid="uid://bm67uhoq652mm" path="res://Turret.png" id="2_a2258"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://di3ykxfpiovtp" path="res://Watch Tower.png" id="4_a2258"]
 [ext_resource type="Texture2D" uid="uid://dypbsvj8172vm" path="res://PlasmaTurret.png" id="5_rftc2"]
 [ext_resource type="Texture2D" uid="uid://c71ovcr0d634p" path="res://Upgrade.png" id="6_61f8s"]
+[ext_resource type="Texture2D" uid="uid://cpu1prpqefjps" path="res://WallTower.png" id="9_g10ll"]
 
 [sub_resource type="Animation" id="Animation_61f8s"]
 length = 0.001
@@ -506,6 +507,116 @@ libraries = {
 &"": SubResource("AnimationLibrary_g10ll")
 }
 
+[node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Watch Tower"]
+z_index = 1
+offset_top = 4.0
+offset_right = 54.0
+offset_bottom = 10.0
+rotation = 1.5708
+mouse_filter = 2
+color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Arrow" type="Sprite2D" parent="ColorRect/VBoxContainer/Watch Tower/ColorRect2"]
+position = Vector2(25, 2.75695)
+rotation = 3.14159
+scale = Vector2(0.525, 0.555381)
+texture = ExtResource("4_640wx")
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Watch Tower/ColorRect2"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 54.0
+offset_bottom = 8.0
+focus_mode = 0
+flat = true
+
+[node name="Wall" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(1.13, 59.355)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer/Wall"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 131.0
+offset_bottom = 58.0
+mouse_filter = 2
+color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/Wall"]
+position = Vector2(28.4, 29.4)
+scale = Vector2(2.925, 2.925)
+texture = ExtResource("9_g10ll")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Label" type="RichTextLabel" parent="ColorRect/VBoxContainer/Wall"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 2.0
+offset_right = 460.0
+offset_bottom = 147.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 61
+text = "Wall"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="ColorRect/VBoxContainer/Wall"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 22.0
+offset_right = 460.0
+offset_bottom = 140.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 33
+text = "Cheap and blocks space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Wall"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 37.0
+offset_right = 109.0
+offset_bottom = 61.0
+scale = Vector2(0.895, 0.895)
+pivot_offset = Vector2(18.9944, 11.1732)
+focus_mode = 0
+icon = ExtResource("3_1xsix")
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Wall"]
+libraries = {
+&"": SubResource("AnimationLibrary_g10ll")
+}
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Wall"]
+z_index = 1
+offset_top = 4.0
+offset_right = 54.0
+offset_bottom = 10.0
+rotation = 1.5708
+mouse_filter = 2
+color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Arrow" type="Sprite2D" parent="ColorRect/VBoxContainer/Wall/ColorRect2"]
+position = Vector2(25, 2.75695)
+rotation = 3.14159
+scale = Vector2(0.525, 0.555381)
+texture = ExtResource("4_640wx")
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Wall/ColorRect2"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 54.0
+offset_bottom = 8.0
+focus_mode = 0
+flat = true
+
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_rftc2")
@@ -535,4 +646,7 @@ flat = true
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Popout/Button" to="." method="upgradeTurret"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Watch Tower/Button" to="." method="tower"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Watch Tower/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Wall/Button" to="." method="wall"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Wall/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect2/Button" to="." method="toggle"]

@@ -15,6 +15,7 @@ public partial class TestHandler : Node2D
 	[Export] public PackedScene turret;
 	[Export] public PackedScene plasmaTurret;
 	[Export] public PackedScene tower;
+	[Export] public PackedScene wall;
 	private int baking = 0;
 	private bool initializePlace=false;
 	
@@ -54,6 +55,10 @@ public partial class TestHandler : Node2D
 		if(selectedTower==null){
 			if(GameManager.toPlace==GameManager.Towers.Turret){
 				selectedTower=turret.Instantiate() as Tower;
+				GetParent().AddChild(selectedTower);
+			}
+			if(GameManager.toPlace==GameManager.Towers.Wall){
+				selectedTower=wall.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 			if(GameManager.toPlace==GameManager.Towers.Plasma_Turret){

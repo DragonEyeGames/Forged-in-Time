@@ -6,6 +6,7 @@ public partial class GameManager : Node
 	public enum Towers{
 		Turret,
 		Plasma_Turret,
+		Wall,
 		Tower
 	}
 	public static Towers toPlace;
