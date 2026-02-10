@@ -13,6 +13,7 @@ public partial class TestHandler : Node2D
 	[Export] public PackedScene polygon;
 	[Export] public TestValid tester;
 	[Export] public PackedScene turret;
+	[Export] public PackedScene plasmaTurret;
 	[Export] public PackedScene tower;
 	private int baking = 0;
 	private bool initializePlace=false;
@@ -53,6 +54,10 @@ public partial class TestHandler : Node2D
 		if(selectedTower==null){
 			if(GameManager.toPlace==GameManager.Towers.Turret){
 				selectedTower=turret.Instantiate() as Tower;
+				GetParent().AddChild(selectedTower);
+			}
+			if(GameManager.toPlace==GameManager.Towers.Plasma_Turret){
+				selectedTower=plasmaTurret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 			if(GameManager.toPlace==GameManager.Towers.Tower){

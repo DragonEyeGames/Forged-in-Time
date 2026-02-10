@@ -10,6 +10,7 @@ public partial class Turret : Tower
 	private List<CharacterBody2D> player1Colliding = new List<CharacterBody2D> {};
 	private List<CharacterBody2D> player2Colliding = new List<CharacterBody2D> {};
 	private Sprite2D turret;
+	[Export] public int damage=1;
 	[Export] public Timer cooldown;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -28,7 +29,7 @@ public partial class Turret : Tower
 				turret.LookAt(player2Colliding[0].GlobalPosition);
 				turret.GlobalRotation-=(float)Math.PI/2;
 				Troop troop = player2Colliding[0] as Troop;
-				troop.health-=1;
+				troop.health-=damage;
 				GetNode<AnimationPlayer>("Animator").Play("pew");
 			}
 		}
