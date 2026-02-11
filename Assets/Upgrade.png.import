@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcl6bbnvnhn3o"
-path="res://.godot/imported/Hero-Succubus.png-b25bf1a13e5c09bad111bd16c865f5ba.ctex"
+uid="uid://b5gvy7docugec"
+path="res://.godot/imported/Upgrade.png-3edc0d65c8856f7df8c1103a6ffbea53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Hero-Succubus.png"
-dest_files=["res://.godot/imported/Hero-Succubus.png-b25bf1a13e5c09bad111bd16c865f5ba.ctex"]
+source_file="res://Assets/Upgrade.png"
+dest_files=["res://.godot/imported/Upgrade.png-3edc0d65c8856f7df8c1103a6ffbea53.ctex"]
 
 [params]
 

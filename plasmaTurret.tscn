@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dwlu7pfersd5r"]
 
-[ext_resource type="Script" uid="uid://bflyw0mawn0mg" path="res://Turret.cs" id="1_q8k42"]
-[ext_resource type="Texture2D" uid="uid://dypbsvj8172vm" path="res://PlasmaTurret.png" id="2_q8k42"]
+[ext_resource type="Script" uid="uid://cxp422a4i3a8g" path="res://Turret.cs" id="1_q8k42"]
+[ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/PlasmaTurret.png" id="2_q8k42"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3oylf"]
 radius = 89.0225

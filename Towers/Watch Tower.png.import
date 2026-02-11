@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c71ovcr0d634p"
-path="res://.godot/imported/Upgrade.png-3eff831ed3f6cf13eb1cca692122ed85.ctex"
+uid="uid://qxlusnmafien"
+path="res://.godot/imported/Watch Tower.png-f8f3cbca872a0dcbb5b919ce1f65511d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Upgrade.png"
-dest_files=["res://.godot/imported/Upgrade.png-3eff831ed3f6cf13eb1cca692122ed85.ctex"]
+source_file="res://Towers/Watch Tower.png"
+dest_files=["res://.godot/imported/Watch Tower.png-f8f3cbca872a0dcbb5b919ce1f65511d.ctex"]
 
 [params]
 

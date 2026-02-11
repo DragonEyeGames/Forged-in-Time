@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cnem7ep3j786t"]
 
-[ext_resource type="Texture2D" uid="uid://bm67uhoq652mm" path="res://Turret.png" id="1_3oylf"]
-[ext_resource type="Script" uid="uid://bflyw0mawn0mg" path="res://Turret.cs" id="1_tjdg3"]
+[ext_resource type="Script" uid="uid://cxp422a4i3a8g" path="res://Turret.cs" id="1_tjdg3"]
+[ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Turret.png" id="2_tjdg3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3oylf"]
 radius = 60.0333
@@ -53,20 +53,20 @@ cooldown = NodePath("Cooldown")
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
-texture = ExtResource("1_3oylf")
+texture = ExtResource("2_tjdg3")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Turret" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
-texture = ExtResource("1_3oylf")
+texture = ExtResource("2_tjdg3")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 
 [node name="Fire" type="Sprite2D" parent="Turret"]
 visible = false
 position = Vector2(0, 3)
-texture = ExtResource("1_3oylf")
+texture = ExtResource("2_tjdg3")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 

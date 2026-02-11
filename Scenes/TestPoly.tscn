@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b7ljmxdd0fddv"]
+[gd_scene load_steps=0 format=3 uid="uid://b7ljmxdd0fddv"]
 
 [node name="Polygon2D" type="Polygon2D"]
 position = Vector2(-1, -1)

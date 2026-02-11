@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpu1prpqefjps"
-path="res://.godot/imported/WallTower.png-b8f83d34626bafac09199c1baff035fe.ctex"
+uid="uid://bmbsnvsx5mtqj"
+path="res://.godot/imported/TerritoryTiles.png-962cf211b3ad317af48d512efbd51fd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://WallTower.png"
-dest_files=["res://.godot/imported/WallTower.png-b8f83d34626bafac09199c1baff035fe.ctex"]
+source_file="res://Assets/TerritoryTiles.png"
+dest_files=["res://.godot/imported/TerritoryTiles.png-962cf211b3ad317af48d512efbd51fd6.ctex"]
 
 [params]
 

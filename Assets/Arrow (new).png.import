@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dypbsvj8172vm"
-path="res://.godot/imported/PlasmaTurret.png-ff3999cf07b6f165a5c50140d9318995.ctex"
+uid="uid://bmdvois1ek5pn"
+path="res://.godot/imported/Arrow (new).png-886aac0588cf31038b108e67645473f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlasmaTurret.png"
-dest_files=["res://.godot/imported/PlasmaTurret.png-ff3999cf07b6f165a5c50140d9318995.ctex"]
+source_file="res://Assets/Arrow (new).png"
+dest_files=["res://.godot/imported/Arrow (new).png-886aac0588cf31038b108e67645473f7.ctex"]
 
 [params]
 
