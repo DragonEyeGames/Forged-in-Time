@@ -1,9 +1,11 @@
 using Godot;
 using System;
 
+
 public abstract partial class Tower : Node2D
 {
 	public bool hovering=true;
+	private bool mouseEntered=false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -28,5 +30,17 @@ public abstract partial class Tower : Node2D
 			}
 		}
 		Modulate=color;
+		if(Input.IsActionJustPressed("Click") && mouseEntered){
+			GD.Print("HEY");
+		}
+	}
+	
+	public void MouseEntered(){
+		mouseEntered=true;
+		GD.Print("Hovered");
+	}
+	
+	public void MouseExited(){
+		mouseEntered=false;
 	}
 }

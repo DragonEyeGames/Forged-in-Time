@@ -106,8 +106,15 @@ position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_tjdg3")
 disabled = true
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(1, 1, 1, 0)
+
 [connection signal="body_entered" from="Player1" to="." method="Player1Entered"]
 [connection signal="body_exited" from="Player1" to="." method="Player1Exited"]
 [connection signal="body_entered" from="Player2" to="." method="Player2Entered"]
 [connection signal="body_exited" from="Player2" to="." method="Player2Exited"]
 [connection signal="timeout" from="Cooldown" to="." method="cooled"]
+[connection signal="mouse_entered" from="ColorRect" to="." method="MouseEntered"]
+[connection signal="mouse_exited" from="ColorRect" to="." method="MouseExited"]
