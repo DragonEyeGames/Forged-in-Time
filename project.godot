@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Forged in Time"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
-config/icon="res://Assets/icon.svg"
+config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://Scripts/GameManager.cs"
+GameManager="*res://GameManager.cs"
 
 [display]
 
@@ -31,19 +31,6 @@ project/assembly_name="Forged in Time"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
-
-[file_customization]
-
-folder_colors={
-"res://Assets/": "purple",
-"res://Scenes/": "teal",
-"res://Scripts/": "pink",
-"res://Towers/": "blue",
-"res://Towers/Assets/": "red",
-"res://Towers/Scenes/": "green",
-"res://Towers/Scripts/": "yellow",
-"res://Troops/": "yellow"
-}
 
 [global_group]
 

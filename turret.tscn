@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnem7ep3j786t"]
+
+[ext_resource type="Texture2D" uid="uid://bm67uhoq652mm" path="res://Turret.png" id="1_3oylf"]
+[ext_resource type="Script" uid="uid://bflyw0mawn0mg" path="res://Turret.cs" id="1_tjdg3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3oylf"]
+radius = 60.0333
+
+[sub_resource type="Animation" id="Animation_c5apd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/Fire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tjdg3"]
+resource_name = "pew"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/Fire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5apd"]
+_data = {
+&"RESET": SubResource("Animation_c5apd"),
+&"pew": SubResource("Animation_tjdg3")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tjdg3"]
+radius = 30.5287
+
+[node name="Turret" type="Node2D" node_paths=PackedStringArray("cooldown")]
+script = ExtResource("1_tjdg3")
+Player1 = true
+cooldown = NodePath("Cooldown")
+
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_3oylf")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Turret" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_3oylf")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Fire" type="Sprite2D" parent="Turret"]
+visible = false
+position = Vector2(0, 3)
+texture = ExtResource("1_3oylf")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="Player1" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+position = Vector2(8, 9)
+shape = SubResource("CircleShape2D_3oylf")
+
+[node name="Player2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+visible = false
+position = Vector2(8, 9)
+shape = SubResource("CircleShape2D_3oylf")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_c5apd")
+}
+speed_scale = 2.0
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Territory" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Territory"]
+position = Vector2(8, 8)
+shape = SubResource("CircleShape2D_tjdg3")
+disabled = true
+
+[connection signal="body_entered" from="Player1" to="." method="Player1Entered"]
+[connection signal="body_exited" from="Player1" to="." method="Player1Exited"]
+[connection signal="body_entered" from="Player2" to="." method="Player2Entered"]
+[connection signal="body_exited" from="Player2" to="." method="Player2Exited"]
+[connection signal="timeout" from="Cooldown" to="." method="cooled"]
