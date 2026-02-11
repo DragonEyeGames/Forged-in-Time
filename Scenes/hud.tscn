@@ -635,6 +635,7 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 
 [node name="Arrow" type="Sprite2D" parent="ColorRect2"]
 position = Vector2(64, 8)
+texture = ExtResource("4_36asn")
 
 [node name="Button" type="Button" parent="ColorRect2"]
 layout_mode = 0

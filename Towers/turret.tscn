@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cnem7ep3j786t"]
 
-[ext_resource type="Script" uid="uid://cxp422a4i3a8g" path="res://Turret.cs" id="1_tjdg3"]
+[ext_resource type="Script" uid="uid://cxp422a4i3a8g" path="res://Towers/Turret.cs" id="1_tjdg3"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Turret.png" id="2_tjdg3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3oylf"]
