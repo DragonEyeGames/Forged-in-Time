@@ -66,24 +66,65 @@ z_index = -1
 tile_set = SubResource("TileSet_w48qg")
 script = ExtResource("4_82xsv")
 
-[node name="Player" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
+[node name="Player-1" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(896, 353)
 texture = ExtResource("5_getpj")
 offset = Vector2(64, -1)
 script = ExtResource("6_ryguw")
-troop = ExtResource("5_lquwl")
 target = NodePath("../Enemy")
+troop = ExtResource("5_lquwl")
 
-[node name="Timer" type="Timer" parent="Player"]
+[node name="Timer" type="Timer" parent="Player-1"]
 autostart = true
 
-[node name="Territory" type="Area2D" parent="Player"]
+[node name="Territory" type="Area2D" parent="Player-1"]
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Territory"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player-1/Territory"]
+visible = false
 position = Vector2(64, 3)
 shape = SubResource("CircleShape2D_dg77c")
+
+[node name="HUD" type="ColorRect" parent="Player-1"]
+offset_left = -20.0
+offset_top = -191.0
+offset_right = 137.0
+offset_bottom = -71.0
+color = Color(0.509804, 0.298039, 0.0901961, 1)
+
+[node name="HUD2" type="ColorRect" parent="Player-1"]
+offset_left = -15.0
+offset_top = -186.0
+offset_right = 131.0
+offset_bottom = -75.0
+color = Color(0.780392, 0.705882, 0.47451, 1)
+
+[node name="Label" type="RichTextLabel" parent="Player-1/HUD2"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 2.0
+offset_right = 457.0
+offset_bottom = 147.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 61
+text = "Main Tower"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="Player-1/HUD2"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 43.0
+offset_right = 452.0
+offset_bottom = 188.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 61
+text = "Reserves"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Enemy" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
 self_modulate = Color(1, 0.194376, 0.144153, 1)
@@ -91,8 +132,8 @@ position = Vector2(192, 338)
 texture = ExtResource("5_getpj")
 offset = Vector2(-64, -2)
 script = ExtResource("6_ryguw")
+target = NodePath("../Player-1")
 troop = ExtResource("5_5vw27")
-target = NodePath("../Player")
 
 [node name="Timer" type="Timer" parent="Enemy"]
 autostart = true
@@ -110,11 +151,11 @@ shape = SubResource("CircleShape2D_dg77c")
 [node name="NavHandler" type="Node2D" parent="." node_paths=PackedStringArray("tester")]
 script = ExtResource("9_d13ii")
 polygon = ExtResource("7_5vw27")
+tester = NodePath("Player")
 turret = ExtResource("6_kek77")
 plasmaTurret = ExtResource("12_vivmo")
 tower = ExtResource("12_w48qg")
 wall = ExtResource("14_yaehf")
-tester = NodePath("Player")
 
 [node name="Player" type="Sprite2D" parent="NavHandler"]
 position = Vector2(2195, 353)
@@ -133,12 +174,14 @@ texture = ExtResource("5_getpj")
 offset = Vector2(-64, -2)
 
 [node name="TestRegion" type="NavigationRegion2D" parent="NavHandler"]
+visible = false
 position = Vector2(1300, 0)
 navigation_polygon = SubResource("NavigationPolygon_272bh")
 use_edge_connections = false
 navigation_layers = 2
 
 [node name="NavRegion" type="NavigationRegion2D" parent="NavHandler"]
+visible = false
 position = Vector2(1, 0)
 navigation_polygon = SubResource("NavigationPolygon_5vw27")
 use_edge_connections = false
@@ -149,7 +192,7 @@ turretUpgradeSprite = ExtResource("17_0odxb")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
-[connection signal="timeout" from="Player/Timer" to="Player" method="spawnTroop"]
+[connection signal="timeout" from="Player-1/Timer" to="Player-1" method="spawnTroop"]
 [connection signal="timeout" from="Enemy/Timer" to="Enemy" method="spawnTroop"]
 [connection signal="bake_finished" from="NavHandler/TestRegion" to="NavHandler" method="TestFinished"]
 [connection signal="bake_finished" from="NavHandler/NavRegion" to="NavHandler" method="TestFinished"]

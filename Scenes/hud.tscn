@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=22 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_640wx"]
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/HudTower.cs" id="3_61f8s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="7_4f5kr"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Watch Tower.png" id="8_piegi"]
 [ext_resource type="Texture2D" uid="uid://cpu1prpqefjps" path="res://Towers/WallTower.png" id="9_g10ll"]
+[ext_resource type="Texture2D" uid="uid://dnjxqds0em6gw" path="res://Assets/Armored Orc/Armored Orc_Idle.png" id="10_5ep0j"]
 
 [sub_resource type="Animation" id="Animation_61f8s"]
 length = 0.001
@@ -619,6 +620,94 @@ offset_bottom = 8.0
 focus_mode = 0
 flat = true
 
+[node name="Basic" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(1.13, 59.355)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer/Basic"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 131.0
+offset_bottom = 58.0
+mouse_filter = 2
+color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/Basic"]
+position = Vector2(32, 29)
+scale = Vector2(1.76, 1.76)
+texture = ExtResource("10_5ep0j")
+region_enabled = true
+region_rect = Rect2(41.7287, 36.2696, 26.289, 21.498)
+
+[node name="Label" type="RichTextLabel" parent="ColorRect/VBoxContainer/Basic"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 2.0
+offset_right = 460.0
+offset_bottom = 147.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 61
+text = "Caveman"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="ColorRect/VBoxContainer/Basic"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 22.0
+offset_right = 460.0
+offset_bottom = 140.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 33
+text = "Has a rock and muscle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Basic"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 37.0
+offset_right = 109.0
+offset_bottom = 61.0
+scale = Vector2(0.895, 0.895)
+pivot_offset = Vector2(18.9944, 11.1732)
+focus_mode = 0
+icon = ExtResource("4_7gr8i")
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Basic"]
+libraries = {
+&"": SubResource("AnimationLibrary_g10ll")
+}
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Basic"]
+z_index = 1
+layout_mode = 0
+offset_top = 4.0
+offset_right = 54.0
+offset_bottom = 10.0
+rotation = 1.5708
+mouse_filter = 2
+color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Arrow" type="Sprite2D" parent="ColorRect/VBoxContainer/Basic/ColorRect2"]
+position = Vector2(25, 2.75695)
+rotation = 3.14159
+scale = Vector2(0.525, 0.555381)
+texture = ExtResource("4_36asn")
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Basic/ColorRect2"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 54.0
+offset_bottom = 8.0
+focus_mode = 0
+flat = true
+
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_rftc2")
@@ -651,4 +740,6 @@ flat = true
 [connection signal="pressed" from="ColorRect/VBoxContainer/Watch Tower/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Wall/Button" to="." method="wall"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Wall/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Basic/Button" to="." method="wall"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Basic/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect2/Button" to="." method="toggle"]
