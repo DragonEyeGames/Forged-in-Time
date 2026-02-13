@@ -3,7 +3,8 @@ using System;
 
 public partial class Hud : CanvasLayer
 {
-	private bool open = true;
+	[Export] public bool player1=true;
+	private bool open = false;
 	private AnimationPlayer animator;
 	public int turretUpgrade=0;
 	[Export] CompressedTexture2D turretUpgradeSprite;
@@ -69,6 +70,14 @@ public partial class Hud : CanvasLayer
 			GameManager.placing=true;
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Wall/AnimationPlayer").Play("wobble");
 			toggle();
+		}
+		
+	}
+	
+	public void basicTroop(){
+		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops){
+			GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
+			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
 		}
 		
 	}

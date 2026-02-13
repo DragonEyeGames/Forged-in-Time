@@ -12,4 +12,5 @@ public partial class GameManager : Node
 	public static Towers toPlace;
 	public static bool placing=false;
 	public static bool validPlacement=true;
+	public static Base player1Base;
 }
