@@ -108,6 +108,7 @@ public partial class TestHandler : Node2D
 				GetParent().AddChild(selectedTower);
 			}
 		}
+		selectedTower.Player1=player1;
 		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		selectedTower.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		selectedPolygon.Position+=new Vector2(1300, 0);

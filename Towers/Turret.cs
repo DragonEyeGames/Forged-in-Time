@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public partial class Turret : Tower
 {
-	[Export] bool Player1 = false;
 	private bool canShoot = true;
 	private List<CharacterBody2D> player1Colliding = new List<CharacterBody2D> {};
 	private List<CharacterBody2D> player2Colliding = new List<CharacterBody2D> {};
