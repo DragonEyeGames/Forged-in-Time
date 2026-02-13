@@ -298,8 +298,9 @@ _data = {
 &"open": SubResource("Animation_5ep0j")
 }
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("timer")]
 script = ExtResource("1_640wx")
+timer = NodePath("Timeout")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 1016.0
@@ -747,9 +748,10 @@ flat = true
 
 [node name="Close" type="Button" parent="ColorRect"]
 offset_left = -1016.0
-offset_right = -14.0
-offset_bottom = 648.0
+offset_right = -133.0
+offset_bottom = 645.0
 focus_mode = 0
+mouse_filter = 1
 flat = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -777,6 +779,10 @@ libraries = {
 }
 speed_scale = 3.0
 
+[node name="Timeout" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button" to="." method="turret"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Popout/Button" to="." method="upgradeTurret"]
@@ -788,3 +794,4 @@ speed_scale = 3.0
 [connection signal="pressed" from="ColorRect/VBoxContainer/Basic/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/Close" to="." method="toggle"]
 [connection signal="pressed" from="ColorRect2/Button" to="." method="toggle"]
+[connection signal="timeout" from="Timeout" to="." method="timerTime"]

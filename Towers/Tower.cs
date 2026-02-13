@@ -18,6 +18,10 @@ public abstract partial class Tower : Node2D
 	
 	public async void TowerGenerics(){
 		Color color = Modulate;
+		if(!Player1){
+			color.G=.75f;
+			color.B=.75f;
+		}
 		if(hovering){
 			color.A=.5f;
 		} else if (color.A!=1.0f) {

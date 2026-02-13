@@ -8,6 +8,7 @@ public partial class Hud : CanvasLayer
 	private AnimationPlayer animator;
 	public int turretUpgrade=0;
 	[Export] CompressedTexture2D turretUpgradeSprite;
+	[Export] Timer timer;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -21,19 +22,20 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void toggle(){
-		GD.Print("seizure");
 		if(GameManager.player1!=player1){
 			return;
 		}
 		open=!open;
 		if(open){
 			animator.Play("open");
+			timer.Start();
 		} else {
 			animator.Play("close");
 		}
 	}
 	
 	public void turret(){
+		timer.Start();
 		if(player1){
 			if(Player1Manager.placing==false){
 				if(turretUpgrade==0){
@@ -62,6 +64,7 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void upgradeTurret(){
+		timer.Start();
 		turretUpgrade+=1;
 		if(turretUpgrade==1){
 			GetNode<Sprite2D>("ColorRect/VBoxContainer/Turret/Base").Texture=turretUpgradeSprite;
@@ -73,6 +76,7 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void tower(){
+		timer.Start();
 		if(player1){
 			if(Player1Manager.placing==false){
 				Player1Manager.toPlace=GameManager.Towers.Tower;
@@ -91,6 +95,7 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void wall(){
+		timer.Start();
 		if(player1){
 			if(Player1Manager.placing==false){
 				Player1Manager.toPlace=GameManager.Towers.Wall;
@@ -111,6 +116,7 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void basicTroop(){
+		timer.Start();
 		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops){
 			GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
@@ -119,5 +125,11 @@ public partial class Hud : CanvasLayer
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
 		}
 		
+	}
+	
+	public void timerTime(){
+		if(open){
+			toggle();
+		}
 	}
 }
