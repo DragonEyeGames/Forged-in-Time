@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjjy84kigbl4n"]
+[gd_scene load_steps=14 format=3 uid="uid://bjjy84kigbl4n"]
 
 [ext_resource type="Script" uid="uid://cvx0uy7fj1vjq" path="res://Troops/Troop.cs" id="1_6da2i"]
 [ext_resource type="Texture2D" uid="uid://cdyfjrsjcm0kq" path="res://Assets/Armored Orc/Armored Orc_Walk.png" id="2_37opx"]
@@ -70,6 +70,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6da2i"]
 radius = 2.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yv06w"]
+radius = 4.0
+
 [node name="Funny Guy" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_6da2i")
@@ -91,5 +94,21 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6da2i")
+
+[node name="Player1" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+visible = false
+shape = SubResource("CircleShape2D_yv06w")
+
+[node name="Player2" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+visible = false
+shape = SubResource("CircleShape2D_yv06w")
 
 [connection signal="timeout" from="Timer" to="." method="recalculate"]

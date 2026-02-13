@@ -15,6 +15,7 @@ public partial class Troop : CharacterBody2D
 		navAgent=GetNode<NavigationAgent2D>("NavAgent");
 		sprite=GetNode<AnimatedSprite2D>("Sprite");
 		navAgent.PathMaxDistance=10.0f;
+		updateHitboxes();
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -39,5 +40,14 @@ public partial class Troop : CharacterBody2D
 	
 	public void recalculate(){
 		navAgent.TargetPosition=target.GlobalPosition;
+	}
+	
+	public async void updateHitboxes(){
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		if(player1){
+			GetNode("Player2").QueueFree();
+		} else if(!player1){
+			GetNode("Player1").QueueFree();
+		}
 	}
 }
