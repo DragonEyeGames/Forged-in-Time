@@ -74,9 +74,6 @@ script = ExtResource("6_ryguw")
 target = NodePath("../Enemy")
 troop = ExtResource("5_lquwl")
 
-[node name="Timer" type="Timer" parent="Player-1"]
-autostart = true
-
 [node name="Territory" type="Area2D" parent="Player-1"]
 collision_layer = 8
 collision_mask = 0
@@ -86,18 +83,10 @@ visible = false
 position = Vector2(64, 3)
 shape = SubResource("CircleShape2D_dg77c")
 
-[node name="HUD" type="ColorRect" parent="Player-1"]
-offset_left = -20.0
-offset_top = -191.0
-offset_right = 137.0
-offset_bottom = -71.0
-mouse_filter = 2
-color = Color(0.509804, 0.298039, 0.0901961, 1)
-
 [node name="HUD2" type="ColorRect" parent="Player-1"]
-offset_left = -15.0
+offset_left = -12.0
 offset_top = -186.0
-offset_right = 131.0
+offset_right = 134.0
 offset_bottom = -75.0
 mouse_filter = 2
 color = Color(0.780392, 0.705882, 0.47451, 1)
@@ -162,7 +151,7 @@ text = "0/2 Vehicles"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton" type="Button" parent="Player-1/HUD2/Storage"]
+[node name="Release" type="Button" parent="Player-1/HUD2/Storage"]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 57.0
@@ -171,6 +160,22 @@ offset_bottom = 81.0
 scale = Vector2(1.395, 1.395)
 focus_mode = 0
 icon = ExtResource("8_b3802")
+flat = true
+
+[node name="HUD" type="ColorRect" parent="Player-1/HUD2"]
+z_index = -1
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 152.0
+offset_bottom = 115.0
+mouse_filter = 2
+color = Color(0.509804, 0.298039, 0.0901961, 1)
+
+[node name="Detection" type="Button" parent="Player-1"]
+offset_top = -65.0
+offset_right = 128.0
+offset_bottom = 63.0
+focus_mode = 0
 flat = true
 
 [node name="Enemy" type="Sprite2D" parent="."]
@@ -236,7 +241,8 @@ turretUpgradeSprite = ExtResource("17_0odxb")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
-[connection signal="timeout" from="Player-1/Timer" to="Player-1" method="spawnTroop"]
+[connection signal="pressed" from="Player-1/HUD2/Storage/Release" to="Player-1" method="release"]
+[connection signal="pressed" from="Player-1/Detection" to="Player-1" method="toggle"]
 [connection signal="timeout" from="Enemy/Timer" to="Enemy" method="spawnTroop"]
 [connection signal="bake_finished" from="NavHandler/TestRegion" to="NavHandler" method="TestFinished"]
 [connection signal="bake_finished" from="NavHandler/NavRegion" to="NavHandler" method="TestFinished"]
