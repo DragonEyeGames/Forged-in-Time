@@ -45,7 +45,6 @@ public partial class TestHandler : Node2D
 			initializePlace=false;
 			if(Player1Manager.validPlacement && tester.isValid() && Player1Manager.placing){
 				Player1Manager.placing=false;
-				GD.Print("Falzefi");
 				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
 				navRegion.AddChild(selectedPolygon2);
 				selectedPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
@@ -55,10 +54,11 @@ public partial class TestHandler : Node2D
 				return;
 			}
 		} else if(initializePlace && !player1){
+			GD.Print("H");
 			initializePlace=false;
 			if(Player2Manager.validPlacement && tester.isValid() && Player2Manager.placing){
+				GD.Print("G");
 				Player2Manager.placing=false;
-				GD.Print("Falzefi");
 				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
 				navRegion.AddChild(selectedPolygon2);
 				selectedPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
@@ -112,11 +112,11 @@ public partial class TestHandler : Node2D
 		selectedTower.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
 		selectedPolygon.Position+=new Vector2(1300, 0);
 		if(player1){
-			if(Input.IsActionPressed("Click") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../Territory").IsTerritory(SnapToTopLeft(GetGlobalMousePosition()), 0)){
+			if(Input.IsActionPressed("Click") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(GetGlobalMousePosition()), 0)){
 				initializePlace=true;
 			}
 		} else if(!player1){
-			if(Input.IsActionPressed("Click") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../Territory").IsTerritory(SnapToTopLeft(GetGlobalMousePosition()), 0)){
+			if(Input.IsActionPressed("Click") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(GetGlobalMousePosition()), 1)){
 				initializePlace=true;
 			}
 		}
@@ -142,18 +142,7 @@ public partial class TestHandler : Node2D
 	}
 	
 	public void BakePoly(){
-		if(baking==0){
-			baking=2;
-			testRegion.BakeNavigationPolygon();
-			navRegion.BakeNavigationPolygon();
-		}
-	}
-	
-	public void TestFinished(){
-		baking-=1;
-		if(baking<0){
-			baking=0;
-		}
+		GetParent<BakeHandler>().BakePoly();
 	}
 		
 }

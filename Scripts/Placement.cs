@@ -54,6 +54,8 @@ public partial class Placement : Node2D
 				Player2Manager.validPlacement=true;
 			} else{
 				Player2Manager.validPlacement=false;
+				GD.Print(atlasCoords);
+				GD.Print(placedCoords);
 			}
 		}
 		
