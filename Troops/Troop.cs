@@ -3,14 +3,17 @@ using System;
 
 public partial class Troop : CharacterBody2D
 {
+	public bool player1=false;
 	public const float Speed = 400.0f;
 	public const float JumpVelocity = -400.0f;
 	public NavigationAgent2D navAgent;
 	[Export] public Node2D target;
 	[Export] public int health=5;
+	private AnimatedSprite2D sprite;
 	
 	public override void _Ready(){
 		navAgent=GetNode<NavigationAgent2D>("NavAgent");
+		sprite=GetNode<AnimatedSprite2D>("Sprite");
 		navAgent.PathMaxDistance=10.0f;
 	}
 	
@@ -25,6 +28,12 @@ public partial class Troop : CharacterBody2D
 		}
 		if(health<=0){
 			QueueFree();
+		}
+		if(Velocity.X>0){
+			sprite.FlipH=false;
+		}
+		if(Velocity.X<0){
+			sprite.FlipH=true;
 		}
 	}
 	

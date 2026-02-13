@@ -745,6 +745,13 @@ offset_bottom = 8.0
 focus_mode = 0
 flat = true
 
+[node name="Close" type="Button" parent="ColorRect"]
+offset_left = -1016.0
+offset_right = -14.0
+offset_bottom = 648.0
+focus_mode = 0
+flat = true
+
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = 1018.0
 offset_right = 1150.0
@@ -779,4 +786,5 @@ speed_scale = 3.0
 [connection signal="pressed" from="ColorRect/VBoxContainer/Wall/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Basic/Button" to="." method="basicTroop"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Basic/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
+[connection signal="pressed" from="ColorRect/Close" to="." method="toggle"]
 [connection signal="pressed" from="ColorRect2/Button" to="." method="toggle"]

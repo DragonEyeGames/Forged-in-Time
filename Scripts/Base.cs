@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public partial class Base : Sprite2D
 {
+	[Export] public bool player1=false;
 	private NavigationAgent2D navAgent;
 	[Export] public Node2D target;
 	[Export]
@@ -20,7 +21,11 @@ public partial class Base : Sprite2D
 	public List<Troops> reserveTroops = new List<Troops>();
 
 	public override void _Ready(){
-		GameManager.player1Base=this;
+		if(player1){
+			GameManager.player1Base=this;
+		} else if(!player1){
+			GameManager.player2Base=this;
+		}
 	}
 
 	public void spawnTroop(Troops troopType){
@@ -29,11 +34,16 @@ public partial class Base : Sprite2D
 			GetParent().AddChild(newTroop);
 			newTroop.GlobalPosition=GlobalPosition;
 			newTroop.target=target;
+			newTroop.player1=player1;
 		}
 		
 	}
 	
 	public override void _Process(double delta){
+		if(GetNode<Node2D>("Territory").Visible){
+			GetNode<Node2D>("Territory").Visible=false;
+			GetNode<CollisionShape2D>("Territory/CollisionShape2D").SetDeferred("disabled", true);
+		}
 		if(releasing && reserveTroops.Count>=1 && !releaseTime){
 			releaseTroop();
 		} else if (reserveTroops.Count==0){

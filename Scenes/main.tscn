@@ -82,7 +82,8 @@ position = Vector2(896, 353)
 texture = ExtResource("5_getpj")
 offset = Vector2(64, -1)
 script = ExtResource("6_ryguw")
-target = NodePath("../Enemy")
+player1 = true
+target = NodePath("../Player-2")
 troop = ExtResource("5_lquwl")
 
 [node name="Territory" type="Area2D" parent="Player-1"]
@@ -191,24 +192,121 @@ offset_bottom = 63.0
 focus_mode = 0
 flat = true
 
-[node name="Enemy" type="Sprite2D" parent="."]
+[node name="Player-2" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
 self_modulate = Color(1, 0.194376, 0.144153, 1)
 position = Vector2(192, 338)
 texture = ExtResource("5_getpj")
 offset = Vector2(-64, -2)
+script = ExtResource("6_ryguw")
+target = NodePath("../Player-1")
+troop = ExtResource("5_lquwl")
 
-[node name="Timer" type="Timer" parent="Enemy"]
-autostart = true
-
-[node name="Territory" type="Area2D" parent="Enemy"]
+[node name="Territory" type="Area2D" parent="Player-2"]
 position = Vector2(-129, 1)
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Territory"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player-2/Territory"]
 visible = false
 position = Vector2(64, 3)
 shape = SubResource("CircleShape2D_dg77c")
+
+[node name="HUD2" type="ColorRect" parent="Player-2"]
+visible = false
+offset_left = -136.0
+offset_top = -190.0
+offset_right = 10.0
+offset_bottom = -79.0
+mouse_filter = 2
+color = Color(0.780392, 0.705882, 0.47451, 1)
+
+[node name="Label" type="RichTextLabel" parent="Player-2/HUD2"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 2.0
+offset_right = 445.0
+offset_bottom = 147.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 61
+text = "Main Tower"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Storage" type="Control" parent="Player-2/HUD2"]
+anchors_preset = 0
+offset_left = 2.0
+offset_top = -16.0
+offset_right = 42.0
+offset_bottom = 24.0
+mouse_filter = 2
+
+[node name="Reserve" type="RichTextLabel" parent="Player-2/HUD2/Storage"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 39.0
+offset_right = 398.0
+offset_bottom = 184.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 61
+text = "Reserves:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Troops" type="RichTextLabel" parent="Player-2/HUD2/Storage"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = 54.0
+offset_right = 400.0
+offset_bottom = 199.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "0/15 Troops"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Vehicles" type="RichTextLabel" parent="Player-2/HUD2/Storage"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 68.0
+offset_right = 401.0
+offset_bottom = 213.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "0/2 Vehicles"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Release" type="Button" parent="Player-2/HUD2/Storage"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 57.0
+offset_right = 119.0
+offset_bottom = 81.0
+scale = Vector2(1.395, 1.395)
+focus_mode = 0
+icon = ExtResource("8_b3802")
+flat = true
+
+[node name="HUD" type="ColorRect" parent="Player-2/HUD2"]
+z_index = -1
+layout_mode = 0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 152.0
+offset_bottom = 115.0
+mouse_filter = 2
+color = Color(0.509804, 0.298039, 0.0901961, 1)
+
+[node name="Detection" type="Button" parent="Player-2"]
+offset_left = -128.0
+offset_top = -68.0
+offset_bottom = 60.0
+focus_mode = 0
+flat = true
 
 [node name="NavHandler" type="Node2D" parent="."]
 script = ExtResource("10_wsu2k")
@@ -273,6 +371,7 @@ use_edge_connections = false
 
 [connection signal="pressed" from="Player-1/HUD2/Storage/Release" to="Player-1" method="release"]
 [connection signal="pressed" from="Player-1/Detection" to="Player-1" method="toggle"]
-[connection signal="timeout" from="Enemy/Timer" to="Enemy" method="spawnTroop"]
+[connection signal="pressed" from="Player-2/HUD2/Storage/Release" to="Player-2" method="release"]
+[connection signal="pressed" from="Player-2/Detection" to="Player-2" method="toggle"]
 [connection signal="bake_finished" from="TestPlacement/TestRegion" to="NavHandler" method="TestFinished"]
 [connection signal="bake_finished" from="TestPlacement/NavRegion" to="NavHandler" method="TestFinished"]

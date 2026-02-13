@@ -17,10 +17,11 @@ public partial class Hud : CanvasLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+
 	}
 	
 	public void toggle(){
+		GD.Print("seizure");
 		if(GameManager.player1!=player1){
 			return;
 		}
@@ -112,6 +113,9 @@ public partial class Hud : CanvasLayer
 	public void basicTroop(){
 		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops){
 			GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
+			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
+		} else if(!player1 && GameManager.player2Base.reserveTroops.Count<GameManager.player2Base.maxTroops){
+			GameManager.player2Base.reserveTroops.Add(Base.Troops.Melee);
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
 		}
 		
