@@ -9,8 +9,7 @@ public partial class GameManager : Node
 		Wall,
 		Tower
 	}
-	public static Towers toPlace;
-	public static bool placing=false;
-	public static bool validPlacement=true;
 	public static Base player1Base;
+	public static Base player2Base;
+	public static bool player1=true;
 }

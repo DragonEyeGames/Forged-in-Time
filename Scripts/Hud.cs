@@ -21,6 +21,9 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void toggle(){
+		if(GameManager.player1!=player1){
+			return;
+		}
 		open=!open;
 		if(open){
 			animator.Play("open");
@@ -30,16 +33,30 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void turret(){
-		if(GameManager.placing==false){
-			if(turretUpgrade==0){
-				GameManager.toPlace=GameManager.Towers.Turret;
-			} else if (turretUpgrade==1){
-				GameManager.toPlace=GameManager.Towers.Plasma_Turret;
+		if(player1){
+			if(Player1Manager.placing==false){
+				if(turretUpgrade==0){
+					Player1Manager.toPlace=GameManager.Towers.Turret;
+				} else if (turretUpgrade==1){
+					Player1Manager.toPlace=GameManager.Towers.Plasma_Turret;
+				}
+				Player1Manager.placing=true;
+				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Turret/AnimationPlayer").Play("wobble");
+				toggle();
 			}
-			GameManager.placing=true;
-			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Turret/AnimationPlayer").Play("wobble");
-			toggle();
+		} else if(!player1){
+			if(Player2Manager.placing==false){
+				if(turretUpgrade==0){
+					Player2Manager.toPlace=GameManager.Towers.Turret;
+				} else if (turretUpgrade==1){
+					Player2Manager.toPlace=GameManager.Towers.Plasma_Turret;
+				}
+				Player2Manager.placing=true;
+				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Turret/AnimationPlayer").Play("wobble");
+				toggle();
+			}
 		}
+		
 		
 	}
 	
@@ -55,22 +72,40 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void tower(){
-		if(GameManager.placing==false){
-			GameManager.toPlace=GameManager.Towers.Tower;
-			GameManager.placing=true;
-			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Watch Tower/AnimationPlayer").Play("wobble");
-			toggle();
+		if(player1){
+			if(Player1Manager.placing==false){
+				Player1Manager.toPlace=GameManager.Towers.Tower;
+				Player1Manager.placing=true;
+				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Watch Tower/AnimationPlayer").Play("wobble");
+				toggle();
+			}
+		} else if(!player1){
+			if(Player2Manager.placing==false){
+				Player2Manager.toPlace=GameManager.Towers.Tower;
+				Player2Manager.placing=true;
+				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Watch Tower/AnimationPlayer").Play("wobble");
+				toggle();
+			}
 		}
-		
 	}
 	
 	public void wall(){
-		if(GameManager.placing==false){
-			GameManager.toPlace=GameManager.Towers.Wall;
-			GameManager.placing=true;
-			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Wall/AnimationPlayer").Play("wobble");
-			toggle();
+		if(player1){
+			if(Player1Manager.placing==false){
+				Player1Manager.toPlace=GameManager.Towers.Wall;
+				Player1Manager.placing=true;
+				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Wall/AnimationPlayer").Play("wobble");
+				toggle();
+			}
+		} else if (!player1){
+			if(Player2Manager.placing==false){
+				Player2Manager.toPlace=GameManager.Towers.Wall;
+				Player2Manager.placing=true;
+				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Wall/AnimationPlayer").Play("wobble");
+				toggle();
+			}
 		}
+		
 		
 	}
 	
