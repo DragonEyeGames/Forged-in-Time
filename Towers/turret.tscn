@@ -48,7 +48,6 @@ radius = 30.5287
 
 [node name="Turret" type="Node2D" node_paths=PackedStringArray("cooldown")]
 script = ExtResource("1_tjdg3")
-Player1 = true
 cooldown = NodePath("Cooldown")
 
 [node name="Base" type="Sprite2D" parent="."]
@@ -96,17 +95,26 @@ speed_scale = 2.0
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.2
 
-[node name="Territory" type="Area2D" parent="."]
+[node name="Player1Territory" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Territory"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Territory"]
 position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_tjdg3")
 disabled = true
 
-[connection signal="body_entered" from="Player1" to="." method="Player1Entered"]
-[connection signal="body_exited" from="Player1" to="." method="Player1Exited"]
-[connection signal="body_entered" from="Player2" to="." method="Player2Entered"]
-[connection signal="body_exited" from="Player2" to="." method="Player2Exited"]
+[node name="Player2Territory" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Territory"]
+position = Vector2(8, 8)
+shape = SubResource("CircleShape2D_tjdg3")
+disabled = true
+
+[connection signal="area_entered" from="Player1" to="." method="Player1Entered"]
+[connection signal="area_exited" from="Player1" to="." method="Player1Exited"]
+[connection signal="area_entered" from="Player2" to="." method="Player2Entered"]
+[connection signal="area_exited" from="Player2" to="." method="Player2Exited"]
 [connection signal="timeout" from="Cooldown" to="." method="cooled"]

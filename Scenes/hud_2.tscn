@@ -1,15 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=22 format=3 uid="uid://bdhyr2rcfdx0l"]
 
-[ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_640wx"]
-[ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/HudTower.cs" id="3_61f8s"]
-[ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Turret.png" id="3_t1xeu"]
-[ext_resource type="Texture2D" uid="uid://donui7kkbkesp" path="res://Assets/Buy.png" id="4_7gr8i"]
-[ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="4_36asn"]
-[ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/PlasmaTurret.png" id="6_5ep0j"]
-[ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="7_4f5kr"]
-[ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Watch Tower.png" id="8_piegi"]
-[ext_resource type="Texture2D" uid="uid://cpu1prpqefjps" path="res://Towers/WallTower.png" id="9_g10ll"]
-[ext_resource type="Texture2D" uid="uid://dnjxqds0em6gw" path="res://Assets/Armored Orc/Armored Orc_Idle.png" id="10_5ep0j"]
+[ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_v1w48"]
+[ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/PlasmaTurret.png" id="2_uoqjr"]
+[ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/HudTower.cs" id="3_wiuxb"]
+[ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Turret.png" id="4_qoig8"]
+[ext_resource type="Texture2D" uid="uid://donui7kkbkesp" path="res://Assets/Buy.png" id="5_ms25i"]
+[ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="6_2cn1p"]
+[ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="7_avu3l"]
+[ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Watch Tower.png" id="8_swdrl"]
+[ext_resource type="Texture2D" uid="uid://cpu1prpqefjps" path="res://Towers/WallTower.png" id="9_rt21g"]
+[ext_resource type="Texture2D" uid="uid://dnjxqds0em6gw" path="res://Assets/Armored Orc/Armored Orc_Idle.png" id="10_g3cp4"]
 
 [sub_resource type="Animation" id="Animation_61f8s"]
 length = 0.001
@@ -60,7 +60,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 4)]
+"values": [Vector2(142, 4)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,7 +84,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [3.14159]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_amv7k"]
@@ -100,7 +100,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-97, 3), Vector2(0, 4)]
+"values": [Vector2(239, 4), Vector2(142, 4)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -124,7 +124,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 3.14159]
+"values": [3.14159, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_g10ll"]
@@ -140,7 +140,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 4), Vector2(-97, 3)]
+"values": [Vector2(142, 4), Vector2(239, 4)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -164,7 +164,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [3.14159, 0.0]
+"values": [0.0, 3.14159]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_amv7k"]
@@ -174,46 +174,7 @@ _data = {
 &"open": SubResource("Animation_g10ll")
 }
 
-[sub_resource type="Animation" id="Animation_5ep0j"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1e-05), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1018, 0), Vector2(1018, 634)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [3.14159, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_4f5kr"]
+[sub_resource type="Animation" id="Animation_a2258"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -225,7 +186,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1e-05)]
+"values": [Vector2(1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -237,7 +198,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1018, 0)]
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -252,13 +213,13 @@ tracks/2/keys = {
 "values": [3.14159]
 }
 
-[sub_resource type="Animation" id="Animation_piegi"]
+[sub_resource type="Animation" id="Animation_640wx"]
 resource_name = "close"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("ColorRect:scale")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
@@ -270,19 +231,19 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("ColorRect2:position")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1018, 634), Vector2(1018, 0)]
+"values": [Vector2(0, 632), Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
-tracks/2/interp = 1
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
@@ -291,20 +252,60 @@ tracks/2/keys = {
 "values": [0.0, 3.14159]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i2avg"]
-_data = {
-&"RESET": SubResource("Animation_4f5kr"),
-&"close": SubResource("Animation_piegi"),
-&"open": SubResource("Animation_5ep0j")
+[sub_resource type="Animation" id="Animation_1xsix"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 632)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 0.0]
 }
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("timer")]
-script = ExtResource("1_640wx")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rftc2"]
+_data = {
+&"RESET": SubResource("Animation_a2258"),
+&"close": SubResource("Animation_640wx"),
+&"open": SubResource("Animation_1xsix")
+}
+
+[node name="HUD2" type="CanvasLayer" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_v1w48")
+player1 = false
+turretUpgradeSprite = ExtResource("2_uoqjr")
 timer = NodePath("Timeout")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 1016.0
-offset_right = 1152.0
+offset_right = 136.0
 offset_bottom = 648.0
 scale = Vector2(1, 1e-05)
 mouse_filter = 2
@@ -320,7 +321,7 @@ mouse_filter = 2
 custom_minimum_size = Vector2(1.13, 59.355)
 layout_mode = 2
 mouse_filter = 2
-script = ExtResource("3_61f8s")
+script = ExtResource("3_wiuxb")
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer/Turret"]
 layout_mode = 0
@@ -334,14 +335,14 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 [node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/Turret"]
 position = Vector2(28.4, 29.4)
 scale = Vector2(2.925, 2.925)
-texture = ExtResource("3_t1xeu")
+texture = ExtResource("4_qoig8")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Turret" type="Sprite2D" parent="ColorRect/VBoxContainer/Turret"]
 position = Vector2(28.4, 29.4)
 scale = Vector2(2.925, 2.925)
-texture = ExtResource("3_t1xeu")
+texture = ExtResource("4_qoig8")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 
@@ -380,7 +381,7 @@ offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
 focus_mode = 0
-icon = ExtResource("4_7gr8i")
+icon = ExtResource("5_ms25i")
 flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Turret"]
@@ -391,8 +392,9 @@ libraries = {
 [node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Turret"]
 z_index = 1
 layout_mode = 0
+offset_left = 142.0
 offset_top = 4.0
-offset_right = 54.0
+offset_right = 196.0
 offset_bottom = 10.0
 rotation = 1.5708
 mouse_filter = 2
@@ -400,9 +402,8 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 
 [node name="Arrow" type="Sprite2D" parent="ColorRect/VBoxContainer/Turret/ColorRect2"]
 position = Vector2(25, 2.75695)
-rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
-texture = ExtResource("4_36asn")
+texture = ExtResource("6_2cn1p")
 
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret/ColorRect2"]
 layout_mode = 0
@@ -419,18 +420,20 @@ libraries = {
 
 [node name="Popout" type="ColorRect" parent="ColorRect/VBoxContainer/Turret"]
 layout_mode = 0
-offset_top = 57.0
-offset_right = 97.0
-offset_bottom = 111.0
+offset_left = 39.3423
+offset_top = 57.5574
+offset_right = 136.342
+offset_bottom = 111.557
 rotation = 3.14159
 scale = Vector2(1e-05, 1)
+pivot_offset = Vector2(96.8289, 0.221432)
 color = Color(0.639216, 0.552941, 0.345098, 1)
 
 [node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/Turret/Popout"]
 position = Vector2(78.12, 27.12)
 rotation = 3.14159
 scale = Vector2(2.11, 2.11)
-texture = ExtResource("6_5ep0j")
+texture = ExtResource("2_uoqjr")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
@@ -438,7 +441,7 @@ region_rect = Rect2(0, 0, 16, 16)
 position = Vector2(78.12, 27.12)
 rotation = 3.14159
 scale = Vector2(2.11, 2.11)
-texture = ExtResource("6_5ep0j")
+texture = ExtResource("2_uoqjr")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 
@@ -479,7 +482,7 @@ rotation = 3.14159
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
 focus_mode = 0
-icon = ExtResource("7_4f5kr")
+icon = ExtResource("7_avu3l")
 flat = true
 
 [node name="Watch Tower" type="Control" parent="ColorRect/VBoxContainer"]
@@ -499,7 +502,7 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 [node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/Watch Tower"]
 position = Vector2(28.4, 29.4)
 scale = Vector2(2.925, 2.925)
-texture = ExtResource("8_piegi")
+texture = ExtResource("8_swdrl")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
@@ -538,7 +541,7 @@ offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
 focus_mode = 0
-icon = ExtResource("4_7gr8i")
+icon = ExtResource("5_ms25i")
 flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Watch Tower"]
@@ -560,7 +563,7 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 position = Vector2(25, 2.75695)
 rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
-texture = ExtResource("4_36asn")
+texture = ExtResource("6_2cn1p")
 
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer/Watch Tower/ColorRect2"]
 layout_mode = 0
@@ -587,7 +590,7 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 [node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/Wall"]
 position = Vector2(28.4, 29.4)
 scale = Vector2(2.925, 2.925)
-texture = ExtResource("9_g10ll")
+texture = ExtResource("9_rt21g")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
@@ -626,7 +629,7 @@ offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
 focus_mode = 0
-icon = ExtResource("4_7gr8i")
+icon = ExtResource("5_ms25i")
 flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Wall"]
@@ -648,7 +651,7 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 position = Vector2(25, 2.75695)
 rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
-texture = ExtResource("4_36asn")
+texture = ExtResource("6_2cn1p")
 
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer/Wall/ColorRect2"]
 layout_mode = 0
@@ -675,7 +678,7 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 [node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/Basic"]
 position = Vector2(32, 29)
 scale = Vector2(1.76, 1.76)
-texture = ExtResource("10_5ep0j")
+texture = ExtResource("10_g3cp4")
 region_enabled = true
 region_rect = Rect2(41.7287, 36.2696, 26.289, 21.498)
 
@@ -714,7 +717,7 @@ offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
 focus_mode = 0
-icon = ExtResource("4_7gr8i")
+icon = ExtResource("5_ms25i")
 flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Basic"]
@@ -736,7 +739,7 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 position = Vector2(25, 2.75695)
 rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
-texture = ExtResource("4_36asn")
+texture = ExtResource("6_2cn1p")
 
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer/Basic/ColorRect2"]
 layout_mode = 0
@@ -747,16 +750,21 @@ focus_mode = 0
 flat = true
 
 [node name="Close" type="Button" parent="ColorRect"]
-offset_left = -1016.0
-offset_right = -133.0
-offset_bottom = 645.0
+offset_left = 240.0
+offset_top = -100000.0
+offset_right = 1152.0
+offset_bottom = -99352.0
 focus_mode = 0
-mouse_filter = 1
 flat = true
 
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rftc2")
+}
+speed_scale = 3.0
+
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 1018.0
-offset_right = 1150.0
+offset_right = 132.0
 offset_bottom = 14.0
 mouse_filter = 2
 color = Color(0.78066, 0.704382, 0.474143, 1)
@@ -764,7 +772,7 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 [node name="Arrow" type="Sprite2D" parent="ColorRect2"]
 position = Vector2(64, 8)
 rotation = 3.14159
-texture = ExtResource("4_36asn")
+texture = ExtResource("6_2cn1p")
 
 [node name="Button" type="Button" parent="ColorRect2"]
 layout_mode = 0
@@ -772,12 +780,6 @@ offset_right = 132.0
 offset_bottom = 14.0
 focus_mode = 0
 flat = true
-
-[node name="Animator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_i2avg")
-}
-speed_scale = 3.0
 
 [node name="Timeout" type="Timer" parent="."]
 wait_time = 3.5

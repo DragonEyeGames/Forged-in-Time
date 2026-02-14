@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public partial class Turret : Tower
 {
-	[Export] bool Player1 = false;
 	private bool canShoot = true;
 	private List<CharacterBody2D> player1Colliding = new List<CharacterBody2D> {};
 	private List<CharacterBody2D> player2Colliding = new List<CharacterBody2D> {};
@@ -32,24 +31,33 @@ public partial class Turret : Tower
 				troop.health-=damage;
 				GetNode<AnimationPlayer>("Animator").Play("pew");
 			}
+			if(!Player1 && player1Colliding.Count>0){
+				canShoot=false;
+				cooldown.Start();
+				turret.LookAt(player1Colliding[0].GlobalPosition);
+				turret.GlobalRotation-=(float)Math.PI/2;
+				Troop troop = player1Colliding[0] as Troop;
+				troop.health-=damage;
+				GetNode<AnimationPlayer>("Animator").Play("pew");
+			}
 		}
 		
 	}
 	
 	public void Player1Entered(Node2D body){
-		player1Colliding.Add(body as CharacterBody2D);
+		player1Colliding.Add(body.GetParent() as CharacterBody2D);
 	}
 	
 	public void Player1Exited(Node2D body){
-		player1Colliding.Remove(body as CharacterBody2D);
+		player1Colliding.Remove(body.GetParent() as CharacterBody2D);
 	}
 	
 	public void Player2Entered(Node2D body){
-		player2Colliding.Add(body as CharacterBody2D);
+		player2Colliding.Add(body.GetParent() as CharacterBody2D);
 	}
 	
 	public void Player2Exited(Node2D body){
-		player2Colliding.Remove(body as CharacterBody2D);
+		player2Colliding.Remove(body.GetParent() as CharacterBody2D);
 	}
 	
 	public void cooled(){
