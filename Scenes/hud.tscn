@@ -796,6 +796,7 @@ down = NodePath("../ColorRect/VBoxContainer/Turret/Button")
 selected = true
 hud = NodePath("..")
 holder = NodePath("../ColorRect")
+exception = true
 
 [node name="Arrow" type="Sprite2D" parent="Button"]
 z_index = 1
@@ -805,6 +806,7 @@ scale = Vector2(0.909, 0.909)
 texture = ExtResource("4_36asn")
 
 [node name="ColorRect2" type="ColorRect" parent="Button"]
+layout_mode = 0
 offset_right = 132.0
 offset_bottom = 14.0
 mouse_filter = 2

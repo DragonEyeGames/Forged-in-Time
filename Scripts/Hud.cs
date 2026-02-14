@@ -31,15 +31,15 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void toggle(){
-		if(GameManager.player1!=player1){
-			return;
-		}
 		open=!open;
 		if(open){
 			animator.Play("open");
 			timer.Start();
 		} else {
 			animator.Play("close");
+		}
+		if(player1){
+			Player1Manager.hudOpen=open;
 		}
 	}
 	

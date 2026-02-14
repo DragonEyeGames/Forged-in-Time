@@ -10,6 +10,7 @@ public partial class Controller : Button
 	[Export] bool selected;
 	[Export] Hud hud;
 	[Export] ColorRect holder;
+	[Export] bool exception=false;
 	public Vector2 baseSize;
 	public Vector2 increasedSize;
 	// Called when the node enters the scene tree for the first time.
@@ -46,7 +47,7 @@ public partial class Controller : Button
 				Modulate = Colors.Gray;
 				down.Modulate = Colors.White;
 			}
-			if(hud.input=="Select"){
+			if(hud.input=="Select" && (holder.Visible || exception)){
 				hud.input="";
 				EmitSignal(Button.SignalName.Pressed);
 			}
