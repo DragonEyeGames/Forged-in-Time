@@ -372,9 +372,9 @@ navigation_polygon = SubResource("NavigationPolygon_5vw27")
 use_edge_connections = false
 
 [node name="Player1Cursor" type="Sprite2D" parent="."]
-modulate = Color(0.286275, 0.435294, 1, 1)
-position = Vector2(740, 151)
-scale = Vector2(0.5, 0.5)
+modulate = Color(0.286275, 0.435294, 1, 0.662745)
+position = Vector2(839, 353)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
 

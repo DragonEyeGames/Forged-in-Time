@@ -19,6 +19,9 @@ public partial class Cursor : Sprite2D
 		if(player1){
 			Visible=!Player1Manager.hudOpen;
 		}
+		if(!Visible){
+			return;
+		}
 		float rightX = Input.GetJoyAxis(ID, JoyAxis.RightX)*5;
 		float rightY = Input.GetJoyAxis(ID, JoyAxis.RightY)*5;
 		if(Math.Abs(rightX)<.5f){
@@ -30,6 +33,19 @@ public partial class Cursor : Sprite2D
 		Vector2 position = Position;
 		position.X+=rightX;
 		position.Y+=rightY;
+		if(position.X<7){
+			position.X=7;
+		}
+		if(position.Y<7){
+			position.Y=7;
+		}
+		if(position.X>1144){
+			position.X=1144;
+		}
+		if(position.Y>640){
+			position.Y=640;
+		}
 		Position=position;
+		
 	}
 }
