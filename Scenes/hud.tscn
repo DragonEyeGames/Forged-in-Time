@@ -192,11 +192,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect2:position")
+tracks/1/path = NodePath("Button:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(-0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1018, 0)]
@@ -204,14 +204,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/2/path = NodePath("ColorRect:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.14159]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_piegi"]
@@ -231,7 +231,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect2:position")
+tracks/1/path = NodePath("Button:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -243,14 +243,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
-tracks/2/interp = 1
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 3.14159]
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_5ep0j"]
@@ -270,7 +270,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect2:position")
+tracks/1/path = NodePath("Button:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -282,14 +282,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/2/path = NodePath("ColorRect:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [3.14159, 0.0]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i2avg"]
@@ -305,6 +305,7 @@ timer = NodePath("Timeout")
 inputCooldown = NodePath("InputCooldown")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = 1016.0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -373,7 +374,7 @@ text = "Shoots at the enemy furthest along the path."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret" node_paths=PackedStringArray("up", "down", "hud")]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret" node_paths=PackedStringArray("up", "down", "hud", "holder")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 37.0
@@ -384,9 +385,10 @@ pivot_offset = Vector2(18.9944, 11.1732)
 icon = ExtResource("4_7gr8i")
 flat = true
 script = ExtResource("5_4f5kr")
-up = NodePath("../../Basic/Button")
+up = NodePath("../../../../Button")
 down = NodePath("../../Watch Tower/Button")
 hud = NodePath("../../../..")
+holder = NodePath("../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Turret"]
 libraries = {
@@ -538,7 +540,7 @@ text = "Purely gives you a giant territory boost"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Watch Tower" node_paths=PackedStringArray("up", "down", "hud")]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Watch Tower" node_paths=PackedStringArray("up", "down", "hud", "holder")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 37.0
@@ -552,6 +554,7 @@ script = ExtResource("5_4f5kr")
 up = NodePath("../../Turret/Button")
 down = NodePath("../../Wall/Button")
 hud = NodePath("../../../..")
+holder = NodePath("../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Watch Tower"]
 libraries = {
@@ -631,7 +634,7 @@ text = "Cheap and blocks space"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Wall" node_paths=PackedStringArray("up", "down", "hud")]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Wall" node_paths=PackedStringArray("up", "down", "hud", "holder")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 37.0
@@ -645,6 +648,7 @@ script = ExtResource("5_4f5kr")
 up = NodePath("../../Watch Tower/Button")
 down = NodePath("../../Basic/Button")
 hud = NodePath("../../../..")
+holder = NodePath("../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Wall"]
 libraries = {
@@ -724,7 +728,7 @@ text = "Has a rock and muscle"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Basic" node_paths=PackedStringArray("up", "down", "hud")]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Basic" node_paths=PackedStringArray("up", "down", "hud", "holder")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 37.0
@@ -736,9 +740,9 @@ icon = ExtResource("4_7gr8i")
 flat = true
 script = ExtResource("5_4f5kr")
 up = NodePath("../../Wall/Button")
-down = NodePath("../../Turret/Button")
-selected = true
+down = NodePath("../../../../Button")
 hud = NodePath("../../../..")
+holder = NodePath("../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Basic"]
 libraries = {
@@ -781,24 +785,30 @@ flat = true
 script = ExtResource("5_4f5kr")
 hud = NodePath("../..")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("up", "down", "hud", "holder")]
 offset_left = 1018.0
 offset_right = 1150.0
 offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.78066, 0.704382, 0.474143, 1)
-
-[node name="Arrow" type="Sprite2D" parent="ColorRect2"]
-position = Vector2(64, 8)
-rotation = 3.14159
-texture = ExtResource("4_36asn")
-
-[node name="Button" type="Button" parent="ColorRect2"]
-layout_mode = 0
-offset_right = 132.0
-offset_bottom = 14.0
 flat = true
 script = ExtResource("5_4f5kr")
+up = NodePath("../ColorRect/VBoxContainer/Basic/Button")
+down = NodePath("../ColorRect/VBoxContainer/Turret/Button")
+selected = true
+hud = NodePath("..")
+holder = NodePath("../ColorRect")
+
+[node name="Arrow" type="Sprite2D" parent="Button"]
+z_index = 1
+position = Vector2(64, 8)
+rotation = 3.14159
+scale = Vector2(0.909, 0.909)
+texture = ExtResource("4_36asn")
+
+[node name="ColorRect2" type="ColorRect" parent="Button"]
+offset_right = 132.0
+offset_bottom = 14.0
+mouse_filter = 2
+color = Color(0.78066, 0.704382, 0.474143, 1)
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
@@ -824,5 +834,5 @@ one_shot = true
 [connection signal="pressed" from="ColorRect/VBoxContainer/Basic/Button" to="." method="basicTroop"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Basic/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/Close" to="." method="toggle"]
-[connection signal="pressed" from="ColorRect2/Button" to="." method="toggle"]
+[connection signal="pressed" from="Button" to="." method="toggle"]
 [connection signal="timeout" from="InputCooldown" to="." method="inputCool"]
