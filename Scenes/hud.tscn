@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=23 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_640wx"]
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/HudTower.cs" id="3_61f8s"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Turret.png" id="3_t1xeu"]
 [ext_resource type="Texture2D" uid="uid://donui7kkbkesp" path="res://Assets/Buy.png" id="4_7gr8i"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="4_36asn"]
+[ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="5_4f5kr"]
 [ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/PlasmaTurret.png" id="6_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="7_4f5kr"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Watch Tower.png" id="8_piegi"]
@@ -174,45 +175,6 @@ _data = {
 &"open": SubResource("Animation_g10ll")
 }
 
-[sub_resource type="Animation" id="Animation_5ep0j"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1e-05), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1018, 0), Vector2(1018, 634)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [3.14159, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_4f5kr"]
 length = 0.001
 tracks/0/type = "value"
@@ -291,6 +253,45 @@ tracks/2/keys = {
 "values": [0.0, 3.14159]
 }
 
+[sub_resource type="Animation" id="Animation_5ep0j"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1018, 0), Vector2(1018, 634)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i2avg"]
 _data = {
 &"RESET": SubResource("Animation_4f5kr"),
@@ -298,9 +299,10 @@ _data = {
 &"open": SubResource("Animation_5ep0j")
 }
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("timer")]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("timer", "inputCooldown")]
 script = ExtResource("1_640wx")
 timer = NodePath("Timeout")
+inputCooldown = NodePath("InputCooldown")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 1016.0
@@ -371,7 +373,7 @@ text = "Shoots at the enemy furthest along the path."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret"]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret" node_paths=PackedStringArray("up", "down", "hud")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 37.0
@@ -379,9 +381,12 @@ offset_right = 109.0
 offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
-focus_mode = 0
 icon = ExtResource("4_7gr8i")
 flat = true
+script = ExtResource("5_4f5kr")
+up = NodePath("../../Basic/Button")
+down = NodePath("../../Watch Tower/Button")
+hud = NodePath("../../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Turret"]
 libraries = {
@@ -404,13 +409,15 @@ rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("4_36asn")
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret/ColorRect2"]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret/ColorRect2" node_paths=PackedStringArray("hud")]
+visible = false
 layout_mode = 0
 offset_top = -1.0
 offset_right = 54.0
 offset_bottom = 8.0
-focus_mode = 0
 flat = true
+script = ExtResource("5_4f5kr")
+hud = NodePath("../../../../..")
 
 [node name="UpgradeSlider" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Turret"]
 libraries = {
@@ -470,7 +477,8 @@ text = "Does more damage and looks cooler."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret/Popout"]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret/Popout" node_paths=PackedStringArray("hud")]
+visible = false
 layout_mode = 0
 offset_left = 21.0
 offset_right = 77.0
@@ -478,9 +486,10 @@ offset_bottom = 24.0
 rotation = 3.14159
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
-focus_mode = 0
 icon = ExtResource("7_4f5kr")
 flat = true
+script = ExtResource("5_4f5kr")
+hud = NodePath("../../../../..")
 
 [node name="Watch Tower" type="Control" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(1.13, 59.355)
@@ -529,7 +538,7 @@ text = "Purely gives you a giant territory boost"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Watch Tower"]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Watch Tower" node_paths=PackedStringArray("up", "down", "hud")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 37.0
@@ -537,9 +546,12 @@ offset_right = 109.0
 offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
-focus_mode = 0
 icon = ExtResource("4_7gr8i")
 flat = true
+script = ExtResource("5_4f5kr")
+up = NodePath("../../Turret/Button")
+down = NodePath("../../Wall/Button")
+hud = NodePath("../../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Watch Tower"]
 libraries = {
@@ -562,13 +574,15 @@ rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("4_36asn")
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Watch Tower/ColorRect2"]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Watch Tower/ColorRect2" node_paths=PackedStringArray("hud")]
+visible = false
 layout_mode = 0
 offset_top = -1.0
 offset_right = 54.0
 offset_bottom = 8.0
-focus_mode = 0
 flat = true
+script = ExtResource("5_4f5kr")
+hud = NodePath("../../../../..")
 
 [node name="Wall" type="Control" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(1.13, 59.355)
@@ -617,7 +631,7 @@ text = "Cheap and blocks space"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Wall"]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Wall" node_paths=PackedStringArray("up", "down", "hud")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 37.0
@@ -625,9 +639,12 @@ offset_right = 109.0
 offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
-focus_mode = 0
 icon = ExtResource("4_7gr8i")
 flat = true
+script = ExtResource("5_4f5kr")
+up = NodePath("../../Watch Tower/Button")
+down = NodePath("../../Basic/Button")
+hud = NodePath("../../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Wall"]
 libraries = {
@@ -650,13 +667,15 @@ rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("4_36asn")
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Wall/ColorRect2"]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Wall/ColorRect2" node_paths=PackedStringArray("hud")]
+visible = false
 layout_mode = 0
 offset_top = -1.0
 offset_right = 54.0
 offset_bottom = 8.0
-focus_mode = 0
 flat = true
+script = ExtResource("5_4f5kr")
+hud = NodePath("../../../../..")
 
 [node name="Basic" type="Control" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(1.13, 59.355)
@@ -705,7 +724,7 @@ text = "Has a rock and muscle"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Basic"]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Basic" node_paths=PackedStringArray("up", "down", "hud")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 37.0
@@ -713,9 +732,13 @@ offset_right = 109.0
 offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
-focus_mode = 0
 icon = ExtResource("4_7gr8i")
 flat = true
+script = ExtResource("5_4f5kr")
+up = NodePath("../../Wall/Button")
+down = NodePath("../../Turret/Button")
+selected = true
+hud = NodePath("../../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Basic"]
 libraries = {
@@ -738,21 +761,25 @@ rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("4_36asn")
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Basic/ColorRect2"]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Basic/ColorRect2" node_paths=PackedStringArray("hud")]
+visible = false
 layout_mode = 0
 offset_top = -1.0
 offset_right = 54.0
 offset_bottom = 8.0
-focus_mode = 0
 flat = true
+script = ExtResource("5_4f5kr")
+hud = NodePath("../../../../..")
 
-[node name="Close" type="Button" parent="ColorRect"]
+[node name="Close" type="Button" parent="ColorRect" node_paths=PackedStringArray("hud")]
+layout_mode = 0
 offset_left = -1016.0
 offset_right = -133.0
 offset_bottom = 645.0
-focus_mode = 0
 mouse_filter = 1
 flat = true
+script = ExtResource("5_4f5kr")
+hud = NodePath("../..")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = 1018.0
@@ -770,8 +797,8 @@ texture = ExtResource("4_36asn")
 layout_mode = 0
 offset_right = 132.0
 offset_bottom = 14.0
-focus_mode = 0
 flat = true
+script = ExtResource("5_4f5kr")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
@@ -781,6 +808,10 @@ speed_scale = 3.0
 
 [node name="Timeout" type="Timer" parent="."]
 wait_time = 3.5
+one_shot = true
+
+[node name="InputCooldown" type="Timer" parent="."]
+wait_time = 0.15
 one_shot = true
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button" to="." method="turret"]
@@ -794,4 +825,4 @@ one_shot = true
 [connection signal="pressed" from="ColorRect/VBoxContainer/Basic/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/Close" to="." method="toggle"]
 [connection signal="pressed" from="ColorRect2/Button" to="." method="toggle"]
-[connection signal="timeout" from="Timeout" to="." method="timerTime"]
+[connection signal="timeout" from="InputCooldown" to="." method="inputCool"]

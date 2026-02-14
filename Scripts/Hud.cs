@@ -4,15 +4,24 @@ using System;
 public partial class Hud : CanvasLayer
 {
 	[Export] public bool player1=true;
+	private int ID=0;
 	private bool open = false;
 	private AnimationPlayer animator;
 	public int turretUpgrade=0;
 	[Export] CompressedTexture2D turretUpgradeSprite;
 	[Export] Timer timer;
+	public String input="";
+	private bool canInput=true;
+	[Export] Timer inputCooldown;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		animator=GetNode<AnimationPlayer>("Animator");
+		if(player1){
+			ID=0;
+		} else {
+			ID=1;
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -132,4 +141,39 @@ public partial class Hud : CanvasLayer
 			toggle();
 		}
 	}
+	
+	public void inputCool(){
+		canInput=true;
+		GD.Print("Go");
+	}
+	
+	public override void _Input(InputEvent @event)
+	{
+	if(ID==@event.Device && canInput){
+		if (@event.IsActionPressed("Up"))
+		{
+			input="Up";
+		}
+		else if (@event.IsActionPressed("Down"))
+		{
+			input="Down";
+		}
+		else if (@event.IsActionPressed("Left"))
+		{
+			input="Left";
+		}
+		else if (@event.IsActionPressed("Right"))
+		{
+			input="Right";
+		} else if (@event.IsActionPressed("Select"))
+		{
+			input="Select";
+		} else{
+			return;
+		}
+		canInput=false;
+		inputCooldown.Start();
+	}
+	
+}
 }

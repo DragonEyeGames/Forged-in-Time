@@ -750,6 +750,7 @@ focus_mode = 0
 flat = true
 
 [node name="Close" type="Button" parent="ColorRect"]
+layout_mode = 0
 offset_left = 240.0
 offset_top = -100000.0
 offset_right = 1152.0
