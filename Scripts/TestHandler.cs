@@ -143,12 +143,12 @@ public partial class TestHandler : Node2D
 		if(player1 && 0==@event.Device){
 			if(@event.IsActionPressed("Select") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
 				initializePlace=true;
-				GetViewport().SetInputAsHandled();
+				//GetViewport().SetInputAsHandled();
 			}
 		} else if(!player1 && 1==@event.Device){
 			if(@event.IsActionPressed("Select") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(GetGlobalMousePosition()), 1)){
 				initializePlace=true;
-				GetViewport().SetInputAsHandled();
+				//GetViewport().SetInputAsHandled();
 			}
 		}
 	}

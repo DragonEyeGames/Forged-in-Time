@@ -22,20 +22,16 @@ public partial class Placement : Node2D
 		Vector2I hoverCoords = new Vector2I(0, 1);
 		Vector2I placedCoords = new Vector2I(1, 1);
 		Vector2I invalidCoords = new Vector2I(1, 0);
-		if(player1){
-			if(Input.IsActionJustPressed("Click") && Player1Manager.placing){
-				Click();
-			}
-		} else if(!player1){
-			if(Input.IsActionJustPressed("Click") && Player2Manager.placing){
-				Click();
-			}
-		}
-		
 	}
 	
 	private void Click(){
-		Vector2 mouseWorldPos = GetGlobalMousePosition();
+		Vector2 mouseWorldPos;
+		if(player1){
+			mouseWorldPos = Player1Manager.cursor.GlobalPosition;
+		}
+		else{
+			mouseWorldPos = GetGlobalMousePosition();
+		}
 		Vector2I cell = layer.LocalToMap(mouseWorldPos);
 		Vector2I hoverCoords = new Vector2I(0, 1);
 		Vector2I placedCoords = new Vector2I(1, 1);
@@ -71,5 +67,19 @@ public partial class Placement : Node2D
 
 		return new Vector2(x, y);
 	}
-		
+	
+	public override void _Input(InputEvent @event)
+	{
+		if((player1 && @event.Device==0) || (!player1 && @event.Device== 1)){
+			if(player1){
+				if(@event.IsActionPressed("Select")&& tester.isValid() && Player1Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
+					Click();
+				}
+			} else if(!player1){
+				if(@event.IsActionPressed("Select") && Player2Manager.placing){
+					Click();
+				}
+			}
+		}
+	}
 }

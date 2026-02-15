@@ -22,14 +22,16 @@ public partial class Cursor : Sprite2D
 		if(!Visible){
 			return;
 		}
-		float rightX = Input.GetJoyAxis(ID, JoyAxis.RightX)*5;
-		float rightY = Input.GetJoyAxis(ID, JoyAxis.RightY)*5;
-		if(Math.Abs(rightX)<.5f){
+		float rightX = Input.GetJoyAxis(ID, JoyAxis.LeftX);
+		float rightY = Input.GetJoyAxis(ID, JoyAxis.LeftY);
+		if(Math.Abs(rightX)<.1f){
 			rightX=0;
 		}
-		if(Math.Abs(rightY)<.5f){
+		if(Math.Abs(rightY)<.1f){
 			rightY=0;
 		}
+		rightX*=4;
+		rightY*=4;
 		Vector2 position = Position;
 		position.X+=rightX;
 		position.Y+=rightY;
