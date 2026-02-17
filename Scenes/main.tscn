@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=31 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scenes/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://xihe12b6vlvk" path="res://Assets/Release.png" id="8_b3802"]
 [ext_resource type="PackedScene" uid="uid://c1d1jeujhaov2" path="res://Scenes/hud.tscn" id="9_4c57u"]
 [ext_resource type="Script" uid="uid://cus6gkq2ktt8e" path="res://Scripts/TestHandler.cs" id="9_d13ii"]
+[ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="10_gt3je"]
 [ext_resource type="Script" uid="uid://dtffmvch4ihls" path="res://Scenes/BakeHandler.cs" id="10_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://Towers/plasmaTurret.tscn" id="12_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dtmcn270epgmd" path="res://Towers/tower.tscn" id="12_w48qg"]
@@ -166,7 +167,7 @@ text = "0/2 Vehicles"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Release" type="Button" parent="Player-1/HUD2/Storage"]
+[node name="Release" type="Button" parent="Player-1/HUD2/Storage" node_paths=PackedStringArray("down", "hud", "holder")]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 57.0
@@ -176,6 +177,10 @@ scale = Vector2(1.395, 1.395)
 focus_mode = 0
 icon = ExtResource("8_b3802")
 flat = true
+script = ExtResource("10_gt3je")
+down = NodePath("../../../Detection")
+hud = NodePath("../../../../HUD")
+holder = NodePath("../..")
 
 [node name="HUD" type="ColorRect" parent="Player-1/HUD2"]
 z_index = -1
@@ -187,12 +192,25 @@ offset_bottom = 115.0
 mouse_filter = 2
 color = Color(0.509804, 0.298039, 0.0901961, 1)
 
-[node name="Detection" type="Button" parent="Player-1"]
+[node name="Detection" type="Button" parent="Player-1" node_paths=PackedStringArray("up", "hud", "holder")]
 offset_top = -65.0
 offset_right = 128.0
 offset_bottom = 63.0
+pivot_offset = Vector2(64, 69)
 focus_mode = 0
 flat = true
+script = ExtResource("10_gt3je")
+up = NodePath("../HUD2/Storage/Release")
+hud = NodePath("../../HUD")
+holder = NodePath("../HUD2")
+exception = true
+sideException = true
+
+[node name="Icon" type="Sprite2D" parent="Player-1/Detection"]
+z_index = -1
+position = Vector2(64, 64)
+scale = Vector2(0.93, 0.93)
+texture = ExtResource("5_getpj")
 
 [node name="Player-2" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
 self_modulate = Color(1, 0.194376, 0.144153, 1)
@@ -332,11 +350,12 @@ plasmaTurret = ExtResource("12_vivmo")
 tower = ExtResource("12_w48qg")
 wall = ExtResource("14_yaehf")
 
-[node name="HUD" parent="." instance=ExtResource("9_4c57u")]
+[node name="HUD" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("9_4c57u")]
 turretUpgradeSprite = ExtResource("17_0odxb")
+baseButton = NodePath("../Player-1/Detection")
 
 [node name="HUD2" parent="." instance=ExtResource("18_b3802")]
-player1 = true
+script = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)

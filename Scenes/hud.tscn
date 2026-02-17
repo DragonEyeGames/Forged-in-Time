@@ -797,6 +797,7 @@ selected = true
 hud = NodePath("..")
 holder = NodePath("../ColorRect")
 exception = true
+sideException = true
 
 [node name="Arrow" type="Sprite2D" parent="Button"]
 z_index = 1

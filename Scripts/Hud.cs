@@ -13,9 +13,15 @@ public partial class Hud : CanvasLayer
 	public String input="";
 	private bool canInput=true;
 	[Export] Timer inputCooldown;
+	[Export] Controller baseButton;
+	private Controller openButton;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		openButton=GetNode<Controller>("Button");
+		baseButton.right=openButton;
+		openButton.left=baseButton;
 		animator=GetNode<AnimationPlayer>("Animator");
 		if(player1){
 			ID=0;
