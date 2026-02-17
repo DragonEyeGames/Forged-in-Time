@@ -23,8 +23,10 @@ public partial class Base : Sprite2D
 	public override void _Ready(){
 		if(player1){
 			GameManager.player1Base=this;
+			GD.Print("1");
 		} else if(!player1){
 			GameManager.player2Base=this;
+			GD.Print("2");
 		}
 	}
 

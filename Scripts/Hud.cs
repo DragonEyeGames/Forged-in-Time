@@ -126,6 +126,7 @@ public partial class Hud : CanvasLayer
 	
 	public void basicTroop(){
 		timer.Start();
+		GD.Print(GameManager.player1Base);
 		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops){
 			GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
