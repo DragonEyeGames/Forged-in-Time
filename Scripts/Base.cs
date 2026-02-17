@@ -23,8 +23,10 @@ public partial class Base : Sprite2D
 	public override void _Ready(){
 		if(player1){
 			GameManager.player1Base=this;
+			GD.Print("1");
 		} else if(!player1){
 			GameManager.player2Base=this;
+			GD.Print("2");
 		}
 	}
 
@@ -57,6 +59,9 @@ public partial class Base : Sprite2D
 	}
 	
 	public void release(){
+		GetNode<ColorRect>("HUD2").Visible=false;
+		GetNode<Controller>("HUD2/Storage/Release").deselect();
+		GetNode<Controller>("Detection").select();
 		releasing=true;
 		if(releasing && reserveTroops.Count>=1){
 			spawnTroop(reserveTroops[0]);

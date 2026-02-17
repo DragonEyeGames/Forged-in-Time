@@ -298,11 +298,12 @@ _data = {
 &"open": SubResource("Animation_1xsix")
 }
 
-[node name="HUD2" type="CanvasLayer" node_paths=PackedStringArray("timer")]
+[node name="HUD2" type="CanvasLayer" node_paths=PackedStringArray("timer", "inputCooldown")]
 script = ExtResource("1_v1w48")
 player1 = false
 turretUpgradeSprite = ExtResource("2_uoqjr")
 timer = NodePath("Timeout")
+inputCooldown = NodePath("InputCooldown")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 136.0
@@ -750,6 +751,7 @@ focus_mode = 0
 flat = true
 
 [node name="Close" type="Button" parent="ColorRect"]
+layout_mode = 0
 offset_left = 240.0
 offset_top = -100000.0
 offset_right = 1152.0
@@ -783,6 +785,10 @@ flat = true
 
 [node name="Timeout" type="Timer" parent="."]
 wait_time = 3.5
+one_shot = true
+
+[node name="InputCooldown" type="Timer" parent="."]
+wait_time = 0.15
 one_shot = true
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button" to="." method="turret"]

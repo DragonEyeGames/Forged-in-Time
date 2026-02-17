@@ -4,15 +4,30 @@ using System;
 public partial class Hud : CanvasLayer
 {
 	[Export] public bool player1=true;
+	private int ID=0;
 	private bool open = false;
 	private AnimationPlayer animator;
 	public int turretUpgrade=0;
 	[Export] CompressedTexture2D turretUpgradeSprite;
 	[Export] Timer timer;
+	public String input="";
+	private bool canInput=true;
+	[Export] Timer inputCooldown;
+	[Export] Controller baseButton;
+	private Controller openButton;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		openButton=GetNode<Controller>("Button");
+		baseButton.right=openButton;
+		openButton.left=baseButton;
 		animator=GetNode<AnimationPlayer>("Animator");
+		if(player1){
+			ID=0;
+		} else {
+			ID=1;
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,15 +37,15 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void toggle(){
-		if(GameManager.player1!=player1){
-			return;
-		}
 		open=!open;
 		if(open){
 			animator.Play("open");
 			timer.Start();
 		} else {
 			animator.Play("close");
+		}
+		if(player1){
+			Player1Manager.hudOpen=open;
 		}
 	}
 	
@@ -117,6 +132,7 @@ public partial class Hud : CanvasLayer
 	
 	public void basicTroop(){
 		timer.Start();
+		GD.Print(GameManager.player1Base);
 		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops){
 			GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
@@ -132,4 +148,39 @@ public partial class Hud : CanvasLayer
 			toggle();
 		}
 	}
+	
+	public void inputCool(){
+		canInput=true;
+		GD.Print("Go");
+	}
+	
+	public override void _Input(InputEvent @event)
+	{
+	if(ID==@event.Device && canInput){
+		if (@event.IsActionPressed("Up"))
+		{
+			input="Up";
+		}
+		else if (@event.IsActionPressed("Down"))
+		{
+			input="Down";
+		}
+		else if (@event.IsActionPressed("Left"))
+		{
+			input="Left";
+		}
+		else if (@event.IsActionPressed("Right"))
+		{
+			input="Right";
+		} else if (@event.IsActionPressed("Select"))
+		{
+			input="Select";
+		} else{
+			return;
+		}
+		canInput=false;
+		inputCooldown.Start();
+	}
+	
+}
 }

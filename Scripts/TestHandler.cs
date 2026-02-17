@@ -47,17 +47,15 @@ public partial class TestHandler : Node2D
 				Player1Manager.placing=false;
 				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
 				navRegion.AddChild(selectedPolygon2);
-				selectedPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
+				selectedPolygon2.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
 				selectedPolygon=null;
 				selectedTower.hovering=false;
 				selectedTower=null;
 				return;
 			}
 		} else if(initializePlace && !player1){
-			GD.Print("H");
 			initializePlace=false;
 			if(Player2Manager.validPlacement && tester.isValid() && Player2Manager.placing){
-				GD.Print("G");
 				Player2Manager.placing=false;
 				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
 				navRegion.AddChild(selectedPolygon2);
@@ -69,7 +67,6 @@ public partial class TestHandler : Node2D
 			}
 		}
 		if(selectedPolygon==null) {
-			GD.Print("new");
 			selectedPolygon = polygon.Instantiate() as Polygon2D;
 			testRegion.AddChild(selectedPolygon);
 		}
@@ -109,18 +106,11 @@ public partial class TestHandler : Node2D
 			}
 		}
 		selectedTower.Player1=player1;
-		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
-		selectedTower.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
-		selectedPolygon.Position+=new Vector2(1300, 0);
 		if(player1){
-			if(Input.IsActionPressed("Click") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(GetGlobalMousePosition()), 0)){
-				initializePlace=true;
-			}
-		} else if(!player1){
-			if(Input.IsActionPressed("Click") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(GetGlobalMousePosition()), 1)){
-				initializePlace=true;
-			}
+			selectedPolygon.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
+			selectedTower.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
 		}
+		selectedPolygon.Position+=new Vector2(1300, 0);
 		
 		BakePoly();
 	}
@@ -128,7 +118,9 @@ public partial class TestHandler : Node2D
 	public void UpdateNav(){
 		Polygon2D newPolygon2 = polygon.Instantiate() as Polygon2D;
 		testRegion.AddChild(newPolygon2);
-		newPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
+		if(player1){
+			newPolygon2.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
+		}
 		BakePoly();
 	}
 	
@@ -144,6 +136,21 @@ public partial class TestHandler : Node2D
 	
 	public void BakePoly(){
 		GetParent<BakeHandler>().BakePoly();
+	}
+	
+	public override void _Input(InputEvent @event)
+	{
+		if(player1 && 0==@event.Device){
+			if(@event.IsActionPressed("Select") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
+				initializePlace=true;
+				//GetViewport().SetInputAsHandled();
+			}
+		} else if(!player1 && 1==@event.Device){
+			if(@event.IsActionPressed("Select") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(GetGlobalMousePosition()), 1)){
+				initializePlace=true;
+				//GetViewport().SetInputAsHandled();
+			}
+		}
 	}
 		
 }
