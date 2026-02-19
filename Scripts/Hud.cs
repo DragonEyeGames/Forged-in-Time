@@ -47,6 +47,9 @@ public partial class Hud : CanvasLayer
 		if(player1){
 			Player1Manager.hudOpen=open;
 		}
+		else if(!player1){
+			Player2Manager.hudOpen=open;
+		}
 	}
 	
 	public void turret(){
@@ -85,7 +88,7 @@ public partial class Hud : CanvasLayer
 			GetNode<Sprite2D>("ColorRect/VBoxContainer/Turret/Base").Texture=turretUpgradeSprite;
 			GetNode<Sprite2D>("ColorRect/VBoxContainer/Turret/Turret").Texture=turretUpgradeSprite;
 			GetNode<ColorRect>("ColorRect/VBoxContainer/Turret/ColorRect2").Visible=false;
-			GetNode<HudTower>("ColorRect/VBoxContainer/Turret").toggle();
+			GetNode<ShopSlot>("ColorRect/VBoxContainer/Turret").toggle();
 			GetNode<RichTextLabel>("ColorRect/VBoxContainer/Turret/Label").Text="Plasma Turret";
 		}
 	}
@@ -132,7 +135,6 @@ public partial class Hud : CanvasLayer
 	
 	public void basicTroop(){
 		timer.Start();
-		GD.Print(GameManager.player1Base);
 		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops){
 			GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
@@ -151,7 +153,6 @@ public partial class Hud : CanvasLayer
 	
 	public void inputCool(){
 		canInput=true;
-		GD.Print("Go");
 	}
 	
 	public override void _Input(InputEvent @event)
