@@ -68,6 +68,7 @@ tile_set = SubResource("TileSet_1bvp3")
 
 [node name="Player1" type="Node2D" parent="Layer" node_paths=PackedStringArray("tester")]
 script = ExtResource("2_074og")
+player1 = true
 tester = NodePath("../../TestPlacement/Player")
 
 [node name="Player2" type="Node2D" parent="Layer" node_paths=PackedStringArray("tester")]
@@ -299,7 +300,7 @@ text = "0/2 Vehicles"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Release" type="Button" parent="Player-2/HUD2/Storage"]
+[node name="Release" type="Button" parent="Player-2/HUD2/Storage" node_paths=PackedStringArray("down", "hud", "holder")]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 57.0
@@ -309,6 +310,10 @@ scale = Vector2(1.395, 1.395)
 focus_mode = 0
 icon = ExtResource("8_b3802")
 flat = true
+script = ExtResource("10_gt3je")
+down = NodePath("../../../Detection")
+hud = NodePath("../../../../HUD2")
+holder = NodePath("../..")
 
 [node name="HUD" type="ColorRect" parent="Player-2/HUD2"]
 z_index = -1
@@ -320,12 +325,17 @@ offset_bottom = 115.0
 mouse_filter = 2
 color = Color(0.509804, 0.298039, 0.0901961, 1)
 
-[node name="Detection" type="Button" parent="Player-2"]
+[node name="Detection" type="Button" parent="Player-2" node_paths=PackedStringArray("up", "hud", "holder")]
 offset_left = -128.0
 offset_top = -68.0
 offset_bottom = 60.0
 focus_mode = 0
 flat = true
+script = ExtResource("10_gt3je")
+up = NodePath("../HUD2/Storage/Release")
+hud = NodePath("../../HUD2")
+holder = NodePath("../HUD2")
+sideException = true
 
 [node name="NavHandler" type="Node2D" parent="."]
 script = ExtResource("10_wsu2k")
@@ -351,8 +361,8 @@ wall = ExtResource("14_yaehf")
 [node name="HUD" parent="." instance=ExtResource("9_4c57u")]
 turretUpgradeSprite = ExtResource("17_0odxb")
 
-[node name="HUD2" parent="." instance=ExtResource("18_b3802")]
-script = null
+[node name="HUD2" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("18_b3802")]
+baseButton = NodePath("../Player-2/Detection")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
@@ -394,6 +404,15 @@ position = Vector2(839, 353)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
+
+[node name="Player2Cursor" type="Sprite2D" parent="."]
+modulate = Color(0.936675, 0, 0.0266771, 0.662745)
+position = Vector2(292, 353)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("21_pdsj5")
+script = ExtResource("22_ee4r6")
+player1 = false
+ID = 1
 
 [connection signal="pressed" from="Player-1/HUD2/Storage/Release" to="Player-1" method="release"]
 [connection signal="pressed" from="Player-1/Detection" to="Player-1" method="toggle"]

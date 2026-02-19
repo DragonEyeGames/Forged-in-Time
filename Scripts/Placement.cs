@@ -30,7 +30,7 @@ public partial class Placement : Node2D
 			mouseWorldPos = Player1Manager.cursor.GlobalPosition;
 		}
 		else{
-			mouseWorldPos = GetGlobalMousePosition();
+			mouseWorldPos =Player2Manager.cursor.GlobalPosition;
 		}
 		Vector2I cell = layer.LocalToMap(mouseWorldPos);
 		Vector2I hoverCoords = new Vector2I(0, 1);
@@ -50,8 +50,6 @@ public partial class Placement : Node2D
 				Player2Manager.validPlacement=true;
 			} else{
 				Player2Manager.validPlacement=false;
-				GD.Print(atlasCoords);
-				GD.Print(placedCoords);
 			}
 		}
 		
@@ -76,7 +74,7 @@ public partial class Placement : Node2D
 					Click();
 				}
 			} else if(!player1){
-				if(@event.IsActionPressed("Select") && Player2Manager.placing){
+				if(@event.IsActionPressed("Select")&& tester.isValid() && Player2Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
 					Click();
 				}
 			}
