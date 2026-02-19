@@ -8,6 +8,7 @@ public partial class Base : Sprite2D
 	private NavigationAgent2D navAgent;
 	[Export] public Node2D target;
 	[Export]
+	[Export] public int health=100;
 	public PackedScene troop;
 	[Export] public int maxTroops=15;
 	private bool releaseTime=false;
@@ -75,5 +76,12 @@ public partial class Base : Sprite2D
 		spawnTroop(reserveTroops[0]);
 		reserveTroops.RemoveAt(0);
 		releaseTime=false;
+	}
+	public void Die()
+	{
+		if (health <= 0)
+		{
+			queue_free()
+		}
 	}
 }
