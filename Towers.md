@@ -46,7 +46,7 @@ When we get into the actual damaging, it goes like this.
 		GetNode<AnimationPlayer>("Animator").Play("pew");
 	}
 Obiously, this is the script for Player1, but the code for player2 is very similar.
-so canShoot=false and cooldown.Start makes it so we can only shoot so fast.
+so canShoot=false and cooldown.Start() makes it so we can only shoot so fast.
 Anything with turret is purely for appearance.
 Troop troop is set as the first person in the attacking list
 We then deal damage to the troop, and play an animation.
