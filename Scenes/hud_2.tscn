@@ -808,6 +808,7 @@ rotation = 3.14159
 texture = ExtResource("6_2cn1p")
 
 [node name="ColorRect2" type="ColorRect" parent="Button"]
+layout_mode = 0
 offset_right = 132.0
 offset_bottom = 14.0
 mouse_filter = 2

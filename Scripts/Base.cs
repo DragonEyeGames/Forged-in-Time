@@ -8,7 +8,7 @@ public partial class Base : Sprite2D
 	private NavigationAgent2D navAgent;
 	[Export] public Node2D target;
 	[Export] public int health=100;
-	public PackedScene troop;
+	[Export] public PackedScene troop;
 	[Export] public int maxTroops=15;
 	private bool releaseTime=false;
 	public enum Troops{

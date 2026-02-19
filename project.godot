@@ -23,7 +23,8 @@ Player2Manager="*res://Scripts/Player2Manager.cs"
 
 [display]
 
-window/size/mode=3
+window/size/mode=2
+window/size/initial_position_type=3
 window/stretch/mode="canvas_items"
 
 [dotnet]
