@@ -44,6 +44,7 @@ public abstract partial class Tower : Node2D
 				GetNode<CollisionShape2D>("Player2Territory/CollisionShape2D").SetDeferred("disabled", true);
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 				GetNode<Hud>("../../HUD2").toggle();
+				GetNode<Hud>("../../HUD2").input="";
 			}
 		}
 		Modulate=color;
