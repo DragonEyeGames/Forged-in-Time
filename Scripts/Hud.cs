@@ -41,7 +41,8 @@ public partial class Hud : CanvasLayer
 		if(open){
 			animator.Play("open");
 			timer.Start();
-		} else {
+		} 
+		else {
 			animator.Play("close");
 		}
 		if(player1){
