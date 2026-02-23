@@ -3,6 +3,7 @@ using System;
 
 public abstract partial class Tower : Node2D
 {
+	public int kills=0;
 	public bool hovering=true;
 	public bool Player1 = false;
 	// Called when the node enters the scene tree for the first time.

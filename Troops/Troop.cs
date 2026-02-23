@@ -29,6 +29,7 @@ public partial class Troop : CharacterBody2D
 		}
 		if(health<=0){
 			QueueFree();
+			
 		}
 		if(Velocity.X>0){
 			sprite.FlipH=false;
@@ -50,4 +51,5 @@ public partial class Troop : CharacterBody2D
 			GetNode("Player1").QueueFree();
 		}
 	}
+		
 }
