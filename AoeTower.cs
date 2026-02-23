@@ -6,7 +6,7 @@ public partial class AoeTower :  Tower
 {
     private List<CharacterBody2D> player1Colliding = new List<CharacterBody2D> {};
     private List<CharacterBody2D> player2Colliding = new List<CharacterBody2D> {};
-    [Export] public int damage=1;
+    [Export] public int damage=3;
     [Export] public Timer cooldown;
     private bool canShoot = true;
 
@@ -14,24 +14,31 @@ public partial class AoeTower :  Tower
     public override void _Process(double delta)
     {
         TowerGenerics();
-        if(Player1 && player2Colliding.Count>0){
-            GD.Print(player2Colliding.Count);
-            canShoot=false;
-            cooldown.Start();
-            for (int i = 0; i <= player2Colliding.Count; i++)
+        if (!hovering && canShoot)
+        {
+            if (Player1 && player2Colliding.Count > 0)
             {
-                Troop troop = player2Colliding[i] as Troop;
-                troop.health-=damage;
+                GD.Print(player2Colliding.Count);
+                canShoot = false;
+                cooldown.Start();
+                for (int i = 0; i <= player2Colliding.Count - 1; i++)
+                {
+                    Troop troop = player2Colliding[i] as Troop;
+                    troop.health -= damage;
+                }
             }
-        }
-        if(!Player1 && player1Colliding.Count>0){
-            canShoot=false;
-            cooldown.Start();
-            for (int i = 0; i <= player1Colliding.Count; i++)
+
+            if (!Player1 && player1Colliding.Count > 0)
             {
-                Troop troop = player1Colliding[i] as Troop;
-                troop.health-=damage;
-                GD.Print("Damagin");
+                GD.Print(player1Colliding.Count);
+                canShoot = false;
+                cooldown.Start();
+                for (int i = 0; i <= player1Colliding.Count - 1; i++)
+                {
+                    Troop troop = player1Colliding[i] as Troop;
+                    troop.health -= damage;
+                    GD.Print("Damagin");
+                }
             }
         }
     }

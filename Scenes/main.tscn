@@ -400,9 +400,8 @@ texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
 
 [node name="AOETower" parent="." instance=ExtResource("24_3pmx8")]
-position = Vector2(652, 392)
+position = Vector2(718, 354)
 hovering = false
-Player1 = true
 
 [connection signal="pressed" from="Player-1/HUD2/Storage/Release" to="Player-1" method="release"]
 [connection signal="pressed" from="Player-1/Detection" to="Player-1" method="toggle"]
