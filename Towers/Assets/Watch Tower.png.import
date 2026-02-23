@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpu1prpqefjps"
-path="res://.godot/imported/WallTower.png-0c5612d2ba9cc348e4bdaee3310c9092.ctex"
+uid="uid://qxlusnmafien"
+path="res://.godot/imported/Watch Tower.png-3cfbaa80cb2b0422ffd563842690b6fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Towers/WallTower.png"
-dest_files=["res://.godot/imported/WallTower.png-0c5612d2ba9cc348e4bdaee3310c9092.ctex"]
+source_file="res://Towers/Assets/Watch Tower.png"
+dest_files=["res://.godot/imported/Watch Tower.png-3cfbaa80cb2b0422ffd563842690b6fa.ctex"]
 
 [params]
 
