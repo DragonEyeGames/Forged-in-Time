@@ -29,8 +29,10 @@ public abstract partial class Tower : Node2D
 			if(Player1 && GetNode<CollisionShape2D>("Player1Territory/CollisionShape2D").Disabled){
 				GetNode<CollisionShape2D>("Player1Territory/CollisionShape2D").SetDeferred("disabled", false);
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+				GetNode<Hud>("../../HUD").input="";
 				GetNode<TerritoryChecker>("../../Territory").recalculate();
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+				GetNode<Hud>("../../HUD").input="";
 				GetNode<CollisionShape2D>("Player1Territory/CollisionShape2D").SetDeferred("disabled", true);
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 				GetNode<Hud>("../../HUD").toggle();
@@ -39,8 +41,10 @@ public abstract partial class Tower : Node2D
 			if(!Player1 && GetNode<CollisionShape2D>("Player2Territory/CollisionShape2D").Disabled){
 				GetNode<CollisionShape2D>("Player2Territory/CollisionShape2D").SetDeferred("disabled", false);
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+				GetNode<Hud>("../../HUD2").input="";
 				GetNode<TerritoryChecker>("../../Territory").recalculate();
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+				GetNode<Hud>("../../HUD2").input="";
 				GetNode<CollisionShape2D>("Player2Territory/CollisionShape2D").SetDeferred("disabled", true);
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 				GetNode<Hud>("../../HUD2").toggle();

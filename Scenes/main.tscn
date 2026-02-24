@@ -403,6 +403,7 @@ use_edge_connections = false
 
 [node name="Player1Cursor" type="Sprite2D" parent="."]
 modulate = Color(0.286275, 0.435294, 1, 0.662745)
+z_index = 5
 position = Vector2(839, 353)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("21_pdsj5")
@@ -410,6 +411,7 @@ script = ExtResource("22_ee4r6")
 
 [node name="Player2Cursor" type="Sprite2D" parent="."]
 modulate = Color(0.936675, 0, 0.0266771, 0.662745)
+z_index = 5
 position = Vector2(292, 353)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("21_pdsj5")

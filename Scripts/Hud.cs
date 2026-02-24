@@ -176,6 +176,7 @@ public partial class Hud : CanvasLayer
 		} else if (@event.IsActionPressed("Select"))
 		{
 			input="Select";
+			GD.Print("Selecto");
 		} else{
 			return;
 		}
