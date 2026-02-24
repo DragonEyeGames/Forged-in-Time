@@ -9,7 +9,6 @@ public partial class AoeTower :  Tower
     [Export] public int damage=3;
     [Export] public Timer cooldown;
     private bool canShoot = true;
-
     
     public override void _Process(double delta)
     {
@@ -25,6 +24,7 @@ public partial class AoeTower :  Tower
                 {
                     Troop troop = player2Colliding[i] as Troop;
                     troop.health -= damage;
+                    GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Attack");
                 }
             }
 
@@ -36,6 +36,7 @@ public partial class AoeTower :  Tower
                 for (int i = 0; i <= player1Colliding.Count - 1; i++)
                 {
                     Troop troop = player1Colliding[i] as Troop;
+                    GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Attack");
                     troop.health -= damage;
                     GD.Print("Damagin");
                 }
