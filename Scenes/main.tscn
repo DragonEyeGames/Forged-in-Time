@@ -342,6 +342,7 @@ script = ExtResource("10_wsu2k")
 
 [node name="Player1" type="Node2D" parent="NavHandler" node_paths=PackedStringArray("tester")]
 script = ExtResource("9_d13ii")
+player1 = true
 polygon = ExtResource("7_5vw27")
 tester = NodePath("../../TestPlacement/Player")
 turret = ExtResource("6_kek77")
@@ -358,8 +359,9 @@ plasmaTurret = ExtResource("12_vivmo")
 tower = ExtResource("12_w48qg")
 wall = ExtResource("14_yaehf")
 
-[node name="HUD" parent="." instance=ExtResource("9_4c57u")]
+[node name="HUD" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("9_4c57u")]
 turretUpgradeSprite = ExtResource("17_0odxb")
+baseButton = NodePath("../Player-1/Detection")
 
 [node name="HUD2" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("18_b3802")]
 baseButton = NodePath("../Player-2/Detection")

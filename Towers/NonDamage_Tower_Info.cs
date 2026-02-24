@@ -2,10 +2,9 @@ using Godot;
 using System;
 
 
-public partial class TowerInfo : ColorRect
+public partial class NonDamage_Tower_Info : ColorRect
 {
 	private RichTextLabel sellLabel;
-	private RichTextLabel killsLabel;
 	private RichTextLabel towerName;
 	
 	
@@ -14,18 +13,14 @@ public partial class TowerInfo : ColorRect
 		sellLabel=GetNode<RichTextLabel>("sellPrice");
 		sellLabel.Text="Frog";
 		
-		//kills Label
-		killsLabel=GetNode<RichTextLabel>("lifetimeKills");
-		killsLabel.Text="Frog";
-		
 		//Tower Name
 		towerName=GetNode<RichTextLabel>("towerName");
-		towerName.Text="Frog";
+		towerName.Text = (string)GetParent().GetParent().Name;
 	}
 	
 	public void on_sell_pressed()
 		{
-			GD.Print("werk");
+			GD.Print("work");
 			QueueFree();
 		}
 

@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8h8klf0jux4"]
 
-[ext_resource type="Script" uid="uid://dh4phag65b3wo" path="res://Towers/TowerInfo.cs" id="1_8fpg4"]
-[ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_r5kse"]
-[ext_resource type="Texture2D" uid="uid://c2cf8nhwfgids" path="res://Assets/pixil-frame-0.png" id="3_cfxnq"]
-[ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="4_qhxvb"]
+[ext_resource type="Script" uid="uid://dh4phag65b3wo" path="res://Towers/Damage_Tower_Info.cs" id="1_g1p03"]
+[ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_ai3ta"]
+[ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="3_ys5fm"]
+[ext_resource type="Texture2D" uid="uid://c2cf8nhwfgids" path="res://Assets/pixil-frame-0.png" id="4_s4i6t"]
 
-[node name="ToweInfo" type="Node2D"]
+[node name="DamageToweInfo" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -20,22 +21,22 @@ offset_bottom = 516.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.588235, 0.294118, 0, 1)
-script = ExtResource("1_8fpg4")
+script = ExtResource("1_g1p03")
 
 [node name="towerName" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 1
-offset_left = 7.5
+offset_left = 15.5
 offset_top = -20.0
-offset_right = 722.5
+offset_right = 730.5
 offset_bottom = 127.0
-theme_override_fonts/normal_font = ExtResource("2_r5kse")
+theme_override_fonts/normal_font = ExtResource("2_ai3ta")
 theme_override_font_sizes/normal_font_size = 100
 text = "Tower Name"
 
 [node name="WatchTower" type="Sprite2D" parent="ColorRect"]
 position = Vector2(128.5, 228)
 scale = Vector2(16.875, 18.25)
-texture = ExtResource("4_qhxvb")
+texture = ExtResource("3_ys5fm")
 
 [node name="Sell" type="Button" parent="ColorRect"]
 layout_mode = 0
@@ -45,7 +46,7 @@ offset_right = 298.5
 offset_bottom = 135.0
 scale = Vector2(5, 5)
 focus_mode = 0
-icon = ExtResource("3_cfxnq")
+icon = ExtResource("4_s4i6t")
 flat = true
 
 [node name="LifetimeKills no change" type="RichTextLabel" parent="ColorRect"]
@@ -54,7 +55,7 @@ offset_left = 231.5
 offset_top = 68.0
 offset_right = 519.5
 offset_bottom = 140.0
-theme_override_fonts/normal_font = ExtResource("2_r5kse")
+theme_override_fonts/normal_font = ExtResource("2_ai3ta")
 theme_override_font_sizes/normal_font_size = 65
 text = "Lifetime Kills:"
 
@@ -64,7 +65,7 @@ offset_left = 520.0
 offset_top = 68.0
 offset_right = 720.0
 offset_bottom = 140.0
-theme_override_fonts/normal_font = ExtResource("2_r5kse")
+theme_override_fonts/normal_font = ExtResource("2_ai3ta")
 theme_override_font_sizes/normal_font_size = 65
 text = "0"
 
@@ -74,7 +75,7 @@ offset_left = 232.0
 offset_top = 148.0
 offset_right = 416.0
 offset_bottom = 220.0
-theme_override_fonts/normal_font = ExtResource("2_r5kse")
+theme_override_fonts/normal_font = ExtResource("2_ai3ta")
 theme_override_font_sizes/normal_font_size = 65
 text = "Sell For:"
 
@@ -84,7 +85,7 @@ offset_left = 416.0
 offset_top = 148.0
 offset_right = 720.0
 offset_bottom = 220.0
-theme_override_fonts/normal_font = ExtResource("2_r5kse")
+theme_override_fonts/normal_font = ExtResource("2_ai3ta")
 theme_override_font_sizes/normal_font_size = 65
 text = "0
 "
