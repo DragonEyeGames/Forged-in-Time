@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class HudTower : Control
+public partial class ShopSlot : Control
 {
 	private bool open=false;
 	// Called when the node enters the scene tree for the first time.
