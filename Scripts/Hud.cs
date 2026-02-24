@@ -20,8 +20,13 @@ public partial class Hud : CanvasLayer
 	public override void _Ready()
 	{
 		openButton=GetNode<Controller>("Button");
-		baseButton.right=openButton;
-		openButton.left=baseButton;
+		if(player1) {
+			baseButton.right=openButton;
+			openButton.left=baseButton;
+		} else {
+			baseButton.left=openButton;
+			openButton.right=baseButton;
+		}
 		animator=GetNode<AnimationPlayer>("Animator");
 		if(player1){
 			ID=0;

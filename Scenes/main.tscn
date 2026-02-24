@@ -330,13 +330,22 @@ color = Color(0.509804, 0.298039, 0.0901961, 1)
 offset_left = -128.0
 offset_top = -68.0
 offset_bottom = 60.0
+pivot_offset = Vector2(63, 71)
 focus_mode = 0
 flat = true
 script = ExtResource("10_gt3je")
 up = NodePath("../HUD2/Storage/Release")
 hud = NodePath("../../HUD2")
 holder = NodePath("../HUD2")
+exception = true
 sideException = true
+
+[node name="Icon" type="Sprite2D" parent="Player-2/Detection"]
+self_modulate = Color(1, 0.196078, 0.145098, 1)
+z_index = -1
+position = Vector2(64, 66)
+scale = Vector2(0.94, 0.94)
+texture = ExtResource("5_getpj")
 
 [node name="NavHandler" type="Node2D" parent="."]
 script = ExtResource("10_wsu2k")
