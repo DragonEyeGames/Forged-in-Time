@@ -151,11 +151,13 @@ public partial class Hud : CanvasLayer
 	
 	public void basicTroop(){
 		timer.Start();
-		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops){
+		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops && Player1Manager.money>=Prices.prices[GameManager.Towers.Melee]){
 			GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
+			Player1Manager.money-=Prices.prices[GameManager.Towers.Melee];
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
-		} else if(!player1 && GameManager.player2Base.reserveTroops.Count<GameManager.player2Base.maxTroops){
+		} else if(!player1 && GameManager.player2Base.reserveTroops.Count<GameManager.player2Base.maxTroops && Player2Manager.money>=Prices.prices[GameManager.Towers.Melee]){
 			GameManager.player2Base.reserveTroops.Add(Base.Troops.Melee);
+			Player2Manager.money-=Prices.prices[GameManager.Towers.Melee];
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
 		}
 		

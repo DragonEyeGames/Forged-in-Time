@@ -7,7 +7,8 @@ public partial class GameManager : Node
 		Turret,
 		Plasma_Turret,
 		Wall,
-		Watch_Tower
+		Watch_Tower,
+		Melee
 	}
 	public static Base player1Base;
 	public static Base player2Base;

@@ -930,7 +930,7 @@ position = Vector2(14.0001, 16)
 scale = Vector2(1.485, 1.485)
 texture = ExtResource("13_ms25i")
 region_enabled = true
-region_rect = Rect2(0, 34.009, 16, 12.9607)
+region_rect = Rect2(0.958483, 1.95816, 14.0897, 13.0623)
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button" to="." method="turret"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
