@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cibwsm8tvfy3o"]
-
-[ext_resource type="PackedScene" uid="uid://b8h8klf0jux4" path="res://Towers/Damage Tower Info.tscn" id="1_60v0i"]
-
-[node name="Node2D" type="Node2D"]
-
-[node name="Node2D" parent="." instance=ExtResource("1_60v0i")]
-position = Vector2(1, -1)

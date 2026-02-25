@@ -26,7 +26,7 @@ public partial class Damage_Tower_Info : ColorRect
 	public void on_sell_pressed()
 		{
 			GD.Print("work");
-			QueueFree();
+			Visible = false;
 		}
 
 }

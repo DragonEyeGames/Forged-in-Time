@@ -53,4 +53,11 @@ public partial class Cursor : Sprite2D
 		Position=position;
 		
 	}
+		private void OnP1Entered(Node2D P1Ent){
+		if(player1){
+		}
+	}
+		private void OnP2Entered(Node2D P2Ent){
+		
+	}
 }

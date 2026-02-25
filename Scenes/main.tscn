@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=33 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -56,6 +56,12 @@ vertices = PackedVector2Array(1142.5, 647.5, 7.5, 647.5, 7.5, 8.5, 1142.5, 8.5)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 656, -1, 0, 1151, 0, 1151, 656)])
 agent_radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gt3je"]
+radius = 17.1428
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3pmx8"]
+radius = 17.1429
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_fevyy")
@@ -407,6 +413,13 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
 
+[node name="P1Area" type="Area2D" parent="Player1Cursor"]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Cursor/P1Area"]
+shape = SubResource("CircleShape2D_gt3je")
+
 [node name="Player2Cursor" type="Sprite2D" parent="."]
 modulate = Color(0.936675, 0, 0.0266771, 0.662745)
 position = Vector2(292, 353)
@@ -415,6 +428,13 @@ texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
 player1 = false
 ID = 1
+
+[node name="P2Area" type="Area2D" parent="Player2Cursor"]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Cursor/P2Area"]
+shape = SubResource("CircleShape2D_3pmx8")
 
 [connection signal="pressed" from="Player-1/HUD2/Storage/Release" to="Player-1" method="release"]
 [connection signal="pressed" from="Player-1/Detection" to="Player-1" method="toggle"]

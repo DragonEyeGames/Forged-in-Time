@@ -102,7 +102,7 @@ Select={
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
-Click2ElectricBoogaloo={
+Click2={
 "deadzone": 0.2,
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
 ]
@@ -116,6 +116,8 @@ Click2ElectricBoogaloo={
 2d_physics/layer_3="Player 2 Troop"
 2d_physics/layer_4="Player 1 Territory"
 2d_physics/layer_5="Player 2 Territory"
+2d_physics/layer_7="Player One cursor click"
+2d_physics/layer_8="Player Two cursor click"
 
 [rendering]
 
