@@ -83,7 +83,7 @@ public partial class TestHandler : Node2D
 				selectedTower=plasmaTurret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
-			if(Player1Manager.toPlace==GameManager.Towers.Tower){
+			if(Player1Manager.toPlace==GameManager.Towers.Watch_Tower){
 				selectedTower=tower.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
@@ -100,7 +100,7 @@ public partial class TestHandler : Node2D
 				selectedTower=plasmaTurret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
-			if(Player2Manager.toPlace==GameManager.Towers.Tower){
+			if(Player2Manager.toPlace==GameManager.Towers.Watch_Tower){
 				selectedTower=tower.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}

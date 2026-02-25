@@ -38,7 +38,12 @@ public partial class Hud : CanvasLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
+		if(player1){
+			GetNode<RichTextLabel>("ColorRect2/Money/Money").Text=Player1Manager.money.ToString();
+		}
+		if(!player1){
+			GetNode<RichTextLabel>("ColorRect2/Money/Money").Text=Player2Manager.money.ToString();
+		}
 	}
 	
 	public void toggle(){
@@ -59,24 +64,26 @@ public partial class Hud : CanvasLayer
 	
 	public void turret(){
 		timer.Start();
-		if(player1){
+		if(player1 && Player1Manager.money>=Prices.prices[GameManager.Towers.Turret]){
 			if(Player1Manager.placing==false){
 				if(turretUpgrade==0){
 					Player1Manager.toPlace=GameManager.Towers.Turret;
 				} else if (turretUpgrade==1){
 					Player1Manager.toPlace=GameManager.Towers.Plasma_Turret;
 				}
+				Player1Manager.money-=Prices.prices[GameManager.Towers.Turret];
 				Player1Manager.placing=true;
 				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Turret/AnimationPlayer").Play("wobble");
 				toggle();
 			}
-		} else if(!player1){
+		} else if(!player1 && Player2Manager.money>=Prices.prices[GameManager.Towers.Turret]){
 			if(Player2Manager.placing==false){
 				if(turretUpgrade==0){
 					Player2Manager.toPlace=GameManager.Towers.Turret;
 				} else if (turretUpgrade==1){
 					Player2Manager.toPlace=GameManager.Towers.Plasma_Turret;
 				}
+				Player2Manager.money-=Prices.prices[GameManager.Towers.Turret];
 				Player2Manager.placing=true;
 				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Turret/AnimationPlayer").Play("wobble");
 				toggle();
@@ -100,17 +107,19 @@ public partial class Hud : CanvasLayer
 	
 	public void tower(){
 		timer.Start();
-		if(player1){
+		if(player1 && Player1Manager.money>=Prices.prices[GameManager.Towers.Watch_Tower]){
 			if(Player1Manager.placing==false){
-				Player1Manager.toPlace=GameManager.Towers.Tower;
+				Player1Manager.toPlace=GameManager.Towers.Watch_Tower;
 				Player1Manager.placing=true;
+				Player1Manager.money-=Prices.prices[GameManager.Towers.Watch_Tower];
 				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Watch Tower/AnimationPlayer").Play("wobble");
 				toggle();
 			}
-		} else if(!player1){
+		} else if(!player1 && Player2Manager.money>=Prices.prices[GameManager.Towers.Watch_Tower]){
 			if(Player2Manager.placing==false){
-				Player2Manager.toPlace=GameManager.Towers.Tower;
+				Player2Manager.toPlace=GameManager.Towers.Watch_Tower;
 				Player2Manager.placing=true;
+				Player2Manager.money-=Prices.prices[GameManager.Towers.Watch_Tower];
 				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Watch Tower/AnimationPlayer").Play("wobble");
 				toggle();
 			}
@@ -119,17 +128,19 @@ public partial class Hud : CanvasLayer
 	
 	public void wall(){
 		timer.Start();
-		if(player1){
+		if(player1 && Player1Manager.money>=Prices.prices[GameManager.Towers.Wall]){
 			if(Player1Manager.placing==false){
 				Player1Manager.toPlace=GameManager.Towers.Wall;
 				Player1Manager.placing=true;
+				Player1Manager.money-=Prices.prices[GameManager.Towers.Wall];
 				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Wall/AnimationPlayer").Play("wobble");
 				toggle();
 			}
-		} else if (!player1){
+		} else if (!player1 && Player2Manager.money>=Prices.prices[GameManager.Towers.Wall]){
 			if(Player2Manager.placing==false){
 				Player2Manager.toPlace=GameManager.Towers.Wall;
 				Player2Manager.placing=true;
+				Player2Manager.money-=Prices.prices[GameManager.Towers.Wall];
 				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Wall/AnimationPlayer").Play("wobble");
 				toggle();
 			}

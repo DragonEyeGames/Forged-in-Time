@@ -20,6 +20,7 @@ config/icon="res://Assets/icon.svg"
 GameManager="*res://Scripts/GameManager.cs"
 Player1Manager="*res://Scripts/Player1Manager.cs"
 Player2Manager="*res://Scripts/Player2Manager.cs"
+Prices="*res://Scripts/Prices.cs"
 
 [display]
 
