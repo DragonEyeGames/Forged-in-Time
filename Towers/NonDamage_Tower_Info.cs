@@ -15,13 +15,13 @@ public partial class NonDamage_Tower_Info : ColorRect
 		
 		//Tower Name
 		towerName=GetNode<RichTextLabel>("towerName");
-		towerName.Text = (string)GetParent().GetParent().Name;
+		towerName.Text = (string)GetParent().GetParent<Tower>().name;
 	}
 	
 	public void on_sell_pressed()
 		{
 			GD.Print("work");
-			QueueFree();
+			GetParent().GetParent().QueueFree();
 		}
 
 }

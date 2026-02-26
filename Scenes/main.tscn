@@ -442,3 +442,5 @@ shape = SubResource("CircleShape2D_3pmx8")
 [connection signal="pressed" from="Player-2/Detection" to="Player-2" method="toggle"]
 [connection signal="bake_finished" from="TestPlacement/TestRegion" to="NavHandler" method="TestFinished"]
 [connection signal="bake_finished" from="TestPlacement/NavRegion" to="NavHandler" method="TestFinished"]
+[connection signal="area_entered" from="Player1Cursor/P1Area" to="Player1Cursor" method="OnP1Entered"]
+[connection signal="area_exited" from="Player1Cursor/P1Area" to="Player1Cursor" method="OnP1Exited"]

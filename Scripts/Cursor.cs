@@ -5,6 +5,7 @@ public partial class Cursor : Sprite2D
 {
 	[Export] public bool player1=true;
 	[Export] public int ID = 0;
+	private Node2D tower=null;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -52,12 +53,22 @@ public partial class Cursor : Sprite2D
 		}
 		Position=position;
 		
-	}
-		private void OnP1Entered(Node2D P1Ent){
-		if(player1){
+		if(tower!=null && Input.IsActionJustPressed("Click2")){
+			tower.GetNode<Node2D>("NonDamageToweInfo").Visible = true;
 		}
-	}
-		private void OnP2Entered(Node2D P2Ent){
 		
 	}
-}
+		
+		private void OnP1Entered(Node2D P1Ent){
+			tower=P1Ent.GetParent() as Node2D;
+		}
+		
+		private void OnP1Exited(Node2D P1Exit){
+			tower=null;
+		}
+		
+		private void OnP2Entered(Node2D P2Ent){
+		
+		}
+	
+	}

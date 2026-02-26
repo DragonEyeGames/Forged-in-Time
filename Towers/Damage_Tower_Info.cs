@@ -20,13 +20,13 @@ public partial class Damage_Tower_Info : ColorRect
 		
 		//Tower Name
 		towerName=GetNode<RichTextLabel>("towerName");
-		towerName.Text = (string)GetParent().GetParent().Name;
+		towerName.Text = (string)GetParent().GetParent<Tower>().name;
 	}
 	
 	public void on_sell_pressed()
 		{
 			GD.Print("work");
-			Visible = false;
+			GetParent().GetParent().QueueFree();
 		}
 
 }
