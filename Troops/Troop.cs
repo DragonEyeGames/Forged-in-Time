@@ -3,11 +3,13 @@ using System;
 
 public partial class Troop : BaseTroop
 {
+
 	public override float Speed { get; set; } = 400.0f;
-	[Export] public Node2D target;
-	[Export] public int health = 5;
-	private AnimatedSprite2D sprite;
-	private BaseTroop baseTroopImplementation;
+	public override int health { get; set; } = 5;
+	public override NavigationAgent2D navAgent { get; set; }
+	public override AnimatedSprite2D sprite  {get; set;}
+	public override Node2D target { get; set; }
+	public override int damage { get; set; } = 1;
 
 	public override void _Ready()
 	{
@@ -17,48 +19,8 @@ public partial class Troop : BaseTroop
 		updateHitboxes();
 	}
 
-	public override void _PhysicsProcess(double delta)
+	public override void attack(int damage)
 	{
-		Vector2 velocity = Vector2.Zero;
-		var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
-		velocity = dir * 40;
-		Velocity = velocity;
-		if (!navAgent.IsNavigationFinished())
-		{
-			MoveAndSlide();
-		}
-
-		if (health <= 0)
-		{
-			QueueFree();
-		}
-
-		if (Velocity.X > 0)
-		{
-			sprite.FlipH = false;
-		}
-
-		if (Velocity.X < 0)
-		{
-			sprite.FlipH = true;
-		}
-	}
-
-	public void recalculate()
-	{
-		navAgent.TargetPosition = target.GlobalPosition;
-	}
-
-	public async void updateHitboxes()
-	{
-		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-		if (player1)
-		{
-			GetNode("Player2").QueueFree();
-		}
-		else if (!player1)
-		{
-			GetNode("Player1").QueueFree();
-		}
+		throw new NotImplementedException();
 	}
 }	
