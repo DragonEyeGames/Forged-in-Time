@@ -10,6 +10,7 @@ public partial class TestHandler : Node2D
 	private NavigationRegion2D navRegion;
 	private Polygon2D selectedPolygon = null;
 	private Tower selectedTower = null;
+	[Export] public bool player1=false;
 	[Export] public PackedScene polygon;
 	[Export] public TestValid tester;
 	[Export] public PackedScene turret;
@@ -22,25 +23,43 @@ public partial class TestHandler : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		testRegion=GetNode<NavigationRegion2D>("TestRegion");
-		navRegion=GetNode<NavigationRegion2D>("NavRegion");
+		testRegion=GetNode<NavigationRegion2D>("../../TestPlacement/TestRegion");
+		navRegion=GetNode<NavigationRegion2D>("../../TestPlacement/NavRegion");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		BakePoly();
-		if(!GameManager.placing){
-			return;
+		if(player1){
+			if(!Player1Manager.placing){
+				return;
+			}
+		} else if (!player1){
+			if(!Player2Manager.placing){
+				return;
+			}
 		}
-		if(initializePlace){
+		
+		if(initializePlace && player1){
 			initializePlace=false;
-			if(GameManager.validPlacement && tester.isValid() && GameManager.placing){
-				GameManager.placing=false;
-				GD.Print("Falzefi");
+			if(Player1Manager.validPlacement && tester.isValid() && Player1Manager.placing){
+				Player1Manager.placing=false;
 				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
 				navRegion.AddChild(selectedPolygon2);
-				selectedPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
+				selectedPolygon2.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
+				selectedPolygon=null;
+				selectedTower.hovering=false;
+				selectedTower=null;
+				return;
+			}
+		} else if(initializePlace && !player1){
+			initializePlace=false;
+			if(Player2Manager.validPlacement && tester.isValid() && Player2Manager.placing){
+				Player2Manager.placing=false;
+				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
+				navRegion.AddChild(selectedPolygon2);
+				selectedPolygon2.GlobalPosition=SnapToTopLeft(Player2Manager.cursor.GlobalPosition);
 				selectedPolygon=null;
 				selectedTower.hovering=false;
 				selectedTower=null;
@@ -48,41 +67,67 @@ public partial class TestHandler : Node2D
 			}
 		}
 		if(selectedPolygon==null) {
-			GD.Print("new");
 			selectedPolygon = polygon.Instantiate() as Polygon2D;
 			testRegion.AddChild(selectedPolygon);
 		}
-		if(selectedTower==null){
-			if(GameManager.toPlace==GameManager.Towers.Turret){
+		if(selectedTower==null && player1){
+			if(Player1Manager.toPlace==GameManager.Towers.Turret){
 				selectedTower=turret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
-			if(GameManager.toPlace==GameManager.Towers.Wall){
+			if(Player1Manager.toPlace==GameManager.Towers.Wall){
 				selectedTower=wall.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
-			if(GameManager.toPlace==GameManager.Towers.Plasma_Turret){
+			if(Player1Manager.toPlace==GameManager.Towers.Plasma_Turret){
 				selectedTower=plasmaTurret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
-			if(GameManager.toPlace==GameManager.Towers.Tower){
+			if(Player1Manager.toPlace==GameManager.Towers.Tower){
+				selectedTower=tower.Instantiate() as Tower;
+				GetParent().AddChild(selectedTower);
+			}
+		} else if(selectedTower==null && !player1){
+			if(Player2Manager.toPlace==GameManager.Towers.Turret){
+				selectedTower=turret.Instantiate() as Tower;
+				GetParent().AddChild(selectedTower);
+			}
+			if(Player2Manager.toPlace==GameManager.Towers.Wall){
+				selectedTower=wall.Instantiate() as Tower;
+				GetParent().AddChild(selectedTower);
+			}
+			if(Player2Manager.toPlace==GameManager.Towers.Plasma_Turret){
+				selectedTower=plasmaTurret.Instantiate() as Tower;
+				GetParent().AddChild(selectedTower);
+			}
+			if(Player2Manager.toPlace==GameManager.Towers.Tower){
 				selectedTower=tower.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 		}
-		selectedPolygon.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
-		selectedTower.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
-		selectedPolygon.Position+=new Vector2(1300, 0);
-		if(Input.IsActionPressed("Click") && tester.isValid() && GameManager.placing && !initializePlace && GetNode<TerritoryChecker>("../Territory").IsTerritory(SnapToTopLeft(GetGlobalMousePosition()), 0)){
-			initializePlace=true;
+		selectedTower.Player1=player1;
+		if(player1){
+			selectedPolygon.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
+			selectedTower.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
 		}
+		if(!player1){
+			selectedPolygon.GlobalPosition=SnapToTopLeft(Player2Manager.cursor.GlobalPosition);
+			selectedTower.GlobalPosition=SnapToTopLeft(Player2Manager.cursor.GlobalPosition);
+		}
+		selectedPolygon.Position+=new Vector2(1300, 0);
+		
 		BakePoly();
 	}
 	
 	public void UpdateNav(){
 		Polygon2D newPolygon2 = polygon.Instantiate() as Polygon2D;
 		testRegion.AddChild(newPolygon2);
-		newPolygon2.GlobalPosition=SnapToTopLeft(GetGlobalMousePosition());
+		if(player1){
+			newPolygon2.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
+		}
+		if(player1){
+			newPolygon2.GlobalPosition=SnapToTopLeft(Player2Manager.cursor.GlobalPosition);
+		}
 		BakePoly();
 	}
 	
@@ -97,17 +142,21 @@ public partial class TestHandler : Node2D
 	}
 	
 	public void BakePoly(){
-		if(baking==0){
-			baking=2;
-			testRegion.BakeNavigationPolygon();
-			navRegion.BakeNavigationPolygon();
-		}
+		GetParent<BakeHandler>().BakePoly();
 	}
 	
-	public void TestFinished(){
-		baking-=1;
-		if(baking<0){
-			baking=0;
+	public override void _Input(InputEvent @event)
+	{
+		if(player1 && 0==@event.Device){
+			if(@event.IsActionPressed("Select") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
+				initializePlace=true;
+				//GetViewport().SetInputAsHandled();
+			}
+		} else if(!player1 && 1==@event.Device){
+			if(@event.IsActionPressed("Select") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
+				initializePlace=true;
+				//GetViewport().SetInputAsHandled();
+			}
 		}
 	}
 		

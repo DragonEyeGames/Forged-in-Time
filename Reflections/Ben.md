@@ -1,0 +1,2 @@
+Sprint 1:
+Throughout the project I have learned quite a bit about different Godot systems. I did some work with polygon2Ds, navigation polygons, tilemap modifying with code, and quite a few other things. It was very difficult to make it so that we couldn't place a tower that would block the path of the troops. I was surprised as to how easy several things I was overcomplicating were after I figured it out. Godot made several things easy that I didn't know about.
