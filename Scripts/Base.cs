@@ -7,7 +7,6 @@ public partial class Base : Sprite2D
 	[Export] public bool player1=false;
 	private NavigationAgent2D navAgent;
 	[Export] public Node2D target;
-	[Export]
 	[Export] public int health=100;
 	public PackedScene troop;
 	[Export] public int maxTroops=15;
@@ -26,6 +25,10 @@ public partial class Base : Sprite2D
 			GameManager.player1Base=this;
 		} else if(!player1){
 			GameManager.player2Base=this;
+		}
+		if (health > 0) 
+		{
+			GD.Print("Tower Alive");
 		}
 	}
 
@@ -75,11 +78,12 @@ public partial class Base : Sprite2D
 		reserveTroops.RemoveAt(0);
 		releaseTime=false;
 	}
-	public void Die()
+	public void Die() 
 	{
-		if (health <= 0)
+		if (health <= 0) 
 		{
-			queue_free()
-		}
+			QueueFree();
+		} 
 	}
+
 }
