@@ -99,9 +99,11 @@ public partial class Hud : CanvasLayer
 		if(turretUpgrade==1){
 			GetNode<Sprite2D>("ColorRect/VBoxContainer/Turret/Base").Texture=turretUpgradeSprite;
 			GetNode<Sprite2D>("ColorRect/VBoxContainer/Turret/Turret").Texture=turretUpgradeSprite;
-			GetNode<ColorRect>("ColorRect/VBoxContainer/Turret/ColorRect2").Visible=false;
+			GetNode<Button>("ColorRect/VBoxContainer/Turret/Button2").Visible=false;
 			GetNode<ShopSlot>("ColorRect/VBoxContainer/Turret").toggle();
 			GetNode<RichTextLabel>("ColorRect/VBoxContainer/Turret/Label").Text="Plasma Turret";
+			GetNode<Controller>("ColorRect/VBoxContainer/Turret/Popout/Button").deselect();
+			GetNode<Controller>("ColorRect/VBoxContainer/Turret/Button").select();
 		}
 	}
 	

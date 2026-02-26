@@ -14,6 +14,8 @@ public partial class Controller : Button
 	[Export] bool sideException=false;
 	public Vector2 baseSize;
 	public Vector2 increasedSize;
+	[Export] int upgrade = 0;
+	[Export] Controller upgradeButton;
 	// Called when the node enters the scene tree for the first time.
 	
 	public override void _Ready()
@@ -59,6 +61,16 @@ public partial class Controller : Button
 				Scale=baseSize;
 				Modulate = Colors.Gray;
 				left.Modulate = Colors.White;
+			}
+			if(hud.input=="Right" && upgrade==1 && upgradeButton!=null && upgradeButton.GetParent<ColorRect>().Scale.X==1){
+				hud.input="";
+				selected=false;
+				upgradeButton.selected=true;
+				upgradeButton.Scale=right.increasedSize;
+				Scale=baseSize;
+				Modulate = Colors.Gray;
+				upgradeButton.Modulate = Colors.White;
+				return;
 			}
 			if(hud.input=="Right" && right!=null && (holder.Visible || sideException)){
 				hud.input="";
