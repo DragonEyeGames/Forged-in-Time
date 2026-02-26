@@ -53,6 +53,16 @@ public partial class Controller : Button
 				Modulate = Colors.Gray;
 				down.Modulate = Colors.White;
 			}
+			if(hud.input=="Left" && upgrade==-1 && upgradeButton!=null && upgradeButton.GetParent<ColorRect>().Scale.X==1){
+				hud.input="";
+				selected=false;
+				upgradeButton.selected=true;
+				upgradeButton.Scale=upgradeButton.increasedSize;
+				Scale=baseSize;
+				Modulate = Colors.Gray;
+				upgradeButton.Modulate = Colors.White;
+				return;
+			}
 			if(hud.input=="Left" && left!=null && (holder.Visible || sideException)){
 				hud.input="";
 				selected=false;
@@ -66,7 +76,7 @@ public partial class Controller : Button
 				hud.input="";
 				selected=false;
 				upgradeButton.selected=true;
-				upgradeButton.Scale=right.increasedSize;
+				upgradeButton.Scale=upgradeButton.increasedSize;
 				Scale=baseSize;
 				Modulate = Colors.Gray;
 				upgradeButton.Modulate = Colors.White;

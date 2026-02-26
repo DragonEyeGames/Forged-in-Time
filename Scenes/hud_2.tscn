@@ -56,38 +56,38 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/path = NodePath("Popout:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(142, 4)]
+"values": [Vector2(0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Popout:scale")
+tracks/1/path = NodePath("Button2/ColorRect2/Arrow:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 1)]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/2/path = NodePath("Button2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(135, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_amv7k"]
@@ -96,38 +96,38 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/path = NodePath("Popout:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(239, 4), Vector2(142, 4)]
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Popout:scale")
-tracks/1/interp = 2
+tracks/1/path = NodePath("Button2/ColorRect2/Arrow:rotation")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+"values": [3.14159, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/2/path = NodePath("Button2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [3.14159, 0.0]
+"values": [Vector2(232, 3), Vector2(135, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_g10ll"]
@@ -136,38 +136,38 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/path = NodePath("Popout:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(142, 4), Vector2(239, 4)]
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Popout:scale")
-tracks/1/interp = 2
+tracks/1/path = NodePath("Button2/ColorRect2/Arrow:rotation")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+"values": [0.0, 3.14159]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/2/path = NodePath("Button2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 3.14159]
+"values": [Vector2(135, 3), Vector2(232, 3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_amv7k"]
@@ -413,7 +413,7 @@ text = "Shoots at the enemy furthest along the path."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret" node_paths=PackedStringArray("up", "down", "hud", "holder")]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret" node_paths=PackedStringArray("up", "down", "right", "hud", "holder")]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 37.0
@@ -427,6 +427,7 @@ flat = true
 script = ExtResource("11_uoqjr")
 up = NodePath("../../../../Button")
 down = NodePath("../../Watch Tower/Button")
+right = NodePath("../Button2")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
 
@@ -435,29 +436,37 @@ libraries = {
 &"": SubResource("AnimationLibrary_g10ll")
 }
 
-[node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Turret"]
+[node name="Button2" type="Button" parent="ColorRect/VBoxContainer/Turret" node_paths=PackedStringArray("left", "hud", "holder", "upgradeButton")]
+z_index = 2
+layout_mode = 0
+offset_left = 135.0
+offset_top = 3.0
+offset_right = 143.0
+offset_bottom = 59.0
+focus_mode = 0
+flat = true
+script = ExtResource("11_uoqjr")
+left = NodePath("../Button")
+hud = NodePath("../../../..")
+holder = NodePath("../../..")
+upgrade = -1
+upgradeButton = NodePath("../Popout/Button")
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Turret/Button2"]
 z_index = 1
 layout_mode = 0
-offset_left = 142.0
-offset_top = 4.0
-offset_right = 196.0
-offset_bottom = 10.0
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 61.0
+offset_bottom = 7.0
 rotation = 1.5708
 mouse_filter = 2
 color = Color(0.78066, 0.704382, 0.474143, 1)
 
-[node name="Arrow" type="Sprite2D" parent="ColorRect/VBoxContainer/Turret/ColorRect2"]
+[node name="Arrow" type="Sprite2D" parent="ColorRect/VBoxContainer/Turret/Button2/ColorRect2"]
 position = Vector2(25, 2.75695)
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("6_2cn1p")
-
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret/ColorRect2"]
-layout_mode = 0
-offset_top = -1.0
-offset_right = 54.0
-offset_bottom = 8.0
-focus_mode = 0
-flat = true
 
 [node name="UpgradeSlider" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Turret"]
 libraries = {
@@ -465,6 +474,7 @@ libraries = {
 }
 
 [node name="Popout" type="ColorRect" parent="ColorRect/VBoxContainer/Turret"]
+z_index = 1
 layout_mode = 0
 offset_left = 39.3423
 offset_top = 57.5574
@@ -519,7 +529,7 @@ text = "Does more damage and looks cooler."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret/Popout"]
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Turret/Popout" node_paths=PackedStringArray("hud", "holder")]
 layout_mode = 0
 offset_left = 21.0
 offset_right = 77.0
@@ -530,6 +540,9 @@ pivot_offset = Vector2(18.9944, 11.1732)
 focus_mode = 0
 icon = ExtResource("7_avu3l")
 flat = true
+script = ExtResource("11_uoqjr")
+hud = NodePath("../../../../..")
+holder = NodePath("../../../..")
 
 [node name="Watch Tower" type="Control" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(1.13, 59.355)
@@ -601,6 +614,7 @@ libraries = {
 }
 
 [node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Watch Tower"]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_top = 4.0
@@ -694,6 +708,7 @@ libraries = {
 }
 
 [node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Wall"]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_top = 4.0
@@ -787,6 +802,7 @@ libraries = {
 }
 
 [node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Basic"]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_top = 4.0
@@ -862,10 +878,10 @@ wait_time = 0.15
 one_shot = true
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 152.0
-offset_top = 10.0
-offset_right = 366.0
-offset_bottom = 50.0
+offset_left = 250.0
+offset_top = 9.0
+offset_right = 464.0
+offset_bottom = 49.0
 color = Color(0.780392, 0.705882, 0.47451, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="ColorRect2"]
@@ -933,7 +949,7 @@ region_enabled = true
 region_rect = Rect2(0.958483, 1.95816, 14.0897, 13.0623)
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button" to="." method="turret"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/Turret/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button2" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Popout/Button" to="." method="upgradeTurret"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Watch Tower/Button" to="." method="tower"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Watch Tower/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
