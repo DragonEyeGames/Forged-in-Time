@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=30 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bmbsnvsx5mtqj" path="res://Assets/TerritoryTiles.png" id="3_cegan"]
 [ext_resource type="Script" uid="uid://dnc0ugi7igvey" path="res://Scripts/TerritoryChecker.cs" id="4_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dbvc0o64ox1vc" path="res://Assets/icon.svg" id="5_getpj"]
-[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/troop.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cnem7ep3j786t" path="res://Towers/Scenes/turret.tscn" id="6_kek77"]
 [ext_resource type="Script" uid="uid://g0qp36p0meoh" path="res://Scripts/Base.cs" id="6_ryguw"]
 [ext_resource type="PackedScene" uid="uid://c7h8excai5682" path="res://Scenes/WallPoly.tscn" id="7_5vw27"]
@@ -68,7 +67,6 @@ tile_set = SubResource("TileSet_1bvp3")
 
 [node name="Player1" type="Node2D" parent="Layer" node_paths=PackedStringArray("tester")]
 script = ExtResource("2_074og")
-player1 = true
 tester = NodePath("../../TestPlacement/Player")
 
 [node name="Player2" type="Node2D" parent="Layer" node_paths=PackedStringArray("tester")]
@@ -88,7 +86,6 @@ offset = Vector2(64, -1)
 script = ExtResource("6_ryguw")
 player1 = true
 target = NodePath("../Player-2")
-troop = ExtResource("5_lquwl")
 
 [node name="Territory" type="Area2D" parent="Player-1"]
 collision_layer = 8
@@ -220,7 +217,6 @@ texture = ExtResource("5_getpj")
 offset = Vector2(-64, -2)
 script = ExtResource("6_ryguw")
 target = NodePath("../Player-1")
-troop = ExtResource("5_lquwl")
 
 [node name="Territory" type="Area2D" parent="Player-2"]
 position = Vector2(-129, 1)
@@ -301,7 +297,7 @@ text = "0/2 Vehicles"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Release" type="Button" parent="Player-2/HUD2/Storage" node_paths=PackedStringArray("down", "hud", "holder")]
+[node name="Release" type="Button" parent="Player-2/HUD2/Storage"]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 57.0
@@ -311,10 +307,6 @@ scale = Vector2(1.395, 1.395)
 focus_mode = 0
 icon = ExtResource("8_b3802")
 flat = true
-script = ExtResource("10_gt3je")
-down = NodePath("../../../Detection")
-hud = NodePath("../../../../HUD2")
-holder = NodePath("../..")
 
 [node name="HUD" type="ColorRect" parent="Player-2/HUD2"]
 z_index = -1
@@ -326,7 +318,7 @@ offset_bottom = 115.0
 mouse_filter = 2
 color = Color(0.509804, 0.298039, 0.0901961, 1)
 
-[node name="Detection" type="Button" parent="Player-2" node_paths=PackedStringArray("up", "hud", "holder")]
+[node name="Detection" type="Button" parent="Player-2"]
 offset_left = -128.0
 offset_top = -68.0
 offset_bottom = 60.0
@@ -373,8 +365,8 @@ wall = ExtResource("14_yaehf")
 turretUpgradeSprite = ExtResource("17_0odxb")
 baseButton = NodePath("../Player-1/Detection")
 
-[node name="HUD2" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("18_b3802")]
-baseButton = NodePath("../Player-2/Detection")
+[node name="HUD2" parent="." instance=ExtResource("18_b3802")]
+script = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
@@ -427,7 +419,6 @@ texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
 player1 = false
 ID = 1
-
 [connection signal="pressed" from="Player-1/HUD2/Storage/Release" to="Player-1" method="release"]
 [connection signal="pressed" from="Player-1/Detection" to="Player-1" method="toggle"]
 [connection signal="pressed" from="Player-2/HUD2/Storage/Release" to="Player-2" method="release"]
