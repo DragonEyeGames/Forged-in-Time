@@ -76,7 +76,7 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_xm30j"]
 radius = 20.1231
 
-[node name="Funny Guy" type="CharacterBody2D" groups=["Player"]]
+[node name="Troop" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_6da2i")
 
@@ -89,6 +89,7 @@ frame_progress = 0.701846
 flip_h = true
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
+target_desired_distance = 30.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
@@ -119,4 +120,9 @@ scale = Vector2(0.45, 0.45)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_xm30j")
 
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="navigation_finished" from="NavAgent" to="." method="on_path_finished"]
 [connection signal="timeout" from="Timer" to="." method="recalculate"]
+[connection signal="timeout" from="Cooldown" to="." method="on_cooldown"]

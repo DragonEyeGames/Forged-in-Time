@@ -7,10 +7,12 @@ public abstract partial class BaseTroop : CharacterBody2D
     [Export] public abstract float Speed {get; set;}
     [Export] public abstract int health {get; set;}
     [Export] public abstract int damage {get; set;}
+    public bool attacking = false;
+    public bool pathfinding = true;
 
     
     public abstract NavigationAgent2D navAgent {get; set;}
-    public abstract Node2D target {get; set;}
+    public abstract Base target {get; set;}
     public abstract AnimatedSprite2D sprite  {get; set;}
 
     
@@ -32,31 +34,34 @@ public abstract partial class BaseTroop : CharacterBody2D
     {
         navAgent.TargetPosition = target.GlobalPosition;
     }
-    
+
     public override void _PhysicsProcess(double delta)
     {
-        Vector2 velocity = Vector2.Zero;
-        var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
-        velocity = dir * 40;
-        Velocity = velocity;
-        if (!navAgent.IsNavigationFinished())
+        if (pathfinding)
         {
-            MoveAndSlide();
-        }
+            Vector2 velocity = Vector2.Zero;
+            var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
+            velocity = dir * 40;
+            Velocity = velocity;
+            if (!navAgent.IsNavigationFinished())
+            {
+                MoveAndSlide();
+            }
 
-        if (health <= 0)
-        {
-            QueueFree();
-        }
+            if (health <= 0)
+            {
+                QueueFree();
+            }
 
-        if (Velocity.X > 0)
-        {
-            sprite.FlipH = false;
-        }
+            if (Velocity.X > 0)
+            {
+                sprite.FlipH = false;
+            }
 
-        if (Velocity.X < 0)
-        {
-            sprite.FlipH = true;
+            if (Velocity.X < 0)
+            {
+                sprite.FlipH = true;
+            }
         }
     }
 
