@@ -14,6 +14,7 @@ public abstract partial class BaseTroop : CharacterBody2D
     public abstract NavigationAgent2D navAgent {get; set;}
     public abstract Base target {get; set;}
     public abstract AnimatedSprite2D sprite  {get; set;}
+    public abstract Timer cooldown {get; set;}
 
     
     public async void updateHitboxes()
@@ -63,7 +64,38 @@ public abstract partial class BaseTroop : CharacterBody2D
                 sprite.FlipH = true;
             }
         }
+
+        if (target.health <= 0)
+        {
+            QueueFree();
+        }
+
     }
 
-    public abstract void attack(int damage);
+    public void attack(int damage)
+    {
+        if (!attacking)
+        {
+            target.health  -= damage;
+            GD.Print(target.health);
+            if (target.health <= 0)
+            {
+                target.Die();
+            }
+            attacking = false;
+            cooldown.Start();
+        }
+    }
+    
+    public void on_path_finished()
+    {
+        attack(damage);
+        pathfinding =  false;
+    }
+    
+    public void on_cooldown()
+    {
+        attacking = false;
+        attack(damage);
+    }
 }
