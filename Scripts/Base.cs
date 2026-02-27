@@ -6,9 +6,9 @@ public partial class Base : Sprite2D
 {
 	[Export] public bool player1=false;
 	private NavigationAgent2D navAgent;
-	[Export] public Node2D target;
+	[Export] public Base target;
 	[Export] public int health=100;
-	public PackedScene troop;
+	[Export] PackedScene troop;
 	[Export] public int maxTroops=15;
 	private bool releaseTime=false;
 	public enum Troops{

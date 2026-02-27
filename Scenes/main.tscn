@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=31 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bmbsnvsx5mtqj" path="res://Assets/TerritoryTiles.png" id="3_cegan"]
 [ext_resource type="Script" uid="uid://dnc0ugi7igvey" path="res://Scripts/TerritoryChecker.cs" id="4_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dbvc0o64ox1vc" path="res://Assets/icon.svg" id="5_getpj"]
+[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/troop.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cnem7ep3j786t" path="res://Towers/Scenes/turret.tscn" id="6_kek77"]
 [ext_resource type="Script" uid="uid://g0qp36p0meoh" path="res://Scripts/Base.cs" id="6_ryguw"]
 [ext_resource type="PackedScene" uid="uid://c7h8excai5682" path="res://Scenes/WallPoly.tscn" id="7_5vw27"]
@@ -86,6 +87,7 @@ offset = Vector2(64, -1)
 script = ExtResource("6_ryguw")
 player1 = true
 target = NodePath("../Player-2")
+troop = ExtResource("5_lquwl")
 
 [node name="Territory" type="Area2D" parent="Player-1"]
 collision_layer = 8
@@ -217,6 +219,7 @@ texture = ExtResource("5_getpj")
 offset = Vector2(-64, -2)
 script = ExtResource("6_ryguw")
 target = NodePath("../Player-1")
+troop = ExtResource("5_lquwl")
 
 [node name="Territory" type="Area2D" parent="Player-2"]
 position = Vector2(-129, 1)
