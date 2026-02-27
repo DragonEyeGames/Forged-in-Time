@@ -62,107 +62,80 @@ public partial class Hud : CanvasLayer
 		}
 	}
 	
-	public void turret(){
+	public void purchaseTower(GameManager.Towers tower, NodePath buttonAnimator){
 		timer.Start();
-		if(player1 && Player1Manager.money>=Prices.prices[GameManager.Towers.Turret]){
+		if(player1 && Player1Manager.money>=Prices.towerPrices[tower]){
 			if(Player1Manager.placing==false){
-				if(turretUpgrade==0){
-					Player1Manager.toPlace=GameManager.Towers.Turret;
-				} else if (turretUpgrade==1){
-					Player1Manager.toPlace=GameManager.Towers.Plasma_Turret;
-				}
-				Player1Manager.money-=Prices.prices[GameManager.Towers.Turret];
+				Player1Manager.toPlace=tower;
+				Player1Manager.money-=Prices.towerPrices[tower];
 				Player1Manager.placing=true;
-				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Turret/AnimationPlayer").Play("wobble");
+				GetNode<AnimationPlayer>(buttonAnimator).Play("wobble");
 				toggle();
 			}
-		} else if(!player1 && Player2Manager.money>=Prices.prices[GameManager.Towers.Turret]){
+		} else if(!player1 && Player2Manager.money>=Prices.towerPrices[tower]){
 			if(Player2Manager.placing==false){
-				if(turretUpgrade==0){
-					Player2Manager.toPlace=GameManager.Towers.Turret;
-				} else if (turretUpgrade==1){
-					Player2Manager.toPlace=GameManager.Towers.Plasma_Turret;
-				}
-				Player2Manager.money-=Prices.prices[GameManager.Towers.Turret];
+				Player2Manager.toPlace=tower;
+				Player2Manager.money-=Prices.towerPrices[tower];
 				Player2Manager.placing=true;
-				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Turret/AnimationPlayer").Play("wobble");
+				GetNode<AnimationPlayer>(buttonAnimator).Play("wobble");
 				toggle();
 			}
 		}
-		
-		
 	}
 	
-	public void upgradeTurret(){
-		timer.Start();
-		turretUpgrade+=1;
+	public void turret(){
+		if(turretUpgrade==0){
+			purchaseTower(GameManager.Towers.Turret, "ColorRect/VBoxContainer/Turret/AnimationPlayer");
+		}
 		if(turretUpgrade==1){
-			GetNode<Sprite2D>("ColorRect/VBoxContainer/Turret/Base").Texture=turretUpgradeSprite;
-			GetNode<Sprite2D>("ColorRect/VBoxContainer/Turret/Turret").Texture=turretUpgradeSprite;
-			GetNode<Button>("ColorRect/VBoxContainer/Turret/Button2").Visible=false;
-			GetNode<ShopSlot>("ColorRect/VBoxContainer/Turret").toggle();
-			GetNode<RichTextLabel>("ColorRect/VBoxContainer/Turret/Label").Text="Plasma Turret";
-			GetNode<Controller>("ColorRect/VBoxContainer/Turret/Popout/Button").deselect();
-			GetNode<Controller>("ColorRect/VBoxContainer/Turret/Button").select();
+			purchaseTower(GameManager.Towers.Plasma_Turret, "ColorRect/VBoxContainer/Turret/AnimationPlayer");
 		}
 	}
 	
 	public void tower(){
-		timer.Start();
-		if(player1 && Player1Manager.money>=Prices.prices[GameManager.Towers.Watch_Tower]){
-			if(Player1Manager.placing==false){
-				Player1Manager.toPlace=GameManager.Towers.Watch_Tower;
-				Player1Manager.placing=true;
-				Player1Manager.money-=Prices.prices[GameManager.Towers.Watch_Tower];
-				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Watch Tower/AnimationPlayer").Play("wobble");
-				toggle();
-			}
-		} else if(!player1 && Player2Manager.money>=Prices.prices[GameManager.Towers.Watch_Tower]){
-			if(Player2Manager.placing==false){
-				Player2Manager.toPlace=GameManager.Towers.Watch_Tower;
-				Player2Manager.placing=true;
-				Player2Manager.money-=Prices.prices[GameManager.Towers.Watch_Tower];
-				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Watch Tower/AnimationPlayer").Play("wobble");
-				toggle();
-			}
-		}
+		purchaseTower(GameManager.Towers.Watch_Tower, "ColorRect/VBoxContainer/Watch Tower/AnimationPlayer");
 	}
 	
 	public void wall(){
-		timer.Start();
-		if(player1 && Player1Manager.money>=Prices.prices[GameManager.Towers.Wall]){
-			if(Player1Manager.placing==false){
-				Player1Manager.toPlace=GameManager.Towers.Wall;
-				Player1Manager.placing=true;
-				Player1Manager.money-=Prices.prices[GameManager.Towers.Wall];
-				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Wall/AnimationPlayer").Play("wobble");
-				toggle();
-			}
-		} else if (!player1 && Player2Manager.money>=Prices.prices[GameManager.Towers.Wall]){
-			if(Player2Manager.placing==false){
-				Player2Manager.toPlace=GameManager.Towers.Wall;
-				Player2Manager.placing=true;
-				Player2Manager.money-=Prices.prices[GameManager.Towers.Wall];
-				GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Wall/AnimationPlayer").Play("wobble");
-				toggle();
-			}
-		}
-		
-		
+		purchaseTower(GameManager.Towers.Wall, "ColorRect/VBoxContainer/Wall/AnimationPlayer");
 	}
+	
+	//Troop Section
 	
 	public void basicTroop(){
 		timer.Start();
-		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops && Player1Manager.money>=Prices.prices[GameManager.Towers.Melee]){
+		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops && Player1Manager.money>=Prices.towerPrices[GameManager.Towers.Melee]){
 			GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
-			Player1Manager.money-=Prices.prices[GameManager.Towers.Melee];
+			Player1Manager.money-=Prices.towerPrices[GameManager.Towers.Melee];
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
-		} else if(!player1 && GameManager.player2Base.reserveTroops.Count<GameManager.player2Base.maxTroops && Player2Manager.money>=Prices.prices[GameManager.Towers.Melee]){
+		} else if(!player1 && GameManager.player2Base.reserveTroops.Count<GameManager.player2Base.maxTroops && Player2Manager.money>=Prices.towerPrices[GameManager.Towers.Melee]){
 			GameManager.player2Base.reserveTroops.Add(Base.Troops.Melee);
-			Player2Manager.money-=Prices.prices[GameManager.Towers.Melee];
+			Player2Manager.money-=Prices.towerPrices[GameManager.Towers.Melee];
 			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
 		}
-		
+	}
+	
+	//Upgrade Section
+	
+	public void upgradeTower(ref int upgradeLevel, NodePath nodeHolder, ref CompressedTexture2D upgradeSprite, string newName){
+		timer.Start();
+		upgradeLevel+=1;
+		if(upgradeLevel==1){
+			foreach(Node child in GetNode<Control>(nodeHolder).GetChildren()){
+				if(child is Sprite2D){
+					Sprite2D childSprite = child as Sprite2D;
+					childSprite.Texture=upgradeSprite;
+				}
+			}
+			GetNode<ShopSlot>(nodeHolder).toggle();
+			GetNode<RichTextLabel>(nodeHolder+"/Label").Text=newName;
+			GetNode<Controller>(nodeHolder+"/Popout/Button").deselect();
+			GetNode<Controller>(nodeHolder+"/Button").select();
+		}
+	}
+	
+	public void upgradeTurret(){
+		upgradeTower(ref turretUpgrade, "ColorRect/VBoxContainer/Turret", ref turretUpgradeSprite, "Plasma Turret");
 	}
 	
 	public void timerTime(){

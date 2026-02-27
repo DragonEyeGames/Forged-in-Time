@@ -401,9 +401,9 @@ libraries = {
 [node name="Button2" type="Button" parent="ColorRect/VBoxContainer/Turret" node_paths=PackedStringArray("right", "hud", "holder", "upgradeButton")]
 layout_mode = 0
 offset_left = -7.0
-offset_top = 2.0
+offset_top = 3.0
 offset_right = 1.0
-offset_bottom = 58.0
+offset_bottom = 59.0
 pivot_offset = Vector2(4, 26)
 focus_mode = 0
 flat = true
@@ -804,9 +804,8 @@ hud = NodePath("../..")
 
 [node name="Button" type="Button" parent="." node_paths=PackedStringArray("up", "down", "hud", "holder")]
 offset_left = 1018.0
-offset_top = 634.0
 offset_right = 1150.0
-offset_bottom = 648.0
+offset_bottom = 14.0
 flat = true
 script = ExtResource("5_4f5kr")
 up = NodePath("../ColorRect/VBoxContainer/Basic/Button")
