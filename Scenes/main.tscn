@@ -301,7 +301,7 @@ text = "0/2 Vehicles"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Release" type="Button" parent="Player-2/HUD2/Storage"]
+[node name="Release" type="Button" parent="Player-2/HUD2/Storage" node_paths=PackedStringArray("down", "hud", "holder")]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 57.0
@@ -311,6 +311,10 @@ scale = Vector2(1.395, 1.395)
 focus_mode = 0
 icon = ExtResource("8_b3802")
 flat = true
+script = ExtResource("10_gt3je")
+down = NodePath("../../../Detection")
+hud = NodePath("../../../../HUD2")
+holder = NodePath("../..")
 
 [node name="HUD" type="ColorRect" parent="Player-2/HUD2"]
 z_index = -1
@@ -322,7 +326,7 @@ offset_bottom = 115.0
 mouse_filter = 2
 color = Color(0.509804, 0.298039, 0.0901961, 1)
 
-[node name="Detection" type="Button" parent="Player-2"]
+[node name="Detection" type="Button" parent="Player-2" node_paths=PackedStringArray("up", "hud", "holder")]
 offset_left = -128.0
 offset_top = -68.0
 offset_bottom = 60.0
@@ -330,6 +334,9 @@ pivot_offset = Vector2(63, 71)
 focus_mode = 0
 flat = true
 script = ExtResource("10_gt3je")
+up = NodePath("../HUD2/Storage/Release")
+hud = NodePath("../../HUD2")
+holder = NodePath("../HUD2")
 exception = true
 sideException = true
 
