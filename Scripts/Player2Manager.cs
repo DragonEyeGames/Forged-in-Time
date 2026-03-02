@@ -8,4 +8,6 @@ public partial class Player2Manager : Node
 	public static bool validPlacement=true;
 	public static Cursor cursor;
 	public static bool hudOpen=false;
+	
+	public static int money=1000;
 }

@@ -68,6 +68,7 @@ tile_set = SubResource("TileSet_1bvp3")
 
 [node name="Player1" type="Node2D" parent="Layer" node_paths=PackedStringArray("tester")]
 script = ExtResource("2_074og")
+player1 = true
 tester = NodePath("../../TestPlacement/Player")
 
 [node name="Player2" type="Node2D" parent="Layer" node_paths=PackedStringArray("tester")]
@@ -325,8 +326,19 @@ color = Color(0.509804, 0.298039, 0.0901961, 1)
 offset_left = -128.0
 offset_top = -68.0
 offset_bottom = 60.0
+pivot_offset = Vector2(63, 71)
 focus_mode = 0
 flat = true
+script = ExtResource("10_gt3je")
+exception = true
+sideException = true
+
+[node name="Icon" type="Sprite2D" parent="Player-2/Detection"]
+self_modulate = Color(1, 0.196078, 0.145098, 1)
+z_index = -1
+position = Vector2(64, 66)
+scale = Vector2(0.94, 0.94)
+texture = ExtResource("5_getpj")
 
 [node name="NavHandler" type="Node2D" parent="."]
 script = ExtResource("10_wsu2k")
@@ -354,8 +366,8 @@ wall = ExtResource("14_yaehf")
 turretUpgradeSprite = ExtResource("17_0odxb")
 baseButton = NodePath("../Player-1/Detection")
 
-[node name="HUD2" parent="." instance=ExtResource("18_b3802")]
-script = null
+[node name="HUD2" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("18_b3802")]
+baseButton = NodePath("../Player-2/Detection")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
@@ -393,10 +405,21 @@ use_edge_connections = false
 
 [node name="Player1Cursor" type="Sprite2D" parent="."]
 modulate = Color(0.286275, 0.435294, 1, 0.662745)
+z_index = 5
 position = Vector2(839, 353)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
+
+[node name="Player2Cursor" type="Sprite2D" parent="."]
+modulate = Color(0.936675, 0, 0.0266771, 0.662745)
+z_index = 5
+position = Vector2(292, 353)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("21_pdsj5")
+script = ExtResource("22_ee4r6")
+player1 = false
+ID = 1
 
 [connection signal="pressed" from="Player-1/HUD2/Storage/Release" to="Player-1" method="release"]
 [connection signal="pressed" from="Player-1/Detection" to="Player-1" method="toggle"]
