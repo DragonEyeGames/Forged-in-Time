@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://bdww4d63n6hs0"]
+
+[ext_resource type="Script" uid="uid://cg8af4sjk7ef0" path="res://Brute.cs" id="1_7uflk"]
+[ext_resource type="Texture2D" uid="uid://dnl8v8edmxtfn" path="res://Assets/01PixelCoinGold.png" id="2_5cl51"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_add0u"]
+radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwgpm"]
+atlas = ExtResource("2_5cl51")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf7p1"]
+atlas = ExtResource("2_5cl51")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua5tm"]
+atlas = ExtResource("2_5cl51")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm0q1"]
+atlas = ExtResource("2_5cl51")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpwwm"]
+atlas = ExtResource("2_5cl51")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p0c3"]
+atlas = ExtResource("2_5cl51")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wluxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwgpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf7p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua5tm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm0q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpwwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p0c3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Brute" type="CharacterBody2D"]
+script = ExtResource("1_7uflk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_add0u")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wluxv")
+frame_progress = 0.496732
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+
+[node name="Player1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+shape = SubResource("CircleShape2D_add0u")
+
+[node name="Player2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+shape = SubResource("CircleShape2D_add0u")
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 1.2
+
+[connection signal="timeout" from="Timer" to="." method="recalculate"]
+[connection signal="target_reached" from="NavAgent" to="." method="on_path_finished"]
+[connection signal="timeout" from="Cooldown" to="." method="on_cooldown"]

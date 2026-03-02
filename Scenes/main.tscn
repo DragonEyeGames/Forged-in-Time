@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=32 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bdhyr2rcfdx0l" path="res://Scenes/hud_2.tscn" id="18_b3802"]
 [ext_resource type="Texture2D" uid="uid://dkgrnn8xbc61t" path="res://Assets/Cursor.png" id="21_pdsj5"]
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_ee4r6"]
+[ext_resource type="PackedScene" uid="uid://bdww4d63n6hs0" path="res://Troops/brute.tscn" id="24_3pmx8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_yaehf")
@@ -420,6 +421,14 @@ texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
 player1 = false
 ID = 1
+
+[node name="Brute" parent="." node_paths=PackedStringArray("target") instance=ExtResource("24_3pmx8")]
+position = Vector2(791, 368)
+target = NodePath("../Player-2")
+
+[node name="Troop" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_lquwl")]
+position = Vector2(821, 390)
+target = NodePath("../Player-2")
 
 [connection signal="pressed" from="Player-1/HUD2/Storage/Release" to="Player-1" method="release"]
 [connection signal="pressed" from="Player-1/Detection" to="Player-1" method="toggle"]
