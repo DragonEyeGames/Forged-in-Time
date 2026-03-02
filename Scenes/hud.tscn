@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=26 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_640wx"]
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/ShopSlot.cs" id="3_61f8s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="6_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="7_4f5kr"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="8_piegi"]
+[ext_resource type="Texture2D" uid="uid://bubeigjyjsgxc" path="res://Towers/Spikes.png" id="9_1a2va"]
 [ext_resource type="Texture2D" uid="uid://cpu1prpqefjps" path="res://Towers/Assets/WallTower.png" id="9_g10ll"]
 [ext_resource type="Texture2D" uid="uid://dnjxqds0em6gw" path="res://Assets/Armored Orc/Armored Orc_Idle.png" id="10_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://dnl8v8edmxtfn" path="res://Assets/01PixelCoinGold.png" id="12_i2avg"]
@@ -507,6 +508,185 @@ right = NodePath("../../Button")
 hud = NodePath("../../../../..")
 holder = NodePath("../../../..")
 
+[node name="AOE" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(1.13, 59.355)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("3_61f8s")
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer/AOE"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 131.0
+offset_bottom = 58.0
+mouse_filter = 2
+color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/AOE"]
+position = Vector2(24, 32)
+scale = Vector2(2.925, 2.925)
+texture = ExtResource("9_1a2va")
+region_enabled = true
+region_rect = Rect2(68, 0, 10, 15.9742)
+
+[node name="Label" type="RichTextLabel" parent="ColorRect/VBoxContainer/AOE"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 2.0
+offset_right = 460.0
+offset_bottom = 147.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 54
+text = "Spike Tower"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="ColorRect/VBoxContainer/AOE"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 21.0
+offset_right = 460.0
+offset_bottom = 139.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 33
+text = "Spikes everyone in the area every so often."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/AOE" node_paths=PackedStringArray("up", "down", "left", "hud", "holder")]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 37.0
+offset_right = 109.0
+offset_bottom = 61.0
+scale = Vector2(0.895, 0.895)
+pivot_offset = Vector2(18.9944, 11.1732)
+icon = ExtResource("4_7gr8i")
+flat = true
+script = ExtResource("5_4f5kr")
+up = NodePath("../../../../Button")
+down = NodePath("../../Watch Tower/Button")
+left = NodePath("../Button2")
+hud = NodePath("../../../..")
+holder = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/AOE"]
+libraries = {
+&"": SubResource("AnimationLibrary_g10ll")
+}
+
+[node name="Button2" type="Button" parent="ColorRect/VBoxContainer/AOE" node_paths=PackedStringArray("right", "hud", "holder", "upgradeButton")]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 3.0
+offset_right = 1.0
+offset_bottom = 59.0
+pivot_offset = Vector2(4, 26)
+focus_mode = 0
+flat = true
+script = ExtResource("5_4f5kr")
+right = NodePath("../Button")
+hud = NodePath("../../../..")
+holder = NodePath("../../..")
+upgrade = 1
+upgradeButton = NodePath("../Popout/Button")
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/AOE/Button2"]
+z_index = 3
+layout_mode = 0
+offset_left = 7.0
+offset_top = 1.0
+offset_right = 61.0
+offset_bottom = 7.0
+rotation = 1.5708
+mouse_filter = 2
+color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Arrow" type="Sprite2D" parent="ColorRect/VBoxContainer/AOE/Button2/ColorRect2"]
+position = Vector2(25, 2.75695)
+rotation = 3.14159
+scale = Vector2(0.525, 0.555381)
+texture = ExtResource("4_36asn")
+
+[node name="UpgradeSlider" type="AnimationPlayer" parent="ColorRect/VBoxContainer/AOE"]
+libraries = {
+&"": SubResource("AnimationLibrary_amv7k")
+}
+
+[node name="Popout" type="ColorRect" parent="ColorRect/VBoxContainer/AOE"]
+z_index = 1
+layout_mode = 0
+offset_top = 57.0
+offset_right = 97.0
+offset_bottom = 111.0
+rotation = 3.14159
+scale = Vector2(1e-05, 1)
+color = Color(0.639216, 0.552941, 0.345098, 1)
+
+[node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/AOE/Popout"]
+position = Vector2(78.12, 27.12)
+rotation = 3.14159
+scale = Vector2(2.11, 2.11)
+texture = ExtResource("6_5ep0j")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Turret" type="Sprite2D" parent="ColorRect/VBoxContainer/AOE/Popout"]
+position = Vector2(78.12, 27.12)
+rotation = 3.14159
+scale = Vector2(2.11, 2.11)
+texture = ExtResource("6_5ep0j")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Label" type="RichTextLabel" parent="ColorRect/VBoxContainer/AOE/Popout"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 55.0
+offset_right = 478.0
+offset_bottom = 226.0
+rotation = 3.14159
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 43
+text = "Plasma Turret"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="ColorRect/VBoxContainer/AOE/Popout"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 36.0
+offset_right = 373.0
+offset_bottom = 146.0
+rotation = 3.14159
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "Does more damage and looks cooler."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/AOE/Popout" node_paths=PackedStringArray("left", "right", "hud", "holder")]
+layout_mode = 0
+offset_left = 21.0
+offset_right = 77.0
+offset_bottom = 24.0
+rotation = 3.14159
+scale = Vector2(0.895, 0.895)
+pivot_offset = Vector2(18.9944, 11.1732)
+focus_mode = 0
+icon = ExtResource("7_4f5kr")
+flat = true
+script = ExtResource("5_4f5kr")
+left = NodePath("../../Button2")
+right = NodePath("../../Button")
+hud = NodePath("../../../../..")
+holder = NodePath("../../../..")
+
 [node name="Watch Tower" type="Control" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(1.13, 59.355)
 layout_mode = 2
@@ -918,6 +1098,8 @@ region_rect = Rect2(0, 34.009, 16, 12.9607)
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button" to="." method="turret"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button2" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Popout/Button" to="." method="upgradeTurret"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/AOE/Button2" to="ColorRect/VBoxContainer/AOE" method="toggle"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/AOE/Popout/Button" to="." method="upgradeTurret"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Watch Tower/Button" to="." method="tower"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Watch Tower/ColorRect2/Button" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Wall/Button" to="." method="wall"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=33 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -17,12 +17,14 @@
 [ext_resource type="Script" uid="uid://dtffmvch4ihls" path="res://Scripts/BakeHandler.cs" id="10_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://Towers/Scenes/plasmaTurret.tscn" id="12_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dtmcn270epgmd" path="res://Towers/Scenes/WatchTower.tscn" id="12_w48qg"]
+[ext_resource type="PackedScene" uid="uid://di50ddfw14x1g" path="res://Scenes/BigPoly.tscn" id="14_u50mg"]
 [ext_resource type="PackedScene" uid="uid://bvym8b7sd7gh6" path="res://Towers/Scenes/wall.tscn" id="14_yaehf"]
 [ext_resource type="Script" uid="uid://du7vlxgrfc0ns" path="res://Scripts/TestValid.cs" id="15_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="17_0odxb"]
 [ext_resource type="PackedScene" uid="uid://bdhyr2rcfdx0l" path="res://Scenes/hud_2.tscn" id="18_b3802"]
 [ext_resource type="Texture2D" uid="uid://dkgrnn8xbc61t" path="res://Assets/Cursor.png" id="21_pdsj5"]
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_ee4r6"]
+[ext_resource type="PackedScene" uid="uid://dsva3sqdktiu6" path="res://Towers/aoe_tower.tscn" id="24_3pmx8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_yaehf")
@@ -354,20 +356,24 @@ script = ExtResource("10_wsu2k")
 script = ExtResource("9_d13ii")
 player1 = true
 polygon = ExtResource("7_5vw27")
+bigPolygon = ExtResource("14_u50mg")
 tester = NodePath("../../TestPlacement/Player")
 turret = ExtResource("6_kek77")
 plasmaTurret = ExtResource("12_vivmo")
 tower = ExtResource("12_w48qg")
 wall = ExtResource("14_yaehf")
+spikes = ExtResource("24_3pmx8")
 
 [node name="Player2" type="Node2D" parent="NavHandler" node_paths=PackedStringArray("tester")]
 script = ExtResource("9_d13ii")
 polygon = ExtResource("7_5vw27")
+bigPolygon = ExtResource("14_u50mg")
 tester = NodePath("../../TestPlacement/Player")
 turret = ExtResource("6_kek77")
 plasmaTurret = ExtResource("12_vivmo")
 tower = ExtResource("12_w48qg")
 wall = ExtResource("14_yaehf")
+spikes = ExtResource("24_3pmx8")
 
 [node name="HUD" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("9_4c57u")]
 turretUpgradeSprite = ExtResource("17_0odxb")

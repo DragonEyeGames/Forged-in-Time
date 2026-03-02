@@ -12,11 +12,13 @@ public partial class TestHandler : Node2D
 	private Tower selectedTower = null;
 	[Export] public bool player1=false;
 	[Export] public PackedScene polygon;
+	[Export] public PackedScene bigPolygon;
 	[Export] public TestValid tester;
 	[Export] public PackedScene turret;
 	[Export] public PackedScene plasmaTurret;
 	[Export] public PackedScene tower;
 	[Export] public PackedScene wall;
+	[Export] public PackedScene spikes;
 	private int baking = 0;
 	private bool initializePlace=false;
 	
@@ -57,7 +59,13 @@ public partial class TestHandler : Node2D
 			initializePlace=false;
 			if(Player2Manager.validPlacement && tester.isValid() && Player2Manager.placing){
 				Player2Manager.placing=false;
-				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
+				Polygon2D selectedPolygon2;
+				if(Player2Manager.toPlace==GameManager.Towers.Spikes){
+					selectedPolygon2 = bigPolygon.Instantiate() as Polygon2D;
+				} else {
+					selectedPolygon2 = polygon.Instantiate() as Polygon2D;
+				}
+				
 				navRegion.AddChild(selectedPolygon2);
 				selectedPolygon2.GlobalPosition=SnapToTopLeft(Player2Manager.cursor.GlobalPosition);
 				selectedPolygon=null;

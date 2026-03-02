@@ -100,6 +100,10 @@ public partial class Hud : CanvasLayer
 		purchaseTower(GameManager.Towers.Wall, "ColorRect/VBoxContainer/Wall/AnimationPlayer");
 	}
 	
+	public void spikes(){
+		purchaseTower(GameManager.Towers.Spikes, "ColorRect/VBoxContainer/AOE/AnimationPlayer");
+	}
+	
 	//Troop Section
 	
 	public void basicTroop(){

@@ -9,6 +9,7 @@ public partial class GameManager : Node
 		Plasma_Turret,
 		Wall,
 		Watch_Tower,
+		Spikes,
 		Melee
 	}
 	
