@@ -57,15 +57,15 @@ animations = [{
 radius = 9.0
 
 [node name="Brute" type="CharacterBody2D" groups=["Player"]]
-collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_7uflk")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wluxv")
+autoplay = "default"
 frame_progress = 0.496732
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
@@ -75,11 +75,14 @@ autostart = true
 shape = SubResource("CircleShape2D_add0u")
 
 [node name="Player1" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
 shape = SubResource("CircleShape2D_add0u")
 
 [node name="Player2" type="Area2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
 shape = SubResource("CircleShape2D_add0u")
@@ -87,6 +90,6 @@ shape = SubResource("CircleShape2D_add0u")
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 1.2
 
-[connection signal="navigation_finished" from="NavAgent" to="." method="on_path_finished"]
+[connection signal="target_reached" from="NavAgent" to="." method="on_path_finished"]
 [connection signal="timeout" from="Timer" to="." method="recalculate"]
 [connection signal="timeout" from="Cooldown" to="." method="on_cooldown"]

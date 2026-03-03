@@ -4,7 +4,7 @@ using System;
 public partial class Troop : BaseTroop
 {
 
-	[Export]public override float Speed { get; set; } = 400.0f;
+	[Export]public override float Speed { get; set; } = 40.0f;
 	[Export] public override int health { get; set; } = 5;
 	[Export] public override int damage { get; set; } = 1;
 	public override NavigationAgent2D navAgent { get; set; }

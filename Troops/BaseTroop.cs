@@ -40,10 +40,11 @@ public abstract partial class BaseTroop : CharacterBody2D
     {
         if (pathfinding)
         {
-            Vector2 velocity = Vector2.Zero;
+            Vector2 velocity;
+            velocity = Vector2.Zero;
             var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
-            velocity = dir * 40;
-            Velocity = velocity;
+            velocity = dir;
+            Velocity = velocity * Speed;
             if (!navAgent.IsNavigationFinished())
             {
                 MoveAndSlide();
