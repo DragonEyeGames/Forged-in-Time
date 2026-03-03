@@ -23,6 +23,9 @@ public partial class Cursor : Sprite2D
 		if(player1){
 			Visible=!Player1Manager.hudOpen;
 		}
+		if(!player1){
+			Visible=!Player2Manager.hudOpen;
+		}
 		if(!Visible){
 			return;
 		}

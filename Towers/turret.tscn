@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtpgm4njiuln2"]
+[gd_scene load_steps=8 format=3 uid="uid://cg63lctx0mml7"]
 
-[ext_resource type="Script" path="res://Towers/Turret.cs" id="1_tjdg3"]
-[ext_resource type="Texture2D" path="res://Towers/Turret.png" id="2_tjdg3"]
+[ext_resource type="Script" uid="uid://cxp422a4i3a8g" path="res://Towers/Scripts/Turret.cs" id="1_tjdg3"]
+[ext_resource type="Texture2D" uid="uid://cg63lctx0mml7" path="res://Towers/turret.tscn" id="2_tjdg3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3oylf"]
 radius = 60.0333
@@ -50,6 +50,8 @@ radius = 30.5287
 script = ExtResource("1_tjdg3")
 damage = null
 cooldown = NodePath("Cooldown")
+hovering = null
+Player1 = null
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
