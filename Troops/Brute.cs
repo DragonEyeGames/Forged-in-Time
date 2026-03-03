@@ -14,9 +14,10 @@ public partial class Brute : BaseTroop
 
     public override void _Ready()
     {
+ 
         navAgent = GetNode<NavigationAgent2D>("NavAgent");
         sprite = GetNode<AnimatedSprite2D>("Sprite");
         cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
-        navAgent.TargetDesiredDistance = 15;
+        navAgent.TargetDesiredDistance = 25;
     }
 }
