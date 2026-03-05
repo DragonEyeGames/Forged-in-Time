@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public abstract partial class BaseTroop : CharacterBody2D
 {
@@ -7,6 +8,7 @@ public abstract partial class BaseTroop : CharacterBody2D
     public abstract float Speed {get; set;}
     public abstract int health {get; set;}
     public abstract int damage {get; set;}
+    public abstract bool healer {get; set;}
     public bool attacking = false;
     public bool pathfinding = true;
 
@@ -15,7 +17,7 @@ public abstract partial class BaseTroop : CharacterBody2D
     public abstract Base target {get; set;}
     public abstract AnimatedSprite2D sprite  {get; set;}
     public abstract Timer cooldown {get; set;}
-
+    public List<BaseTroop> Freinds;
     
     public async void updateHitboxes()
     {
@@ -75,16 +77,29 @@ public abstract partial class BaseTroop : CharacterBody2D
 
     public void attack(int damage)
     {
-        if (!attacking)
-        {
-            target.health  -= damage;
-            GD.Print(target.health);
-            if (target.health <= 0)
+            if (!attacking)
             {
-                target.Die();
+                target.health -= damage;
+                GD.Print(target.health);
+                if (target.health <= 0)
+                {
+                    target.Die();
+                }
+
+                attacking = false;
+                cooldown.Start();
             }
-            attacking = false;
-            cooldown.Start();
+    }
+
+    public void heal(int damage)
+    {
+        GD.Print("heal");
+        for (int i = 0; i < Freinds.Count; i++)
+        {
+            BaseTroop BestFreind =  Freinds[i] as BaseTroop;
+            BestFreind.health += damage;
+            GD.Print(BestFreind.health);
+            
         }
     }
     
@@ -96,7 +111,43 @@ public abstract partial class BaseTroop : CharacterBody2D
     
     public void on_cooldown()
     {
-        attacking = false;
-        attack(damage);
+        if (!healer)
+        {
+            attacking = false;
+            attack(damage);
+        }
+        else if (healer)
+        {
+            attacking = false;
+            heal(damage);
+        }
+    }
+
+    public void healStart(Node2D body)
+    {
+        GD.Print("healStart");
+        if (body is BaseTroop)
+        {
+            BaseTroop FreindlyTroop = body as BaseTroop;
+            if (FreindlyTroop.target == this.target)
+            {
+                Freinds.Add(FreindlyTroop);
+                cooldown.Start();
+            }
+
+        }
+    }
+    
+    public void healEnd(Node2D body)
+    {
+        if (body is BaseTroop)
+        {
+            BaseTroop FreindlyTroop = body as BaseTroop;
+            if (FreindlyTroop.target == this.target)
+            {
+                Freinds.Remove(FreindlyTroop);
+            }
+
+        }
     }
 }

@@ -10,6 +10,8 @@ public partial class Brute : BaseTroop
     public override AnimatedSprite2D sprite  {get; set;}
     [Export] public override Base target { get; set; }
     public override Timer cooldown {get; set;}
+    public override bool healer { get; set; } = false;
+
 	
 
     public override void _Ready()

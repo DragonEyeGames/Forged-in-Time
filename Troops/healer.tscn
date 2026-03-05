@@ -1,0 +1,144 @@
+[gd_scene load_steps=18 format=3 uid="uid://bq6isds7mf1bb"]
+
+[ext_resource type="Script" uid="uid://bwfocgg0onytc" path="res://Troops/Healer.cs" id="1_v0y4t"]
+[ext_resource type="Texture2D" uid="uid://donui7kkbkesp" path="res://Assets/Buy.png" id="2_id8a5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv2m7"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(0, 0, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orodg"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(8, 0, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xahhy"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(16, 0, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jve2r"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(24, 0, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1av5o"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(16, 4, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blyv0"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(24, 4, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj5xr"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(16, 12, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xlru"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(8, 12, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avm6a"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(0, 8, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1gh5"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(8, 8, 8, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38qfs"]
+atlas = ExtResource("2_id8a5")
+region = Rect2(16, 8, 8, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0y4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fv2m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orodg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xahhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jve2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1av5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blyv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj5xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xlru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avm6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1gh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38qfs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_id8a5"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fv2m7"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f12cl"]
+radius = 13.0
+
+[node name="healer" type="CharacterBody2D"]
+script = ExtResource("1_v0y4t")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1, 2)
+sprite_frames = SubResource("SpriteFrames_v0y4t")
+autoplay = "default"
+frame_progress = 0.855706
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_id8a5")
+
+[node name="Player1" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+shape = SubResource("CircleShape2D_fv2m7")
+
+[node name="Player2" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+shape = SubResource("CircleShape2D_fv2m7")
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.331
+
+[node name="Healzone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Healzone"]
+shape = SubResource("CircleShape2D_f12cl")
+
+[connection signal="navigation_finished" from="NavAgent" to="." method="on_path_finished"]
+[connection signal="timeout" from="Timer" to="." method="recalculate"]
+[connection signal="timeout" from="Cooldown" to="." method="on_cooldown"]
+[connection signal="body_entered" from="Healzone" to="." method="healStart"]
+[connection signal="body_exited" from="Healzone" to="." method="healEnd"]
