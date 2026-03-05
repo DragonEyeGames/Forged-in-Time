@@ -47,7 +47,10 @@ public partial class TestHandler : Node2D
 			initializePlace=false;
 			if(Player1Manager.validPlacement && tester.isValid() && Player1Manager.placing){
 				Player1Manager.placing=false;
-				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
+				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;;
+				if(Player1Manager.toPlace==GameManager.Towers.Spikes){
+					selectedPolygon2 = bigPolygon.Instantiate() as Polygon2D;
+				}
 				navRegion.AddChild(selectedPolygon2);
 				selectedPolygon2.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
 				selectedPolygon=null;
@@ -59,11 +62,9 @@ public partial class TestHandler : Node2D
 			initializePlace=false;
 			if(Player2Manager.validPlacement && tester.isValid() && Player2Manager.placing){
 				Player2Manager.placing=false;
-				Polygon2D selectedPolygon2;
+				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;;
 				if(Player2Manager.toPlace==GameManager.Towers.Spikes){
 					selectedPolygon2 = bigPolygon.Instantiate() as Polygon2D;
-				} else {
-					selectedPolygon2 = polygon.Instantiate() as Polygon2D;
 				}
 				
 				navRegion.AddChild(selectedPolygon2);
@@ -74,11 +75,17 @@ public partial class TestHandler : Node2D
 				return;
 			}
 		}
-		if(selectedPolygon==null) {
-			selectedPolygon = polygon.Instantiate() as Polygon2D;
-			testRegion.AddChild(selectedPolygon);
-		}
 		if(selectedTower==null && player1){
+			if(Player1Manager.toPlace==GameManager.Towers.Spikes){
+				selectedTower=spikes.Instantiate() as Tower;
+				GetParent().AddChild(selectedTower);
+				selectedPolygon = bigPolygon.Instantiate() as Polygon2D;
+				testRegion.AddChild(selectedPolygon);
+			}
+			if(selectedPolygon==null) {
+				selectedPolygon = polygon.Instantiate() as Polygon2D;
+				testRegion.AddChild(selectedPolygon);
+			}
 			if(Player1Manager.toPlace==GameManager.Towers.Turret){
 				selectedTower=turret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
@@ -96,6 +103,16 @@ public partial class TestHandler : Node2D
 				GetParent().AddChild(selectedTower);
 			}
 		} else if(selectedTower==null && !player1){
+			if(Player2Manager.toPlace==GameManager.Towers.Spikes){
+				selectedTower=spikes.Instantiate() as Tower;
+				GetParent().AddChild(selectedTower);
+				selectedPolygon = bigPolygon.Instantiate() as Polygon2D;
+				testRegion.AddChild(selectedPolygon);
+			}
+			if(selectedPolygon==null) {
+				selectedPolygon = polygon.Instantiate() as Polygon2D;
+				testRegion.AddChild(selectedPolygon);
+			}
 			if(Player2Manager.toPlace==GameManager.Towers.Turret){
 				selectedTower=turret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);

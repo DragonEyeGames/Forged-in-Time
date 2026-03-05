@@ -24,14 +24,7 @@ public partial class Placement : Node2D
 		Vector2I invalidCoords = new Vector2I(1, 0);
 	}
 	
-	private void Click(){
-		Vector2 mouseWorldPos;
-		if(player1){
-			mouseWorldPos = Player1Manager.cursor.GlobalPosition;
-		}
-		else{
-			mouseWorldPos =Player2Manager.cursor.GlobalPosition;
-		}
+	private void Click(Vector2 mouseWorldPos){
 		Vector2I cell = layer.LocalToMap(mouseWorldPos);
 		Vector2I hoverCoords = new Vector2I(0, 1);
 		Vector2I placedCoords = new Vector2I(1, 1);
@@ -71,11 +64,25 @@ public partial class Placement : Node2D
 		if((player1 && @event.Device==0) || (!player1 && @event.Device== 1)){
 			if(player1){
 				if(@event.IsActionPressed("Select")&& tester.isValid() && Player1Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
-					Click();
+					Vector2 globalPos = Player1Manager.cursor.GlobalPosition;
+					if(Player1Manager.toPlace==GameManager.Towers.Spikes){
+						Click(globalPos);
+						globalPos.X-=16;
+						Click(globalPos);
+						globalPos.Y-=16;
+						Click(globalPos);
+						globalPos.X+=16;
+						Click(globalPos);
+						
+					} else {
+						Click(globalPos);
+					}
+					
 				}
 			} else if(!player1){
 				if(@event.IsActionPressed("Select")&& tester.isValid() && Player2Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
-					Click();
+					Vector2 globalPos = Player2Manager.cursor.GlobalPosition;
+					Click(globalPos);
 				}
 			}
 		}

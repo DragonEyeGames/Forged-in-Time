@@ -1098,6 +1098,7 @@ region_rect = Rect2(0, 34.009, 16, 12.9607)
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button" to="." method="turret"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Button2" to="ColorRect/VBoxContainer/Turret" method="toggle"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Turret/Popout/Button" to="." method="upgradeTurret"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/AOE/Button" to="." method="spikes"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/AOE/Button2" to="ColorRect/VBoxContainer/AOE" method="toggle"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/AOE/Popout/Button" to="." method="upgradeTurret"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Watch Tower/Button" to="." method="tower"]

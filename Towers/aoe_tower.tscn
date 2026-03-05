@@ -139,20 +139,20 @@ frame = 6
 frame_progress = 1.0
 
 [node name="Player1Territory" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Territory"]
 scale = Vector2(0.165, 0.165)
 shape = SubResource("CircleShape2D_yklf4")
+disabled = true
 
 [node name="Player2Territory" type="Area2D" parent="."]
-visible = false
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Territory"]
 scale = Vector2(0.165, 0.165)
 shape = SubResource("CircleShape2D_yklf4")
+disabled = true
 
 [node name="Player1" type="Area2D" parent="."]
 collision_mask = 2
@@ -161,7 +161,6 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_fcslb")
 
 [node name="Player2" type="Area2D" parent="."]
-visible = false
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
@@ -175,36 +174,43 @@ shape = SubResource("RectangleShape2D_r6vq3")
 position = Vector2(9, -13)
 sprite_frames = SubResource("SpriteFrames_561yo")
 animation = &"spike"
+frame = 4
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Spikes"]
 position = Vector2(1, -8)
 sprite_frames = SubResource("SpriteFrames_561yo")
 animation = &"spike"
+frame = 4
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Spikes"]
 position = Vector2(-9, -13)
 sprite_frames = SubResource("SpriteFrames_561yo")
 animation = &"spike"
+frame = 4
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Spikes"]
 position = Vector2(9, 1)
 sprite_frames = SubResource("SpriteFrames_561yo")
 animation = &"spike"
+frame = 4
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Spikes"]
 position = Vector2(-6, 0)
 sprite_frames = SubResource("SpriteFrames_561yo")
 animation = &"spike"
+frame = 4
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Spikes"]
 position = Vector2(-11, 7)
 sprite_frames = SubResource("SpriteFrames_561yo")
 animation = &"spike"
+frame = 4
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Spikes"]
 position = Vector2(3, 5)
 sprite_frames = SubResource("SpriteFrames_561yo")
 animation = &"spike"
+frame = 4
 
 [connection signal="area_entered" from="Player1" to="." method="Player1Entered"]
 [connection signal="area_exited" from="Player1" to="." method="Player1Exited"]
