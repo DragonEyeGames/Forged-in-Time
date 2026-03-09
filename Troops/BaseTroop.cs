@@ -17,7 +17,7 @@ public abstract partial class BaseTroop : CharacterBody2D
     public abstract Base target {get; set;}
     public abstract AnimatedSprite2D sprite  {get; set;}
     public abstract Timer cooldown {get; set;}
-    public List<BaseTroop> Freinds;
+    public List<BaseTroop> Freinds = new List<BaseTroop>();
     
     public async void updateHitboxes()
     {
@@ -94,12 +94,15 @@ public abstract partial class BaseTroop : CharacterBody2D
     public void heal(int damage)
     {
         GD.Print("heal");
-        for (int i = 0; i < Freinds.Count; i++)
+        if (Freinds != null)
         {
-            BaseTroop BestFreind =  Freinds[i] as BaseTroop;
-            BestFreind.health += damage;
-            GD.Print(BestFreind.health);
+            for (int i = 0; i < Freinds.Count; i++)
+            {
+                BaseTroop BestFreind =  Freinds[i] as BaseTroop;
+                BestFreind.health += damage;
+                GD.Print(BestFreind.health);
             
+            }
         }
     }
     
