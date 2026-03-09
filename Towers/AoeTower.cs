@@ -9,9 +9,14 @@ public partial class AoeTower :  Tower
 	[Export] public int damage=3;
 	[Export] public Timer cooldown;
 	private bool canShoot = true;
+	private bool backupHover = true;
 	
 	public override void _Process(double delta)
 	{
+		if(backupHover!=hovering){
+			shoot();
+			backupHover=hovering;
+		}
 		TowerGenerics();
 		if (!hovering && canShoot)
 		{

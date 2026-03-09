@@ -212,6 +212,14 @@ sprite_frames = SubResource("SpriteFrames_561yo")
 animation = &"spike"
 frame = 4
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.564706, 0.313726, 0.0901961, 0.254902)
+
 [connection signal="area_entered" from="Player1" to="." method="Player1Entered"]
 [connection signal="area_exited" from="Player1" to="." method="Player1Exited"]
 [connection signal="area_entered" from="Player2" to="." method="Player2Entered"]
