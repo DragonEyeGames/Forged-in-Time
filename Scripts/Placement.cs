@@ -132,7 +132,6 @@ public partial class Placement : Node2D
 				return;
 			}
 		}
-		GD.Print("It's valid");
 		cell = layer.LocalToMap(mouseWorldPos);
 		atlasCoords = layer.GetCellAtlasCoords(cell);
 		layer.SetCell(cell, 0, placedCoords);
@@ -178,7 +177,12 @@ public partial class Placement : Node2D
 			} else if(!player1){
 				if(@event.IsActionPressed("Select")&& tester.isValid() && Player2Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
 					Vector2 globalPos = Player2Manager.cursor.GlobalPosition;
-					Click(globalPos);
+					if(Player2Manager.toPlace==GameManager.Towers.Spikes){
+						UltimateClick(globalPos);
+						
+					} else {
+						Click(globalPos);
+					}
 				}
 			}
 		}
