@@ -7,10 +7,12 @@ public abstract partial class BaseTroop : CharacterBody2D
     public bool player1 = true;
     public abstract float Speed {get; set;}
     public abstract int health {get; set;}
+    public abstract int maxHealth {get; set;}
     public abstract int damage {get; set;}
     public abstract bool healer {get; set;}
     public bool attacking = false;
     public bool pathfinding = true;
+    
 
     
     public abstract NavigationAgent2D navAgent {get; set;}
@@ -100,6 +102,10 @@ public abstract partial class BaseTroop : CharacterBody2D
             {
                 BaseTroop BestFreind =  Freinds[i] as BaseTroop;
                 BestFreind.health += damage;
+                if (BestFreind.health > BestFreind.maxHealth)
+                {
+                    BestFreind.health = BestFreind.maxHealth;
+                }
                 GD.Print(BestFreind.health);
             
             }

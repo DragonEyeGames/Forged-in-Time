@@ -5,6 +5,7 @@ public partial class Brute : BaseTroop
 {
     [Export] public override float Speed { get; set; } = 20.0f;
     [Export] public  override int health { get; set; } = 20;
+    [Export] public override int maxHealth { get; set; } = 20;
     [Export] public override int damage { get; set; } = 2;
     public override NavigationAgent2D navAgent { get; set; }
     public override AnimatedSprite2D sprite  {get; set;}
