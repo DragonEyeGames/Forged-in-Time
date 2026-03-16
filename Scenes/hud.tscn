@@ -385,6 +385,7 @@ offset_right = 109.0
 offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
+mouse_filter = 2
 icon = ExtResource("4_7gr8i")
 flat = true
 script = ExtResource("5_4f5kr")
@@ -399,7 +400,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_swdrl")
 }
 
-[node name="Button2" type="Button" parent="ColorRect/VBoxContainer/Turret" node_paths=PackedStringArray("right", "hud", "holder", "upgradeButton")]
+[node name="Button2" type="Button" parent="ColorRect/VBoxContainer/Turret" node_paths=PackedStringArray("right", "hud", "holder")]
 layout_mode = 0
 offset_left = -7.0
 offset_top = 3.0
@@ -407,13 +408,12 @@ offset_right = 1.0
 offset_bottom = 59.0
 pivot_offset = Vector2(4, 26)
 focus_mode = 0
+mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
 right = NodePath("../Button")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
-upgrade = 1
-upgradeButton = NodePath("../Popout/Button")
 
 [node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/Turret/Button2"]
 z_index = 3
@@ -500,6 +500,7 @@ rotation = 3.14159
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
 focus_mode = 0
+mouse_filter = 2
 icon = ExtResource("7_4f5kr")
 flat = true
 script = ExtResource("5_4f5kr")
@@ -564,6 +565,7 @@ offset_right = 109.0
 offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
+mouse_filter = 2
 icon = ExtResource("4_7gr8i")
 flat = true
 script = ExtResource("5_4f5kr")
@@ -578,7 +580,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_swdrl")
 }
 
-[node name="Button2" type="Button" parent="ColorRect/VBoxContainer/AOE" node_paths=PackedStringArray("right", "hud", "holder", "upgradeButton")]
+[node name="Button2" type="Button" parent="ColorRect/VBoxContainer/AOE" node_paths=PackedStringArray("right", "hud", "holder")]
 visible = false
 layout_mode = 0
 offset_left = -7.0
@@ -587,13 +589,12 @@ offset_right = 1.0
 offset_bottom = 59.0
 pivot_offset = Vector2(4, 26)
 focus_mode = 0
+mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
 right = NodePath("../Button")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
-upgrade = 1
-upgradeButton = NodePath("../Popout/Button")
 
 [node name="ColorRect2" type="ColorRect" parent="ColorRect/VBoxContainer/AOE/Button2"]
 z_index = 3
@@ -680,6 +681,7 @@ rotation = 3.14159
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
 focus_mode = 0
+mouse_filter = 2
 icon = ExtResource("7_4f5kr")
 flat = true
 script = ExtResource("5_4f5kr")
@@ -743,6 +745,7 @@ offset_right = 109.0
 offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
+mouse_filter = 2
 icon = ExtResource("4_7gr8i")
 flat = true
 script = ExtResource("5_4f5kr")
@@ -779,6 +782,7 @@ layout_mode = 0
 offset_top = -1.0
 offset_right = 54.0
 offset_bottom = 8.0
+mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
 hud = NodePath("../../../../..")
@@ -838,6 +842,7 @@ offset_right = 109.0
 offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
+mouse_filter = 2
 icon = ExtResource("4_7gr8i")
 flat = true
 script = ExtResource("5_4f5kr")
@@ -874,6 +879,7 @@ layout_mode = 0
 offset_top = -1.0
 offset_right = 54.0
 offset_bottom = 8.0
+mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
 hud = NodePath("../../../../..")
@@ -933,6 +939,7 @@ offset_right = 109.0
 offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
+mouse_filter = 2
 icon = ExtResource("4_7gr8i")
 flat = true
 script = ExtResource("5_4f5kr")
@@ -969,6 +976,7 @@ layout_mode = 0
 offset_top = -1.0
 offset_right = 54.0
 offset_bottom = 8.0
+mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
 hud = NodePath("../../../../..")
@@ -978,7 +986,7 @@ layout_mode = 0
 offset_left = -1016.0
 offset_right = -133.0
 offset_bottom = 645.0
-mouse_filter = 1
+mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
 hud = NodePath("../..")
@@ -987,6 +995,7 @@ hud = NodePath("../..")
 offset_left = 1018.0
 offset_right = 1150.0
 offset_bottom = 14.0
+mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
 up = NodePath("../ColorRect/VBoxContainer/Basic/Button")
@@ -1015,6 +1024,7 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 libraries = {
 &"": SubResource("AnimationLibrary_i2avg")
 }
+autoplay = "RESET"
 speed_scale = 3.0
 
 [node name="Timeout" type="Timer" parent="."]

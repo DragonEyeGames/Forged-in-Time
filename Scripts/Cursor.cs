@@ -5,6 +5,7 @@ public partial class Cursor : Sprite2D
 {
 	[Export] public bool player1=true;
 	[Export] public int ID = 0;
+	[Export] public Sprite2D screenCounterpart;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -19,6 +20,8 @@ public partial class Cursor : Sprite2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
+		screenCounterpart.GlobalPosition=screenPos;
 		if(player1){
 			Visible=!Player1Manager.hudOpen;
 		}
@@ -28,8 +31,23 @@ public partial class Cursor : Sprite2D
 		if(!Visible){
 			return;
 		}
-		float rightX = Input.GetJoyAxis(ID, JoyAxis.LeftX);
-		float rightY = Input.GetJoyAxis(ID, JoyAxis.LeftY);
+		float rightX = 0.0f;
+		float rightY = 0.0f;
+		if(!GameManager.keyboard){
+			rightX = Input.GetJoyAxis(ID, JoyAxis.LeftX);
+			rightY = Input.GetJoyAxis(ID, JoyAxis.LeftY);
+		}
+		else if(GameManager.keyboard){
+			if(player1){
+				rightX = Input.GetAxis("Left-1", "Right-1");
+				rightY = Input.GetAxis("Up-1", "Down-1");
+			}
+			else if(!player1){
+				rightX = Input.GetAxis("Left-2", "Right-2");
+				rightY = Input.GetAxis("Up-2", "Down-2");
+			}
+		}
+		
 		if(Math.Abs(rightX)<.1f){
 			rightX=0;
 		}
