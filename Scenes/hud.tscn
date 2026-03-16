@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=27 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_640wx"]
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/ShopSlot.cs" id="3_61f8s"]
@@ -177,6 +177,9 @@ _data = {
 &"close": SubResource("Animation_amv7k"),
 &"open": SubResource("Animation_g10ll")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a2va"]
+size = Vector2(132, 14)
 
 [sub_resource type="Animation" id="Animation_4f5kr"]
 length = 0.001
@@ -395,6 +398,13 @@ left = NodePath("../Button2")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
 
+[node name="Area2D" type="Area2D" parent="ColorRect/VBoxContainer/Turret/Button"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/Turret/Button/Area2D"]
+polygon = PackedVector2Array(35.7605, 8.74504, 25.7046, 4.27577, 14.5315, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 13.4141, 18.8009, 25.7046, 18.8009, 35.7605, 15.449)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Turret"]
 libraries = {
 &"": SubResource("AnimationLibrary_swdrl")
@@ -575,6 +585,13 @@ left = NodePath("../Button2")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
 
+[node name="Area2D" type="Area2D" parent="ColorRect/VBoxContainer/AOE/Button"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/AOE/Button/Area2D"]
+polygon = PackedVector2Array(35.7605, 8.74504, 25.7046, 4.27577, 14.5315, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 13.4141, 18.8009, 25.7046, 18.8009, 35.7605, 15.449)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/AOE"]
 libraries = {
 &"": SubResource("AnimationLibrary_swdrl")
@@ -754,6 +771,13 @@ down = NodePath("../../Wall/Button")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
 
+[node name="Area2D" type="Area2D" parent="ColorRect/VBoxContainer/Watch Tower/Button"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/Watch Tower/Button/Area2D"]
+polygon = PackedVector2Array(35.7605, 8.74504, 25.7046, 4.27577, 14.5315, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 13.4141, 18.8009, 25.7046, 18.8009, 35.7605, 15.449)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Watch Tower"]
 libraries = {
 &"": SubResource("AnimationLibrary_swdrl")
@@ -850,6 +874,13 @@ up = NodePath("../../Watch Tower/Button")
 down = NodePath("../../Basic/Button")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
+
+[node name="Area2D" type="Area2D" parent="ColorRect/VBoxContainer/Wall/Button"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/Wall/Button/Area2D"]
+polygon = PackedVector2Array(35.7605, 8.74504, 25.7046, 4.27577, 14.5315, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 13.4141, 18.8009, 25.7046, 18.8009, 35.7605, 15.449)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Wall"]
 libraries = {
@@ -948,6 +979,13 @@ down = NodePath("../../../../Button")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
 
+[node name="Area2D" type="Area2D" parent="ColorRect/VBoxContainer/Basic/Button"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/Basic/Button/Area2D"]
+polygon = PackedVector2Array(35.7605, 8.74504, 25.7046, 4.27577, 14.5315, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 13.4141, 18.8009, 25.7046, 18.8009, 35.7605, 15.449)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Basic"]
 libraries = {
 &"": SubResource("AnimationLibrary_swdrl")
@@ -993,14 +1031,14 @@ hud = NodePath("../..")
 
 [node name="Button" type="Button" parent="." node_paths=PackedStringArray("up", "down", "hud", "holder")]
 offset_left = 1018.0
+offset_top = 634.0
 offset_right = 1150.0
-offset_bottom = 14.0
+offset_bottom = 648.0
 mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
 up = NodePath("../ColorRect/VBoxContainer/Basic/Button")
 down = NodePath("../ColorRect/VBoxContainer/Turret/Button")
-selected = true
 hud = NodePath("..")
 holder = NodePath("../ColorRect")
 exception = true
@@ -1019,6 +1057,14 @@ offset_right = 132.0
 offset_bottom = 14.0
 mouse_filter = 2
 color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Area2D" type="Area2D" parent="Button"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D"]
+position = Vector2(66, 7)
+shape = SubResource("RectangleShape2D_1a2va")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {

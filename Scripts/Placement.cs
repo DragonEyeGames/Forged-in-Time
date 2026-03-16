@@ -162,9 +162,34 @@ public partial class Placement : Node2D
 	
 	public override void _Input(InputEvent @event)
 	{
-		if((player1 && @event.Device==0) || (!player1 && @event.Device== 1)){
+		if(!GameManager.keyboard){
+			if((player1 && @event.Device==0) || (!player1 && @event.Device== 1)){
+				if(player1){
+					if(@event.IsActionPressed("Select")&& tester.isValid() && Player1Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
+						Vector2 globalPos = Player1Manager.cursor.GlobalPosition;
+						if(Player1Manager.toPlace==GameManager.Towers.Spikes){
+							UltimateClick(globalPos);
+							
+						} else {
+							Click(globalPos);
+						}
+						
+					}
+				} else if(!player1){
+					if(@event.IsActionPressed("Select")&& tester.isValid() && Player2Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
+						Vector2 globalPos = Player2Manager.cursor.GlobalPosition;
+						if(Player2Manager.toPlace==GameManager.Towers.Spikes){
+							UltimateClick(globalPos);
+							
+						} else {
+							Click(globalPos);
+						}
+					}
+				}
+			}
+		} else if (GameManager.keyboard){
 			if(player1){
-				if(@event.IsActionPressed("Select")&& tester.isValid() && Player1Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
+				if(@event.IsActionPressed("Click-1")&& tester.isValid() && Player1Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
 					Vector2 globalPos = Player1Manager.cursor.GlobalPosition;
 					if(Player1Manager.toPlace==GameManager.Towers.Spikes){
 						UltimateClick(globalPos);
@@ -175,7 +200,7 @@ public partial class Placement : Node2D
 					
 				}
 			} else if(!player1){
-				if(@event.IsActionPressed("Select")&& tester.isValid() && Player2Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
+				if(@event.IsActionPressed("Click-2")&& tester.isValid() && Player2Manager.placing && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
 					Vector2 globalPos = Player2Manager.cursor.GlobalPosition;
 					if(Player2Manager.toPlace==GameManager.Towers.Spikes){
 						UltimateClick(globalPos);

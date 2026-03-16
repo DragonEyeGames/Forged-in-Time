@@ -5,7 +5,7 @@ public partial class Cursor : Sprite2D
 {
 	[Export] public bool player1=true;
 	[Export] public int ID = 0;
-	[Export] public Sprite2D screenCounterpart;
+	[Export] public ScreenCursor screenCounterpart;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -15,6 +15,7 @@ public partial class Cursor : Sprite2D
 		if(!player1){
 			Player2Manager.cursor=this;
 		}
+		screenCounterpart.player1=player1;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,13 +24,13 @@ public partial class Cursor : Sprite2D
 		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
 		screenCounterpart.GlobalPosition=screenPos;
 		if(player1){
-			Visible=!Player1Manager.hudOpen;
+		//	Visible=!Player1Manager.hudOpen;
 		}
 		if(!player1){
-			Visible=!Player2Manager.hudOpen;
+		//	Visible=!Player2Manager.hudOpen;
 		}
 		if(!Visible){
-			return;
+		//	return;
 		}
 		float rightX = 0.0f;
 		float rightY = 0.0f;

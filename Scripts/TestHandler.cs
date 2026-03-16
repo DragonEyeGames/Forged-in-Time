@@ -172,17 +172,33 @@ public partial class TestHandler : Node2D
 	
 	public override void _Input(InputEvent @event)
 	{
-		if(player1 && 0==@event.Device){
-			if(@event.IsActionPressed("Select") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
-				initializePlace=true;
-				//GetViewport().SetInputAsHandled();
+		if(!GameManager.keyboard){
+			if(player1 && 0==@event.Device){
+				if(@event.IsActionPressed("Select") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
+					initializePlace=true;
+					//GetViewport().SetInputAsHandled();
+				}
+			} else if(!player1 && 1==@event.Device){
+				if(@event.IsActionPressed("Select") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
+					initializePlace=true;
+					//GetViewport().SetInputAsHandled();
+				}
 			}
-		} else if(!player1 && 1==@event.Device){
-			if(@event.IsActionPressed("Select") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
-				initializePlace=true;
-				//GetViewport().SetInputAsHandled();
+		} else if(GameManager.keyboard){
+			if(player1){
+				if(@event.IsActionPressed("Click-1") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
+					initializePlace=true;
+					//GetViewport().SetInputAsHandled();
+				}
+			} else if(!player1){
+				if(@event.IsActionPressed("Click-2") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
+					initializePlace=true;
+					//GetViewport().SetInputAsHandled();
+				}
 			}
 		}
+		
+		
 	}
 		
 }
