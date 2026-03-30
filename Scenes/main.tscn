@@ -92,6 +92,7 @@ position = Vector2(896, 353)
 texture = ExtResource("5_getpj")
 offset = Vector2(64, -1)
 script = ExtResource("6_ryguw")
+player1 = true
 target = NodePath("../Player-2")
 troop = ExtResource("5_lquwl")
 
@@ -455,3 +456,5 @@ shape = SubResource("CircleShape2D_3pmx8")
 [connection signal="bake_finished" from="TestPlacement/NavRegion" to="NavHandler" method="TestFinished"]
 [connection signal="area_entered" from="Player1Cursor/P1Area" to="Player1Cursor" method="OnP1Entered"]
 [connection signal="area_exited" from="Player1Cursor/P1Area" to="Player1Cursor" method="OnP1Exited"]
+[connection signal="area_entered" from="Player2Cursor/P2Area" to="Player2Cursor" method="OnP2Entered"]
+[connection signal="area_exited" from="Player2Cursor/P2Area" to="Player2Cursor" method="OnP2Exited"]

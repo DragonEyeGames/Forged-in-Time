@@ -7,7 +7,7 @@ public partial class Damage_Tower_Info : ColorRect
 	private RichTextLabel sellLabel;
 	private RichTextLabel killsLabel;
 	private RichTextLabel towerName;
-	
+	[Export] public GameManager.Towers towerType;
 	
 	public override void _Ready(){
 		//Sell Label

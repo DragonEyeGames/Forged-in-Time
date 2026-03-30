@@ -58,5 +58,9 @@ shape = SubResource("CapsuleShape2D_wgsla")
 
 [node name="NonDamageToweInfo" parent="." instance=ExtResource("3_wgsla")]
 visible = false
-position = Vector2(-6, -29)
+offset_left = -6.0
+offset_top = -29.0
+offset_right = -6.0
+offset_bottom = -29.0
 scale = Vector2(0.12, 0.12)
+towerType = 3

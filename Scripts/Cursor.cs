@@ -57,9 +57,8 @@ public partial class Cursor : Sprite2D
 		Position=position;
 		
 		if(tower!=null && Input.IsActionJustPressed("Click2")){
-			tower.GetNode<Node2D>("NonDamageToweInfo").Visible = true;
+			tower.GetNode<ColorRect>("NonDamageToweInfo").Visible = true;
 		}
-		
 	}
 		
 		private void OnP1Entered(Node2D P1Ent){
@@ -71,7 +70,11 @@ public partial class Cursor : Sprite2D
 		}
 		
 		private void OnP2Entered(Node2D P2Ent){
+			tower=P2Ent.GetParent() as Node2D;
+		}
 		
+		private void OnP2Exited(Node2D P2Exit){
+			tower=null;
 		}
 	
 	}
