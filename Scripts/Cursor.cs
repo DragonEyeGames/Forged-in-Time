@@ -15,14 +15,12 @@ public partial class Cursor : Sprite2D
 		if(!player1){
 			Player2Manager.cursor=this;
 		}
-		screenCounterpart.player1=player1;
+ 		screenCounterpart.player1=player1;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
-		screenCounterpart.GlobalPosition=screenPos;
 		if(player1){
 		//	Visible=!Player1Manager.hudOpen;
 		}
@@ -55,24 +53,27 @@ public partial class Cursor : Sprite2D
 		if(Math.Abs(rightY)<.1f){
 			rightY=0;
 		}
-		rightX*=4;
-		rightY*=4;
+		rightX*=5;
+		rightY*=5;
 		Vector2 position = Position;
 		position.X+=rightX;
 		position.Y+=rightY;
 		if(position.X<7){
 			position.X=7;
 		}
-		if(position.Y<7){
-			position.Y=7;
+		if(position.Y<25){
+			position.Y=25;
 		}
-		if(position.X>1144){
-			position.X=1144;
+		if(position.X>1059){
+			position.X=1059;
 		}
-		if(position.Y>640){
-			position.Y=640;
+		if(position.Y>611){
+			position.Y=611;
 		}
 		Position=position;
+		
+		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
+		screenCounterpart.GlobalPosition=screenPos;
 		
 	}
 }

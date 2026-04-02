@@ -20,6 +20,11 @@ public partial class ScreenCursor : Sprite2D
 				selected.EmitSignal(Button.SignalName.Pressed);
 			}
 		}
+		else if(!player1){
+			if(selected!=null && Input.IsActionJustPressed("Click-2")){
+				selected.EmitSignal(Button.SignalName.Pressed);
+			}
+		}
 		
 	}
 	

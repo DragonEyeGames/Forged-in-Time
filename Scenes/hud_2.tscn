@@ -470,6 +470,14 @@ right = NodePath("../Button2")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
 
+[node name="Area2D" type="Area2D" parent="ColorRect/VBoxContainer/Turret/Button"]
+position = Vector2(78, 73)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/Turret/Button/Area2D"]
+polygon = PackedVector2Array(-73.5245, -64.255, -73.5245, -57.551, -63.4686, -53.0818, -52.2954, -53.0818, -42.2396, -58.6684, -42.2396, -64.255, -52.2954, -68.7242, -63.4686, -68.7242)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Turret"]
 libraries = {
 &"": SubResource("AnimationLibrary_g10ll")
@@ -648,6 +656,14 @@ down = NodePath("../../Watch Tower/Button")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
 
+[node name="Area2D" type="Area2D" parent="ColorRect/VBoxContainer/AOE/Button"]
+position = Vector2(78, 73)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/AOE/Button/Area2D"]
+polygon = PackedVector2Array(-73.5245, -64.255, -73.5245, -57.551, -63.4686, -53.0818, -52.2954, -53.0818, -42.2396, -58.6684, -42.2396, -64.255, -52.2954, -68.7242, -63.4686, -68.7242)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/AOE"]
 libraries = {
 &"": SubResource("AnimationLibrary_swdrl")
@@ -787,6 +803,14 @@ down = NodePath("../../Wall/Button")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
 
+[node name="Area2D" type="Area2D" parent="ColorRect/VBoxContainer/Watch Tower/Button"]
+position = Vector2(78, 73)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/Watch Tower/Button/Area2D"]
+polygon = PackedVector2Array(-73.5245, -64.255, -73.5245, -57.551, -63.4686, -53.0818, -52.2954, -53.0818, -42.2396, -58.6684, -42.2396, -64.255, -52.2954, -68.7242, -63.4686, -68.7242)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Watch Tower"]
 libraries = {
 &"": SubResource("AnimationLibrary_g10ll")
@@ -882,6 +906,14 @@ up = NodePath("../../Watch Tower/Button")
 down = NodePath("../../Basic/Button")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
+
+[node name="Area2D" type="Area2D" parent="ColorRect/VBoxContainer/Wall/Button"]
+position = Vector2(78, 73)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/Wall/Button/Area2D"]
+polygon = PackedVector2Array(-73.5245, -64.255, -73.5245, -57.551, -63.4686, -53.0818, -52.2954, -53.0818, -42.2396, -58.6684, -42.2396, -64.255, -52.2954, -68.7242, -63.4686, -68.7242)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Wall"]
 libraries = {
@@ -979,6 +1011,14 @@ down = NodePath("../../../../Button")
 hud = NodePath("../../../..")
 holder = NodePath("../../..")
 
+[node name="Area2D" type="Area2D" parent="ColorRect/VBoxContainer/Basic/Button"]
+position = Vector2(78, 73)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/Basic/Button/Area2D"]
+polygon = PackedVector2Array(-73.5245, -64.255, -73.5245, -57.551, -63.4686, -53.0818, -52.2954, -53.0818, -42.2396, -58.6684, -42.2396, -64.255, -52.2954, -68.7242, -63.4686, -68.7242)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Basic"]
 libraries = {
 &"": SubResource("AnimationLibrary_g10ll")
@@ -1030,7 +1070,6 @@ flat = true
 script = ExtResource("11_uoqjr")
 up = NodePath("../ColorRect/VBoxContainer/Basic/Button")
 down = NodePath("../ColorRect/VBoxContainer/Turret/Button")
-selected = true
 hud = NodePath("..")
 holder = NodePath("../ColorRect")
 exception = true
@@ -1048,6 +1087,14 @@ offset_right = 132.0
 offset_bottom = 14.0
 mouse_filter = 2
 color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Area2D" type="Area2D" parent="Button"]
+position = Vector2(78, 73)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Button/Area2D"]
+polygon = PackedVector2Array(-78, -73, -78, -59, 54, -59, 54, -73)
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
