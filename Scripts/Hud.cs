@@ -64,14 +64,14 @@ public partial class Hud : CanvasLayer
 		}
 	}
 	
-	public void purchaseTower(GameManager.Towers tower, NodePath buttonAnimator){
+	public void purchaseTower(GameManager.Towers tower, AnimationPlayer buttonAnimator){
 		timer.Start();
 		if(player1 && Player1Manager.money>=Prices.towerPrices[tower]){
 			if(Player1Manager.placing==false){
 				Player1Manager.toPlace=tower;
 				Player1Manager.money-=Prices.towerPrices[tower];
 				Player1Manager.placing=true;
-				GetNode<AnimationPlayer>(buttonAnimator).Play("wobble");
+				buttonAnimator.Play("wobble");
 				toggle();
 			}
 		} else if(!player1 && Player2Manager.money>=Prices.towerPrices[tower]){
@@ -79,7 +79,7 @@ public partial class Hud : CanvasLayer
 				Player2Manager.toPlace=tower;
 				Player2Manager.money-=Prices.towerPrices[tower];
 				Player2Manager.placing=true;
-				GetNode<AnimationPlayer>(buttonAnimator).Play("wobble");
+				buttonAnimator.Play("wobble");
 				toggle();
 			}
 		}
@@ -87,23 +87,23 @@ public partial class Hud : CanvasLayer
 	
 	public void turret(){
 		if(turretUpgrade==0){
-			purchaseTower(GameManager.Towers.Turret, "ColorRect/VBoxContainer/Turret/AnimationPlayer");
+			//purchaseTower(GameManager.Towers.Turret, "ColorRect/VBoxContainer/Turret/AnimationPlayer");
 		}
 		if(turretUpgrade==1){
-			purchaseTower(GameManager.Towers.Plasma_Turret, "ColorRect/VBoxContainer/Turret/AnimationPlayer");
+			//purchaseTower(GameManager.Towers.Plasma_Turret, "ColorRect/VBoxContainer/Turret/AnimationPlayer");
 		}
 	}
 	
 	public void tower(){
-		purchaseTower(GameManager.Towers.Watch_Tower, "ColorRect/VBoxContainer/Watch Tower/AnimationPlayer");
+		//purchaseTower(GameManager.Towers.Watch_Tower, "ColorRect/VBoxContainer/Watch Tower/AnimationPlayer");
 	}
 	
 	public void wall(){
-		purchaseTower(GameManager.Towers.Wall, "ColorRect/VBoxContainer/Wall/AnimationPlayer");
+		//purchaseTower(GameManager.Towers.Wall, "ColorRect/VBoxContainer/Wall/AnimationPlayer");
 	}
 	
 	public void spikes(){
-		purchaseTower(GameManager.Towers.Spikes, "ColorRect/VBoxContainer/AOE/AnimationPlayer");
+		//purchaseTower(GameManager.Towers.Spikes, "ColorRect/VBoxContainer/AOE/AnimationPlayer");
 	}
 	
 	//Troop Section

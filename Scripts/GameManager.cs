@@ -10,7 +10,10 @@ public partial class GameManager : Node
 		Wall,
 		Watch_Tower,
 		Spikes,
-		Melee
+		Melee,
+		Ranged,
+		Brute,
+		Healer
 	}
 	
 	public enum Upgrades{

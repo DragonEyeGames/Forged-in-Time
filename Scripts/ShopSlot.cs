@@ -4,6 +4,8 @@ using System;
 public partial class ShopSlot : Control
 {
 	private bool open=false;
+	int upgrade=0;
+	[Export] GameManager.Towers tower;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -21,6 +23,10 @@ public partial class ShopSlot : Control
 		} else {
 			GetNode<AnimationPlayer>("UpgradeSlider").Play("close");
 		}
+	}
+	
+	public void purchase(){
+		GetParent().GetParent().GetParent<Hud>().purchaseTower(tower, GetNode<AnimationPlayer>("AnimationPlayer"));
 	}
 	
 }
