@@ -17,19 +17,7 @@ public partial class Controller : Button
 	[Export] int upgrade = 0;
 	[Export] Controller upgradeButton;
 	// Called when the node enters the scene tree for the first time.
-	
-	public override void _Ready()
-	{
-		baseSize=Scale;
-		increasedSize=Scale*=new Vector2(1.1f, 1.1f);
-		if(selected){
-			Scale=increasedSize;
-			Modulate = Colors.White;
-		} else {
-			Scale=baseSize;
-			Modulate = Colors.Gray;
-		}
-	}
+	/*
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -97,15 +85,27 @@ public partial class Controller : Button
 			}
 		}
 	}
+	*/
+	
+	public override void _Ready()
+	{
+		baseSize=Scale;
+		increasedSize=Scale*=new Vector2(1.1f, 1.1f);
+		if(selected){
+			Scale=increasedSize;
+			Modulate = Colors.White;
+		} else {
+			Scale=baseSize;
+			Modulate = Colors.Gray;
+		}
+	}
 	
 	public void deselect(){
-		selected=false;
 		Scale=baseSize;
 		Modulate = Colors.Gray;
 	}
 	
 	public void select(){
-		selected=true;
 		Scale=increasedSize;
 		Modulate = Colors.White;
 	}
