@@ -4,7 +4,8 @@ using System;
 public partial class Troop : BaseTroop
 {
 
-	[Export]public override float Speed { get; set; } = 40.0f;
+	[Export] public override float Speed { get; set; } = 40.0f;
+	[Export] public override int healthLevel { get; set; } = 0;
 	[Export] public override int health { get; set; } = 5;
 	[Export] public override int maxHealth { get; set; } = 5;
 	[Export] public override int damage { get; set; } = 1;
@@ -17,6 +18,7 @@ public partial class Troop : BaseTroop
 
 	public override void _Ready()
 	{
+		health = maxHealth;
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
 		sprite = GetNode<AnimatedSprite2D>("Sprite");
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();

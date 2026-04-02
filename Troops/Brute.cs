@@ -4,6 +4,7 @@ using System;
 public partial class Brute : BaseTroop
 {
     [Export] public override float Speed { get; set; } = 20.0f;
+    [Export] public override int healthLevel { get; set; } = 0;
     [Export] public  override int health { get; set; } = 20;
     [Export] public override int maxHealth { get; set; } = 20;
     [Export] public override int damage { get; set; } = 2;
@@ -17,7 +18,7 @@ public partial class Brute : BaseTroop
 
     public override void _Ready()
     {
- 
+        health = maxHealth;
         navAgent = GetNode<NavigationAgent2D>("NavAgent");
         sprite = GetNode<AnimatedSprite2D>("Sprite");
         cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
