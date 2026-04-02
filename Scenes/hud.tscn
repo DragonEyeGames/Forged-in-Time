@@ -183,15 +183,14 @@ flat = true
 script = ExtResource("5_4f5kr")
 hud = NodePath("../..")
 
-[node name="Button" type="Button" parent="." node_paths=PackedStringArray("up", "down", "hud", "holder")]
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("hud", "holder")]
 offset_left = 1018.0
+offset_top = 634.0
 offset_right = 1150.0
-offset_bottom = 14.0
+offset_bottom = 648.0
 mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
-up = NodePath("")
-down = NodePath("")
 hud = NodePath("..")
 holder = NodePath("../ColorRect")
 exception = true

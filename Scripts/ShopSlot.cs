@@ -9,6 +9,7 @@ public partial class ShopSlot : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		GetNode<Sprite2D>("Base").Texture=GD.Load(Cosmetics.towerDisplays[tower]);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

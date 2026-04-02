@@ -188,6 +188,7 @@ mouse_filter = 2
 color = Color(0.78066, 0.704382, 0.474143, 1)
 
 [node name="Base" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(28.4, 29.4)
 scale = Vector2(2.925, 2.925)
 texture = ExtResource("2_sedux")
@@ -195,6 +196,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Turret" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(28.4, 29.4)
 scale = Vector2(2.925, 2.925)
 texture = ExtResource("2_sedux")
