@@ -188,7 +188,6 @@ mouse_filter = 2
 color = Color(0.78066, 0.704382, 0.474143, 1)
 
 [node name="Base" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(28.4, 29.4)
 scale = Vector2(2.925, 2.925)
 texture = ExtResource("2_sedux")
@@ -203,7 +202,7 @@ texture = ExtResource("2_sedux")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 
-[node name="Label" type="RichTextLabel" parent="."]
+[node name="Name" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 2.0
