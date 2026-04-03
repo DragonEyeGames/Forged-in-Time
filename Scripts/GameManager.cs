@@ -9,6 +9,7 @@ public partial class GameManager : Node
 		Plasma_Turret,
 		Wall,
 		Watch_Tower,
+		Spikes,
 		Melee
 	}
 	
@@ -19,4 +20,5 @@ public partial class GameManager : Node
 	public static Base player1Base;
 	public static Base player2Base;
 	public static bool player1=true;
+	public static bool keyboard=false;
 }
