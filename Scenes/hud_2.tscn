@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdhyr2rcfdx0l"]
+[gd_scene load_steps=12 format=3 uid="uid://bdhyr2rcfdx0l"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_v1w48"]
 [ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="2_uoqjr"]
+[ext_resource type="PackedScene" uid="uid://cayxysu631vpp" path="res://Scenes/shopSlot.tscn" id="3_fsxo6"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="6_2cn1p"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="11_uoqjr"]
 [ext_resource type="Texture2D" uid="uid://dnl8v8edmxtfn" path="res://Assets/01PixelCoinGold.png" id="12_qoig8"]
@@ -187,6 +188,30 @@ layout_mode = 0
 offset_right = 131.0
 offset_bottom = 648.0
 mouse_filter = 2
+
+[node name="Turret" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+layout_mode = 2
+player1 = false
+
+[node name="Turret2" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+layout_mode = 2
+tower = 2
+player1 = false
+
+[node name="Turret3" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+layout_mode = 2
+tower = 3
+player1 = false
+
+[node name="Turret4" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+layout_mode = 2
+tower = 4
+player1 = false
+
+[node name="Turret5" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+layout_mode = 2
+tower = 5
+player1 = false
 
 [node name="Close" type="Button" parent="ColorRect"]
 layout_mode = 0

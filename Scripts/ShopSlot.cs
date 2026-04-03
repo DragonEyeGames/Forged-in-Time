@@ -6,9 +6,15 @@ public partial class ShopSlot : Control
 	private bool open=false;
 	int upgrade=0;
 	[Export] GameManager.Towers tower;
+	[Export] public bool player1 = true;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if(player1){
+			GetNode<Button>("Player2Upgrade").QueueFree();
+		} else {
+			GetNode<Button>("Player1Upgrade").QueueFree();
+		};
 		GetNode<Sprite2D>("Base").Texture = (Texture2D)GD.Load(Cosmetics.towerDisplays[tower]);
 		GetNode<RichTextLabel>("Name").Text=Cosmetics.towerNames[tower].ToString();
 		GetNode<RichTextLabel>("Description").Text=Cosmetics.towerDescriptions[tower].ToString();
