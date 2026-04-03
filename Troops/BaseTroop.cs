@@ -4,9 +4,14 @@ using System;
 public abstract partial class BaseTroop : CharacterBody2D
 {
     public bool player1 = true;
-    [Export] public abstract float Speed {get; set;}
-    [Export] public abstract int health {get; set;}
-    [Export] public abstract int damage {get; set;}
+    public abstract float Speed {get; set;}
+    public abstract int health {get; set;}
+    public abstract int maxHealth {get; set;}
+    public abstract int damage {get; set;}
+    public abstract bool healer {get; set;}
+    public abstract int healthLevel  {get; set;}
+    public abstract int speedLevel  {get; set;}
+    public abstract int damageLevel  {get; set;}
     public bool attacking = false;
     public bool pathfinding = true;
 
