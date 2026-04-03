@@ -198,7 +198,7 @@ focus_mode = 0
 mouse_filter = 2
 flat = true
 
-[node name="Button" type="Button" parent="." node_paths=PackedStringArray("up", "down", "hud", "holder")]
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("hud", "holder")]
 offset_right = 132.0
 offset_bottom = 14.0
 pivot_offset = Vector2(65, 8)
@@ -206,8 +206,6 @@ focus_mode = 0
 mouse_filter = 2
 flat = true
 script = ExtResource("11_uoqjr")
-up = NodePath("")
-down = NodePath("")
 hud = NodePath("..")
 holder = NodePath("../ColorRect")
 exception = true

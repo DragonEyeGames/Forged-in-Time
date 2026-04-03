@@ -11,6 +11,7 @@ public partial class ShopSlot : Control
 	{
 		GetNode<Sprite2D>("Base").Texture = (Texture2D)GD.Load(Cosmetics.towerDisplays[tower]);
 		GetNode<RichTextLabel>("Name").Text=Cosmetics.towerNames[tower].ToString();
+		GetNode<RichTextLabel>("Description").Text=Cosmetics.towerDescriptions[tower].ToString();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

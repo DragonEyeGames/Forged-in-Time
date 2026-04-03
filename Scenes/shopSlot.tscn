@@ -215,7 +215,7 @@ text = "Basic Turret"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="RichTextLabel" parent="."]
+[node name="Description" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 22.0
