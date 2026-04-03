@@ -9,6 +9,7 @@ public partial class Base : Sprite2D
 	[Export] public Base target;
 	[Export] public int health=100;
 	[Export] public PackedScene troop;
+	[Export] public PackedScene brute;
 	[Export] public int maxTroops=15;
 	private bool releaseTime=false;
 	public enum Troops{
@@ -33,8 +34,16 @@ public partial class Base : Sprite2D
 	}
 
 	public void spawnTroop(Troops troopType){
+		GD.Print(troopType);
 		if(troopType==Troops.Melee){
-			Troop newTroop = troop.Instantiate() as Troop;
+			BaseTroop newTroop = troop.Instantiate() as BaseTroop;
+			GetParent().AddChild(newTroop);
+			newTroop.GlobalPosition=GlobalPosition;
+			newTroop.target=target;
+			newTroop.player1=player1;
+		}
+		if(troopType==Troops.Brute){
+			BaseTroop newTroop = brute.Instantiate() as BaseTroop;
 			GetParent().AddChild(newTroop);
 			newTroop.GlobalPosition=GlobalPosition;
 			newTroop.target=target;

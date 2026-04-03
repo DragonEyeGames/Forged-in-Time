@@ -108,16 +108,26 @@ public partial class Hud : CanvasLayer
 	
 	//Troop Section
 	
-	public void basicTroop(){
+	public void purchaseTroop(GameManager.Towers troop, AnimationPlayer buttonAnimator){
 		timer.Start();
-		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops && Player1Manager.money>=Prices.towerPrices[GameManager.Towers.Melee]){
-			GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
-			Player1Manager.money-=Prices.towerPrices[GameManager.Towers.Melee];
-			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
-		} else if(!player1 && GameManager.player2Base.reserveTroops.Count<GameManager.player2Base.maxTroops && Player2Manager.money>=Prices.towerPrices[GameManager.Towers.Melee]){
-			GameManager.player2Base.reserveTroops.Add(Base.Troops.Melee);
-			Player2Manager.money-=Prices.towerPrices[GameManager.Towers.Melee];
-			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
+		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops && Player1Manager.money>=Prices.towerPrices[troop]){
+			if(troop==GameManager.Towers.Melee){
+				GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
+			}
+			if(troop==GameManager.Towers.Brute){
+				GameManager.player1Base.reserveTroops.Add(Base.Troops.Brute);
+			}
+			Player1Manager.money-=Prices.towerPrices[troop];
+			buttonAnimator.Play("wobble");
+		} else if(!player1 && GameManager.player2Base.reserveTroops.Count<GameManager.player2Base.maxTroops && Player2Manager.money>=Prices.towerPrices[troop]){
+			if(troop==GameManager.Towers.Melee){
+				GameManager.player2Base.reserveTroops.Add(Base.Troops.Melee);
+			}
+			if(troop==GameManager.Towers.Brute){
+				GameManager.player2Base.reserveTroops.Add(Base.Troops.Brute);
+			}
+			Player2Manager.money-=Prices.towerPrices[troop];
+			buttonAnimator.Play("wobble");
 		}
 	}
 	

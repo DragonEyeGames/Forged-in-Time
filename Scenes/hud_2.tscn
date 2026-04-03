@@ -212,6 +212,7 @@ player1 = false
 layout_mode = 2
 tower = 5
 player1 = false
+troop = true
 
 [node name="Close" type="Button" parent="ColorRect"]
 layout_mode = 0

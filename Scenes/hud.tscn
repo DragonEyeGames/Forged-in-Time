@@ -172,6 +172,12 @@ tower = 4
 [node name="Turret5" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 5
+troop = true
+
+[node name="Turret6" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+layout_mode = 2
+tower = 7
+troop = true
 
 [node name="Close" type="Button" parent="ColorRect" node_paths=PackedStringArray("hud")]
 layout_mode = 0

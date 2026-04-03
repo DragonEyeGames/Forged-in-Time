@@ -12,7 +12,8 @@ public partial class Prices : Node
 		{ GameManager.Towers.Wall, 50 },
 		{ GameManager.Towers.Watch_Tower, 75 },
 		{ GameManager.Towers.Spikes, 50 },
-		{ GameManager.Towers.Melee, 25 }
+		{ GameManager.Towers.Melee, 25 },
+		{ GameManager.Towers.Brute, 50 }
 	};
 	
 	public static Dictionary<GameManager.Upgrades, int> upgradePrices = new Dictionary<GameManager.Upgrades, int>

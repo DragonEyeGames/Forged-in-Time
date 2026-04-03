@@ -7,6 +7,7 @@ public partial class ShopSlot : Control
 	int upgrade=0;
 	[Export] GameManager.Towers tower;
 	[Export] public bool player1 = true;
+	[Export] public bool troop = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -35,7 +36,12 @@ public partial class ShopSlot : Control
 	}
 	
 	public void purchase(){
-		GetParent().GetParent().GetParent<Hud>().purchaseTower(tower, GetNode<AnimationPlayer>("AnimationPlayer"));
+		if(troop==false){
+			GetParent().GetParent().GetParent<Hud>().purchaseTower(tower, GetNode<AnimationPlayer>("AnimationPlayer"));
+		}
+		else if(troop==true){
+			GetParent().GetParent().GetParent<Hud>().purchaseTroop(tower, GetNode<AnimationPlayer>("AnimationPlayer"));
+		};
 	}
 	
 }
