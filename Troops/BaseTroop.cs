@@ -10,6 +10,8 @@ public abstract partial class BaseTroop : CharacterBody2D
     public abstract int damage {get; set;}
     public abstract bool healer {get; set;}
     public abstract int healthLevel  {get; set;}
+    public abstract int speedLevel  {get; set;}
+    public abstract int damageLevel  {get; set;}
     public bool attacking = false;
     public bool pathfinding = true;
 
