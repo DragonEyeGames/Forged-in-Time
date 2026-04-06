@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=37 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c1d1jeujhaov2" path="res://Scenes/hud.tscn" id="9_4c57u"]
 [ext_resource type="Script" uid="uid://cus6gkq2ktt8e" path="res://Scripts/TestHandler.cs" id="9_d13ii"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="10_gt3je"]
+[ext_resource type="PackedScene" uid="uid://bxye5em56ls6c" path="res://Troops/ranged.tscn" id="10_ueoa1"]
 [ext_resource type="Script" uid="uid://dtffmvch4ihls" path="res://Scripts/BakeHandler.cs" id="10_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://uvioh4v0m0i8" path="res://Troops/brute.tscn" id="11_1w6v2"]
 [ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://Towers/Scenes/plasmaTurret.tscn" id="12_vivmo"]
@@ -98,6 +99,8 @@ player1 = true
 target = NodePath("../Player-2")
 troop = ExtResource("5_lquwl")
 brute = ExtResource("11_1w6v2")
+ranged = ExtResource("10_ueoa1")
+healer = ExtResource("10_ueoa1")
 
 [node name="Territory" type="Area2D" parent="Player-1"]
 collision_layer = 8
@@ -252,6 +255,8 @@ script = ExtResource("6_ryguw")
 target = NodePath("../Player-1")
 troop = ExtResource("5_lquwl")
 brute = ExtResource("11_1w6v2")
+ranged = ExtResource("10_ueoa1")
+healer = ExtResource("10_ueoa1")
 
 [node name="Territory" type="Area2D" parent="Player-2"]
 position = Vector2(-129, 1)

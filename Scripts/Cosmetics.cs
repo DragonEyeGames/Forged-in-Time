@@ -12,7 +12,9 @@ public partial class Cosmetics : Node
 		{ GameManager.Towers.Watch_Tower, "res://Towers/Assets/Watch Tower.png" },
 		{ GameManager.Towers.Spikes, "res://Towers/Spikes.png" },
 		{ GameManager.Towers.Melee, "res://Towers/Assets/WallTower.png" },
-		{ GameManager.Towers.Brute, "res://Towers/Assets/WallTower.png" }
+		{ GameManager.Towers.Brute, "res://Towers/Assets/WallTower.png" },
+		{ GameManager.Towers.Ranged, "res://Towers/Assets/WallTower.png" },
+		{ GameManager.Towers.Healer, "res://Towers/Assets/WallTower.png" }
 	};
 	
 	public static Dictionary<GameManager.Towers, String> towerNames = new Dictionary<GameManager.Towers, String>
@@ -23,7 +25,9 @@ public partial class Cosmetics : Node
 		{ GameManager.Towers.Watch_Tower, "Watch Tower" },
 		{ GameManager.Towers.Spikes, "Spikes" },
 		{ GameManager.Towers.Melee, "Melee Troop" },
-		{ GameManager.Towers.Brute, "Brute" }
+		{ GameManager.Towers.Ranged, "Ranged Troop" },
+		{ GameManager.Towers.Brute, "Brute" },
+		{ GameManager.Towers.Healer, "Healer" }
 	};
 	
 	public static Dictionary<GameManager.Towers, String> towerDescriptions = new Dictionary<GameManager.Towers, String>
@@ -34,6 +38,8 @@ public partial class Cosmetics : Node
 		{ GameManager.Towers.Watch_Tower, "Quickly takes over lots of land." },
 		{ GameManager.Towers.Spikes, "A 2x2 grid that spawn in spikes to hit enemies." },
 		{ GameManager.Towers.Melee, "A troop that attacks with a sword. Stab" },
-		{ GameManager.Towers.Brute, "A buff guy. Strong" }
+		{ GameManager.Towers.Ranged, "A troop that can attack from a distance." },
+		{ GameManager.Towers.Brute, "A buff guy. Strong" },
+		{ GameManager.Towers.Healer, "A healer. Heals things." }
 	};
 }

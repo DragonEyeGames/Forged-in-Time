@@ -10,6 +10,8 @@ public partial class Base : Sprite2D
 	[Export] public int health=100;
 	[Export] public PackedScene troop;
 	[Export] public PackedScene brute;
+	[Export] public PackedScene ranged;
+	[Export] public PackedScene healer;
 	[Export] public int maxTroops=15;
 	private bool releaseTime=false;
 	public enum Troops{
@@ -35,21 +37,23 @@ public partial class Base : Sprite2D
 
 	public void spawnTroop(Troops troopType){
 		GD.Print(troopType);
+		BaseTroop newTroop = troop.Instantiate() as BaseTroop;
 		if(troopType==Troops.Melee){
-			BaseTroop newTroop = troop.Instantiate() as BaseTroop;
-			GetParent().AddChild(newTroop);
-			newTroop.GlobalPosition=GlobalPosition;
-			newTroop.target=target;
-			newTroop.player1=player1;
+			newTroop = troop.Instantiate() as BaseTroop;
 		}
 		if(troopType==Troops.Brute){
-			BaseTroop newTroop = brute.Instantiate() as BaseTroop;
-			GetParent().AddChild(newTroop);
-			newTroop.GlobalPosition=GlobalPosition;
-			newTroop.target=target;
-			newTroop.player1=player1;
+			newTroop = brute.Instantiate() as BaseTroop;
 		}
-		
+		if(troopType==Troops.Brute){
+			newTroop = brute.Instantiate() as BaseTroop;
+		}
+		if(troopType==Troops.Brute){
+			newTroop = brute.Instantiate() as BaseTroop;
+		}
+		GetParent().AddChild(newTroop);
+		newTroop.GlobalPosition=GlobalPosition;
+		newTroop.target=target;
+		newTroop.player1=player1;
 	}
 	
 	public override void _Process(double delta){
