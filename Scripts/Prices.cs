@@ -11,6 +11,7 @@ public partial class Prices : Node
 		{ GameManager.Towers.Plasma_Turret, 100 },
 		{ GameManager.Towers.Wall, 50 },
 		{GameManager.Towers.Watch_Tower, 75},
+		{GameManager.Towers.Spikes, 50},
 		{GameManager.Towers.Melee, 25}
 	};
 	
