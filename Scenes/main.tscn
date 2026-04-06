@@ -417,12 +417,14 @@ plasmaTurret = ExtResource("12_vivmo")
 tower = ExtResource("12_w48qg")
 wall = ExtResource("14_yaehf")
 
-[node name="HUD" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("9_4c57u")]
+[node name="HUD" parent="." node_paths=PackedStringArray("baseButton", "playerBase") instance=ExtResource("9_4c57u")]
 turretUpgradeSprite = ExtResource("17_0odxb")
 baseButton = NodePath("../Player-1/Detection")
+playerBase = NodePath("../Player-1")
 
-[node name="HUD2" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("18_b3802")]
+[node name="HUD2" parent="." node_paths=PackedStringArray("baseButton", "playerBase") instance=ExtResource("18_b3802")]
 baseButton = NodePath("../Player-2/Detection")
+playerBase = NodePath("../Player-2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(534, 318)

@@ -16,7 +16,7 @@ public partial class Cursor : Sprite2D
 		if(!player1){
 			Player2Manager.cursor=this;
 		}
- 		screenCounterpart.player1=player1;
+ 		//screenCounterpart.player1=player1;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
