@@ -15,7 +15,6 @@ public partial class Hud : CanvasLayer
 	[Export] Timer inputCooldown;
 	[Export] Controller baseButton;
 	private Controller openButton;
-	[Export] Base playerBase;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -45,7 +44,6 @@ public partial class Hud : CanvasLayer
 		if(!player1){
 			GetNode<RichTextLabel>("ColorRect2/Money/Money").Text=Player2Manager.money.ToString();
 		}
-		GetNode<RichTextLabel>("ColorRect2/Health/RichTextLabel").Text=playerBase.health.ToString();
 	}
 	
 	public void toggle(){
@@ -100,10 +98,6 @@ public partial class Hud : CanvasLayer
 	
 	public void wall(){
 		purchaseTower(GameManager.Towers.Wall, "ColorRect/VBoxContainer/Wall/AnimationPlayer");
-	}
-	
-	public void spikes(){
-		purchaseTower(GameManager.Towers.Spikes, "ColorRect/VBoxContainer/AOE/AnimationPlayer");
 	}
 	
 	//Troop Section

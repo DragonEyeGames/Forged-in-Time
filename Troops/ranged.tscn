@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxye5em56ls6c"]
+[gd_scene load_steps=22 format=3 uid="uid://b1p8ibsvnw8p2"]
 
-[ext_resource type="Script" uid="uid://c4f10g1r2q511" path="res://Troops/Ranged.cs" id="1_6my5x"]
+[ext_resource type="Script" uid="uid://btdsuqyloqvr7" path="res://Troops/Ranged.cs" id="1_6my5x"]
 [ext_resource type="Texture2D" uid="uid://dbvc0o64ox1vc" path="res://Assets/icon.svg" id="1_a70jy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6my5x"]

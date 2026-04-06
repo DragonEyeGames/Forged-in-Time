@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://uvioh4v0m0i8"]
+[gd_scene load_steps=11 format=3 uid="uid://bdww4d63n6hs0"]
 
-[ext_resource type="Script" uid="uid://vxk4u0wcpa0d" path="res://Troops/Brute.cs" id="1_7uflk"]
+[ext_resource type="Script" uid="uid://cg8af4sjk7ef0" path="res://Troops/Brute.cs" id="1_7uflk"]
 [ext_resource type="Texture2D" uid="uid://dnl8v8edmxtfn" path="res://Assets/01PixelCoinGold.png" id="2_5cl51"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwgpm"]

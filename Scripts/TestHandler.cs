@@ -12,13 +12,11 @@ public partial class TestHandler : Node2D
 	private Tower selectedTower = null;
 	[Export] public bool player1=false;
 	[Export] public PackedScene polygon;
-	[Export] public PackedScene bigPolygon;
 	[Export] public TestValid tester;
 	[Export] public PackedScene turret;
 	[Export] public PackedScene plasmaTurret;
 	[Export] public PackedScene tower;
 	[Export] public PackedScene wall;
-	[Export] public PackedScene spikes;
 	private int baking = 0;
 	private bool initializePlace=false;
 	
@@ -47,10 +45,7 @@ public partial class TestHandler : Node2D
 			initializePlace=false;
 			if(Player1Manager.validPlacement && tester.isValid() && Player1Manager.placing){
 				Player1Manager.placing=false;
-				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;;
-				if(Player1Manager.toPlace==GameManager.Towers.Spikes){
-					selectedPolygon2 = bigPolygon.Instantiate() as Polygon2D;
-				}
+				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
 				navRegion.AddChild(selectedPolygon2);
 				selectedPolygon2.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
 				selectedPolygon=null;
@@ -62,11 +57,7 @@ public partial class TestHandler : Node2D
 			initializePlace=false;
 			if(Player2Manager.validPlacement && tester.isValid() && Player2Manager.placing){
 				Player2Manager.placing=false;
-				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;;
-				if(Player2Manager.toPlace==GameManager.Towers.Spikes){
-					selectedPolygon2 = bigPolygon.Instantiate() as Polygon2D;
-				}
-				
+				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;
 				navRegion.AddChild(selectedPolygon2);
 				selectedPolygon2.GlobalPosition=SnapToTopLeft(Player2Manager.cursor.GlobalPosition);
 				selectedPolygon=null;
@@ -75,17 +66,11 @@ public partial class TestHandler : Node2D
 				return;
 			}
 		}
+		if(selectedPolygon==null) {
+			selectedPolygon = polygon.Instantiate() as Polygon2D;
+			testRegion.AddChild(selectedPolygon);
+		}
 		if(selectedTower==null && player1){
-			if(Player1Manager.toPlace==GameManager.Towers.Spikes){
-				selectedTower=spikes.Instantiate() as Tower;
-				GetParent().AddChild(selectedTower);
-				selectedPolygon = bigPolygon.Instantiate() as Polygon2D;
-				testRegion.AddChild(selectedPolygon);
-			}
-			if(selectedPolygon==null) {
-				selectedPolygon = polygon.Instantiate() as Polygon2D;
-				testRegion.AddChild(selectedPolygon);
-			}
 			if(Player1Manager.toPlace==GameManager.Towers.Turret){
 				selectedTower=turret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
@@ -103,16 +88,6 @@ public partial class TestHandler : Node2D
 				GetParent().AddChild(selectedTower);
 			}
 		} else if(selectedTower==null && !player1){
-			if(Player2Manager.toPlace==GameManager.Towers.Spikes){
-				selectedTower=spikes.Instantiate() as Tower;
-				GetParent().AddChild(selectedTower);
-				selectedPolygon = bigPolygon.Instantiate() as Polygon2D;
-				testRegion.AddChild(selectedPolygon);
-			}
-			if(selectedPolygon==null) {
-				selectedPolygon = polygon.Instantiate() as Polygon2D;
-				testRegion.AddChild(selectedPolygon);
-			}
 			if(Player2Manager.toPlace==GameManager.Towers.Turret){
 				selectedTower=turret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
@@ -172,33 +147,17 @@ public partial class TestHandler : Node2D
 	
 	public override void _Input(InputEvent @event)
 	{
-		if(!GameManager.keyboard){
-			if(player1 && 0==@event.Device){
-				if(@event.IsActionPressed("Select") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
-					initializePlace=true;
-					//GetViewport().SetInputAsHandled();
-				}
-			} else if(!player1 && 1==@event.Device){
-				if(@event.IsActionPressed("Select") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
-					initializePlace=true;
-					//GetViewport().SetInputAsHandled();
-				}
+		if(player1 && 0==@event.Device){
+			if(@event.IsActionPressed("Select") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
+				initializePlace=true;
+				//GetViewport().SetInputAsHandled();
 			}
-		} else if(GameManager.keyboard){
-			if(player1){
-				if(@event.IsActionPressed("Click-1") && tester.isValid() && Player1Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player1Manager.cursor.GlobalPosition), 0)){
-					initializePlace=true;
-					//GetViewport().SetInputAsHandled();
-				}
-			} else if(!player1){
-				if(@event.IsActionPressed("Click-2") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
-					initializePlace=true;
-					//GetViewport().SetInputAsHandled();
-				}
+		} else if(!player1 && 1==@event.Device){
+			if(@event.IsActionPressed("Select") && tester.isValid() && Player2Manager.placing && !initializePlace && GetNode<TerritoryChecker>("../../Territory").IsTerritory(SnapToTopLeft(Player2Manager.cursor.GlobalPosition), 1)){
+				initializePlace=true;
+				//GetViewport().SetInputAsHandled();
 			}
 		}
-		
-		
 	}
 		
 }
