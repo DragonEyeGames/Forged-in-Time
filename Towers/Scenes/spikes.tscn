@@ -1,8 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://lweq3a258rm7"]
 
-[ext_resource type="Script" uid="uid://hcpj7oea28af" path="res://Towers/AoeTower.cs" id="1_4jy7w"]
+[ext_resource type="Script" uid="uid://hcpj7oea28af" path="res://Towers/Scripts/AoeTower.cs" id="1_4jy7w"]
 [ext_resource type="Texture2D" uid="uid://dfnt4idxegp1e" path="res://Assets/pixilart-sprite.png" id="2_4jy7w"]
-[ext_resource type="Texture2D" uid="uid://bubeigjyjsgxc" path="res://Towers/Spikes.png" id="3_ynvcy"]
+[ext_resource type="Texture2D" uid="uid://bubeigjyjsgxc" path="res://Towers/Assets/Spikes.png" id="3_ynvcy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynvcy"]
 atlas = ExtResource("2_4jy7w")

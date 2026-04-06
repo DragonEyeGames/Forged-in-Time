@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://6k4dw6rt7prx"]
+[gd_scene load_steps=2 format=3 uid="uid://di6x05qpmji8q"]
 
-[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://icon.svg" id="1_mtyf4"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rvu7i"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_mtyf4")
+texture = SubResource("CompressedTexture2D_rvu7i")
 
 [node name="Node2D" type="Node2D" parent="."]

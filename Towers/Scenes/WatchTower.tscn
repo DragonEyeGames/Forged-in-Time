@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2cnqo6uqcarb" path="res://Towers/Scripts/StaticTower.cs" id="1_vedim"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="2_vedim"]
-[ext_resource type="PackedScene" uid="uid://dh1iwl2y35go1" path="res://Towers/NonDamage Tower Info.tscn" id="3_wgsla"]
+[ext_resource type="PackedScene" uid="uid://dh1iwl2y35go1" path="res://Towers/Popups/NonDamage Tower Info.tscn" id="3_wgsla"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tjdg3"]
 radius = 98.0051

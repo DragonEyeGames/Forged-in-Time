@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="6_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="7_4f5kr"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="8_piegi"]
-[ext_resource type="Texture2D" uid="uid://bubeigjyjsgxc" path="res://Towers/Spikes.png" id="9_1a2va"]
+[ext_resource type="Texture2D" uid="uid://bubeigjyjsgxc" path="res://Towers/Assets/Spikes.png" id="9_1a2va"]
 [ext_resource type="Texture2D" uid="uid://cpu1prpqefjps" path="res://Towers/Assets/WallTower.png" id="9_g10ll"]
 [ext_resource type="Texture2D" uid="uid://dnjxqds0em6gw" path="res://Assets/Armored Orc/Armored Orc_Idle.png" id="10_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://dnl8v8edmxtfn" path="res://Assets/01PixelCoinGold.png" id="12_i2avg"]

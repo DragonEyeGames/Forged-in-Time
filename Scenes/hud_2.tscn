@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="6_2cn1p"]
 [ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="7_avu3l"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="8_swdrl"]
-[ext_resource type="Texture2D" uid="uid://bubeigjyjsgxc" path="res://Towers/Spikes.png" id="9_ms25i"]
+[ext_resource type="Texture2D" uid="uid://bubeigjyjsgxc" path="res://Towers/Assets/Spikes.png" id="9_ms25i"]
 [ext_resource type="Texture2D" uid="uid://cpu1prpqefjps" path="res://Towers/Assets/WallTower.png" id="9_rt21g"]
 [ext_resource type="Texture2D" uid="uid://dnjxqds0em6gw" path="res://Assets/Armored Orc/Armored Orc_Idle.png" id="10_g3cp4"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="11_uoqjr"]

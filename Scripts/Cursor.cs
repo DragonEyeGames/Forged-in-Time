@@ -16,7 +16,7 @@ public partial class Cursor : Sprite2D
 		if(!player1){
 			Player2Manager.cursor=this;
 		}
- 		//screenCounterpart.player1=player1;
+ 		screenCounterpart.player1=player1;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -76,6 +76,9 @@ public partial class Cursor : Sprite2D
 		if(tower!=null && Input.IsActionJustPressed("Click2")){
 			tower.GetNode<ColorRect>("NonDamageToweInfo").Visible = true;
 		}
+		
+		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
+		screenCounterpart.GlobalPosition=screenPos;
 	}
 		
 		private void OnP1Entered(Node2D P1Ent){
@@ -94,7 +97,6 @@ public partial class Cursor : Sprite2D
 			tower=null;
 		}
 	
-//		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
-		//screenCounterpart.GlobalPosition=screenPos;
+		
 		
 	}
