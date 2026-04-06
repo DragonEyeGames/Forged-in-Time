@@ -17,15 +17,14 @@
 [ext_resource type="Script" uid="uid://dtffmvch4ihls" path="res://Scripts/BakeHandler.cs" id="10_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://Towers/Scenes/plasmaTurret.tscn" id="12_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dtmcn270epgmd" path="res://Towers/Scenes/WatchTower.tscn" id="12_w48qg"]
-[ext_resource type="PackedScene" path="res://Scenes/BigPoly.tscn" id="14_u50mg"]
 [ext_resource type="PackedScene" uid="uid://bvym8b7sd7gh6" path="res://Towers/Scenes/wall.tscn" id="14_yaehf"]
 [ext_resource type="Script" uid="uid://du7vlxgrfc0ns" path="res://Scripts/TestValid.cs" id="15_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="17_0odxb"]
 [ext_resource type="PackedScene" uid="uid://bdhyr2rcfdx0l" path="res://Scenes/hud_2.tscn" id="18_b3802"]
 [ext_resource type="Texture2D" uid="uid://dkgrnn8xbc61t" path="res://Assets/Cursor.png" id="21_pdsj5"]
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_ee4r6"]
-[ext_resource type="PackedScene" path="res://Towers/aoe_tower.tscn" id="24_3pmx8"]
-[ext_resource type="Script" path="res://Scenes/ScreenCursor.cs" id="25_u50mg"]
+[ext_resource type="Script" uid="uid://hhncf58ocdwm" path="res://Scenes/ScreenCursor.cs" id="25_u50mg"]
+[ext_resource type="PackedScene" uid="uid://dcs7g671onmkq" path="res://Scenes/Pause.tscn" id="27_1w6v2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_yaehf")
@@ -68,7 +67,6 @@ radius = 17.1429
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_fevyy")
-keyboard = true
 
 [node name="Layer" type="TileMapLayer" parent="."]
 visible = false
@@ -404,33 +402,27 @@ script = ExtResource("10_wsu2k")
 script = ExtResource("9_d13ii")
 player1 = true
 polygon = ExtResource("7_5vw27")
-bigPolygon = ExtResource("14_u50mg")
 tester = NodePath("../../TestPlacement/Player")
 turret = ExtResource("6_kek77")
 plasmaTurret = ExtResource("12_vivmo")
 tower = ExtResource("12_w48qg")
 wall = ExtResource("14_yaehf")
-spikes = ExtResource("24_3pmx8")
 
 [node name="Player2" type="Node2D" parent="NavHandler" node_paths=PackedStringArray("tester")]
 script = ExtResource("9_d13ii")
 polygon = ExtResource("7_5vw27")
-bigPolygon = ExtResource("14_u50mg")
 tester = NodePath("../../TestPlacement/Player")
 turret = ExtResource("6_kek77")
 plasmaTurret = ExtResource("12_vivmo")
 tower = ExtResource("12_w48qg")
 wall = ExtResource("14_yaehf")
-spikes = ExtResource("24_3pmx8")
 
-[node name="HUD" parent="." node_paths=PackedStringArray("baseButton", "playerBase") instance=ExtResource("9_4c57u")]
+[node name="HUD" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("9_4c57u")]
 turretUpgradeSprite = ExtResource("17_0odxb")
 baseButton = NodePath("../Player-1/Detection")
-playerBase = NodePath("../Player-1")
 
-[node name="HUD2" parent="." node_paths=PackedStringArray("baseButton", "playerBase") instance=ExtResource("18_b3802")]
+[node name="HUD2" parent="." node_paths=PackedStringArray("baseButton") instance=ExtResource("18_b3802")]
 baseButton = NodePath("../Player-2/Detection")
-playerBase = NodePath("../Player-2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(534, 318)
@@ -467,14 +459,13 @@ position = Vector2(1, 0)
 navigation_polygon = SubResource("NavigationPolygon_5vw27")
 use_edge_connections = false
 
-[node name="Player1Cursor" type="Sprite2D" parent="." node_paths=PackedStringArray("screenCounterpart")]
+[node name="Player1Cursor" type="Sprite2D" parent="."]
 modulate = Color(0.286275, 0.435294, 1, 0.662745)
 z_index = 5
 position = Vector2(839, 353)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
-screenCounterpart = NodePath("../Screen/Player1Cursor")
 
 [node name="P1Area" type="Area2D" parent="Player1Cursor"]
 collision_layer = 0
@@ -492,7 +483,6 @@ texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
 player1 = false
 ID = 1
-screenCounterpart = NodePath("../Screen/Player2Cursor")
 
 [node name="Screen" type="CanvasLayer" parent="."]
 

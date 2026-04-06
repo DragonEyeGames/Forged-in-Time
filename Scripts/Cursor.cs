@@ -6,6 +6,7 @@ public partial class Cursor : Sprite2D
 	[Export] public bool player1=true;
 	[Export] public int ID = 0;
 	[Export] public ScreenCursor screenCounterpart;
+	Node2D tower;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -93,7 +94,7 @@ public partial class Cursor : Sprite2D
 			tower=null;
 		}
 	
-		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
-		screenCounterpart.GlobalPosition=screenPos;
+//		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
+		//screenCounterpart.GlobalPosition=screenPos;
 		
 	}
