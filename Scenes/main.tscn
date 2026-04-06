@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=37 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bdww4d63n6hs0" path="res://Troops/brute.tscn" id="24_3pmx8"]
 [ext_resource type="PackedScene" uid="uid://b1p8ibsvnw8p2" path="res://Troops/ranged.tscn" id="25_u50mg"]
 [ext_resource type="PackedScene" uid="uid://bq6isds7mf1bb" path="res://Troops/healer.tscn" id="26_cbgmd"]
+[ext_resource type="PackedScene" uid="uid://dcs7g671onmkq" path="res://Scenes/Pause.tscn" id="27_1w6v2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_yaehf")
@@ -450,13 +451,13 @@ collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Cursor/P2Area"]
 shape = SubResource("CircleShape2D_3pmx8")
+
 [node name="Brute" parent="." node_paths=PackedStringArray("target") instance=ExtResource("24_3pmx8")]
 position = Vector2(791, 368)
 target = NodePath("../Player-2")
 
-[node name="Troop" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_lquwl")]
+[node name="Troop" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(821, 390)
-target = NodePath("../Player-2")
 
 [node name="ranged" parent="." node_paths=PackedStringArray("target") instance=ExtResource("25_u50mg")]
 position = Vector2(808, 348)
@@ -465,6 +466,8 @@ target = NodePath("../Player-2")
 [node name="healer" parent="." node_paths=PackedStringArray("target") instance=ExtResource("26_cbgmd")]
 position = Vector2(743, 368)
 target = NodePath("../Player-2")
+
+[node name="pause" parent="." instance=ExtResource("27_1w6v2")]
 
 [connection signal="pressed" from="Player-1/HUD2/Storage/Release" to="Player-1" method="release"]
 [connection signal="pressed" from="Player-1/Detection" to="Player-1" method="toggle"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcs7g671onmkq"]
+
+[ext_resource type="Script" uid="uid://8nghgm4fysl2" path="res://Pause.cs" id="1_v2lfg"]
+
+[node name="pause" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_v2lfg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 704.0
+offset_bottom = 584.0
+color = Color(100, 0.615, 0.04, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 384.0
+offset_top = 64.0
+offset_right = -448.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="resume" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Resume"
+
+[node name="options" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Options"
+
+[node name="exit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Leave"
+
+[connection signal="pressed" from="VBoxContainer/resume" to="." method="OnResumePressed"]
+[connection signal="pressed" from="VBoxContainer/options" to="." method="OnOptionsPressed"]
+[connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]
