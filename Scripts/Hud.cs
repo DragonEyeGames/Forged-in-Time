@@ -48,6 +48,17 @@ public partial class Hud : CanvasLayer
 		GetNode<RichTextLabel>("ColorRect2/Health/RichTextLabel").Text=playerBase.health.ToString();
 	}
 	
+	public void closedPressed(){
+		toggle();
+		if(player1){
+			GameManager.player1HUDOpen=open;
+		};
+		if(!player1){
+			GameManager.player2HUDOpen=open;
+		};
+		GD.Print(open);
+	}
+	
 	public void toggle(){
 		open=!open;
 		if(open){

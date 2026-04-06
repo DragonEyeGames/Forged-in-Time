@@ -242,11 +242,18 @@ flat = true
 script = ExtResource("4_ly0j0")
 left = NodePath("../Player1Upgrade")
 
-[node name="Area2D" type="Area2D" parent="Button"]
+[node name="Player1" type="Area2D" parent="Button"]
 collision_layer = 64
 collision_mask = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Button/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Button/Player1"]
+polygon = PackedVector2Array(35.7605, 8.74504, 25.7046, 4.27577, 14.5315, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 13.4141, 18.8009, 25.7046, 18.8009, 35.7605, 15.449)
+
+[node name="Player2" type="Area2D" parent="Button"]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Button/Player2"]
 polygon = PackedVector2Array(35.7605, 8.74504, 25.7046, 4.27577, 14.5315, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 13.4141, 18.8009, 25.7046, 18.8009, 35.7605, 15.449)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

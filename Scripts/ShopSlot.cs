@@ -13,8 +13,10 @@ public partial class ShopSlot : Control
 	{
 		if(player1){
 			GetNode<Button>("Player2Upgrade").QueueFree();
+			GetNode<Area2D>("Button/Player2").QueueFree();
 		} else {
 			GetNode<Button>("Player1Upgrade").QueueFree();
+			GetNode<Area2D>("Button/Player1").QueueFree();
 		};
 		GetNode<Sprite2D>("Base").Texture = (Texture2D)GD.Load(Cosmetics.towerDisplays[tower]);
 		GetNode<RichTextLabel>("Name").Text=Cosmetics.towerNames[tower].ToString();

@@ -321,5 +321,5 @@ region_enabled = true
 region_rect = Rect2(0, 34.009, 16, 12.9607)
 
 [connection signal="pressed" from="ColorRect/Close" to="." method="toggle"]
-[connection signal="pressed" from="Button" to="." method="toggle"]
+[connection signal="pressed" from="Button" to="." method="closedPressed"]
 [connection signal="timeout" from="InputCooldown" to="." method="inputCool"]
