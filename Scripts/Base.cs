@@ -67,6 +67,14 @@ public partial class Base : Sprite2D
 			releasing=false;
 		}
 		GetNode<RichTextLabel>("HUD2/Storage/Troops").Text=reserveTroops.Count.ToString() + "/" + maxTroops.ToString() + " Troops";
+		if(player1 && GameManager.player1HUDOpen!=GetNode<CollisionPolygon2D>("Detection/Area2D/CollisionPolygon2D").Disabled){
+			GetNode<CollisionPolygon2D>("Detection/Area2D/CollisionPolygon2D").SetDeferred("disabled", GameManager.player1HUDOpen);
+			GetNode<CollisionPolygon2D>("HUD2/Storage/Release/Area2D/CollisionPolygon2D").SetDeferred("disabled", GameManager.player1HUDOpen);
+		}
+		if(!player1 && GameManager.player2HUDOpen!=GetNode<CollisionPolygon2D>("Detection/Area2D/CollisionPolygon2D").Disabled){
+			GetNode<CollisionPolygon2D>("Detection/Area2D/CollisionPolygon2D").SetDeferred("disabled", GameManager.player2HUDOpen);
+			GetNode<CollisionPolygon2D>("HUD2/Storage/Release/Area2D/CollisionPolygon2D").SetDeferred("disabled", GameManager.player2HUDOpen);
+		}
 	}
 	
 	public void toggle(){

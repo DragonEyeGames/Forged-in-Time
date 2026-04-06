@@ -61,6 +61,7 @@ public partial class Hud : CanvasLayer
 	
 	public void toggle(){
 		open=!open;
+		GetNode<CollisionShape2D>("BigClose/Area2D/CollisionShape2D").SetDeferred("disabled", !open);
 		if(open){
 			animator.Play("open");
 			timer.Start();
