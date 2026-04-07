@@ -245,7 +245,7 @@ focus_mode = 0
 mouse_filter = 2
 flat = true
 
-[node name="Button" type="Button" parent="." node_paths=PackedStringArray("hud", "holder")]
+[node name="Button" type="Button" parent="."]
 offset_right = 132.0
 offset_bottom = 14.0
 pivot_offset = Vector2(65, 8)
@@ -253,10 +253,6 @@ focus_mode = 0
 mouse_filter = 2
 flat = true
 script = ExtResource("11_uoqjr")
-hud = NodePath("..")
-holder = NodePath("../ColorRect")
-exception = true
-sideException = true
 
 [node name="Arrow" type="Sprite2D" parent="Button"]
 z_index = 1
@@ -373,8 +369,6 @@ offset_bottom = 651.0
 mouse_filter = 2
 flat = true
 script = ExtResource("11_uoqjr")
-exception = true
-sideException = true
 
 [node name="Area2D" type="Area2D" parent="BigClose"]
 visible = false

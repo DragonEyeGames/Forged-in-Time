@@ -1,11 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtmcn270epgmd"]
+[gd_scene load_steps=11 format=3 uid="uid://dtmcn270epgmd"]
 
+[ext_resource type="Shader" uid="uid://cn70ec7bbnlmu" path="res://Towers/Scenes/outline.gdshader" id="1_h3i20"]
 [ext_resource type="Script" uid="uid://c2cnqo6uqcarb" path="res://Towers/Scripts/StaticTower.cs" id="1_vedim"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="2_vedim"]
 [ext_resource type="Script" uid="uid://dobupc5r46pu1" path="res://Towers/Popups/NonDamage_Tower_Info.cs" id="3_gujf3"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="4_0q6dp"]
 [ext_resource type="Texture2D" uid="uid://c2cf8nhwfgids" path="res://Assets/sell.png" id="5_h3i20"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="6_0q6dp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tveqe"]
+shader = ExtResource("1_h3i20")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_time_scale = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tjdg3"]
 radius = 98.0051
@@ -15,6 +22,7 @@ radius = 4.0
 height = 18.0
 
 [node name="WatchTower" type="Node2D"]
+material = SubResource("ShaderMaterial_tveqe")
 script = ExtResource("1_vedim")
 
 [node name="Base" type="Sprite2D" parent="."]
@@ -24,6 +32,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Player1Territory" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 0
 
@@ -33,6 +42,7 @@ shape = SubResource("CircleShape2D_tjdg3")
 disabled = true
 
 [node name="Player2Territory" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 0
 
@@ -41,25 +51,36 @@ position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_tjdg3")
 disabled = true
 
-[node name="P1 Click" type="Area2D" parent="."]
-position = Vector2(8, 7)
+[node name="Checker" type="Button" parent="."]
+offset_left = 4.0
+offset_right = 12.0
+offset_bottom = 16.0
+flat = true
+script = ExtResource("6_0q6dp")
+
+[node name="P1 Click" type="Area2D" parent="Checker"]
+visible = false
+position = Vector2(4, 7)
 collision_layer = 64
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="P1 Click"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checker/P1 Click"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_wgsla")
 
-[node name="P2 Click" type="Area2D" parent="."]
-position = Vector2(8, 7)
+[node name="P2 Click" type="Area2D" parent="Checker"]
+visible = false
+position = Vector2(4, 7)
 collision_layer = 128
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="P2 Click"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checker/P2 Click"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_wgsla")
+disabled = true
 
 [node name="TowerInfo" type="ColorRect" parent="."]
+visible = false
 offset_left = -10.0
 offset_top = -50.0
 offset_right = -10.0
@@ -145,4 +166,5 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TowerInfo/SellButton/Area2D"]
 polygon = PackedVector2Array(9.85255, 53.0152, 18.2976, 59.6421, 38.0027, 64.6123, 60.5228, 64.6123, 78.8204, 59.6421, 87.2655, 51.3585, 87.2655, 46.3883, 77.5432, 39.3429, 59.2456, 36.0294, 38.133, 36.0294, 19.7051, 41.4182, 9.85255, 46.3883)
 
+[connection signal="pressed" from="Checker" to="TowerInfo" method="open"]
 [connection signal="pressed" from="TowerInfo/SellButton" to="TowerInfo" method="sellPress"]

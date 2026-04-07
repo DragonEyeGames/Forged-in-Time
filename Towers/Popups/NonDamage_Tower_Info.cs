@@ -19,6 +19,9 @@ public partial class NonDamage_Tower_Info : ColorRect
 		//towerName.Text = (string)Enum.GetNames<GameManager.Towers>()[GetParent<Tower>().towerType];
 	}
 	
+	public void open(){
+		Visible=true;
+	}
 	
 	public void on_area_entered(Area2D Enter){
 		GD.Print("AAAAAAAHHHHHHHHH"); 

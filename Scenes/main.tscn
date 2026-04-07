@@ -183,7 +183,7 @@ text = "0/2 Vehicles"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Release" type="Button" parent="Player-1/HUD2/Storage" node_paths=PackedStringArray("down", "hud", "holder")]
+[node name="Release" type="Button" parent="Player-1/HUD2/Storage"]
 layout_mode = 0
 offset_left = 73.0
 offset_top = 60.0
@@ -195,9 +195,6 @@ focus_mode = 0
 icon = ExtResource("8_b3802")
 flat = true
 script = ExtResource("10_gt3je")
-down = NodePath("../../../Detection")
-hud = NodePath("../../../../HUD")
-holder = NodePath("../..")
 
 [node name="Area2D" type="Area2D" parent="Player-1/HUD2/Storage/Release"]
 position = Vector2(134.767, 71.6846)
@@ -220,7 +217,7 @@ color = Color(0.509804, 0.298039, 0.0901961, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player-1/HUD2"]
 
-[node name="Detection" type="Button" parent="Player-1" node_paths=PackedStringArray("up", "hud", "holder")]
+[node name="Detection" type="Button" parent="Player-1"]
 offset_top = -65.0
 offset_right = 128.0
 offset_bottom = 63.0
@@ -228,11 +225,6 @@ pivot_offset = Vector2(64, 69)
 focus_mode = 0
 flat = true
 script = ExtResource("10_gt3je")
-up = NodePath("../HUD2/Storage/Release")
-hud = NodePath("../../HUD")
-holder = NodePath("../HUD2")
-exception = true
-sideException = true
 
 [node name="Icon" type="Sprite2D" parent="Player-1/Detection"]
 z_index = -1
@@ -342,7 +334,7 @@ text = "0/2 Vehicles"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Release" type="Button" parent="Player-2/HUD2/Storage" node_paths=PackedStringArray("down", "hud", "holder")]
+[node name="Release" type="Button" parent="Player-2/HUD2/Storage"]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 59.0
@@ -354,9 +346,6 @@ focus_mode = 0
 icon = ExtResource("8_b3802")
 flat = true
 script = ExtResource("10_gt3je")
-down = NodePath("../../../Detection")
-hud = NodePath("../../../../HUD2")
-holder = NodePath("../..")
 
 [node name="Area2D" type="Area2D" parent="Player-2/HUD2/Storage/Release"]
 position = Vector2(77.7611, 72.9847)
@@ -376,7 +365,7 @@ offset_bottom = 115.0
 mouse_filter = 2
 color = Color(0.509804, 0.298039, 0.0901961, 1)
 
-[node name="Detection" type="Button" parent="Player-2" node_paths=PackedStringArray("up", "hud", "holder")]
+[node name="Detection" type="Button" parent="Player-2"]
 offset_left = -128.0
 offset_top = -68.0
 offset_bottom = 60.0
@@ -384,11 +373,6 @@ pivot_offset = Vector2(63, 71)
 focus_mode = 0
 flat = true
 script = ExtResource("10_gt3je")
-up = NodePath("../HUD2/Storage/Release")
-hud = NodePath("../../HUD2")
-holder = NodePath("../HUD2")
-exception = true
-sideException = true
 
 [node name="Icon" type="Sprite2D" parent="Player-2/Detection"]
 self_modulate = Color(1, 0.196078, 0.145098, 1)
