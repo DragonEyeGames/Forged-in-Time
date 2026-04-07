@@ -10,12 +10,13 @@ public partial class NonDamage_Tower_Info : ColorRect
 	
 	public override void _Ready(){
 		//Sell Label
+		towerType=GetParent<Tower>().towerType;
 		sellLabel=GetNode<RichTextLabel>("sellPrice");
 		sellLabel.Text=(Prices.towerPrices[towerType]/2).ToString();
 		
 		//Tower Name
 		towerName=GetNode<RichTextLabel>("towerName");
-		towerName.Text = (string)GetParent<Tower>().name;
+		//towerName.Text = (string)Enum.GetNames<GameManager.Towers>()[GetParent<Tower>().towerType];
 	}
 	
 	

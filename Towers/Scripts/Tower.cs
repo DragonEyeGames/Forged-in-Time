@@ -6,7 +6,7 @@ public abstract partial class Tower : Node2D
 	public int kills=0;
 	public bool hovering=true;
 	public bool Player1 = false;
-	[Export] public string name = "Watch Tower";
+	[Export] public GameManager.Towers towerType;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
