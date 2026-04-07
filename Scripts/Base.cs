@@ -9,6 +9,9 @@ public partial class Base : Sprite2D
 	[Export] public Base target;
 	[Export] public int health=100;
 	[Export] public PackedScene troop;
+	[Export] public PackedScene brute;
+	[Export] public PackedScene ranged;
+	[Export] public PackedScene healer;
 	[Export] public int maxTroops=15;
 	private bool releaseTime=false;
 	public enum Troops{
@@ -33,14 +36,24 @@ public partial class Base : Sprite2D
 	}
 
 	public void spawnTroop(Troops troopType){
+		GD.Print(troopType);
+		BaseTroop newTroop = troop.Instantiate() as BaseTroop;
 		if(troopType==Troops.Melee){
-			Troop newTroop = troop.Instantiate() as Troop;
-			GetParent().AddChild(newTroop);
-			newTroop.GlobalPosition=GlobalPosition;
-			newTroop.target=target;
-			newTroop.player1=player1;
+			newTroop = troop.Instantiate() as BaseTroop;
 		}
-		
+		if(troopType==Troops.Brute){
+			newTroop = brute.Instantiate() as BaseTroop;
+		}
+		if(troopType==Troops.Brute){
+			newTroop = brute.Instantiate() as BaseTroop;
+		}
+		if(troopType==Troops.Brute){
+			newTroop = brute.Instantiate() as BaseTroop;
+		}
+		GetParent().AddChild(newTroop);
+		newTroop.GlobalPosition=GlobalPosition;
+		newTroop.target=target;
+		newTroop.player1=player1;
 	}
 	
 	public override void _Process(double delta){
@@ -54,6 +67,14 @@ public partial class Base : Sprite2D
 			releasing=false;
 		}
 		GetNode<RichTextLabel>("HUD2/Storage/Troops").Text=reserveTroops.Count.ToString() + "/" + maxTroops.ToString() + " Troops";
+		if(player1 && GameManager.player1HUDOpen!=GetNode<CollisionPolygon2D>("Detection/Area2D/CollisionPolygon2D").Disabled){
+			GetNode<CollisionPolygon2D>("Detection/Area2D/CollisionPolygon2D").SetDeferred("disabled", GameManager.player1HUDOpen);
+			GetNode<CollisionPolygon2D>("HUD2/Storage/Release/Area2D/CollisionPolygon2D").SetDeferred("disabled", GameManager.player1HUDOpen);
+		}
+		if(!player1 && GameManager.player2HUDOpen!=GetNode<CollisionPolygon2D>("Detection/Area2D/CollisionPolygon2D").Disabled){
+			GetNode<CollisionPolygon2D>("Detection/Area2D/CollisionPolygon2D").SetDeferred("disabled", GameManager.player2HUDOpen);
+			GetNode<CollisionPolygon2D>("HUD2/Storage/Release/Area2D/CollisionPolygon2D").SetDeferred("disabled", GameManager.player2HUDOpen);
+		}
 	}
 	
 	public void toggle(){

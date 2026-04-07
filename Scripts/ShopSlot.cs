@@ -4,9 +4,23 @@ using System;
 public partial class ShopSlot : Control
 {
 	private bool open=false;
+	int upgrade=0;
+	[Export] GameManager.Towers tower;
+	[Export] public bool player1 = true;
+	[Export] public bool troop = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if(player1){
+			GetNode<Button>("Player2Upgrade").QueueFree();
+			GetNode<Area2D>("Button/Player2").QueueFree();
+		} else {
+			GetNode<Button>("Player1Upgrade").QueueFree();
+			GetNode<Area2D>("Button/Player1").QueueFree();
+		};
+		GetNode<Sprite2D>("Base").Texture = (Texture2D)GD.Load(Cosmetics.towerDisplays[tower]);
+		GetNode<RichTextLabel>("Name").Text=Cosmetics.towerNames[tower].ToString();
+		GetNode<RichTextLabel>("Description").Text=Cosmetics.towerDescriptions[tower].ToString();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,6 +35,15 @@ public partial class ShopSlot : Control
 		} else {
 			GetNode<AnimationPlayer>("UpgradeSlider").Play("close");
 		}
+	}
+	
+	public void purchase(){
+		if(troop==false){
+			GetParent().GetParent().GetParent<Hud>().purchaseTower(tower, GetNode<AnimationPlayer>("AnimationPlayer"));
+		}
+		else if(troop==true){
+			GetParent().GetParent().GetParent<Hud>().purchaseTroop(tower, GetNode<AnimationPlayer>("AnimationPlayer"));
+		};
 	}
 	
 }
