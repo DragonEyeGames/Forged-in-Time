@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://dixum1rty8vlc"]
 
-[ext_resource type="Script" uid="uid://dbrxgcvdygqhc" path="res://Troops/Healer.cs" id="1_v0y4t"]
+[ext_resource type="Script" uid="uid://dbrxgcvdygqhc" path="res://Troops/Scripts/Healer.cs" id="1_v0y4t"]
 [ext_resource type="Texture2D" uid="uid://donui7kkbkesp" path="res://Assets/Buy.png" id="2_id8a5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fv2m7"]
