@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8yni2thxi4bq"]
+[gd_scene load_steps=9 format=3 uid="uid://c073r01bwh84m"]
 
-[ext_resource type="Script" uid="uid://hcpj7oea28af" path="res://Towers/AoeTower.cs" id="1_4jy7w"]
+[ext_resource type="Script" uid="uid://hcpj7oea28af" path="res://Towers/Scripts/AoeTower.cs" id="1_4jy7w"]
 [ext_resource type="Texture2D" uid="uid://dfnt4idxegp1e" path="res://Assets/pixilart-sprite.png" id="2_4jy7w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynvcy"]

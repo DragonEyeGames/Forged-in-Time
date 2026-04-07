@@ -27,4 +27,38 @@ public partial class Troop : BaseTroop
 		updateHitboxes();
 	}
 	
-}	
+	public override void _PhysicsProcess(double delta)
+	{
+		Vector2 velocity=Vector2.Zero;
+		var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
+		velocity = dir * 40;
+		Velocity=velocity;
+		if(!navAgent.IsNavigationFinished()){
+			MoveAndSlide();
+		}
+		if(health<=0){
+			QueueFree();
+			
+		}
+		if(Velocity.X>0){
+			sprite.FlipH=false;
+		}
+		if(Velocity.X<0){
+			sprite.FlipH=true;
+		}
+	}
+	
+	public void recalculate(){
+		navAgent.TargetPosition=target.GlobalPosition;
+	}
+	
+	public async void updateHitboxes(){
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		if(player1){
+			GetNode("Player2").QueueFree();
+		} else if(!player1){
+			GetNode("Player1").QueueFree();
+		}
+	}
+		
+}

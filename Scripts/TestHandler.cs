@@ -11,16 +11,10 @@ public partial class TestHandler : Node2D
 	private Polygon2D selectedPolygon = null;
 	private Tower selectedTower = null;
 	[Export] public bool player1=false;
-	[Export] public PackedScene polygon;
-	[Export] public PackedScene bigPolygon;
 	[Export] public TestValid tester;
-	[Export] public PackedScene turret;
-	[Export] public PackedScene plasmaTurret;
-	[Export] public PackedScene tower;
-	[Export] public PackedScene wall;
-	[Export] public PackedScene spikes;
 	private int baking = 0;
 	private bool initializePlace=false;
+	[Export] BakeHandler parentNode;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -47,9 +41,9 @@ public partial class TestHandler : Node2D
 			initializePlace=false;
 			if(Player1Manager.validPlacement && tester.isValid() && Player1Manager.placing){
 				Player1Manager.placing=false;
-				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;;
+				Polygon2D selectedPolygon2 = parentNode.polygon.Instantiate() as Polygon2D;;
 				if(Player1Manager.toPlace==GameManager.Towers.Spikes){
-					selectedPolygon2 = bigPolygon.Instantiate() as Polygon2D;
+					selectedPolygon2 = parentNode.bigPolygon.Instantiate() as Polygon2D;
 				}
 				navRegion.AddChild(selectedPolygon2);
 				selectedPolygon2.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
@@ -62,9 +56,9 @@ public partial class TestHandler : Node2D
 			initializePlace=false;
 			if(Player2Manager.validPlacement && tester.isValid() && Player2Manager.placing){
 				Player2Manager.placing=false;
-				Polygon2D selectedPolygon2 = polygon.Instantiate() as Polygon2D;;
+				Polygon2D selectedPolygon2 = parentNode.polygon.Instantiate() as Polygon2D;;
 				if(Player2Manager.toPlace==GameManager.Towers.Spikes){
-					selectedPolygon2 = bigPolygon.Instantiate() as Polygon2D;
+					selectedPolygon2 = parentNode.bigPolygon.Instantiate() as Polygon2D;
 				}
 				
 				navRegion.AddChild(selectedPolygon2);
@@ -77,56 +71,56 @@ public partial class TestHandler : Node2D
 		}
 		if(selectedTower==null && player1){
 			if(Player1Manager.toPlace==GameManager.Towers.Spikes){
-				selectedTower=spikes.Instantiate() as Tower;
+				selectedTower=parentNode.spikes.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
-				selectedPolygon = bigPolygon.Instantiate() as Polygon2D;
+				selectedPolygon = parentNode.bigPolygon.Instantiate() as Polygon2D;
 				testRegion.AddChild(selectedPolygon);
 			}
 			if(selectedPolygon==null) {
-				selectedPolygon = polygon.Instantiate() as Polygon2D;
+				selectedPolygon = parentNode.polygon.Instantiate() as Polygon2D;
 				testRegion.AddChild(selectedPolygon);
 			}
 			if(Player1Manager.toPlace==GameManager.Towers.Turret){
-				selectedTower=turret.Instantiate() as Tower;
+				selectedTower=parentNode.turret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 			if(Player1Manager.toPlace==GameManager.Towers.Wall){
-				selectedTower=wall.Instantiate() as Tower;
+				selectedTower=parentNode.wall.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 			if(Player1Manager.toPlace==GameManager.Towers.Plasma_Turret){
-				selectedTower=plasmaTurret.Instantiate() as Tower;
+				selectedTower=parentNode.plasmaTurret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 			if(Player1Manager.toPlace==GameManager.Towers.Watch_Tower){
-				selectedTower=tower.Instantiate() as Tower;
+				selectedTower=parentNode.tower.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 		} else if(selectedTower==null && !player1){
 			if(Player2Manager.toPlace==GameManager.Towers.Spikes){
-				selectedTower=spikes.Instantiate() as Tower;
+				selectedTower=parentNode.spikes.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
-				selectedPolygon = bigPolygon.Instantiate() as Polygon2D;
+				selectedPolygon = parentNode.bigPolygon.Instantiate() as Polygon2D;
 				testRegion.AddChild(selectedPolygon);
 			}
 			if(selectedPolygon==null) {
-				selectedPolygon = polygon.Instantiate() as Polygon2D;
+				selectedPolygon = parentNode.polygon.Instantiate() as Polygon2D;
 				testRegion.AddChild(selectedPolygon);
 			}
 			if(Player2Manager.toPlace==GameManager.Towers.Turret){
-				selectedTower=turret.Instantiate() as Tower;
+				selectedTower=parentNode.turret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 			if(Player2Manager.toPlace==GameManager.Towers.Wall){
-				selectedTower=wall.Instantiate() as Tower;
+				selectedTower=parentNode.wall.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 			if(Player2Manager.toPlace==GameManager.Towers.Plasma_Turret){
-				selectedTower=plasmaTurret.Instantiate() as Tower;
+				selectedTower=parentNode.plasmaTurret.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 			if(Player2Manager.toPlace==GameManager.Towers.Watch_Tower){
-				selectedTower=tower.Instantiate() as Tower;
+				selectedTower=parentNode.tower.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
 			}
 		}
@@ -145,7 +139,7 @@ public partial class TestHandler : Node2D
 	}
 	
 	public void UpdateNav(){
-		Polygon2D newPolygon2 = polygon.Instantiate() as Polygon2D;
+		Polygon2D newPolygon2 = parentNode.polygon.Instantiate() as Polygon2D;
 		testRegion.AddChild(newPolygon2);
 		if(player1){
 			newPolygon2.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
