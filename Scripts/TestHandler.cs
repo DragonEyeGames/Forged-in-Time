@@ -14,11 +14,12 @@ public partial class TestHandler : Node2D
 	[Export] public TestValid tester;
 	private int baking = 0;
 	private bool initializePlace=false;
-	[Export] BakeHandler parentNode;
+	private BakeHandler parentNode;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		parentNode=GetParent<BakeHandler>();
 		testRegion=GetNode<NavigationRegion2D>("../../TestPlacement/TestRegion");
 		navRegion=GetNode<NavigationRegion2D>("../../TestPlacement/NavRegion");
 	}

@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://lweq3a258rm7" path="res://Towers/Scenes/spikes.tscn" id="15_3pmx8"]
 [ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="17_0odxb"]
 [ext_resource type="PackedScene" uid="uid://dtmcn270epgmd" path="res://Towers/Scenes/WatchTower.tscn" id="18_6vcvc"]
+[ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://Towers/Scenes/plasmaTurret.tscn" id="18_7k868"]
 [ext_resource type="PackedScene" uid="uid://bdhyr2rcfdx0l" path="res://Scenes/hud_2.tscn" id="18_b3802"]
 [ext_resource type="Texture2D" uid="uid://dkgrnn8xbc61t" path="res://Assets/Cursor.png" id="21_pdsj5"]
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_ee4r6"]
@@ -62,9 +63,6 @@ vertices = PackedVector2Array(1142.5, 647.5, 7.5, 647.5, 7.5, 8.5, 1142.5, 8.5)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 656, -1, 0, 1151, 0, 1151, 656)])
 agent_radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_gt3je"]
-radius = 17.1428
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3pmx8"]
 radius = 17.1429
@@ -203,10 +201,11 @@ holder = NodePath("../..")
 
 [node name="Area2D" type="Area2D" parent="Player-1/HUD2/Storage/Release"]
 position = Vector2(134.767, 71.6846)
-collision_layer = 64
+collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player-1/HUD2/Storage/Release/Area2D"]
+position = Vector2(-57.3168, 1.0971)
 polygon = PackedVector2Array(-73.6989, -64.3978, -73.6989, -57.9462, -59.362, -53.6451, -41.4409, -53.6451, -26.3871, -57.2294, -25.6703, -64.3978, -40.724, -68.6989, -59.362, -68.6989)
 
 [node name="HUD" type="ColorRect" parent="Player-1/HUD2"]
@@ -242,8 +241,8 @@ scale = Vector2(0.93, 0.93)
 texture = ExtResource("5_getpj")
 
 [node name="Area2D" type="Area2D" parent="Player-1/Detection"]
-position = Vector2(78, 73)
-collision_layer = 64
+position = Vector2(0, 65)
+collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player-1/Detection/Area2D"]
@@ -360,8 +359,8 @@ hud = NodePath("../../../../HUD2")
 holder = NodePath("../..")
 
 [node name="Area2D" type="Area2D" parent="Player-2/HUD2/Storage/Release"]
-position = Vector2(84.9295, 70.1173)
-collision_layer = 128
+position = Vector2(77.7611, 72.9847)
+collision_layer = 512
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player-2/HUD2/Storage/Release/Area2D"]
@@ -399,8 +398,8 @@ scale = Vector2(0.94, 0.94)
 texture = ExtResource("5_getpj")
 
 [node name="Area2D" type="Area2D" parent="Player-2/Detection"]
-position = Vector2(142, 78)
-collision_layer = 128
+position = Vector2(135, 71)
+collision_layer = 512
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player-2/Detection/Area2D"]
@@ -413,21 +412,19 @@ script = ExtResource("10_wsu2k")
 polygon = ExtResource("13_cbgmd")
 bigPolygon = ExtResource("14_u50mg")
 turret = ExtResource("6_kek77")
-plasmaTurret = ExtResource("6_kek77")
+plasmaTurret = ExtResource("18_7k868")
 tower = ExtResource("18_6vcvc")
 wall = ExtResource("14_yaehf")
 spikes = ExtResource("15_3pmx8")
 
-[node name="Player1" type="Node2D" parent="NavHandler" node_paths=PackedStringArray("tester", "parentNode")]
+[node name="Player1" type="Node2D" parent="NavHandler" node_paths=PackedStringArray("tester")]
 script = ExtResource("9_d13ii")
 player1 = true
 tester = NodePath("../../TestPlacement/Player")
-parentNode = NodePath("..")
 
-[node name="Player2" type="Node2D" parent="NavHandler" node_paths=PackedStringArray("tester", "parentNode")]
+[node name="Player2" type="Node2D" parent="NavHandler" node_paths=PackedStringArray("tester")]
 script = ExtResource("9_d13ii")
 tester = NodePath("../../TestPlacement/Player")
-parentNode = NodePath("..")
 
 [node name="HUD" parent="." node_paths=PackedStringArray("baseButton", "playerBase") instance=ExtResource("9_4c57u")]
 turretUpgradeSprite = ExtResource("17_0odxb")
@@ -482,12 +479,12 @@ texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
 screenCounterpart = NodePath("../Screen/Player1Cursor")
 
-[node name="P1Area" type="Area2D" parent="Player1Cursor"]
+[node name="Area2D" type="Area2D" parent="Player1Cursor"]
 collision_layer = 0
-collision_mask = 64
+collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Cursor/P1Area"]
-shape = SubResource("CircleShape2D_gt3je")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Cursor/Area2D"]
+shape = SubResource("CircleShape2D_3pmx8")
 
 [node name="Player2Cursor" type="Sprite2D" parent="." node_paths=PackedStringArray("screenCounterpart")]
 modulate = Color(0.936675, 0, 0.0266771, 0.662745)
@@ -499,6 +496,13 @@ script = ExtResource("22_ee4r6")
 player1 = false
 ID = 1
 screenCounterpart = NodePath("../Screen/Player2Cursor")
+
+[node name="Area2D" type="Area2D" parent="Player2Cursor"]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Cursor/Area2D"]
+shape = SubResource("CircleShape2D_3pmx8")
 
 [node name="Screen" type="CanvasLayer" parent="."]
 
@@ -542,6 +546,10 @@ shape = SubResource("CircleShape2D_3pmx8")
 [connection signal="pressed" from="Player-2/Detection" to="Player-2" method="toggle"]
 [connection signal="bake_finished" from="TestPlacement/TestRegion" to="NavHandler" method="TestFinished"]
 [connection signal="bake_finished" from="TestPlacement/NavRegion" to="NavHandler" method="TestFinished"]
+[connection signal="area_entered" from="Player1Cursor/Area2D" to="Player1Cursor" method="towerInteract"]
+[connection signal="area_exited" from="Player1Cursor/Area2D" to="Player1Cursor" method="towerLeave"]
+[connection signal="area_entered" from="Player2Cursor/Area2D" to="Player2Cursor" method="towerInteract"]
+[connection signal="area_exited" from="Player2Cursor/Area2D" to="Player2Cursor" method="towerLeave"]
 [connection signal="area_entered" from="Screen/Player1Cursor/Area2D" to="Screen/Player1Cursor" method="hudInteract"]
 [connection signal="area_exited" from="Screen/Player1Cursor/Area2D" to="Screen/Player1Cursor" method="hudLeave"]
 [connection signal="area_entered" from="Screen/Player2Cursor/Area2D2" to="Screen/Player2Cursor" method="hudInteract"]

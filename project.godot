@@ -177,6 +177,8 @@ Click-2={
 2d_physics/layer_5="Player 2 Territory"
 2d_physics/layer_7="Player 1 HUD"
 2d_physics/layer_8="Player 2 HUD"
+2d_physics/layer_9="Player 1 Tower"
+2d_physics/layer_10="Player 2 Tower"
 
 [rendering]
 

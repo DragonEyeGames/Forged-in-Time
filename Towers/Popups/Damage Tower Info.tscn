@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dh4phag65b3wo" path="res://Towers/Popups/Damage_Tower_Info.cs" id="1_g1p03"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_ai3ta"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="3_ys5fm"]
-[ext_resource type="Texture2D" uid="uid://c2cf8nhwfgids" path="res://Assets/pixil-frame-0.png" id="4_s4i6t"]
+[ext_resource type="Texture2D" uid="uid://c2cf8nhwfgids" path="res://Assets/sell.png" id="4_s4i6t"]
 
 [node name="DamageTowerInfo" type="Node2D"]
 
