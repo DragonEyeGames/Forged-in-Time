@@ -10,7 +10,7 @@ public partial class Cosmetics : Node
 		{ GameManager.Towers.Plasma_Turret, "res://Towers/Assets/PlasmaTurret.png" },
 		{ GameManager.Towers.Wall, "res://Towers/Assets/WallTower.png" },
 		{ GameManager.Towers.Watch_Tower, "res://Towers/Assets/Watch Tower.png" },
-		{ GameManager.Towers.Spikes, "res://Towers/Spikes.png" },
+		{ GameManager.Towers.Spikes, "res://Towers/Assets/Spikes.png" },
 		{ GameManager.Towers.Melee, "res://Towers/Assets/WallTower.png" },
 		{ GameManager.Towers.Brute, "res://Towers/Assets/WallTower.png" },
 		{ GameManager.Towers.Ranged, "res://Towers/Assets/WallTower.png" },

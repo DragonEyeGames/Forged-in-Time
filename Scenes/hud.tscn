@@ -251,6 +251,7 @@ exception = true
 sideException = true
 
 [node name="Area2D" type="Area2D" parent="BigClose"]
+visible = false
 collision_layer = 64
 collision_mask = 0
 
