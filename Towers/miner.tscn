@@ -8,6 +8,8 @@ radius = 76.0066
 
 [node name="Miner" type="Node2D"]
 script = ExtResource("1_d33k3")
+hovering = null
+Player1 = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
@@ -20,6 +22,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Territory"]
 shape = SubResource("CircleShape2D_5r2x8")
+disabled = true
 
 [node name="Player2Territory" type="Area2D" parent="."]
 collision_layer = 16
@@ -27,9 +30,10 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Territory"]
 shape = SubResource("CircleShape2D_5r2x8")
+disabled = true
 
 [node name="PlayerNoneTerritory" type="Area2D" parent="."]
-collision_layer = 16
+collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNoneTerritory"]

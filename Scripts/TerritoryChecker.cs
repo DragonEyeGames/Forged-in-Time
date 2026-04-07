@@ -6,8 +6,9 @@ public partial class TerritoryChecker : TileMapLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		betterTerritory(3, 0);
-		betterTerritory(4, 1);
+		betterTerritory(4, 0);
+		betterTerritory(3, 1);
+		betterTerritory(5, 2);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,8 +20,9 @@ public partial class TerritoryChecker : TileMapLayer
 	}
 	
 	public void recalculate(){
-		betterTerritory(3, 0);
-		betterTerritory(4, 1);
+		betterTerritory(4, 0);
+		betterTerritory(3, 1);
+		betterTerritory(5, 2);
 	}
 	
 	private void betterTerritory(int layer, int pos){

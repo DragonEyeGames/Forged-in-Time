@@ -43,9 +43,10 @@ texture = ExtResource("4_1w6v2")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
+2:0/0/modulate = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
 [sub_resource type="TileSet" id="TileSet_6vcvc"]
-sources/1 = SubResource("TileSetAtlasSource_ueoa1")
+sources/0 = SubResource("TileSetAtlasSource_ueoa1")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dg77c"]
 radius = 220.907
@@ -521,7 +522,7 @@ collision_mask = 128
 shape = SubResource("CircleShape2D_3pmx8")
 
 [node name="Miner" parent="." instance=ExtResource("27_1w6v2")]
-position = Vector2(593, 252)
+position = Vector2(581, 148)
 hovering = false
 Player1 = true
 

@@ -2,11 +2,11 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Base : Sprite2D
+public partial class Base : TargetBase
 {
 	[Export] public bool player1=false;
 	private NavigationAgent2D navAgent;
-	[Export] public Base target;
+	[Export] public TargetBase target;
 	[Export] public int health=100;
 	[Export] public PackedScene troop;
 	[Export] public int maxTroops=15;
@@ -78,7 +78,7 @@ public partial class Base : Sprite2D
 		reserveTroops.RemoveAt(0);
 		releaseTime=false;
 	}
-	public void Die() 
+	public override void Die() 
 	{
 		if (health <= 0) 
 		{
