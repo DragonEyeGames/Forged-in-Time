@@ -69,12 +69,7 @@ public abstract partial class BaseTroop : CharacterBody2D
                 sprite.FlipH = true;
             }
         }
-
-        if (target.health <= 0)
-        {
-            QueueFree();
-        }
-
+        
     }
 
     public void attack(int damage)
@@ -86,13 +81,31 @@ public abstract partial class BaseTroop : CharacterBody2D
             if (target.health <= 0)
             {
                 target.Die();
+                if(target is Miner)
+                {
+                    GD.Print(target);
+                    Miner miner = target as Miner;
+                    if (player1 == true)
+                    {
+                        GD.Print("Hooray");
+                        miner.GetNode<CollisionShape2D>("Player1Territory/Player1TerritoryCollide").Disabled = false;
+                        miner.GetNode<CollisionShape2D>("Player2Territory/Player2TerritoryCollide").Disabled = true; 
+                        miner.GetNode<CollisionShape2D>("PlayerNoneTerritory/PlayerNoneTerritoryCollide").Disabled = true; 
+                        target = GetNode<TargetBase>("Player-2");
+                    }
+                    else if (player1 == false)
+                    {
+                        miner.GetNode<CollisionShape2D>("Player1Territory/Player1TerritoryCollide").Disabled = true;
+                        miner.GetNode<CollisionShape2D>("Player2Territory/Player2TerritoryCollide").Disabled = false; 
+                        miner.GetNode<CollisionShape2D>("PlayerNoneTerritory/PlayerNoneTerritoryCollide").Disabled = true; 
+                        target = GetNode<TargetBase>("Player-1");
+                    }
+                }
             }
             attacking = false;
             cooldown.Start();
         }
     }
-    
-    public void altAttack(int damage)
     
     public void on_path_finished()
     {
