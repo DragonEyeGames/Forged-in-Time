@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8qjxq5m1jorh"]
 
-[ext_resource type="Script" uid="uid://dobupc5r46pu1" path="res://Towers/Popups/NonDamage_Tower_Info.cs" id="1_j38eu"]
+[ext_resource type="Script" uid="uid://dobupc5r46pu1" path="res://Towers/Popups/TowerInfo.cs" id="1_j38eu"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_e84qp"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="3_aiq13"]
 [ext_resource type="Texture2D" uid="uid://c2cf8nhwfgids" path="res://Assets/sell.png" id="4_k0cso"]
-[ext_resource type="Script" uid="uid://td32hbea8c2d" path="res://Towers/Scenes/TowerController.cs" id="5_j38eu"]
+[ext_resource type="Script" uid="uid://td32hbea8c2d" path="res://Scripts/TowerController.cs" id="5_j38eu"]
 
 [node name="TowerInfo" type="ColorRect"]
 offset_left = -10.0
@@ -14,7 +14,6 @@ offset_bottom = -50.0
 scale = Vector2(0.12, 0.12)
 mouse_filter = 2
 script = ExtResource("1_j38eu")
-towerType = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -84,12 +83,20 @@ icon = ExtResource("4_k0cso")
 flat = true
 script = ExtResource("5_j38eu")
 
-[node name="Area2D" type="Area2D" parent="SellButton"]
+[node name="Player1" type="Area2D" parent="SellButton"]
 position = Vector2(4.35278, 2.89489)
 collision_layer = 256
 collision_mask = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SellButton/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SellButton/Player1"]
+polygon = PackedVector2Array(9.85255, 53.0152, 18.2976, 59.6421, 38.0027, 64.6123, 60.5228, 64.6123, 78.8204, 59.6421, 87.2655, 51.3585, 87.2655, 46.3883, 77.5432, 39.3429, 59.2456, 36.0294, 38.133, 36.0294, 19.7051, 41.4182, 9.85255, 46.3883)
+
+[node name="Player2" type="Area2D" parent="SellButton"]
+position = Vector2(4.35278, 2.89489)
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SellButton/Player2"]
 polygon = PackedVector2Array(9.85255, 53.0152, 18.2976, 59.6421, 38.0027, 64.6123, 60.5228, 64.6123, 78.8204, 59.6421, 87.2655, 51.3585, 87.2655, 46.3883, 77.5432, 39.3429, 59.2456, 36.0294, 38.133, 36.0294, 19.7051, 41.4182, 9.85255, 46.3883)
 
 [node name="Timer" type="Timer" parent="."]

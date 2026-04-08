@@ -8,14 +8,10 @@ public partial class Turret : Tower
 	private bool canShoot = true;
 	private List<CharacterBody2D> player1Colliding = new List<CharacterBody2D> {};
 	private List<CharacterBody2D> player2Colliding = new List<CharacterBody2D> {};
-	private Sprite2D turret;
+	private Sprite2D turret => GetNode<Sprite2D>("Turret");
 	[Export] public int damage=1;
 	[Export] public Timer cooldown;
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		turret=GetNode<Sprite2D>("Turret");
-	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

@@ -2,34 +2,46 @@ using Godot;
 using System;
 
 
-public partial class NonDamage_Tower_Info : ColorRect
+public partial class TowerInfo : ColorRect
 {
 	private RichTextLabel sellLabel;
 	private RichTextLabel towerName;
-	[Export] public GameManager.Towers towerType;
+	public GameManager.Towers towerType;
 	
-	public override void _Ready(){
+	public async override void _Ready(){
 		//Sell Label
-		towerType=GetParent<Tower>().towerType;
+		GameManager.Towers towerType=GetParent<Tower>().towerType;
 		sellLabel=GetNode<RichTextLabel>("sellPrice");
 		sellLabel.Text=(Prices.towerPrices[towerType]/2).ToString();
 		
 		//Tower Name
 		towerName=GetNode<RichTextLabel>("towerName");
-		//towerName.Text = (string)Enum.GetNames<GameManager.Towers>()[GetParent<Tower>().towerType];
+		towerName.Text = Enum.GetNames<GameManager.Towers>()[(int)towerType].ToString();
+		towerName.Text=towerName.Text.Replace("_", " ");
+		
+		while (GetParent<Tower>().hovering){
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		}
+		if(!GetParent<Tower>().Player1){
+			GetNode<Area2D>("SellButton/Player1").QueueFree();
+		}else{
+			GetNode<Area2D>("SellButton/Player2").QueueFree();
+		}
 	}
 	
 	public void open(){
 		if(!GetParent<Tower>().hovering){
 			Visible=!Visible;
 			GetNode<Timer>("Timer").Start();
+			GetNode<Button>("SellButton").GetChild(0).GetChild<CollisionPolygon2D>(0).SetDeferred("disabled", !Visible);
 		}
 		GD.Print(Visible);
 	}
 	
 	public void timerTimeout(){
 		GD.Print("TimedOut");
-		Visible=false;
+		Visible=true;
+		open();
 	}
 	
 	public void on_area_entered(Area2D Enter){

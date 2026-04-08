@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dh1iwl2y35go1"]
 
-[ext_resource type="Script" uid="uid://dobupc5r46pu1" path="res://Towers/Popups/NonDamage_Tower_Info.cs" id="1_8m7d6"]
+[ext_resource type="Script" uid="uid://dobupc5r46pu1" path="res://Towers/Popups/TowerInfo.cs" id="1_8m7d6"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_jbtsn"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="3_hfr4e"]
 [ext_resource type="Texture2D" uid="uid://c2cf8nhwfgids" path="res://Assets/sell.png" id="4_dcn38"]
