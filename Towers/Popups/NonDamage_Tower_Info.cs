@@ -20,12 +20,22 @@ public partial class NonDamage_Tower_Info : ColorRect
 	}
 	
 	public void open(){
-		Visible=true;
+		if(!GetParent<Tower>().hovering){
+			Visible=!Visible;
+			GetNode<Timer>("Timer").Start();
+		}
+		GD.Print(Visible);
+	}
+	
+	public void timerTimeout(){
+		GD.Print("TimedOut");
+		Visible=false;
 	}
 	
 	public void on_area_entered(Area2D Enter){
 		GD.Print("AAAAAAAHHHHHHHHH"); 
 	}
+	
 	public void sellPress()
 		{
 			GD.Print("work");
