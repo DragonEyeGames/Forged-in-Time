@@ -124,6 +124,7 @@ flat = true
 script = ExtResource("8_kgqh3")
 
 [node name="Player-1" type="Area2D" parent="HUD2/Storage/Release"]
+visible = false
 position = Vector2(134.767, 71.6846)
 collision_layer = 256
 collision_mask = 0
@@ -131,8 +132,10 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HUD2/Storage/Release/Player-1"]
 position = Vector2(-57.3168, 1.0971)
 polygon = PackedVector2Array(-73.6989, -64.3978, -73.6989, -57.9462, -59.362, -53.6451, -41.4409, -53.6451, -26.3871, -57.2294, -25.6703, -64.3978, -40.724, -68.6989, -59.362, -68.6989)
+disabled = true
 
 [node name="Player-2" type="Area2D" parent="HUD2/Storage/Release"]
+visible = false
 position = Vector2(134.767, 71.6846)
 collision_layer = 512
 collision_mask = 0
@@ -140,6 +143,7 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HUD2/Storage/Release/Player-2"]
 position = Vector2(-57.3168, 1.0971)
 polygon = PackedVector2Array(-73.6989, -64.3978, -73.6989, -57.9462, -59.362, -53.6451, -41.4409, -53.6451, -26.3871, -57.2294, -25.6703, -64.3978, -40.724, -68.6989, -59.362, -68.6989)
+disabled = true
 
 [node name="HUD" type="ColorRect" parent="HUD2"]
 z_index = -1
@@ -169,6 +173,7 @@ scale = Vector2(0.93, 0.93)
 texture = ExtResource("1_3v5je")
 
 [node name="Player-1" type="Area2D" parent="Detection"]
+visible = false
 position = Vector2(0, 65)
 collision_layer = 256
 collision_mask = 0
@@ -177,6 +182,7 @@ collision_mask = 0
 polygon = PackedVector2Array(0, -65, 0, 63, 128, 63, 128, -65)
 
 [node name="Player-2" type="Area2D" parent="Detection"]
+visible = false
 position = Vector2(0, 65)
 collision_layer = 512
 collision_mask = 0

@@ -24,6 +24,9 @@ public partial class Base : Sprite2D
 	public List<Troops> reserveTroops = new List<Troops>();
 
 	public async override void _Ready(){
+		if(!player1){
+			Modulate=new Color(1, .2f, .2f, 1);
+		}
 		if(player1){
 			GD.Print("Player1");
 			GameManager.player1Base=this;
@@ -88,17 +91,28 @@ public partial class Base : Sprite2D
 		GetNode<RichTextLabel>("HUD2/Storage/Troops").Text=reserveTroops.Count.ToString() + "/" + maxTroops.ToString() + " Troops";
 		if(player1 && GameManager.player1HUDOpen!=GetNode<CollisionPolygon2D>("Detection/Player-1/CollisionPolygon2D").Disabled){
 			GetNode<CollisionPolygon2D>("Detection/Player-1/CollisionPolygon2D").SetDeferred("disabled", GameManager.player1HUDOpen);
-			GetNode<CollisionPolygon2D>("HUD2/Storage/Release/Player-1/CollisionPolygon2D").SetDeferred("disabled", GameManager.player1HUDOpen);
+			if(GameManager.player1HUDOpen){
+				GetNode<ColorRect>("HUD2").Visible=false;
+				GetNode<CollisionPolygon2D>("HUD2/Storage/Release/Player-1/CollisionPolygon2D").SetDeferred("disabled", true);
+			}
+			
 		}
 		if(!player1 && GameManager.player2HUDOpen!=GetNode<CollisionPolygon2D>("Detection/Player-2/CollisionPolygon2D").Disabled){
 			GetNode<CollisionPolygon2D>("Detection/Player-2/CollisionPolygon2D").SetDeferred("disabled", GameManager.player2HUDOpen);
-			GetNode<CollisionPolygon2D>("HUD2/Storage/Release/Player-2/CollisionPolygon2D").SetDeferred("disabled", GameManager.player2HUDOpen);
+			if(GameManager.player2HUDOpen){
+				GetNode<ColorRect>("HUD2").Visible=false;
+				GetNode<CollisionPolygon2D>("HUD2/Storage/Release/Player-2/CollisionPolygon2D").SetDeferred("disabled", true);
+			}
 		}
 	}
 	
 	public void toggle(){
 		GetNode<ColorRect>("HUD2").Visible=!GetNode<ColorRect>("HUD2").Visible;
-		
+		if(player1){
+			GetNode<CollisionPolygon2D>("HUD2/Storage/Release/Player-1/CollisionPolygon2D").SetDeferred("disabled", !GetNode<ColorRect>("HUD2").Visible);
+		} else if(!player1){
+			GetNode<CollisionPolygon2D>("HUD2/Storage/Release/Player-2/CollisionPolygon2D").SetDeferred("disabled", !GetNode<ColorRect>("HUD2").Visible);
+		}
 	}
 	
 	public void release(){
