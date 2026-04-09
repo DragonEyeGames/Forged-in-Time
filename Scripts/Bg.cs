@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class InfiniteBackground : ParallaxBackground
+public partial class BG : ParallaxBackground
 {
 	[Export] public float ScrollSpeed = 100.0f;
 
