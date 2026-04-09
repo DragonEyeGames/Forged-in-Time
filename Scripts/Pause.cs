@@ -59,7 +59,7 @@ public partial class Pause : CanvasLayer
 
 	private void OnExitPressed()
 	{
-		GetTree().Paused = false; // unpause before changing scene
-		//GetTree().ChangeSceneToFile("res://Scenes/StartMenu.tscn"); Commented because doesn't exist yet
+		GetTree().Paused = false;
+		GetTree().ChangeSceneToFile("res://Scenes/StartScreen.tscn");
 	}
 }

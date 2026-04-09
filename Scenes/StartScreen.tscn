@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfv3xbll1nk1r"]
+
+[ext_resource type="Script" uid="uid://bivyw8v445vg4" path="res://Scripts/StartScreen.cs" id="1_0on6r"]
+[ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_usjih"]
+
+[node name="StartScreen" type="Node2D"]
+script = ExtResource("1_0on6r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.00766666, 0, 0.23, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 296.0
+offset_top = 120.0
+offset_right = 856.0
+offset_bottom = 240.0
+color = Color(0.25, 0, 0.75, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 896.0
+offset_bottom = 240.0
+theme_override_fonts/normal_font = ExtResource("2_usjih")
+theme_override_font_sizes/normal_font_size = 100
+text = "FORGED IN TIME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+offset_left = 256.0
+offset_top = 346.0
+offset_right = 896.0
+offset_bottom = 624.0
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_usjih")
+theme_override_font_sizes/font_size = 76
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_usjih")
+theme_override_font_sizes/font_size = 75
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_usjih")
+theme_override_font_sizes/font_size = 75
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
