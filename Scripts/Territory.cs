@@ -1,13 +1,14 @@
 using Godot;
 using System;
 
-public partial class TerritoryChecker : TileMapLayer
+public partial class Territory : TileMapLayer
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		betterTerritory(4, 0);
-		betterTerritory(3, 1);
+		GameManager.territory = this;
+		betterTerritory(3, 0);
+		betterTerritory(4, 1);
 		betterTerritory(5, 2);
 	}
 
@@ -20,8 +21,8 @@ public partial class TerritoryChecker : TileMapLayer
 	}
 	
 	public void recalculate(){
-		betterTerritory(4, 0);
-		betterTerritory(3, 1);
+		betterTerritory(3, 0);
+		betterTerritory(4, 1);
 		betterTerritory(5, 2);
 	}
 	

@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbv0on4q33vri"]
+[gd_scene load_steps=6 format=3 uid="uid://dbv0on4q33vri"]
 
 [ext_resource type="Script" uid="uid://cnx7pgqiku2t6" path="res://Towers/Miner.cs" id="1_d33k3"]
 [ext_resource type="Texture2D" uid="uid://bkqv5mmp0ataj" path="res://images/icon.jpg" id="2_nt6wr"]
+[ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="3_nt6wr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5r2x8"]
 radius = 76.0066
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5r2x8"]
+size = Vector2(70, 66)
 
 [node name="Miner" type="Node2D"]
 script = ExtResource("1_d33k3")
@@ -36,3 +40,26 @@ collision_mask = 0
 
 [node name="PlayerNoneTerritoryCollide" type="CollisionShape2D" parent="PlayerNoneTerritory"]
 shape = SubResource("CircleShape2D_5r2x8")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("3_nt6wr")
+
+[node name="Area2D" type="Area2D" parent="Button"]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5r2x8")
+
+[node name="Area2D2" type="Area2D" parent="Button"]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D2"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_5r2x8")
+
+[connection signal="pressed" from="Button" to="." method="onSelect"]

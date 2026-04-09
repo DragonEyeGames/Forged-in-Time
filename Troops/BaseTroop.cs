@@ -38,6 +38,19 @@ public abstract partial class BaseTroop : CharacterBody2D
     
     public void recalculate()
     {
+        if (target == null)
+        {
+            if (player1)
+            {
+                target = GameManager.player2Base as TargetBase;
+                pathfinding = true;
+            }
+            else if (!player1)
+            {
+                target = GameManager.player1Base as TargetBase;
+                pathfinding = true;
+            }
+        }
         navAgent.TargetPosition = target.GlobalPosition;
     }
 
@@ -45,6 +58,7 @@ public abstract partial class BaseTroop : CharacterBody2D
     {
         if (pathfinding)
         {
+
             Vector2 velocity = Vector2.Zero;
             var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
             velocity = dir * 40;
@@ -69,6 +83,8 @@ public abstract partial class BaseTroop : CharacterBody2D
                 sprite.FlipH = true;
             }
         }
+
+        
         
     }
 
@@ -83,22 +99,21 @@ public abstract partial class BaseTroop : CharacterBody2D
                 target.Die();
                 if(target is Miner)
                 {
-                    GD.Print(target);
                     Miner miner = target as Miner;
                     if (player1 == true)
                     {
-                        GD.Print("Hooray");
                         miner.GetNode<CollisionShape2D>("Player1Territory/Player1TerritoryCollide").Disabled = false;
                         miner.GetNode<CollisionShape2D>("Player2Territory/Player2TerritoryCollide").Disabled = true; 
-                        miner.GetNode<CollisionShape2D>("PlayerNoneTerritory/PlayerNoneTerritoryCollide").Disabled = true; 
-                        target = GetNode<TargetBase>("Player-2");
+                        miner.GetNode<CollisionShape2D>("PlayerNoneTerritory/PlayerNoneTerritoryCollide").Disabled = true;
+                        GameManager.territory.CallDeferred("recalculate");
+                        target = null;
                     }
                     else if (player1 == false)
                     {
                         miner.GetNode<CollisionShape2D>("Player1Territory/Player1TerritoryCollide").Disabled = true;
                         miner.GetNode<CollisionShape2D>("Player2Territory/Player2TerritoryCollide").Disabled = false; 
-                        miner.GetNode<CollisionShape2D>("PlayerNoneTerritory/PlayerNoneTerritoryCollide").Disabled = true; 
-                        target = GetNode<TargetBase>("Player-1");
+                        miner.GetNode<CollisionShape2D>("PlayerNoneTerritory/PlayerNoneTerritoryCollide").Disabled = true;
+                        target = null;
                     }
                 }
             }

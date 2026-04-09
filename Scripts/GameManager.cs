@@ -21,4 +21,6 @@ public partial class GameManager : Node
 	public static Base player2Base;
 	public static bool player1=true;
 	public static bool keyboard=false;
+	public static Territory territory;
+
 }

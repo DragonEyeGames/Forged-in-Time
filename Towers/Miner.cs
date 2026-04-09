@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class Miner: TargetBase
 {
@@ -8,10 +9,16 @@ public partial class Miner: TargetBase
     public int health= 4;
     private int money = 10;
 
-    public override void Die()
+    public async override void Die()
     {
+        GD.Print("start");
+        await Task.Delay(200);
+        GameManager.territory.CallDeferred("recalculate");
         health = maxHealth;
     }
-    
 
+    public void onSelect()
+    {
+        
+    }
 }

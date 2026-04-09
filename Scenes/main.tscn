@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
 [ext_resource type="Script" uid="uid://d4nb8xql544r2" path="res://Scripts/Placement.cs" id="2_074og"]
 [ext_resource type="Texture2D" uid="uid://c0yjgn2auin4l" path="res://pixilart-drawing.png" id="4_1w6v2"]
-[ext_resource type="Script" uid="uid://dnc0ugi7igvey" path="res://Scripts/TerritoryChecker.cs" id="4_82xsv"]
+[ext_resource type="Script" uid="uid://dnc0ugi7igvey" path="res://Scripts/Territory.cs" id="4_82xsv"]
 [ext_resource type="Texture2D" uid="uid://dbvc0o64ox1vc" path="res://Assets/icon.svg" id="5_getpj"]
 [ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/troop.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cnem7ep3j786t" path="res://Towers/Scenes/turret.tscn" id="6_kek77"]
@@ -93,6 +93,7 @@ tile_set = SubResource("TileSet_6vcvc")
 script = ExtResource("4_82xsv")
 
 [node name="Player-1" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
+self_modulate = Color(1, 0, 0, 1)
 position = Vector2(896, 353)
 texture = ExtResource("5_getpj")
 offset = Vector2(64, -1)
@@ -246,7 +247,6 @@ polygon = PackedVector2Array(0, -65, 0, 63, 128, 63, 128, -65)
 [node name="CanvasLayer" type="CanvasLayer" parent="Player-1"]
 
 [node name="Player-2" type="Sprite2D" parent="." node_paths=PackedStringArray("target")]
-self_modulate = Color(1, 0.194376, 0.144153, 1)
 position = Vector2(192, 338)
 texture = ExtResource("5_getpj")
 offset = Vector2(-64, -2)
@@ -491,7 +491,7 @@ screenCounterpart = NodePath("../Screen/Player2Cursor")
 [node name="Screen" type="CanvasLayer" parent="."]
 
 [node name="Player1Cursor" type="Sprite2D" parent="Screen" node_paths=PackedStringArray("worldCounterpart")]
-modulate = Color(0.286275, 0.435294, 1, 0.662745)
+modulate = Color(1, 0, 0, 0.662745)
 z_index = 5
 position = Vector2(839, 353)
 scale = Vector2(0.35, 0.35)
@@ -507,7 +507,7 @@ collision_mask = 64
 shape = SubResource("CircleShape2D_3pmx8")
 
 [node name="Player2Cursor" type="Sprite2D" parent="Screen" node_paths=PackedStringArray("worldCounterpart")]
-modulate = Color(0.936675, 0, 0.0266771, 0.662745)
+modulate = Color(0, 0, 1, 0.662745)
 z_index = 5
 position = Vector2(292, 353)
 scale = Vector2(0.35, 0.35)
