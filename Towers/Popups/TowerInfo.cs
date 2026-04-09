@@ -12,13 +12,13 @@ public partial class TowerInfo : ColorRect
 		//Sell Label
 		GameManager.Towers towerType=GetParent<Tower>().towerType;
 		sellLabel=GetNode<RichTextLabel>("sellPrice");
-		sellLabel.Text=(Prices.towerPrices[towerType]/2).ToString();
+		sellLabel.Text="Sell For: " +  (Prices.towerPrices[towerType]/2).ToString();
 		
 		//Tower Name
 		towerName=GetNode<RichTextLabel>("towerName");
 		towerName.Text = Enum.GetNames<GameManager.Towers>()[(int)towerType].ToString();
 		towerName.Text=towerName.Text.Replace("_", " ");
-		
+		GetNode<Sprite2D>("Sprite").Texture = (Texture2D)GD.Load(Cosmetics.towerDisplays[towerType]);
 		while (GetParent<Tower>().hovering){
 			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		}
@@ -27,6 +27,7 @@ public partial class TowerInfo : ColorRect
 		}else{
 			GetNode<Area2D>("SellButton/Player2").QueueFree();
 		}
+		
 	}
 	
 	public void open(){
