@@ -22,10 +22,9 @@ public partial class GameManager : Node
 	
 	public static Base player1Base;
 	public static Base player2Base;
-	public static TerritoryChecker territory;
+	public static Territory territory;
 	public static bool player1=true;
 	public static bool keyboard=false;
-	public static Territory territory;
 
 	
 	public static bool player1HUDOpen=false;

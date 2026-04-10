@@ -17,7 +17,7 @@ public abstract partial class BaseTroop : CharacterBody2D
 
 	
 	public abstract NavigationAgent2D navAgent {get; set;}
-	public abstract Base target {get; set;}
+	public abstract TargetBase target {get; set;}
 	public abstract AnimatedSprite2D sprite  {get; set;}
 	public abstract Timer cooldown {get; set;}
 
