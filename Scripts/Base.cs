@@ -24,7 +24,7 @@ public partial class Base : TargetBase
 	public List<Troops> reserveTroops = new List<Troops>();
 
 	public async override void _Ready(){
-		if(!player1){
+		if(player1){
 			SelfModulate=new Color(1, .2f, .2f, 1);
 		}
 		if(player1){

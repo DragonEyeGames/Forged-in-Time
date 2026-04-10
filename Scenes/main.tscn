@@ -107,10 +107,10 @@ tester = NodePath("../../TestPlacement/Player")
 
 [node name="HUD" parent="." node_paths=PackedStringArray("playerBase") instance=ExtResource("9_4c57u")]
 turretUpgradeSprite = ExtResource("17_0odxb")
-playerBase = NodePath("../Base")
+playerBase = NodePath("../Player1Base")
 
 [node name="HUD2" parent="." node_paths=PackedStringArray("playerBase") instance=ExtResource("18_b3802")]
-playerBase = NodePath("../Base2")
+playerBase = NodePath("../Player2Base")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(534, 318)
@@ -148,7 +148,7 @@ navigation_polygon = SubResource("NavigationPolygon_5vw27")
 use_edge_connections = false
 
 [node name="Player1Cursor" type="Sprite2D" parent="." node_paths=PackedStringArray("screenCounterpart")]
-modulate = Color(0.286275, 0.435294, 1, 0.662745)
+modulate = Color(0.654902, 0.752941, 1, 0)
 z_index = 5
 position = Vector2(839, 353)
 scale = Vector2(0.35, 0.35)
@@ -164,9 +164,9 @@ collision_mask = 256
 shape = SubResource("CircleShape2D_3pmx8")
 
 [node name="Player2Cursor" type="Sprite2D" parent="." node_paths=PackedStringArray("screenCounterpart")]
-modulate = Color(0.936675, 0, 0.0266771, 0.662745)
+modulate = Color(1, 1, 1, 0)
 z_index = 5
-position = Vector2(292, 353)
+position = Vector2(292, 354)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("21_pdsj5")
 script = ExtResource("22_ee4r6")
@@ -200,7 +200,7 @@ collision_mask = 64
 shape = SubResource("CircleShape2D_3pmx8")
 
 [node name="Player2Cursor" type="Sprite2D" parent="Screen" node_paths=PackedStringArray("worldCounterpart")]
-modulate = Color(0, 0, 1, 0.662745)
+modulate = Color(0, 0.670588, 1, 1)
 z_index = 5
 position = Vector2(292, 353)
 scale = Vector2(0.35, 0.35)
@@ -222,14 +222,14 @@ position = Vector2(581, 148)
 
 [node name="pause" parent="." instance=ExtResource("28_ueoa1")]
 
-[node name="Base" parent="." node_paths=PackedStringArray("target") instance=ExtResource("25_cbgmd")]
-position = Vector2(827, 339)
-target = NodePath("../Base2")
+[node name="Player1Base" parent="." node_paths=PackedStringArray("target") instance=ExtResource("25_cbgmd")]
+position = Vector2(845, 352)
+target = NodePath("../Player2Base")
 
-[node name="Base2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("25_cbgmd")]
+[node name="Player2Base" parent="." node_paths=PackedStringArray("target") instance=ExtResource("25_cbgmd")]
 position = Vector2(71, 352)
 player1 = false
-target = NodePath("../Base")
+target = NodePath("../Player1Base")
 
 [connection signal="bake_finished" from="TestPlacement/TestRegion" to="NavHandler" method="TestFinished"]
 [connection signal="bake_finished" from="TestPlacement/NavRegion" to="NavHandler" method="TestFinished"]

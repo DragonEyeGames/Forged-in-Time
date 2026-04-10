@@ -7,6 +7,7 @@ public partial class Controller : Button
 	public Vector2 baseSize;
 	public Vector2 increasedSize;
 	public bool selected=false;
+	public int pressor = 0 ; //0=not pressed, 1=player 1 pressed, 2=player 2 pressed
 	public override void _Ready()
 	{
 		baseSize=Scale;

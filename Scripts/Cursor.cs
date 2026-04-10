@@ -79,11 +79,13 @@ public partial class Cursor : Sprite2D
 		if(player1){
 			if(selected!=null && Input.IsActionJustPressed("Click-1")){
 				selected.EmitSignal(Button.SignalName.Pressed);
+				selected.pressor = 1;
 			}
 		}
 		else if(!player1){
 			if(selected!=null && Input.IsActionJustPressed("Click-2")){
 				selected.EmitSignal(Button.SignalName.Pressed);
+				selected.pressor = 2;
 			}
 		}
 	}

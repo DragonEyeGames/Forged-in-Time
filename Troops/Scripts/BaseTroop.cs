@@ -86,6 +86,14 @@ public abstract partial class BaseTroop : CharacterBody2D
 			if (target.health <= 0)
 			{
 				target.Die();
+				if (target is Miner)
+				{
+					Miner miner = target as Miner;
+					if (player1)
+					{
+						
+					}
+				}
 			}
 			attacking = false;
 			cooldown.Start();

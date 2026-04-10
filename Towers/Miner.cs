@@ -8,6 +8,7 @@ public partial class Miner: TargetBase
     private int maxHealth = 200;
     public int health= 4;
     private int money = 10;
+    private int playerPressed;
 
     public async override void Die()
     {
@@ -17,8 +18,13 @@ public partial class Miner: TargetBase
         health = maxHealth;
     }
 
-    public void onSelect()
+    public async void onSelect()
     {
-        
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        playerPressed = GetNode<Controller>("Button").pressor;
+        if (playerPressed == 1)
+        {
+            
+        }
     }
 }

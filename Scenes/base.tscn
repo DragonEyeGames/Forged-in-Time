@@ -13,6 +13,7 @@
 radius = 220.907
 
 [node name="Base" type="Sprite2D"]
+position = Vector2(-64, 0)
 texture = ExtResource("1_3v5je")
 offset = Vector2(64, -1)
 script = ExtResource("2_qutmk")
@@ -165,6 +166,7 @@ pivot_offset = Vector2(64, 69)
 focus_mode = 0
 flat = true
 script = ExtResource("8_kgqh3")
+metadata/_edit_use_anchors_ = true
 
 [node name="Icon" type="Sprite2D" parent="Detection"]
 z_index = -1
