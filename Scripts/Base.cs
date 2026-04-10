@@ -32,32 +32,25 @@ public partial class Base : Sprite2D
 			GameManager.player1Base=this;
 			GetNode<Area2D>("Player-2").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-2").QueueFree();
-			GetNode<Area2D>("Player-2").QueueFree();
+			GetNode<Area2D>("Detection/Player-2").QueueFree();
 		} else if(!player1){
 			GD.Print("Player2");
 			GameManager.player2Base=this;
 			GetNode<Area2D>("Player-1").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-1").QueueFree();
-			GetNode<Area2D>("Player-1").QueueFree();
+			GetNode<Area2D>("Detection/Player-1").QueueFree();
 		}
 		if (health > 0) 
 		{
 			GD.Print("Tower Alive");
 		}
-		await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
-		GameManager.territory.recalculate();
-		if(player1){
-			if(GetNode<Area2D>("Player-1").Visible){
-				GetNode<Area2D>("Player-1").Visible=false;
-				GetNode<Area2D>("Player-1").GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
-			}
-		} else {
-			if(GetNode<Area2D>("Player-2").Visible){
-				GetNode<Area2D>("Player-2").Visible=false;
-				GetNode<Area2D>("Player-2").GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
+		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
+		foreach (Node child in GetChildren()){
+			if(child is Area2D){
+				GD.Print(player1.ToString() + child.Name.ToString());
 			}
 		}
-		
+		GD.Print(GetChild<Area2D>(0).GetChild<CollisionShape2D>(0).Disabled);
 	}
 
 	public void spawnTroop(Troops troopType){
