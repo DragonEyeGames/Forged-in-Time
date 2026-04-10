@@ -6,7 +6,7 @@ public partial class Cursor : Sprite2D
 	[Export] public bool player1=true;
 	[Export] public int ID = 0;
 	[Export] public ScreenCursor screenCounterpart;
-	Node2D tower;
+	private Controller selected=null;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -73,30 +73,43 @@ public partial class Cursor : Sprite2D
 		}
 		Position=position;
 		
-		if(tower!=null && Input.IsActionJustPressed("Click2")){
-			tower.GetNode<ColorRect>("NonDamageToweInfo").Visible = true;
-		}
-		
 		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
 		screenCounterpart.GlobalPosition=screenPos;
+		
+		if(player1){
+			if(selected!=null && Input.IsActionJustPressed("Click-1")){
+				selected.EmitSignal(Button.SignalName.Pressed);
+			}
+		}
+		else if(!player1){
+			if(selected!=null && Input.IsActionJustPressed("Click-2")){
+				selected.EmitSignal(Button.SignalName.Pressed);
+			}
+		}
 	}
-		
-		private void OnP1Entered(Node2D P1Ent){
-			tower=P1Ent.GetParent() as Node2D;
-		}
-		
-		private void OnP1Exited(Node2D P1Exit){
-			tower=null;
-		}
-		
-		private void OnP2Entered(Node2D P2Ent){
-			tower=P2Ent.GetParent() as Node2D;
-		}
-		
-		private void OnP2Exited(Node2D P2Exit){
-			tower=null;
-		}
 	
-		
-		
+	public void towerInteract(Node2D towerArea){
+		//if(selected!=null){
+		//	return;
+		//}
+		if(towerArea.GetParent() is Controller){
+			Controller tower = towerArea.GetParent() as Controller;
+			tower.select();
+			if(selected!=null){
+				selected.deselect();
+			}
+			selected=tower;
+		}
 	}
+	
+	public void towerLeave(Node2D towerArea){
+		if(towerArea.GetParent() is Controller){
+			Controller tower = towerArea.GetParent() as Controller;
+			if(tower==selected){
+				tower.deselect();
+				selected=null;
+			}
+			
+		}
+	}
+}

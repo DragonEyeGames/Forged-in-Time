@@ -20,14 +20,6 @@ public partial class Hud : CanvasLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		openButton=GetNode<Controller>("Button");
-		if(player1) {
-			baseButton.right=openButton;
-			openButton.left=baseButton;
-		} else {
-			baseButton.left=openButton;
-			openButton.right=baseButton;
-		}
 		animator=GetNode<AnimationPlayer>("Animator");
 		if(player1){
 			ID=0;

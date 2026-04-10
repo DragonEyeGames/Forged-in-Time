@@ -9,6 +9,5 @@ public partial class StaticTower : Tower
 	public override void _Process(double delta)
 	{
 		TowerGenerics();
-			
 	}
 }

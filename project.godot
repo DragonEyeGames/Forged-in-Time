@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Forged in Time"
-run/main_scene="uid://cfv3xbll1nk1r"
+run/main_scene="uid://bywcqda0sombh"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://Assets/icon.svg"
 
@@ -177,6 +177,8 @@ Click-2={
 2d_physics/layer_5="Player 2 Territory"
 2d_physics/layer_7="Player 1 HUD"
 2d_physics/layer_8="Player 2 HUD"
+2d_physics/layer_9="Player 1 Tower"
+2d_physics/layer_10="Player 2 Tower"
 
 [rendering]
 

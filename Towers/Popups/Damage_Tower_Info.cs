@@ -20,7 +20,7 @@ public partial class Damage_Tower_Info : ColorRect
 		
 		//Tower Name
 		towerName=GetNode<RichTextLabel>("towerName");
-		towerName.Text = (string)GetParent().GetParent<Tower>().name;
+		//towerName.Text = (string)GetParent().GetParent<Tower>().towerType;
 	}
 	
 	public void on_sell_pressed()
