@@ -6,6 +6,7 @@ public partial class Cursor : Sprite2D
 	[Export] public bool player1=true;
 	[Export] public int ID = 0;
 	[Export] public ScreenCursor screenCounterpart;
+	private Controller selected=null;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -75,5 +76,40 @@ public partial class Cursor : Sprite2D
 		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
 		screenCounterpart.GlobalPosition=screenPos;
 		
+		if(player1){
+			if(selected!=null && Input.IsActionJustPressed("Click-1")){
+				selected.EmitSignal(Button.SignalName.Pressed);
+			}
+		}
+		else if(!player1){
+			if(selected!=null && Input.IsActionJustPressed("Click-2")){
+				selected.EmitSignal(Button.SignalName.Pressed);
+			}
+		}
+	}
+	
+	public void towerInteract(Node2D towerArea){
+		//if(selected!=null){
+		//	return;
+		//}
+		if(towerArea.GetParent() is Controller){
+			Controller tower = towerArea.GetParent() as Controller;
+			tower.select();
+			if(selected!=null){
+				selected.deselect();
+			}
+			selected=tower;
+		}
+	}
+	
+	public void towerLeave(Node2D towerArea){
+		if(towerArea.GetParent() is Controller){
+			Controller tower = towerArea.GetParent() as Controller;
+			if(tower==selected){
+				tower.deselect();
+				selected=null;
+			}
+			
+		}
 	}
 }

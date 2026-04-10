@@ -5,6 +5,14 @@ public partial class BakeHandler : Node2D
 {
 	private int baking=0;
 	
+	[Export] public PackedScene polygon;
+	[Export] public PackedScene bigPolygon;
+	[Export] public PackedScene turret;
+	[Export] public PackedScene plasmaTurret;
+	[Export] public PackedScene tower;
+	[Export] public PackedScene wall;
+	[Export] public PackedScene spikes;
+	
 	public void BakePoly(){
 		if(baking==0){
 			baking=2;

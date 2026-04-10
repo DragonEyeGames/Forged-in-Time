@@ -3,13 +3,23 @@ using System;
 
 public abstract partial class Tower : Node2D
 {
-	[Export]public bool hovering=true;
-	[Export]
+	public int kills=0;
+	public bool hovering=true;
 	public bool Player1 = false;
+	[Export] public GameManager.Towers towerType;
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public async override void _Ready()
 	{
-
+		while (hovering){
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		}
+		if(GetNode<Button>("Checker")!=null){
+			if(!Player1){
+				GetNode<Area2D>("Checker/Player1").QueueFree();
+			} else {
+				GetNode<Area2D>("Checker/Player2").QueueFree();
+			}
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

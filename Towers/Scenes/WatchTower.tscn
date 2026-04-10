@@ -1,21 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtmcn270epgmd"]
+[gd_scene load_steps=8 format=3 uid="uid://dtmcn270epgmd"]
 
+[ext_resource type="Material" uid="uid://cyddiu60rhrga" path="res://TowerShader.tres" id="1_gujf3"]
 [ext_resource type="Script" uid="uid://c2cnqo6uqcarb" path="res://Towers/Scripts/StaticTower.cs" id="1_vedim"]
 [ext_resource type="Texture2D" uid="uid://qxlusnmafien" path="res://Towers/Assets/Watch Tower.png" id="2_vedim"]
+[ext_resource type="Script" uid="uid://td32hbea8c2d" path="res://Scripts/TowerController.cs" id="4_gujf3"]
+[ext_resource type="PackedScene" uid="uid://b8qjxq5m1jorh" path="res://Scenes/towerInfo.tscn" id="5_gujf3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tjdg3"]
 radius = 98.0051
 
-[node name="Tower" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wgsla"]
+radius = 4.0
+height = 18.0
+
+[node name="WatchTower" type="Node2D"]
+material = ExtResource("1_gujf3")
 script = ExtResource("1_vedim")
+towerType = 3
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
 texture = ExtResource("2_vedim")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Player1Territory" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 0
 
@@ -25,6 +33,7 @@ shape = SubResource("CircleShape2D_tjdg3")
 disabled = true
 
 [node name="Player2Territory" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 0
 
@@ -32,3 +41,36 @@ collision_mask = 0
 position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_tjdg3")
 disabled = true
+
+[node name="Checker" type="Button" parent="." node_paths=PackedStringArray("sprite")]
+offset_left = 4.0
+offset_right = 12.0
+offset_bottom = 16.0
+flat = true
+script = ExtResource("4_gujf3")
+sprite = NodePath("../Base")
+
+[node name="Player1" type="Area2D" parent="Checker"]
+visible = false
+position = Vector2(4, 7)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checker/Player1"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_wgsla")
+
+[node name="Player2" type="Area2D" parent="Checker"]
+visible = false
+position = Vector2(4, 7)
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checker/Player2"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_wgsla")
+
+[node name="TowerInfo" parent="." instance=ExtResource("5_gujf3")]
+visible = false
+
+[connection signal="pressed" from="Checker" to="TowerInfo" method="open"]

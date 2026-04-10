@@ -10,7 +10,10 @@ public partial class GameManager : Node
 		Wall,
 		Watch_Tower,
 		Spikes,
-		Melee
+		Melee,
+		Ranged,
+		Brute,
+		Healer
 	}
 	
 	public enum Upgrades{
@@ -19,8 +22,13 @@ public partial class GameManager : Node
 	
 	public static Base player1Base;
 	public static Base player2Base;
+	public static TerritoryChecker territory;
 	public static bool player1=true;
 	public static bool keyboard=false;
 	public static Territory territory;
 
+	
+	public static bool player1HUDOpen=false;
+	public static bool player2HUDOpen=false;
+	
 }
