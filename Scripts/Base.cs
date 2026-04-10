@@ -62,11 +62,11 @@ public partial class Base : Sprite2D
 		if(troopType==Troops.Brute){
 			newTroop = brute.Instantiate() as BaseTroop;
 		}
-		if(troopType==Troops.Brute){
-			newTroop = brute.Instantiate() as BaseTroop;
+		if(troopType==Troops.Ranged){
+			newTroop = ranged.Instantiate() as BaseTroop;
 		}
-		if(troopType==Troops.Brute){
-			newTroop = brute.Instantiate() as BaseTroop;
+		if(troopType==Troops.Healer){
+			newTroop = healer.Instantiate() as BaseTroop;
 		}
 		GetParent().AddChild(newTroop);
 		newTroop.GlobalPosition=GlobalPosition;

@@ -99,7 +99,11 @@ public partial class TerritoryChecker : TileMapLayer
 				Vector2I territoryCoords = new Vector2I(pos, 0);
 				if (space.IntersectShape(query).Count > 0)
 				{
-					SetCell(new Vector2I(x, y), 0, territoryCoords);
+					GD.Print(GetCellSourceId(new Vector2I(x, y)));
+					if(GetCellSourceId(new Vector2I(x, y))!=0){
+						GD.Print(territoryCoords);
+						SetCell(new Vector2I(x, y), 0, territoryCoords);
+					}
 				}
 			}
 		}
