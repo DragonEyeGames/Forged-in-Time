@@ -54,12 +54,12 @@ public partial class TowerInfo : ColorRect
 			GD.Print("work");
 			if(GetParent<Tower>().Player1 == true){
 				Player1Manager.money+=Prices.towerPrices[towerType]/2;
-				GetParent().QueueFree();
+				GetParent<Tower>().sell();
 			}
 			
 			else if(GetParent<Tower>().Player1 == false){
 				Player2Manager.money+=Prices.towerPrices[towerType]/2;
-				GetParent().QueueFree();
+				GetParent<Tower>().sell();
 			}
 			
 		}

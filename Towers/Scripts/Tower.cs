@@ -64,4 +64,22 @@ public abstract partial class Tower : Node2D
 		}
 		Modulate=color;
 	}
+	
+	public async void sell(){
+		GD.Print("Sell");
+		if(Player1){
+			GD.Print("sedf");
+			GetNode<Area2D>("Player1Territory").SetCollisionLayerValue(4, false);
+			GetNode<Area2D>("Player1Territory").SetCollisionLayerValue(6, true);
+			GD.Print(GetNode<Area2D>("Player1Territory").CollisionLayer);
+		} else {
+			GD.Print("sssaedf");
+			GetNode<Area2D>("Player2Territory").SetCollisionLayerValue(5, false);
+			GetNode<Area2D>("Player2Territory").SetCollisionLayerValue(6, true);
+		}
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		GameManager.territory.recalculate();
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		QueueFree();
+	}
 }

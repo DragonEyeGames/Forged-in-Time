@@ -6,7 +6,7 @@ public partial class TerritoryChecker : TileMapLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		recalculate();
+		//recalculate();
 		GameManager.territory=this;
 	}
 
@@ -20,9 +20,9 @@ public partial class TerritoryChecker : TileMapLayer
 	}
 	
 	public void recalculate(){
+		clearNonexistent();
 		betterTerritory(3, 0);
 		betterTerritory(4, 1);
-		clearNonexistent();
 	}
 	
 	private void clearNonexistent(){
@@ -50,17 +50,10 @@ public partial class TerritoryChecker : TileMapLayer
 				{
 					Shape = tileShape,
 					Transform = new Transform2D(0, worldPos),
-					CollisionMask = 1u << 3,
+					CollisionMask = 1u << 5,
 					CollideWithAreas = true
 				};
-				var query2 = new PhysicsShapeQueryParameters2D
-				{
-					Shape = tileShape,
-					Transform = new Transform2D(0, worldPos),
-					CollisionMask = 1u << 4,
-					CollideWithAreas = true
-				};
-				if (!(space.IntersectShape(query).Count > 0 || space.IntersectShape(query2).Count > 0))
+				if (space.IntersectShape(query).Count > 0)
 				{
 					EraseCell(new Vector2I(x, y));
 				}
@@ -99,9 +92,7 @@ public partial class TerritoryChecker : TileMapLayer
 				Vector2I territoryCoords = new Vector2I(pos, 0);
 				if (space.IntersectShape(query).Count > 0)
 				{
-					GD.Print(GetCellSourceId(new Vector2I(x, y)));
 					if(GetCellSourceId(new Vector2I(x, y))!=0){
-						GD.Print(territoryCoords);
 						SetCell(new Vector2I(x, y), 0, territoryCoords);
 					}
 				}

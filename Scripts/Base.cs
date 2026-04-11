@@ -44,13 +44,8 @@ public partial class Base : Sprite2D
 		{
 			GD.Print("Tower Alive");
 		}
-		await ToSignal(GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
-		foreach (Node child in GetChildren()){
-			if(child is Area2D){
-				GD.Print(player1.ToString() + child.Name.ToString());
-			}
-		}
-		GD.Print(GetChild<Area2D>(0).GetChild<CollisionShape2D>(0).Disabled);
+		await ToSignal(GetTree().CreateTimer(0.05f), SceneTreeTimer.SignalName.Timeout);
+		GameManager.territory.recalculate();
 	}
 
 	public void spawnTroop(Troops troopType){
