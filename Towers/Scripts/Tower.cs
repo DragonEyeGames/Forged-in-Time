@@ -7,6 +7,8 @@ public abstract partial class Tower : Node2D
 	public bool hovering=true;
 	public bool Player1 = false;
 	[Export] public GameManager.Towers towerType;
+	public Polygon2D polygon;
+	public Polygon2D polygon2;
 	// Called when the node enters the scene tree for the first time.
 	public async override void _Ready()
 	{
@@ -80,6 +82,24 @@ public abstract partial class Tower : Node2D
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		GameManager.territory.recalculate();
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		if(towerType!=GameManager.Towers.Spikes){
+			if(Player1){
+				GameManager.player1Placement.replaceBox(GlobalPosition);
+			} else {
+				GameManager.player2Placement.replaceBox(GlobalPosition);
+			}
+		} else {
+			if(Player1){
+				GameManager.player1Placement.replaceBig(GlobalPosition);
+			} else {
+				GameManager.player2Placement.replaceBig(GlobalPosition);
+			}
+			GD.Print("spikes");
+		}
+		polygon.QueueFree();
+		polygon2.QueueFree();
+		GameManager.baker.CallDeferred("BakePoly");
+		
 		QueueFree();
 	}
 }
