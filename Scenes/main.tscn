@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bdhyr2rcfdx0l" path="res://Scenes/hud_2.tscn" id="18_b3802"]
 [ext_resource type="Texture2D" uid="uid://dkgrnn8xbc61t" path="res://Assets/Cursor.png" id="21_pdsj5"]
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_ee4r6"]
-[ext_resource type="Script" uid="uid://hhncf58ocdwm" path="res://Scenes/ScreenCursor.cs" id="25_u50mg"]
+[ext_resource type="Script" uid="uid://hhncf58ocdwm" path="res://Scripts/ScreenCursor.cs" id="25_u50mg"]
 [ext_resource type="PackedScene" uid="uid://dcs7g671onmkq" path="res://Scenes/Pause.tscn" id="28_ueoa1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
@@ -86,11 +86,17 @@ script = ExtResource("4_82xsv")
 [node name="Player-1" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_3pmx8")]
 position = Vector2(896, 353)
 target = NodePath("../Player-2")
+brute = null
+ranged = null
+healer = null
 
 [node name="Player-2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_3pmx8")]
 position = Vector2(112, 346)
 player1 = false
 target = NodePath("../Player-1")
+brute = null
+ranged = null
+healer = null
 
 [node name="NavHandler" type="Node2D" parent="."]
 script = ExtResource("10_wsu2k")
