@@ -44,7 +44,7 @@ public partial class Base : TargetBase
 		{
 			GD.Print("Tower Alive");
 		}
-		await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
+		await ToSignal(GetTree().CreateTimer(0.15f), SceneTreeTimer.SignalName.Timeout);
 		GameManager.territory.recalculate();
 		if(player1){
 			if(GetNode<Area2D>("Player-1").Visible){

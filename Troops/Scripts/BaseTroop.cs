@@ -3,7 +3,7 @@ using System;
 
 public abstract partial class BaseTroop : CharacterBody2D
 {
-	public bool player1 = true;
+	[Export] public bool player1 = true;
 	public abstract float Speed {get; set;}
 	public abstract int health {get; set;}
 	public abstract int maxHealth {get; set;}
@@ -91,7 +91,19 @@ public abstract partial class BaseTroop : CharacterBody2D
 					Miner miner = target as Miner;
 					if (player1)
 					{
-						
+						miner.GetNode<CollisionShape2D>("Player1Territory/Player1TerritoryCollide").Disabled = false;
+						miner.GetNode<CollisionShape2D>("Player2Territory/Player2TerritoryCollide").Disabled = true;
+						miner.GetNode<CollisionShape2D>("Player1NoneTerritory/PlayerNoneTerritoryCollide").Disabled = true;
+						target = GetNode<TargetBase>("Player2Base");
+
+					}
+					else if (!player1)
+					{
+						miner.GetNode<CollisionShape2D>("Player1Territory/Player1TerritoryCollide").Disabled = true;
+						miner.GetNode<CollisionShape2D>("Player2Territory/Player2TerritoryCollide").Disabled = false;
+						miner.GetNode<CollisionShape2D>("Player1NoneTerritory/PlayerNoneTerritoryCollide").Disabled = true;
+						target = GetNode<TargetBase>("Player1Base");
+
 					}
 				}
 			}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=34 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_ee4r6"]
 [ext_resource type="PackedScene" uid="uid://qw4hblqnmemt" path="res://Scenes/base.tscn" id="25_cbgmd"]
 [ext_resource type="Script" uid="uid://hhncf58ocdwm" path="res://Scenes/ScreenCursor.cs" id="25_u50mg"]
+[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/Scenes/troop.tscn" id="26_cbgmd"]
 [ext_resource type="PackedScene" uid="uid://dbv0on4q33vri" path="res://Towers/miner.tscn" id="27_1w6v2"]
 [ext_resource type="PackedScene" uid="uid://dcs7g671onmkq" path="res://Scenes/Pause.tscn" id="28_ueoa1"]
 
@@ -230,6 +231,13 @@ target = NodePath("../Player2Base")
 position = Vector2(71, 352)
 player1 = false
 target = NodePath("../Player1Base")
+
+[node name="Troop" parent="." node_paths=PackedStringArray("target") instance=ExtResource("26_cbgmd")]
+position = Vector2(705, 240)
+speedLevel = 1
+healthLevel = 1
+damageLevel = 1
+target = NodePath("../Miner")
 
 [connection signal="bake_finished" from="TestPlacement/TestRegion" to="NavHandler" method="TestFinished"]
 [connection signal="bake_finished" from="TestPlacement/NavRegion" to="NavHandler" method="TestFinished"]

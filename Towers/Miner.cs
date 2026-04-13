@@ -24,7 +24,7 @@ public partial class Miner: TargetBase
         playerPressed = GetNode<Controller>("Button").pressor;
         if (playerPressed == 1)
         {
-            
+            GetNode<Base>("Player1Base").target = this;
         }
     }
 }
