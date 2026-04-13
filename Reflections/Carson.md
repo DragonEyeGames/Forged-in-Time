@@ -3,3 +3,6 @@ Sprint 1:
 
 Sprint 2:
 	I am still having issues with making art but I have vastly improved. I went from getting 4 in one day to 10 in the next. I was suprised at how quickly I got the hand of itand learned the easiest way to do the art is creat it flat 2d then make it top-down.
+
+Sprint 3:
+	I have made a lot of progress on art and still have periodic issues but I am getting better. I have 30+ assets and getting ready to push this into an asset branch. 
