@@ -7,7 +7,7 @@ public partial class StartScreen : Node2D
 	private Button optionsButton;
 	private Button exitButton;
 
-	private const string MainScenePath = "res://Scenes/Main.tscn";
+	private const string MainScenePath = "res://Scenes/main.tscn";
 
 	public override void _Ready()
 	{

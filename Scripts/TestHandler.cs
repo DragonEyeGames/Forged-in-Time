@@ -48,6 +48,8 @@ public partial class TestHandler : Node2D
 				}
 				navRegion.AddChild(selectedPolygon2);
 				selectedPolygon2.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
+				selectedTower.polygon=selectedPolygon;
+				selectedTower.polygon2=selectedPolygon2;
 				selectedPolygon=null;
 				selectedTower.hovering=false;
 				selectedTower=null;
@@ -64,6 +66,8 @@ public partial class TestHandler : Node2D
 				
 				navRegion.AddChild(selectedPolygon2);
 				selectedPolygon2.GlobalPosition=SnapToTopLeft(Player2Manager.cursor.GlobalPosition);
+				selectedTower.polygon=selectedPolygon;
+				selectedTower.polygon2=selectedPolygon2;
 				selectedPolygon=null;
 				selectedTower.hovering=false;
 				selectedTower=null;
@@ -145,7 +149,7 @@ public partial class TestHandler : Node2D
 		if(player1){
 			newPolygon2.GlobalPosition=SnapToTopLeft(Player1Manager.cursor.GlobalPosition);
 		}
-		if(player1){
+		if(!player1){
 			newPolygon2.GlobalPosition=SnapToTopLeft(Player2Manager.cursor.GlobalPosition);
 		}
 		BakePoly();

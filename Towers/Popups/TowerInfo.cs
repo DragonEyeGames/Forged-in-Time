@@ -36,30 +36,28 @@ public partial class TowerInfo : ColorRect
 			GetNode<Timer>("Timer").Start();
 			GetNode<Button>("SellButton").GetChild(0).GetChild<CollisionPolygon2D>(0).SetDeferred("disabled", !Visible);
 		}
-		GD.Print(Visible);
 	}
 	
 	public void timerTimeout(){
-		GD.Print("TimedOut");
+		
 		Visible=true;
 		open();
 	}
 	
 	public void on_area_entered(Area2D Enter){
-		GD.Print("AAAAAAAHHHHHHHHH"); 
+		
 	}
 	
 	public void sellPress()
 		{
-			GD.Print("work");
 			if(GetParent<Tower>().Player1 == true){
 				Player1Manager.money+=Prices.towerPrices[towerType]/2;
-				GetParent().QueueFree();
+				GetParent<Tower>().sell();
 			}
 			
 			else if(GetParent<Tower>().Player1 == false){
 				Player2Manager.money+=Prices.towerPrices[towerType]/2;
-				GetParent().QueueFree();
+				GetParent<Tower>().sell();
 			}
 			
 		}

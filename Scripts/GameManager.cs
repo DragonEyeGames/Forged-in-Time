@@ -29,4 +29,8 @@ public partial class GameManager : Node
 	public static bool player1HUDOpen=false;
 	public static bool player2HUDOpen=false;
 	
+	public static Placement player1Placement;
+	public static Placement player2Placement;
+	
+	public static BakeHandler baker;
 }
