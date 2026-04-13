@@ -10,3 +10,9 @@ Sprint 2:
 - I had some issues with the healer becuase I forgot I needed to instantiate the list its targets were stored in.
 - Moving foreward enemies and upgrades should be easier to implement.
 - Ill start working un upgrades after spring break.
+
+Sprint 3:
+- This sprint I had a lot of issues
+- I've spent a lot of time bug fixe=ing the new mining tower and ealing with merge conflicts.
+- This sprint it shouldnt be bad because I have to finish the miner then I have easier tasks.
+- I need to make another enemy after I finish the miner
