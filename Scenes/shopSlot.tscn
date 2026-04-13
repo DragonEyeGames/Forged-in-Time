@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cayxysu631vpp"]
+[gd_scene load_steps=18 format=3 uid="uid://cayxysu631vpp"]
 
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/ShopSlot.cs" id="1_hc4pq"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="2_sedux"]
@@ -43,6 +43,43 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_2cn1p"),
 &"wobble": SubResource("Animation_avu3l")
+}
+
+[sub_resource type="Animation" id="Animation_hc4pq"]
+resource_name = "open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-7, 3), Vector2(-100, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_sedux"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8imv"]
+_data = {
+&"RESET": SubResource("Animation_sedux"),
+&"open": SubResource("Animation_hc4pq")
 }
 
 [sub_resource type="Animation" id="Animation_gpiub"]
@@ -289,6 +326,18 @@ rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("5_d2k2v")
 
+[node name="Player1" type="Area2D" parent="Player1Upgrade"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player1Upgrade/Player1"]
+polygon = PackedVector2Array(7, 1, 1, 1, 1, 55, 7, 55)
+
+[node name="Animator" type="AnimationPlayer" parent="Player1Upgrade"]
+libraries = {
+&"": SubResource("AnimationLibrary_s8imv")
+}
+
 [node name="Player2Upgrade" type="Button" parent="."]
 layout_mode = 0
 offset_left = 132.0
@@ -391,5 +440,5 @@ flat = true
 script = ExtResource("4_ly0j0")
 
 [connection signal="pressed" from="Button" to="." method="purchase"]
-[connection signal="pressed" from="Player1Upgrade" to="." method="toggle"]
+[connection signal="pressed" from="Player1Upgrade" to="." method="player1Upgrade"]
 [connection signal="pressed" from="Player2Upgrade" to="." method="toggle"]

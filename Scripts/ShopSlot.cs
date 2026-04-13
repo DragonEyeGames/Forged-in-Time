@@ -46,4 +46,8 @@ public partial class ShopSlot : Control
 		};
 	}
 	
+	public void player1Upgrade(){
+		
+	}
+	
 }
