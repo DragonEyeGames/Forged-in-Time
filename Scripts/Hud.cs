@@ -20,6 +20,14 @@ public partial class Hud : CanvasLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		openButton=GetNode<Controller>("Button");
+		if(player1) {
+			baseButton.right=openButton;
+			openButton.left=baseButton;
+		} else {
+			baseButton.left=openButton;
+			openButton.right=baseButton;
+		}
 		animator=GetNode<AnimationPlayer>("Animator");
 		if(player1){
 			ID=0;
@@ -40,20 +48,8 @@ public partial class Hud : CanvasLayer
 		GetNode<RichTextLabel>("ColorRect2/Health/RichTextLabel").Text=playerBase.health.ToString();
 	}
 	
-	public void closedPressed(){
-		toggle();
-		if(player1){
-			GameManager.player1HUDOpen=open;
-		};
-		if(!player1){
-			GameManager.player2HUDOpen=open;
-		};
-		GD.Print(open);
-	}
-	
 	public void toggle(){
 		open=!open;
-		GetNode<CollisionShape2D>("BigClose/Area2D/CollisionShape2D").SetDeferred("disabled", !open);
 		if(open){
 			animator.Play("open");
 			timer.Start();
@@ -68,14 +64,14 @@ public partial class Hud : CanvasLayer
 		}
 	}
 	
-	public void purchaseTower(GameManager.Towers tower, AnimationPlayer buttonAnimator){
+	public void purchaseTower(GameManager.Towers tower, NodePath buttonAnimator){
 		timer.Start();
 		if(player1 && Player1Manager.money>=Prices.towerPrices[tower]){
 			if(Player1Manager.placing==false){
 				Player1Manager.toPlace=tower;
 				Player1Manager.money-=Prices.towerPrices[tower];
 				Player1Manager.placing=true;
-				buttonAnimator.Play("wobble");
+				GetNode<AnimationPlayer>(buttonAnimator).Play("wobble");
 				toggle();
 			}
 		} else if(!player1 && Player2Manager.money>=Prices.towerPrices[tower]){
@@ -83,7 +79,7 @@ public partial class Hud : CanvasLayer
 				Player2Manager.toPlace=tower;
 				Player2Manager.money-=Prices.towerPrices[tower];
 				Player2Manager.placing=true;
-				buttonAnimator.Play("wobble");
+				GetNode<AnimationPlayer>(buttonAnimator).Play("wobble");
 				toggle();
 			}
 		}
@@ -91,59 +87,37 @@ public partial class Hud : CanvasLayer
 	
 	public void turret(){
 		if(turretUpgrade==0){
-			//purchaseTower(GameManager.Towers.Turret, "ColorRect/VBoxContainer/Turret/AnimationPlayer");
+			purchaseTower(GameManager.Towers.Turret, "ColorRect/VBoxContainer/Turret/AnimationPlayer");
 		}
 		if(turretUpgrade==1){
-			//purchaseTower(GameManager.Towers.Plasma_Turret, "ColorRect/VBoxContainer/Turret/AnimationPlayer");
+			purchaseTower(GameManager.Towers.Plasma_Turret, "ColorRect/VBoxContainer/Turret/AnimationPlayer");
 		}
 	}
 	
 	public void tower(){
-		//purchaseTower(GameManager.Towers.Watch_Tower, "ColorRect/VBoxContainer/Watch Tower/AnimationPlayer");
+		purchaseTower(GameManager.Towers.Watch_Tower, "ColorRect/VBoxContainer/Watch Tower/AnimationPlayer");
 	}
 	
 	public void wall(){
-		//purchaseTower(GameManager.Towers.Wall, "ColorRect/VBoxContainer/Wall/AnimationPlayer");
+		purchaseTower(GameManager.Towers.Wall, "ColorRect/VBoxContainer/Wall/AnimationPlayer");
 	}
 	
 	public void spikes(){
-		//purchaseTower(GameManager.Towers.Spikes, "ColorRect/VBoxContainer/AOE/AnimationPlayer");
+		purchaseTower(GameManager.Towers.Spikes, "ColorRect/VBoxContainer/AOE/AnimationPlayer");
 	}
 	
 	//Troop Section
 	
-	public void purchaseTroop(GameManager.Towers troop, AnimationPlayer buttonAnimator){
+	public void basicTroop(){
 		timer.Start();
-		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops && Player1Manager.money>=Prices.towerPrices[troop]){
-			if(troop==GameManager.Towers.Melee){
-				GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
-			}
-			if(troop==GameManager.Towers.Brute){
-				GameManager.player1Base.reserveTroops.Add(Base.Troops.Brute);
-			}
-			if(troop==GameManager.Towers.Ranged){
-				GameManager.player1Base.reserveTroops.Add(Base.Troops.Ranged);
-			}
-			if(troop==GameManager.Towers.Healer){
-				GameManager.player1Base.reserveTroops.Add(Base.Troops.Healer);
-			}
-			Player1Manager.money-=Prices.towerPrices[troop];
-			buttonAnimator.Play("wobble");
-		} else if(!player1 && GameManager.player2Base.reserveTroops.Count<GameManager.player2Base.maxTroops && Player2Manager.money>=Prices.towerPrices[troop]){
-			if(troop==GameManager.Towers.Melee){
-				GameManager.player2Base.reserveTroops.Add(Base.Troops.Melee);
-			}
-			if(troop==GameManager.Towers.Brute){
-				GameManager.player2Base.reserveTroops.Add(Base.Troops.Brute);
-			}
-			if(troop==GameManager.Towers.Ranged){
-				GameManager.player2Base.reserveTroops.Add(Base.Troops.Ranged);
-			}
-			if(troop==GameManager.Towers.Healer){
-				GameManager.player2Base.reserveTroops.Add(Base.Troops.Healer);
-			}
-			Player2Manager.money-=Prices.towerPrices[troop];
-			buttonAnimator.Play("wobble");
+		if(player1 && GameManager.player1Base.reserveTroops.Count<GameManager.player1Base.maxTroops && Player1Manager.money>=Prices.towerPrices[GameManager.Towers.Melee]){
+			GameManager.player1Base.reserveTroops.Add(Base.Troops.Melee);
+			Player1Manager.money-=Prices.towerPrices[GameManager.Towers.Melee];
+			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
+		} else if(!player1 && GameManager.player2Base.reserveTroops.Count<GameManager.player2Base.maxTroops && Player2Manager.money>=Prices.towerPrices[GameManager.Towers.Melee]){
+			GameManager.player2Base.reserveTroops.Add(Base.Troops.Melee);
+			Player2Manager.money-=Prices.towerPrices[GameManager.Towers.Melee];
+			GetNode<AnimationPlayer>("ColorRect/VBoxContainer/Basic/AnimationPlayer").Play("wobble");
 		}
 	}
 	

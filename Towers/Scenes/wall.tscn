@@ -1,24 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvym8b7sd7gh6"]
+[gd_scene load_steps=4 format=3 uid="uid://bvym8b7sd7gh6"]
 
-[ext_resource type="Material" uid="uid://cyddiu60rhrga" path="res://TowerShader.tres" id="1_empu3"]
 [ext_resource type="Script" uid="uid://c2cnqo6uqcarb" path="res://Towers/Scripts/StaticTower.cs" id="1_y4f30"]
 [ext_resource type="Texture2D" uid="uid://cpu1prpqefjps" path="res://Towers/Assets/WallTower.png" id="2_y4f30"]
-[ext_resource type="Script" uid="uid://td32hbea8c2d" path="res://Scripts/TowerController.cs" id="3_fyubp"]
-[ext_resource type="PackedScene" uid="uid://b8qjxq5m1jorh" path="res://Scenes/towerInfo.tscn" id="4_empu3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tjdg3"]
 radius = 28.0713
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyubp"]
-size = Vector2(16, 16)
-
 [node name="Tower" type="Node2D"]
-material = ExtResource("1_empu3")
 script = ExtResource("1_y4f30")
-towerType = 2
 
 [node name="Base" type="Sprite2D" parent="."]
-use_parent_material = true
 position = Vector2(8, 8)
 texture = ExtResource("2_y4f30")
 region_enabled = true
@@ -41,35 +32,3 @@ collision_mask = 0
 position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_tjdg3")
 disabled = true
-
-[node name="Checker" type="Button" parent="." node_paths=PackedStringArray("sprite")]
-offset_right = 16.0
-offset_bottom = 16.0
-flat = true
-script = ExtResource("3_fyubp")
-sprite = NodePath("../Base")
-
-[node name="Player1" type="Area2D" parent="Checker"]
-visible = false
-position = Vector2(8, 7)
-collision_layer = 256
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Checker/Player1"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_fyubp")
-
-[node name="Player2" type="Area2D" parent="Checker"]
-visible = false
-position = Vector2(8, 7)
-collision_layer = 512
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Checker/Player2"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_fyubp")
-
-[node name="TowerInfo" parent="." instance=ExtResource("4_empu3")]
-visible = false
-
-[connection signal="pressed" from="Checker" to="TowerInfo" method="open"]

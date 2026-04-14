@@ -3,25 +3,19 @@ using System;
 
 public abstract partial class Tower : Node2D
 {
-	public int kills=0;
-	public bool hovering=true;
+	[Export]public bool hovering=true;
+	[Export]
 	public bool Player1 = false;
+<<<<<<< HEAD:Towers/Scripts/Tower.cs
 	[Export] public GameManager.Towers towerType;
 	public Polygon2D polygon;
 	public Polygon2D polygon2;
+=======
+>>>>>>> parent of 215896e (Merge branch 'main' into 23-add-material-farming-tower):Towers/Tower.cs
 	// Called when the node enters the scene tree for the first time.
-	public async override void _Ready()
+	public override void _Ready()
 	{
-		while (hovering){
-			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-		}
-		if(GetNode<Button>("Checker")!=null){
-			if(!Player1){
-				GetNode<Area2D>("Checker/Player1").QueueFree();
-			} else {
-				GetNode<Area2D>("Checker/Player2").QueueFree();
-			}
-		}
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

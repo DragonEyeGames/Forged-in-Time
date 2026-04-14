@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c073r01bwh84m"]
+[gd_scene load_steps=21 format=3 uid="uid://dsva3sqdktiu6"]
 
-[ext_resource type="Script" uid="uid://hcpj7oea28af" path="res://Towers/Scripts/AoeTower.cs" id="1_4jy7w"]
+[ext_resource type="Script" uid="uid://hcpj7oea28af" path="res://Towers/AoeTower.cs" id="1_4jy7w"]
 [ext_resource type="Texture2D" uid="uid://dfnt4idxegp1e" path="res://Assets/pixilart-sprite.png" id="2_4jy7w"]
+[ext_resource type="Texture2D" uid="uid://bubeigjyjsgxc" path="res://Towers/Spikes.png" id="3_ynvcy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynvcy"]
 atlas = ExtResource("2_4jy7w")
@@ -47,14 +48,89 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yklf4"]
 radius = 144.17
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_327xk"]
-radius = 102.313
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcslb"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6vq3"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oqd1"]
+atlas = ExtResource("3_ynvcy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt4ac"]
+atlas = ExtResource("3_ynvcy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y20bp"]
+atlas = ExtResource("3_ynvcy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04pt0"]
+atlas = ExtResource("3_ynvcy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14tdu"]
+atlas = ExtResource("3_ynvcy")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sly3i"]
+atlas = ExtResource("3_ynvcy")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tc7h"]
+atlas = ExtResource("3_ynvcy")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpc23"]
+atlas = ExtResource("3_ynvcy")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj18b"]
+atlas = ExtResource("3_ynvcy")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_561yo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3oqd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt4ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y20bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04pt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14tdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sly3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tc7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpc23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj18b")
+}],
+"loop": false,
+"name": &"spike",
+"speed": 30.0
+}]
 
 [node name="AOETower" type="Node2D" node_paths=PackedStringArray("cooldown")]
 script = ExtResource("1_4jy7w")
 cooldown = NodePath("Cooldown")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-0.5, 0.500001)
 scale = Vector2(2.3125, 1.9375)
 sprite_frames = SubResource("SpriteFrames_3oqd1")
@@ -68,6 +144,7 @@ collision_layer = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Territory"]
 scale = Vector2(0.165, 0.165)
 shape = SubResource("CircleShape2D_yklf4")
+disabled = true
 
 [node name="Player2Territory" type="Area2D" parent="."]
 collision_layer = 16
@@ -75,22 +152,73 @@ collision_layer = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Territory"]
 scale = Vector2(0.165, 0.165)
 shape = SubResource("CircleShape2D_yklf4")
+disabled = true
 
 [node name="Player1" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
-scale = Vector2(0.345, 0.345)
-shape = SubResource("CircleShape2D_327xk")
+shape = SubResource("RectangleShape2D_fcslb")
 
 [node name="Player2" type="Area2D" parent="."]
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
-scale = Vector2(0.345, 0.345)
-shape = SubResource("CircleShape2D_327xk")
+shape = SubResource("RectangleShape2D_r6vq3")
 
 [node name="Cooldown" type="Timer" parent="."]
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Spikes"]
+position = Vector2(9, -13)
+sprite_frames = SubResource("SpriteFrames_561yo")
+animation = &"spike"
+frame = 4
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Spikes"]
+position = Vector2(1, -8)
+sprite_frames = SubResource("SpriteFrames_561yo")
+animation = &"spike"
+frame = 4
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Spikes"]
+position = Vector2(-9, -13)
+sprite_frames = SubResource("SpriteFrames_561yo")
+animation = &"spike"
+frame = 4
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Spikes"]
+position = Vector2(9, 1)
+sprite_frames = SubResource("SpriteFrames_561yo")
+animation = &"spike"
+frame = 4
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Spikes"]
+position = Vector2(-6, 0)
+sprite_frames = SubResource("SpriteFrames_561yo")
+animation = &"spike"
+frame = 4
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Spikes"]
+position = Vector2(-11, 7)
+sprite_frames = SubResource("SpriteFrames_561yo")
+animation = &"spike"
+frame = 4
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Spikes"]
+position = Vector2(3, 5)
+sprite_frames = SubResource("SpriteFrames_561yo")
+animation = &"spike"
+frame = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.564706, 0.313726, 0.0901961, 0.254902)
 
 [connection signal="area_entered" from="Player1" to="." method="Player1Entered"]
 [connection signal="area_exited" from="Player1" to="." method="Player1Exited"]

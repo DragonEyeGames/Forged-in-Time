@@ -1,10 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnem7ep3j786t"]
+[gd_scene load_steps=8 format=3 uid="uid://cnem7ep3j786t"]
 
 [ext_resource type="Script" uid="uid://cxp422a4i3a8g" path="res://Towers/Scripts/Turret.cs" id="1_tjdg3"]
-[ext_resource type="Material" uid="uid://cyddiu60rhrga" path="res://TowerShader.tres" id="1_v1d04"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="2_tjdg3"]
-[ext_resource type="Script" uid="uid://td32hbea8c2d" path="res://Scripts/TowerController.cs" id="4_0ofnu"]
-[ext_resource type="PackedScene" uid="uid://b8qjxq5m1jorh" path="res://Scenes/towerInfo.tscn" id="5_7btwq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3oylf"]
 radius = 60.0333
@@ -49,11 +46,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_tjdg3"]
 radius = 30.5287
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsl5c"]
-size = Vector2(16, 16)
-
 [node name="Turret" type="Node2D" node_paths=PackedStringArray("cooldown")]
-material = ExtResource("1_v1d04")
 script = ExtResource("1_tjdg3")
 cooldown = NodePath("Cooldown")
 
@@ -77,7 +70,6 @@ region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 
 [node name="Player1" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -86,7 +78,6 @@ position = Vector2(8, 9)
 shape = SubResource("CircleShape2D_3oylf")
 
 [node name="Player2" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -105,7 +96,6 @@ speed_scale = 2.0
 wait_time = 0.2
 
 [node name="Player1Territory" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 0
 
@@ -115,7 +105,6 @@ shape = SubResource("CircleShape2D_tjdg3")
 disabled = true
 
 [node name="Player2Territory" type="Area2D" parent="."]
-visible = false
 collision_layer = 16
 collision_mask = 0
 
@@ -124,39 +113,8 @@ position = Vector2(8, 8)
 shape = SubResource("CircleShape2D_tjdg3")
 disabled = true
 
-[node name="Checker" type="Button" parent="." node_paths=PackedStringArray("sprite")]
-offset_right = 16.0
-offset_bottom = 16.0
-flat = true
-script = ExtResource("4_0ofnu")
-sprite = NodePath("../Base")
-
-[node name="Player1" type="Area2D" parent="Checker"]
-visible = false
-position = Vector2(8, 7)
-collision_layer = 256
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Checker/Player1"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_xsl5c")
-
-[node name="Player2" type="Area2D" parent="Checker"]
-visible = false
-position = Vector2(8, 7)
-collision_layer = 512
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Checker/Player2"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_xsl5c")
-
-[node name="TowerInfo" parent="." instance=ExtResource("5_7btwq")]
-visible = false
-
 [connection signal="area_entered" from="Player1" to="." method="Player1Entered"]
 [connection signal="area_exited" from="Player1" to="." method="Player1Exited"]
 [connection signal="area_entered" from="Player2" to="." method="Player2Entered"]
 [connection signal="area_exited" from="Player2" to="." method="Player2Exited"]
 [connection signal="timeout" from="Cooldown" to="." method="cooled"]
-[connection signal="pressed" from="Checker" to="TowerInfo" method="open"]

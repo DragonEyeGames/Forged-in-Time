@@ -29,9 +29,6 @@ public partial class ScreenCursor : Sprite2D
 	}
 	
 	public void hudInteract(Node2D hudArea){
-		//if(selected!=null){
-		//	return;
-		//}
 		if(hudArea.GetParent() is Controller){
 			Controller hud = hudArea.GetParent() as Controller;
 			hud.select();

@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwlu7pfersd5r"]
+[gd_scene load_steps=8 format=3 uid="uid://cg63lctx0mml7"]
 
-[ext_resource type="Script" uid="uid://cxp422a4i3a8g" path="res://Towers/Scripts/Turret.cs" id="1_q8k42"]
-[ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="2_q8k42"]
+[ext_resource type="Script" uid="uid://cxp422a4i3a8g" path="res://Towers/Scripts/Turret.cs" id="1_tjdg3"]
+[ext_resource type="Texture2D" uid="uid://cg63lctx0mml7" path="res://Towers/turret.tscn" id="2_tjdg3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3oylf"]
-radius = 89.0225
+radius = 60.0333
 
 [sub_resource type="Animation" id="Animation_c5apd"]
 length = 0.001
@@ -44,29 +44,31 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tjdg3"]
-radius = 44.0114
+radius = 30.5287
 
 [node name="Turret" type="Node2D" node_paths=PackedStringArray("cooldown")]
-script = ExtResource("1_q8k42")
-damage = 2
+script = ExtResource("1_tjdg3")
+damage = null
 cooldown = NodePath("Cooldown")
+hovering = null
+Player1 = null
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
-texture = ExtResource("2_q8k42")
+texture = ExtResource("2_tjdg3")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Turret" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
-texture = ExtResource("2_q8k42")
+texture = ExtResource("2_tjdg3")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 
 [node name="Fire" type="Sprite2D" parent="Turret"]
 visible = false
-position = Vector2(0, 7)
-texture = ExtResource("2_q8k42")
+position = Vector2(0, 3)
+texture = ExtResource("2_tjdg3")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 
@@ -94,7 +96,7 @@ libraries = {
 speed_scale = 2.0
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.2
 
 [node name="Player1Territory" type="Area2D" parent="."]
 collision_layer = 8

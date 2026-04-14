@@ -6,7 +6,6 @@ public partial class Cursor : Sprite2D
 	[Export] public bool player1=true;
 	[Export] public int ID = 0;
 	[Export] public ScreenCursor screenCounterpart;
-	private Controller selected=null;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -76,6 +75,7 @@ public partial class Cursor : Sprite2D
 		Vector2 screenPos = GetViewport().GetCanvasTransform() * GlobalPosition;
 		screenCounterpart.GlobalPosition=screenPos;
 		
+<<<<<<< HEAD
 		if(player1){
 			if(selected!=null && Input.IsActionJustPressed("Click-1")){
 				selected.EmitSignal(Button.SignalName.Pressed);
@@ -113,5 +113,7 @@ public partial class Cursor : Sprite2D
 			}
 			
 		}
+=======
+>>>>>>> parent of 215896e (Merge branch 'main' into 23-add-material-farming-tower)
 	}
 }
