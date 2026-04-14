@@ -24,20 +24,20 @@ ranged = ExtResource("5_yoopj")
 healer = ExtResource("6_u35dc")
 
 [node name="Player-1" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player-1"]
-visible = false
 position = Vector2(64, 3)
 shape = SubResource("CircleShape2D_dg77c")
 
 [node name="Player-2" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player-2"]
-visible = false
 position = Vector2(64, 3)
 shape = SubResource("CircleShape2D_dg77c")
 
