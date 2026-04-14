@@ -14,10 +14,12 @@ public abstract partial class BaseTroop : CharacterBody2D
 	public abstract int damageLevel  {get; set;}
 	public bool attacking = false;
 	public bool pathfinding = true;
+	
+	
 
 	
 	public abstract NavigationAgent2D navAgent {get; set;}
-	public abstract Base target {get; set;}
+	public abstract TargetBase target {get; set;}
 	public abstract AnimatedSprite2D sprite  {get; set;}
 	public abstract Timer cooldown {get; set;}
 
@@ -86,6 +88,10 @@ public abstract partial class BaseTroop : CharacterBody2D
 			if (target.health <= 0)
 			{
 				target.Die();
+				if (!target.isBase)
+				{
+					target.QueueFree();
+				}
 			}
 			attacking = false;
 			cooldown.Start();
@@ -102,5 +108,19 @@ public abstract partial class BaseTroop : CharacterBody2D
 	{
 		attacking = false;
 		attack(damage);
+	}
+
+	public void targetSwitch()
+	{
+		if (player1)
+		{
+			target = GameManager.player2Base;
+			recalculate();
+		}
+		else
+		{
+			target = GameManager.player1Base;
+			recalculate();
+		}	
 	}
 }

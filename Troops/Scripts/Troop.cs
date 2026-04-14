@@ -12,7 +12,7 @@ public partial class Troop : BaseTroop
 	[Export] public override int damage { get; set; } = 1;
 	public override NavigationAgent2D navAgent { get; set; }
 	public override AnimatedSprite2D sprite  {get; set;}
-	public override Base target { get; set; }
+	public override TargetBase target { get; set; }
 	public override Timer cooldown {get; set;}
 	public override bool healer { get; set; } = false;
 
