@@ -47,7 +47,7 @@ public partial class ShopSlot : Control
 	}
 	
 	public void player1Upgrade(){
-		
+		GetNode<AnimationPlayer>("Player1Upgrade/Animator").Play("open");
 	}
 	
 }

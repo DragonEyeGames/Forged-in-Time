@@ -44,7 +44,7 @@ public partial class Base : Sprite2D
 		{
 			GD.Print("Tower Alive");
 		}
-		await ToSignal(GetTree().CreateTimer(0.1f), SceneTreeTimer.SignalName.Timeout);
+		await ToSignal(GetTree().CreateTimer(0.15f), SceneTreeTimer.SignalName.Timeout);
 		GameManager.territory.recalculate();
 	}
 

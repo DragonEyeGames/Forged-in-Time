@@ -45,22 +45,6 @@ _data = {
 &"wobble": SubResource("Animation_avu3l")
 }
 
-[sub_resource type="Animation" id="Animation_hc4pq"]
-resource_name = "open"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-7, 3), Vector2(-100, 3)]
-}
-
 [sub_resource type="Animation" id="Animation_sedux"]
 length = 0.001
 tracks/0/type = "value"
@@ -74,6 +58,70 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-7, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../UpgradePopout:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hc4pq"]
+resource_name = "open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-7, 3), Vector2(-201, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../UpgradePopout:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s8imv"]
@@ -321,7 +369,7 @@ mouse_filter = 2
 color = Color(0.78066, 0.704382, 0.474143, 1)
 
 [node name="Arrow" type="Sprite2D" parent="Player1Upgrade/ColorRect2"]
-position = Vector2(25, 2.75695)
+position = Vector2(27, 2.99991)
 rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("5_d2k2v")
@@ -337,6 +385,7 @@ polygon = PackedVector2Array(7, 1, 1, 1, 1, 55, 7, 55)
 libraries = {
 &"": SubResource("AnimationLibrary_s8imv")
 }
+autoplay = "RESET"
 
 [node name="Player2Upgrade" type="Button" parent="."]
 layout_mode = 0
@@ -438,6 +487,66 @@ mouse_filter = 2
 icon = ExtResource("7_cge6v")
 flat = true
 script = ExtResource("4_ly0j0")
+
+[node name="UpgradePopout" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -194.0
+offset_top = 4.0
+offset_bottom = 58.0
+scale = Vector2(1e-05, 1)
+pivot_offset = Vector2(194, 0)
+color = Color(0.504062, 0.443369, 0.252654, 1)
+
+[node name="ColorRect" type="ColorRect" parent="UpgradePopout"]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="UpgradePopout"]
+layout_mode = 0
+offset_left = 193.0
+offset_right = 194.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="UpgradePopout"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 129.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="UpgradePopout"]
+layout_mode = 0
+offset_left = 62.0
+offset_right = 63.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="UpgradePopout"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 60.0
+offset_bottom = 52.0
+color = Color(0.780392, 0.705882, 0.47451, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="UpgradePopout"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 2.0
+offset_right = 126.0
+offset_bottom = 52.0
+color = Color(0.780392, 0.705882, 0.47451, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="UpgradePopout"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 2.0
+offset_right = 191.0
+offset_bottom = 52.0
+color = Color(0.780392, 0.705882, 0.47451, 1)
 
 [connection signal="pressed" from="Button" to="." method="purchase"]
 [connection signal="pressed" from="Player1Upgrade" to="." method="player1Upgrade"]
