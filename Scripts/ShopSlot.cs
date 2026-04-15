@@ -28,7 +28,7 @@ public partial class ShopSlot : Control
 	public override void _Process(double delta)
 	{
 		if(Input.IsActionJustPressed("Click-1") && player1 && upgradeOpen){
-			player1Upgrade();
+			//player1Upgrade();
 		} else if (Input.IsActionJustPressed("Click-2") && !player1 && upgradeOpen){
 			
 		}

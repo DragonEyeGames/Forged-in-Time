@@ -36,4 +36,8 @@ public partial class UpgradeSlot : ColorRect
 	public override void _Process(double delta)
 	{
 	}
+	
+	public void upgrade(){
+		GD.Print(upgradeType);
+	}
 }

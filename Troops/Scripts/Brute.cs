@@ -3,13 +3,17 @@ using System;
 
 public partial class Brute : BaseTroop
 {
-	[Export] public override int speedLevel {get; set;}
 	[Export] public override float Speed { get; set; } = 20.0f;
-	[Export] public override int healthLevel { get; set; } = 0;
 	[Export] public  override int health { get; set; } = 20;
 	[Export] public override int maxHealth { get; set; } = 20;
-	[Export] public override int damageLevel { get; set; } = 0;
 	[Export] public override int damage { get; set; } = 2;
+	
+	[Export] public override int upgradeLevel { get; set; } = 0;
+	
+	[Export] public override int healthLevel { get; set; } = 0;
+	[Export] public override int damageLevel { get; set; } = 0;
+	[Export] public override int speedLevel {get; set;} = 0;
+	
 	public override NavigationAgent2D navAgent { get; set; }
 	public override AnimatedSprite2D sprite  {get; set;}
 	[Export] public override Base target { get; set; }

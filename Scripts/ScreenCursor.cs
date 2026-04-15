@@ -25,18 +25,24 @@ public partial class ScreenCursor : Sprite2D
 				selected.EmitSignal(Button.SignalName.Pressed);
 			}
 		}
-		var bodies = GetChild(0).GetOverlappingBodies();
-
-		foreach (Node2D body in bodies)
-		{
-			GD.Print($"Overlapping with: {body.Name}");
-			
-			// Check for a specific type or group
-			if (body.IsInGroup("Enemies"))
-			{
-				// Execute logic
+		var bodies = GetChild<Area2D>(0).GetOverlappingAreas();
+		if(bodies.Count>0){
+			GD.Print(bodies[0]);
+			if(selected!=null && selected!=bodies[0].GetParent<Controller>()){
+				selected.deselect();
 			}
+			if(selected!=bodies[0].GetParent<Controller>()){
+				bodies[0].GetParent<Controller>().select();
+			}
+			selected=bodies[0].GetParent<Controller>();
+		} else {
+			if(selected!=null){
+				selected.deselect();
+				selected=null;
+			}
+			
 		}
+		
 	}
 	
 	public void hudInteract(Node2D hudArea){
@@ -44,23 +50,23 @@ public partial class ScreenCursor : Sprite2D
 		//	return;
 		//}
 		if(hudArea.GetParent() is Controller){
-			Controller hud = hudArea.GetParent() as Controller;
-			hud.select();
-			if(selected!=null){
+			//Controller hud = hudArea.GetParent() as Controller;
+			//hud.select();
+			//if(selected!=null){
 				//selected.deselect();
-			}
+			//}
 			//selected=hud;
 		}
 	}
 	
 	public void hudLeave(Node2D hudArea){
-		if(hudArea.GetParent() is Controller){
-			Controller hud = hudArea.GetParent() as Controller;
-			if(hud==selected){
-				hud.deselect();
-				//selected=null;
-			}
+		//if(hudArea.GetParent() is Controller){
+		//	Controller hud = hudArea.GetParent() as Controller;
+		//	if(hud==selected){
+		//		hud.deselect();
+		//		//selected=null;
+		//	}
 			
-		}
+		//}
 	}
 }
