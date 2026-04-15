@@ -20,8 +20,8 @@ public partial class GameManager : Node
 		Plasma_Turret
 	}
 	
-	public static TargetBase player1Base;
-	public static TargetBase player2Base;
+	public static Base player1Base;
+	public static Base player2Base;
 	public static TerritoryChecker territory;
 	public static bool player1=true;
 	public static bool keyboard=false;
@@ -33,4 +33,7 @@ public partial class GameManager : Node
 	public static Placement player2Placement;
 	
 	public static BakeHandler baker;
+	
+	public static TargetBase player1Target;
+	public static TargetBase player2Target;
 }

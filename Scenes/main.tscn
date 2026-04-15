@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=33 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bdhyr2rcfdx0l" path="res://Scenes/hud_2.tscn" id="18_b3802"]
 [ext_resource type="Texture2D" uid="uid://dkgrnn8xbc61t" path="res://Assets/Cursor.png" id="21_pdsj5"]
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_ee4r6"]
+[ext_resource type="PackedScene" uid="uid://ssdf7h45x4d0" path="res://miner.tscn" id="25_cbgmd"]
 [ext_resource type="Script" uid="uid://hhncf58ocdwm" path="res://Scripts/ScreenCursor.cs" id="25_u50mg"]
 [ext_resource type="PackedScene" uid="uid://dcs7g671onmkq" path="res://Scenes/Pause.tscn" id="28_ueoa1"]
 
@@ -228,6 +229,9 @@ collision_mask = 128
 shape = SubResource("CircleShape2D_3pmx8")
 
 [node name="pause" parent="." instance=ExtResource("28_ueoa1")]
+
+[node name="Miner" parent="." instance=ExtResource("25_cbgmd")]
+position = Vector2(538, 166)
 
 [connection signal="bake_finished" from="TestPlacement/TestRegion" to="NavHandler" method="TestFinished"]
 [connection signal="bake_finished" from="TestPlacement/NavRegion" to="NavHandler" method="TestFinished"]

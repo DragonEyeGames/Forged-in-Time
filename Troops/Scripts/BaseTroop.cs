@@ -24,6 +24,18 @@ public abstract partial class BaseTroop : CharacterBody2D
 	public abstract Timer cooldown {get; set;}
 
 	
+	public override void _Ready()
+	{
+		if (player1)
+		{
+			target = GameManager.player1Target;
+		}
+		else if (!player1)
+		{
+			target = GameManager.player2Target;
+		}
+	}
+
 	public async void updateHitboxes()
 	{
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -114,12 +126,12 @@ public abstract partial class BaseTroop : CharacterBody2D
 	{
 		if (player1)
 		{
-			target = GameManager.player2Base;
+			target = GameManager.player1Target;
 			recalculate();
 		}
 		else
 		{
-			target = GameManager.player1Base;
+			target = GameManager.player2Target;
 			recalculate();
 		}	
 	}

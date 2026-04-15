@@ -32,12 +32,14 @@ public partial class Base : TargetBase
 		if(player1){
 			GD.Print("Player1");
 			GameManager.player1Base=this;
+			GameManager.player2Target=this;
 			GetNode<Area2D>("Player-2").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-2").QueueFree();
 			GetNode<Area2D>("Detection/Player-2").QueueFree();
 		} else if(!player1){
 			GD.Print("Player2");
 			GameManager.player2Base=this;
+			GameManager.player1Target=this;
 			GetNode<Area2D>("Player-1").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-1").QueueFree();
 			GetNode<Area2D>("Detection/Player-1").QueueFree();
