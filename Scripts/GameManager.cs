@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class GameManager : Node
 {
@@ -33,4 +34,26 @@ public partial class GameManager : Node
 	public static Placement player2Placement;
 	
 	public static BakeHandler baker;
+	
+	public static List<TroopUpgrade> player1Upgrades = new List<TroopUpgrade>();
+	public static List<TroopUpgrade> player2Upgrades = new List<TroopUpgrade>();
+	
+	public static Vector4 fetchUpgrades(int player, Towers troopType){
+		if(player==1){
+			foreach (TroopUpgrade troop in player1Upgrades){
+				if(troop.troopType==troopType){
+					return new Vector4(troop.upgradeLevel, troop.speedLevel, troop.healthLevel, troop.damageLevel);
+				}
+			}
+			return new Vector4(0, 0, 0, 0);
+		}
+		else{
+			foreach (TroopUpgrade troop in player2Upgrades){
+				if(troop.troopType==troopType){
+					return new Vector4(troop.upgradeLevel, troop.speedLevel, troop.healthLevel, troop.damageLevel);
+				}
+			}
+			return new Vector4(0, 0, 0, 0);
+		}
+	}
 }

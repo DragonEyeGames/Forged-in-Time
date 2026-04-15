@@ -14,6 +14,7 @@ public partial class UpgradeSlot : ColorRect
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		GD.Print(GetParent().GetParent<ShopSlot>().tower);
 		foreach (Node2D child in GetNode<Node2D>("Icons").GetChildren())
 		{
 			child.Visible=false;

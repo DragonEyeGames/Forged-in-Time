@@ -27,7 +27,6 @@ public partial class ScreenCursor : Sprite2D
 		}
 		var bodies = GetChild<Area2D>(0).GetOverlappingAreas();
 		if(bodies.Count>0){
-			GD.Print(bodies[0]);
 			if(selected!=null && selected!=bodies[0].GetParent<Controller>()){
 				selected.deselect();
 			}

@@ -50,18 +50,18 @@ public partial class Base : Sprite2D
 
 	public void spawnTroop(Troops troopType){
 		GD.Print(troopType);
-		BaseTroop newTroop = troop.Instantiate() as BaseTroop;
+		Troop newTroop = troop.Instantiate() as Troop;
 		if(troopType==Troops.Melee){
-			newTroop = troop.Instantiate() as BaseTroop;
+			newTroop = troop.Instantiate() as Troop;
 		}
 		if(troopType==Troops.Brute){
-			newTroop = brute.Instantiate() as BaseTroop;
+			newTroop = brute.Instantiate() as Troop;
 		}
 		if(troopType==Troops.Ranged){
-			newTroop = ranged.Instantiate() as BaseTroop;
+			newTroop = ranged.Instantiate() as Troop;
 		}
 		if(troopType==Troops.Healer){
-			newTroop = healer.Instantiate() as BaseTroop;
+			newTroop = healer.Instantiate() as Troop;
 		}
 		GetParent().AddChild(newTroop);
 		newTroop.GlobalPosition=GlobalPosition;

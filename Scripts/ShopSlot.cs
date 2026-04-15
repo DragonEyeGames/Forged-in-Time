@@ -5,7 +5,7 @@ public partial class ShopSlot : Control
 {
 	private bool open=false;
 	int upgrade=0;
-	[Export] GameManager.Towers tower;
+	[Export] public GameManager.Towers tower;
 	[Export] public bool player1 = true;
 	[Export] public bool troop = false;
 	public bool upgradeOpen=false;
@@ -28,7 +28,7 @@ public partial class ShopSlot : Control
 	public override void _Process(double delta)
 	{
 		if(Input.IsActionJustPressed("Click-1") && player1 && upgradeOpen){
-			//player1Upgrade();
+			player1Upgrade();
 		} else if (Input.IsActionJustPressed("Click-2") && !player1 && upgradeOpen){
 			
 		}

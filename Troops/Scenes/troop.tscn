@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bjjy84kigbl4n"]
 
-[ext_resource type="Script" uid="uid://cvx0uy7fj1vjq" path="res://Troops/Scripts/Troop.cs" id="1_6da2i"]
+[ext_resource type="Script" uid="uid://cvx0uy7fj1vjq" path="res://Troops/Scripts/Melee.cs" id="1_6da2i"]
 [ext_resource type="Texture2D" uid="uid://cdyfjrsjcm0kq" path="res://Assets/Armored Orc/Armored Orc_Walk.png" id="2_37opx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]

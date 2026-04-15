@@ -58,12 +58,12 @@ public partial class Cursor : Sprite2D
 		rightX*=speed;
 		rightY*=speed;
 		if(rightX!=0 || rightY!=0){
-			speed*=1.03f;
+			//speed*=1.03f;
 			if(speed>5){
 				speed=5;
 			}
 		} else {
-			speed=1;
+			speed=5;
 		}
 		Vector2 position = Position;
 		position.X+=rightX;
