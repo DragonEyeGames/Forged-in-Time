@@ -25,7 +25,18 @@ public partial class ScreenCursor : Sprite2D
 				selected.EmitSignal(Button.SignalName.Pressed);
 			}
 		}
-		
+		var bodies = GetChild(0).GetOverlappingBodies();
+
+		foreach (Node2D body in bodies)
+		{
+			GD.Print($"Overlapping with: {body.Name}");
+			
+			// Check for a specific type or group
+			if (body.IsInGroup("Enemies"))
+			{
+				// Execute logic
+			}
+		}
 	}
 	
 	public void hudInteract(Node2D hudArea){
@@ -36,9 +47,9 @@ public partial class ScreenCursor : Sprite2D
 			Controller hud = hudArea.GetParent() as Controller;
 			hud.select();
 			if(selected!=null){
-				selected.deselect();
+				//selected.deselect();
 			}
-			selected=hud;
+			//selected=hud;
 		}
 	}
 	
@@ -47,7 +58,7 @@ public partial class ScreenCursor : Sprite2D
 			Controller hud = hudArea.GetParent() as Controller;
 			if(hud==selected){
 				hud.deselect();
-				selected=null;
+				//selected=null;
 			}
 			
 		}

@@ -7,6 +7,7 @@ public partial class Controller : Button
 	public Vector2 baseSize;
 	public Vector2 increasedSize;
 	public bool selected=false;
+	[Export] private bool transformLock=false;
 	public override void _Ready()
 	{
 		baseSize=Scale;
@@ -21,12 +22,16 @@ public partial class Controller : Button
 	}
 	
 	public void deselect(){
-		Scale=baseSize;
+		if(transformLock==false){
+			Scale=baseSize;
+		}
 		Modulate = Colors.Gray;
 	}
 	
 	public void select(){
-		Scale=increasedSize;
+		if(transformLock==false){
+			Scale=increasedSize;
+		}
 		Modulate = Colors.White;
 	}
 }

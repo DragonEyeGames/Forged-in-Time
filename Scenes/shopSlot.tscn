@@ -1,12 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://cayxysu631vpp"]
+[gd_scene load_steps=14 format=3 uid="uid://cayxysu631vpp"]
 
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/ShopSlot.cs" id="1_hc4pq"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="2_sedux"]
 [ext_resource type="Texture2D" uid="uid://donui7kkbkesp" path="res://Assets/Buy.png" id="3_s8imv"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="4_ly0j0"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="5_d2k2v"]
-[ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="6_wfc4q"]
-[ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="7_cge6v"]
+[ext_resource type="PackedScene" uid="uid://c4igmdu70tvwr" path="res://Scenes/upgradeSlot.tscn" id="8_sedux"]
 
 [sub_resource type="Animation" id="Animation_2cn1p"]
 length = 0.001
@@ -97,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-7, 3), Vector2(-201, 3)]
+"values": [Vector2(-7, 3), Vector2(-200, 3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -124,71 +123,26 @@ tracks/2/keys = {
 "values": [Vector2(1e-05, 1), Vector2(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8imv"]
-_data = {
-&"RESET": SubResource("Animation_sedux"),
-&"open": SubResource("Animation_hc4pq")
-}
-
-[sub_resource type="Animation" id="Animation_gpiub"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Popout:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player1Upgrade/ColorRect2/Arrow:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.14159]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player1Upgrade:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-7, 3)]
-}
-
-[sub_resource type="Animation" id="Animation_amv7k"]
+[sub_resource type="Animation" id="Animation_s8imv"]
 resource_name = "close"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Popout:scale")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+"values": [Vector2(-200, 3), Vector2(-7, 3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player1Upgrade/ColorRect2/Arrow:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
@@ -199,61 +153,21 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player1Upgrade:position")
-tracks/2/interp = 1
+tracks/2/path = NodePath("../UpgradePopout:scale")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-104, 2), Vector2(-7, 2)]
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_g10ll"]
-resource_name = "open"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Popout:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player1Upgrade/ColorRect2/Arrow:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [3.14159, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player1Upgrade:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-7, 3), Vector2(-104, 2)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_amv7k"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8imv"]
 _data = {
-&"RESET": SubResource("Animation_gpiub"),
-&"close": SubResource("Animation_amv7k"),
-&"open": SubResource("Animation_g10ll")
+&"RESET": SubResource("Animation_sedux"),
+&"close": SubResource("Animation_s8imv"),
+&"open": SubResource("Animation_hc4pq")
 }
 
 [node name="Turret" type="Control"]
@@ -347,9 +261,9 @@ libraries = {
 
 [node name="Player1Upgrade" type="Button" parent="."]
 layout_mode = 0
-offset_left = -7.0
+offset_left = -200.0
 offset_top = 3.0
-offset_right = 1.0
+offset_right = -192.0
 offset_bottom = 59.0
 pivot_offset = Vector2(4, 26)
 focus_mode = 0
@@ -379,6 +293,7 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player1Upgrade/Player1"]
+z_index = 4
 polygon = PackedVector2Array(7, 1, 1, 1, 1, 55, 7, 55)
 
 [node name="Animator" type="AnimationPlayer" parent="Player1Upgrade"]
@@ -415,79 +330,6 @@ position = Vector2(25, 2.99992)
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("5_d2k2v")
 
-[node name="UpgradeSlider" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_amv7k")
-}
-
-[node name="Popout" type="ColorRect" parent="."]
-z_index = 1
-layout_mode = 0
-offset_top = 57.0
-offset_right = 97.0
-offset_bottom = 111.0
-rotation = 3.14159
-scale = Vector2(1e-05, 1)
-color = Color(0.639216, 0.552941, 0.345098, 1)
-
-[node name="Base" type="Sprite2D" parent="Popout"]
-position = Vector2(78.12, 27.12)
-rotation = 3.14159
-scale = Vector2(2.11, 2.11)
-texture = ExtResource("6_wfc4q")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
-
-[node name="Turret" type="Sprite2D" parent="Popout"]
-position = Vector2(78.12, 27.12)
-rotation = 3.14159
-scale = Vector2(2.11, 2.11)
-texture = ExtResource("6_wfc4q")
-region_enabled = true
-region_rect = Rect2(16, 0, 16, 16)
-
-[node name="Label" type="RichTextLabel" parent="Popout"]
-layout_mode = 0
-offset_left = 69.0
-offset_top = 55.0
-offset_right = 478.0
-offset_bottom = 226.0
-rotation = 3.14159
-scale = Vector2(0.19, 0.19)
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 43
-text = "Plasma Turret"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="RichTextLabel" parent="Popout"]
-layout_mode = 0
-offset_left = 60.0
-offset_top = 36.0
-offset_right = 373.0
-offset_bottom = 146.0
-rotation = 3.14159
-scale = Vector2(0.19, 0.19)
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 25
-text = "Does more damage and looks cooler."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Popout"]
-layout_mode = 0
-offset_left = 21.0
-offset_right = 77.0
-offset_bottom = 24.0
-rotation = 3.14159
-scale = Vector2(0.895, 0.895)
-pivot_offset = Vector2(18.9944, 11.1732)
-focus_mode = 0
-mouse_filter = 2
-icon = ExtResource("7_cge6v")
-flat = true
-script = ExtResource("4_ly0j0")
-
 [node name="UpgradePopout" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = -194.0
@@ -497,56 +339,61 @@ scale = Vector2(1e-05, 1)
 pivot_offset = Vector2(194, 0)
 color = Color(0.504062, 0.443369, 0.252654, 1)
 
-[node name="ColorRect" type="ColorRect" parent="UpgradePopout"]
+[node name="Borders" type="Control" parent="UpgradePopout"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="UpgradePopout/Borders"]
 layout_mode = 0
-offset_right = 1.0
+offset_left = 1.0
+offset_right = 2.0
 offset_bottom = 54.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="UpgradePopout"]
+[node name="ColorRect3" type="ColorRect" parent="UpgradePopout/Borders"]
+layout_mode = 0
+offset_left = 129.0
+offset_right = 130.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="UpgradePopout/Borders"]
 layout_mode = 0
 offset_left = 193.0
 offset_right = 194.0
 offset_bottom = 54.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="UpgradePopout"]
-layout_mode = 0
-offset_left = 128.0
-offset_right = 129.0
-offset_bottom = 54.0
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="UpgradePopout"]
-layout_mode = 0
-offset_left = 62.0
-offset_right = 63.0
-offset_bottom = 54.0
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect5" type="ColorRect" parent="UpgradePopout"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 60.0
-offset_bottom = 52.0
-color = Color(0.780392, 0.705882, 0.47451, 1)
-
-[node name="ColorRect6" type="ColorRect" parent="UpgradePopout"]
+[node name="ColorRect4" type="ColorRect" parent="UpgradePopout/Borders"]
 layout_mode = 0
 offset_left = 65.0
-offset_top = 2.0
-offset_right = 126.0
-offset_bottom = 52.0
-color = Color(0.780392, 0.705882, 0.47451, 1)
+offset_right = 66.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
 
-[node name="ColorRect7" type="ColorRect" parent="UpgradePopout"]
+[node name="UpgradeSlot" parent="UpgradePopout" instance=ExtResource("8_sedux")]
 layout_mode = 0
-offset_left = 131.0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 63.0
+offset_bottom = 52.0
+
+[node name="UpgradeSlot2" parent="UpgradePopout" instance=ExtResource("8_sedux")]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 2.0
+offset_right = 127.0
+offset_bottom = 52.0
+upgradeType = 1
+
+[node name="UpgradeSlot3" parent="UpgradePopout" instance=ExtResource("8_sedux")]
+layout_mode = 0
+offset_left = 132.0
 offset_top = 2.0
 offset_right = 191.0
 offset_bottom = 52.0
-color = Color(0.780392, 0.705882, 0.47451, 1)
+upgradeType = 2
 
 [connection signal="pressed" from="Button" to="." method="purchase"]
 [connection signal="pressed" from="Player1Upgrade" to="." method="player1Upgrade"]

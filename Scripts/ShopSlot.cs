@@ -8,6 +8,7 @@ public partial class ShopSlot : Control
 	[Export] GameManager.Towers tower;
 	[Export] public bool player1 = true;
 	[Export] public bool troop = false;
+	public bool upgradeOpen=false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -26,6 +27,11 @@ public partial class ShopSlot : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(Input.IsActionJustPressed("Click-1") && player1 && upgradeOpen){
+			player1Upgrade();
+		} else if (Input.IsActionJustPressed("Click-2") && !player1 && upgradeOpen){
+			
+		}
 	}
 	
 	public void toggle(){
@@ -47,7 +53,13 @@ public partial class ShopSlot : Control
 	}
 	
 	public void player1Upgrade(){
-		GetNode<AnimationPlayer>("Player1Upgrade/Animator").Play("open");
+		if(upgradeOpen==false){
+			GetNode<AnimationPlayer>("Player1Upgrade/Animator").Play("open");
+		} else {
+			GetNode<AnimationPlayer>("Player1Upgrade/Animator").Play("close");
+		}
+		upgradeOpen=!upgradeOpen;
+		
 	}
 	
 }
