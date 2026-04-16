@@ -14,8 +14,8 @@ public abstract partial class BaseTroop : CharacterBody2D
 	public abstract int damageLevel  {get; set;}
 	public bool attacking = false;
 	public bool pathfinding = true;
-	
-	
+
+
 
 	
 	public abstract NavigationAgent2D navAgent {get; set;}
@@ -99,11 +99,21 @@ public abstract partial class BaseTroop : CharacterBody2D
 			GD.Print(target.health);
 			if (target.health <= 0)
 			{
-				target.Die();
 				if (!target.isBase)
 				{
-					target.QueueFree();
+					Miner miner = target as Miner;
+					miner.playerKilled = player1;
+					if (player1)
+					{
+						target = GameManager.player1DefaultTarget;
+					}
+					else if (!player1)
+					{
+						target = GameManager.player2DefaultTarget;
+					}
 				}
+				target.Die();
+
 			}
 			attacking = false;
 			cooldown.Start();

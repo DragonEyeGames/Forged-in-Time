@@ -6,7 +6,6 @@ public partial class Base : TargetBase
 {
 	[Export] public bool player1 = false;
 	private NavigationAgent2D navAgent;
-	[Export] public TargetBase target;
 	[Export] public PackedScene troop;
 	[Export] public PackedScene brute;
 	[Export] public PackedScene ranged;
@@ -33,6 +32,7 @@ public partial class Base : TargetBase
 			GD.Print("Player1");
 			GameManager.player1Base=this;
 			GameManager.player2Target=this;
+			GameManager.player2DefaultTarget=this;
 			GetNode<Area2D>("Player-2").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-2").QueueFree();
 			GetNode<Area2D>("Detection/Player-2").QueueFree();
@@ -40,6 +40,7 @@ public partial class Base : TargetBase
 			GD.Print("Player2");
 			GameManager.player2Base=this;
 			GameManager.player1Target=this;
+			GameManager.player1DefaultTarget=this;
 			GetNode<Area2D>("Player-1").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-1").QueueFree();
 			GetNode<Area2D>("Detection/Player-1").QueueFree();
@@ -50,7 +51,7 @@ public partial class Base : TargetBase
 		{
 			GD.Print("Tower Alive");
 		}
-		await ToSignal(GetTree().CreateTimer(0.05f), SceneTreeTimer.SignalName.Timeout);
+		await ToSignal(GetTree().CreateTimer(0.15f), SceneTreeTimer.SignalName.Timeout);
 		GameManager.territory.recalculate();
 	}
 
@@ -71,7 +72,6 @@ public partial class Base : TargetBase
 		}
 		GetParent().AddChild(newTroop);
 		newTroop.GlobalPosition=GlobalPosition;
-		newTroop.target=target;
 		newTroop.player1=player1;
 	}
 	

@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
 [ext_resource type="Script" uid="uid://d4nb8xql544r2" path="res://Scripts/Placement.cs" id="2_074og"]
-[ext_resource type="Texture2D" uid="uid://bmbsnvsx5mtqj" path="res://Assets/TerritoryTiles.png" id="3_cegan"]
 [ext_resource type="Script" uid="uid://dnc0ugi7igvey" path="res://Scripts/TerritoryChecker.cs" id="4_82xsv"]
+[ext_resource type="Texture2D" uid="uid://drk3jv3vyynsx" path="res://Assets/pixilart-drawing.png" id="4_u50mg"]
 [ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://Assets/icon.svg" id="5_getpj"]
 [ext_resource type="PackedScene" uid="uid://qw4hblqnmemt" path="res://Scenes/base.tscn" id="6_3pmx8"]
 [ext_resource type="PackedScene" uid="uid://cnem7ep3j786t" path="res://Towers/Scenes/turret.tscn" id="6_kek77"]
@@ -37,9 +37,10 @@ texture = ExtResource("1_yaehf")
 sources/0 = SubResource("TileSetAtlasSource_h2yge")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycdy4"]
-texture = ExtResource("3_cegan")
+texture = ExtResource("4_u50mg")
 0:0/0 = 0
 1:0/0 = 0
+2:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_w48qg"]
 sources/0 = SubResource("TileSetAtlasSource_ycdy4")
@@ -84,17 +85,15 @@ z_index = -1
 tile_set = SubResource("TileSet_w48qg")
 script = ExtResource("4_82xsv")
 
-[node name="Player-1" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_3pmx8")]
+[node name="Player-1" parent="." instance=ExtResource("6_3pmx8")]
 position = Vector2(896, 353)
-target = NodePath("../Player-2")
 brute = null
 ranged = null
 healer = null
 
-[node name="Player-2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_3pmx8")]
+[node name="Player-2" parent="." instance=ExtResource("6_3pmx8")]
 position = Vector2(112, 346)
 player1 = false
-target = NodePath("../Player-1")
 brute = null
 ranged = null
 healer = null

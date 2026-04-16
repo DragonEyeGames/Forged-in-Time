@@ -21,8 +21,9 @@ public partial class TerritoryChecker : TileMapLayer
 	
 	public void recalculate(){
 		clearNonexistent();
-		betterTerritory(3, 0);
-		betterTerritory(4, 1);
+		betterTerritory(4, 0);
+		betterTerritory(3, 1);
+		betterTerritory(5, 2);
 	}
 	
 	private void clearNonexistent(){
