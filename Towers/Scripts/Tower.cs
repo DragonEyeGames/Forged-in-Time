@@ -7,6 +7,8 @@ public abstract partial class Tower : Node2D
 	public bool hovering=true;
 	public bool Player1 = false;
 	[Export] public GameManager.Towers towerType;
+	public Polygon2D polygon;
+	public Polygon2D polygon2;
 	// Called when the node enters the scene tree for the first time.
 	public async override void _Ready()
 	{
@@ -44,7 +46,7 @@ public abstract partial class Tower : Node2D
 				GetNode<TerritoryChecker>("../../Territory").recalculate();
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 				GetNode<Hud>("../../HUD").input="";
-				GetNode<CollisionShape2D>("Player1Territory/CollisionShape2D").SetDeferred("disabled", true);
+				//GetNode<CollisionShape2D>("Player1Territory/CollisionShape2D").SetDeferred("disabled", true);
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 				GetNode<Hud>("../../HUD").toggle();
 				GetNode<Hud>("../../HUD").input="";
@@ -56,12 +58,48 @@ public abstract partial class Tower : Node2D
 				GetNode<TerritoryChecker>("../../Territory").recalculate();
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 				GetNode<Hud>("../../HUD2").input="";
-				GetNode<CollisionShape2D>("Player2Territory/CollisionShape2D").SetDeferred("disabled", true);
+				//GetNode<CollisionShape2D>("Player2Territory/CollisionShape2D").SetDeferred("disabled", true);
 				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 				GetNode<Hud>("../../HUD2").toggle();
 				GetNode<Hud>("../../HUD2").input="";
 			}
 		}
 		Modulate=color;
+	}
+	
+	public async void sell(){
+		GD.Print("Sell");
+		if(Player1){
+			GD.Print("sedf");
+			GetNode<Area2D>("Player1Territory").SetCollisionLayerValue(4, false);
+			GetNode<Area2D>("Player1Territory").SetCollisionLayerValue(6, true);
+			GD.Print(GetNode<Area2D>("Player1Territory").CollisionLayer);
+		} else {
+			GD.Print("sssaedf");
+			GetNode<Area2D>("Player2Territory").SetCollisionLayerValue(5, false);
+			GetNode<Area2D>("Player2Territory").SetCollisionLayerValue(6, true);
+		}
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		GameManager.territory.recalculate();
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		if(towerType!=GameManager.Towers.Spikes){
+			if(Player1){
+				GameManager.player1Placement.replaceBox(GlobalPosition);
+			} else {
+				GameManager.player2Placement.replaceBox(GlobalPosition);
+			}
+		} else {
+			if(Player1){
+				GameManager.player1Placement.replaceBig(GlobalPosition);
+			} else {
+				GameManager.player2Placement.replaceBig(GlobalPosition);
+			}
+			GD.Print("spikes");
+		}
+		polygon.QueueFree();
+		polygon2.QueueFree();
+		GameManager.baker.CallDeferred("BakePoly");
+		
+		QueueFree();
 	}
 }

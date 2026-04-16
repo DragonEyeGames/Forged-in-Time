@@ -13,6 +13,10 @@ public partial class BakeHandler : Node2D
 	[Export] public PackedScene wall;
 	[Export] public PackedScene spikes;
 	
+	public override void _Ready(){
+		GameManager.baker=this;
+	}
+	
 	public void BakePoly(){
 		if(baking==0){
 			baking=2;

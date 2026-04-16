@@ -13,15 +13,37 @@ public partial class Placement : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
 		layer=GetParent<TileMapLayer>();
+		if(player1){
+			GameManager.player1Placement=this;
+			GameManager.player2Placement=this;
+		}
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Vector2 mouseWorldPos = GetGlobalMousePosition();
-		Vector2I cell =layer.LocalToMap(mouseWorldPos);
-		Vector2I hoverCoords = new Vector2I(0, 1);
-		Vector2I placedCoords = new Vector2I(1, 1);
-		Vector2I invalidCoords = new Vector2I(1, 0);
+		//Vector2 mouseWorldPos = GetGlobalMousePosition();
+		//Vector2I cell =layer.LocalToMap(mouseWorldPos);
+		//Vector2I hoverCoords = new Vector2I(0, 1);
+		//Vector2I placedCoords = new Vector2I(1, 1);
+		//Vector2I invalidCoords = new Vector2I(1, 0);
+	}
+	
+	public void replaceBox(Vector2 towerPos){
+		Vector2I cell = layer.LocalToMap(towerPos);
+		Vector2I removedCoords = new Vector2I(0, 0);
+		layer.SetCell(cell, 0, removedCoords);
+	}
+	
+	public void replaceBig(Vector2 towerPos){
+		Vector2I cell = layer.LocalToMap(towerPos);
+		Vector2I removedCoords = new Vector2I(0, 0);
+		layer.SetCell(cell, 0, removedCoords);
+		cell=new Vector2I(cell.X-1, cell.Y);
+		layer.SetCell(cell, 0, removedCoords);
+		cell=new Vector2I(cell.X, cell.Y-1);
+		layer.SetCell(cell, 0, removedCoords);
+		cell=new Vector2I(cell.X+1, cell.Y);
+		layer.SetCell(cell, 0, removedCoords);
 	}
 	
 	private void Click(Vector2 mouseWorldPos){
