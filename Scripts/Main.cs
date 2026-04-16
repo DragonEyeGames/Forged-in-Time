@@ -15,9 +15,13 @@ public partial class Main : Node2D
 		);
 	}
 
-private void OnPlayerKilled()
+public void OnPlayerKilled(bool player1)
 {
-	GD.Print("Player died!");
+	int player=1;
+	if(player1==false){
+		player=2;
+	}
+	GD.Print("Player " + player + " died!");
 }
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
