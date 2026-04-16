@@ -21,6 +21,12 @@ public partial class GameManager : Node
 		Plasma_Turret
 	}
 	
+	public enum UpgradeTypes{
+		Speed,
+		Health,
+		Damage
+	}
+	
 	public static Base player1Base;
 	public static Base player2Base;
 	public static TerritoryChecker territory;
@@ -55,5 +61,42 @@ public partial class GameManager : Node
 			}
 			return new Vector4(0, 0, 0, 0);
 		}
+	}
+	
+	public static Vector4 upgradeTroop(Towers troopType, UpgradeTypes upgradeType, int player){
+		foreach (TroopUpgrade troop in player1Upgrades){
+			if(troop.troopType==troopType){
+				if(upgradeType==UpgradeTypes.Speed){
+					troop.speedLevel+=1;
+				}
+				if(upgradeType==UpgradeTypes.Health){
+					troop.healthLevel+=1;
+				}
+				if(upgradeType==UpgradeTypes.Damage){
+					troop.damageLevel+=1;
+				}
+				troop.upgradeLevel+=1;
+				return fetchUpgrades(player, troopType);
+			}
+		}
+		TroopUpgrade newTroop = new TroopUpgrade();
+		player1Upgrades.Add(newTroop);
+		newTroop.troopType=troopType;
+		newTroop.speedLevel=0;
+		newTroop.damageLevel=0;
+		newTroop.healthLevel=0;
+		newTroop.upgradeLevel=1;
+		
+		if(upgradeType==UpgradeTypes.Speed){
+			newTroop.speedLevel+=1;
+		}
+		if(upgradeType==UpgradeTypes.Damage){
+			newTroop.damageLevel+=1;
+		}
+		if(upgradeType==UpgradeTypes.Health){
+			newTroop.healthLevel+=1;
+		}
+		
+		return fetchUpgrades(player, troopType);
 	}
 }

@@ -3,13 +3,8 @@ using System;
 
 public partial class UpgradeSlot : ColorRect
 {
-	public enum UpgradeTypes{
-		Speed,
-		Defense,
-		Attack
-	}
 	
-	[Export] private UpgradeTypes upgradeType;
+	[Export] private GameManager.UpgradeTypes upgradeType;
 		
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -19,15 +14,15 @@ public partial class UpgradeSlot : ColorRect
 		{
 			child.Visible=false;
 		}
-		if(upgradeType==UpgradeTypes.Speed){
+		if(upgradeType==GameManager.UpgradeTypes.Speed){
 			GetNode<Sprite2D>("Icons/Speed").Visible=true;
 			GetNode<RichTextLabel>("Type").Text="Speed";
 		}
-		else if(upgradeType==UpgradeTypes.Attack){
+		else if(upgradeType==GameManager.UpgradeTypes.Damage){
 			GetNode<Sprite2D>("Icons/Attack").Visible=true;
 			GetNode<RichTextLabel>("Type").Text="Attack";
 		}
-		else if(upgradeType==UpgradeTypes.Defense){
+		else if(upgradeType==GameManager.UpgradeTypes.Health){
 			GetNode<Sprite2D>("Icons/Defense").Visible=true;
 			GetNode<RichTextLabel>("Type").Text="Defense";
 		}
@@ -39,6 +34,6 @@ public partial class UpgradeSlot : ColorRect
 	}
 	
 	public void upgrade(){
-		GD.Print(upgradeType);
+		GD.Print(GameManager.upgradeTroop(GetParent().GetParent<ShopSlot>().tower, upgradeType, 1));
 	}
 }

@@ -125,6 +125,7 @@ public partial class Base : Sprite2D
 	{
 		if (health <= 0) 
 		{
+			GetNode<SignalBus>("/root/SignalBus").EmitSignal(SignalBus.SignalName.PlayerKilled, player1);
 			QueueFree();
 		} 
 	}
