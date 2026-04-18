@@ -35,6 +35,9 @@ public partial class UpgradeSlot : ColorRect
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(GameManager.fetchUpgrades(1, GetParent().GetParent<ShopSlot>().tower).X>=TroopUpgrades.Prices.Count){
+			return;
+		}
 		if(upgradeType==GameManager.UpgradeTypes.Speed){
 			GetNode<RichTextLabel>("Type").Text="Speed Lv. " + GameManager.fetchUpgrades(1, GetParent().GetParent<ShopSlot>().tower).Y.ToString();
 		}

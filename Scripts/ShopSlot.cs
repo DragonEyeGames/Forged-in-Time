@@ -15,9 +15,17 @@ public partial class ShopSlot : Control
 		if(player1){
 			GetNode<Button>("Player2Upgrade").QueueFree();
 			GetNode<Area2D>("Button/Player2").QueueFree();
+			if(!troop){
+				GetNode<Button>("Player1Upgrade").QueueFree();
+				GetNode<ColorRect>("UpgradePopout").QueueFree();
+			}
 		} else {
 			GetNode<Button>("Player1Upgrade").QueueFree();
 			GetNode<Area2D>("Button/Player1").QueueFree();
+			if(!troop){
+				GetNode<Button>("Player2Upgrade").QueueFree();
+				GetNode<ColorRect>("UpgradePopout").QueueFree();
+			}
 		};
 		GetNode<Sprite2D>("Base").Texture = (Texture2D)GD.Load(Cosmetics.towerDisplays[tower]);
 		GetNode<RichTextLabel>("Name").Text=Cosmetics.towerNames[tower].ToString();
@@ -28,6 +36,17 @@ public partial class ShopSlot : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(troop){
+			if(GameManager.fetchUpgrades(1, tower).X>=TroopUpgrades.Prices.Count && GetNodeOrNull<ColorRect>("UpgradePopout") != null){
+				GetNode<ColorRect>("UpgradePopout").QueueFree();
+				if(player1){
+					GetNode<Button>("Player1Upgrade").QueueFree();
+				} else {
+					GetNode<Button>("Player2Upgrade").QueueFree();
+				}
+			}
+		}
+		
 		if(Input.IsActionJustPressed("Click-1") && player1 && upgradeOpen){
 			player1Upgrade();
 		} else if (Input.IsActionJustPressed("Click-2") && !player1 && upgradeOpen){
@@ -60,7 +79,10 @@ public partial class ShopSlot : Control
 	}
 	
 	public void player1Upgrade(){
-		AnimationPlayer animator = GetNode<AnimationPlayer>("Player1Upgrade/Animator");
+		AnimationPlayer animator = GetNodeOrNull<AnimationPlayer>("Player1Upgrade/Animator");
+		if(animator==null){
+			return;
+		}
 		if(upgradeOpen==false && !animator.IsPlaying()){
 			animator.Play("open");
 			upgradeOpen=true;

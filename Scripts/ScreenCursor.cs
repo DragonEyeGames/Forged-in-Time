@@ -36,7 +36,9 @@ public partial class ScreenCursor : Sprite2D
 			selected=bodies[0].GetParent<Controller>();
 		} else {
 			if(selected!=null){
-				selected.deselect();
+				if(IsInstanceValid(selected)){
+					selected.deselect();
+				}
 				selected=null;
 			}
 			
