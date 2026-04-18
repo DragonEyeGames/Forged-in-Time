@@ -19,7 +19,6 @@ position = Vector2(29, 12)
 scale = Vector2(1.5, 1.5)
 
 [node name="Attack" type="Sprite2D" parent="Icons"]
-visible = false
 position = Vector2(1.33333, 0)
 texture = ExtResource("1_bgr1y")
 
@@ -34,12 +33,12 @@ texture = ExtResource("3_punle")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 29.0
-offset_right = 58.0
-offset_bottom = 53.0
-scale = Vector2(0.895, 0.895)
-pivot_offset = Vector2(18.9944, 11.1732)
+offset_left = -9.43287
+offset_top = 27.8322
+offset_right = 46.5671
+offset_bottom = 51.8322
+scale = Vector2(0.65, 0.65)
+pivot_offset = Vector2(26.9511, 11.9081)
 mouse_filter = 2
 icon = ExtResource("4_oucde")
 flat = true
@@ -64,13 +63,25 @@ polygon = PackedVector2Array(51.4029, 8.74504, 36.8778, 4.27577, 19.0007, 4.2757
 [node name="Type" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_top = 19.0
-offset_right = 262.0
-offset_bottom = 99.0
-scale = Vector2(0.225, 0.225)
+offset_right = 295.0
+offset_bottom = 89.0
+scale = Vector2(0.2, 0.2)
 theme_override_fonts/normal_font = ExtResource("6_doids")
 theme_override_font_sizes/normal_font_size = 56
-text = "Attack"
+text = "Defense Lv. 10"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 35.5671
+offset_top = 32.8322
+offset_right = 160.567
+offset_bottom = 102.832
+scale = Vector2(0.18, 0.18)
+theme_override_fonts/normal_font = ExtResource("6_doids")
+theme_override_font_sizes/normal_font_size = 56
+text = "$10"
 vertical_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="upgrade"]

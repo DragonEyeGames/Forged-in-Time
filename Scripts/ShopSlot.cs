@@ -71,4 +71,10 @@ public partial class ShopSlot : Control
 		
 	}
 	
+	public void upgraded(){
+		AnimationPlayer animator = GetNode<AnimationPlayer>("Player1Upgrade/Animator");
+		animator.Play("freeze");
+		upgradeOpen=true;
+	}
+	
 }

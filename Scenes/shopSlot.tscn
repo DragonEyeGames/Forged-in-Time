@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cayxysu631vpp"]
+[gd_scene load_steps=15 format=3 uid="uid://cayxysu631vpp"]
 
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/ShopSlot.cs" id="1_hc4pq"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="2_sedux"]
@@ -163,14 +163,20 @@ tracks/2/keys = {
 "values": [Vector2(1e-05, 1), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_4vayn"]
+resource_name = "freeze"
+length = 0.1
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s8imv"]
 _data = {
 &"RESET": SubResource("Animation_sedux"),
 &"close": SubResource("Animation_s8imv"),
+&"freeze": SubResource("Animation_4vayn"),
 &"open": SubResource("Animation_hc4pq")
 }
 
 [node name="Turret" type="Control"]
+z_index = 1
 custom_minimum_size = Vector2(1.13, 59.355)
 layout_mode = 3
 anchors_preset = 0
@@ -273,9 +279,9 @@ libraries = {
 
 [node name="Player1Upgrade" type="Button" parent="."]
 layout_mode = 0
-offset_left = -7.0
+offset_left = -200.0
 offset_top = 3.0
-offset_right = 1.0
+offset_right = -192.0
 offset_bottom = 59.0
 pivot_offset = Vector2(4, 26)
 focus_mode = 0
