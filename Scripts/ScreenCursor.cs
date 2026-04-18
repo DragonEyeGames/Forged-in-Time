@@ -16,12 +16,12 @@ public partial class ScreenCursor : Sprite2D
 	public override void _Process(double delta)
 	{
 		if(player1){
-			if(selected!=null && Input.IsActionJustPressed("Click-1")){
+			if(selected!=null && Input.IsActionJustPressed("Click-1") && !selected.Disabled){
 				selected.EmitSignal(Button.SignalName.Pressed);
 			}
 		}
 		else if(!player1){
-			if(selected!=null && Input.IsActionJustPressed("Click-2")){
+			if(selected!=null && Input.IsActionJustPressed("Click-2") && !selected.Disabled){
 				selected.EmitSignal(Button.SignalName.Pressed);
 			}
 		}

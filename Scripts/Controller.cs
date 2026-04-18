@@ -29,6 +29,9 @@ public partial class Controller : Button
 	}
 	
 	public void select(){
+		if(Disabled){
+			return;
+		}
 		if(transformLock==false){
 			Scale=increasedSize;
 		}

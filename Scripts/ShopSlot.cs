@@ -34,9 +34,9 @@ public partial class ShopSlot : Control
 			
 		}
 		if(player1){
-			GetNode<Button>("Button").Disabled = Player1Manager.money<Prices.towerPrices[tower];
+			GetNode<Button>("Button").Disabled = (Player1Manager.money<Prices.towerPrices[tower] || (troop && GameManager.player1Base.reserveTroops.Count>=GameManager.player1Base.maxTroops));
 		} else {
-			GetNode<Button>("Button").Disabled = Player2Manager.money<Prices.towerPrices[tower];
+			GetNode<Button>("Button").Disabled = (Player2Manager.money<Prices.towerPrices[tower] || (troop && GameManager.player2Base.reserveTroops.Count>=GameManager.player2Base.maxTroops));
 		}
 		
 	}
@@ -60,12 +60,14 @@ public partial class ShopSlot : Control
 	}
 	
 	public void player1Upgrade(){
-		if(upgradeOpen==false){
-			GetNode<AnimationPlayer>("Player1Upgrade/Animator").Play("open");
-		} else {
-			GetNode<AnimationPlayer>("Player1Upgrade/Animator").Play("close");
+		AnimationPlayer animator = GetNode<AnimationPlayer>("Player1Upgrade/Animator");
+		if(upgradeOpen==false && !animator.IsPlaying()){
+			animator.Play("open");
+			upgradeOpen=true;
+		} else if (!animator.IsPlaying()){
+			animator.Play("close");
+			upgradeOpen=false;
 		}
-		upgradeOpen=!upgradeOpen;
 		
 	}
 	
