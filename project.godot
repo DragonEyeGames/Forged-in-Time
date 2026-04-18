@@ -23,6 +23,7 @@ Player2Manager="*res://Scripts/Player2Manager.cs"
 Prices="*res://Scripts/Prices.cs"
 Cosmetics="*res://Scripts/Cosmetics.cs"
 SignalBus="*res://Scripts/SignalBus.cs"
+TroopUpgrades="*res://Troops/Scripts/TroopUpgrades.cs"
 
 [display]
 

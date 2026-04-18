@@ -4,7 +4,7 @@ using System;
 public abstract partial class Troop : CharacterBody2D
 {
 	public bool player1 = true;
-	public abstract float Speed {get; set;}
+	public abstract float speed {get; set;}
 	public abstract int health {get; set;}
 	public abstract int maxHealth {get; set;}
 	public abstract int damage {get; set;}
@@ -33,6 +33,9 @@ public abstract partial class Troop : CharacterBody2D
 			speedLevel=(int)upgrades.Y;
 			healthLevel=(int)upgrades.Z;
 			damageLevel=(int)upgrades.W;
+			speed+=TroopUpgrades.Speed[speedLevel];
+			damage+=TroopUpgrades.Damage[damageLevel];
+			health+=TroopUpgrades.Health[healthLevel];
 			return upgrades;
 		} else {
 			Vector4 upgrades = GameManager.fetchUpgrades(2, troopType);
@@ -40,6 +43,9 @@ public abstract partial class Troop : CharacterBody2D
 			speedLevel=(int)upgrades.Y;
 			healthLevel=(int)upgrades.Z;
 			damageLevel=(int)upgrades.W;
+			speed+=TroopUpgrades.Speed[speedLevel];
+			damage+=TroopUpgrades.Damage[damageLevel];
+			health+=TroopUpgrades.Health[healthLevel];
 			return upgrades;
 		}
 	}
@@ -68,7 +74,7 @@ public abstract partial class Troop : CharacterBody2D
 		{
 			Vector2 velocity = Vector2.Zero;
 			var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
-			velocity = dir * 40;
+			velocity = dir * speed;
 			Velocity = velocity;
 			if (!navAgent.IsNavigationFinished())
 			{

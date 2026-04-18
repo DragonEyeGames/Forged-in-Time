@@ -22,6 +22,7 @@ public partial class ShopSlot : Control
 		GetNode<Sprite2D>("Base").Texture = (Texture2D)GD.Load(Cosmetics.towerDisplays[tower]);
 		GetNode<RichTextLabel>("Name").Text=Cosmetics.towerNames[tower].ToString();
 		GetNode<RichTextLabel>("Description").Text=Cosmetics.towerDescriptions[tower].ToString();
+		GetNode<RichTextLabel>("Price").Text="$" + Prices.towerPrices[tower].ToString();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,6 +33,12 @@ public partial class ShopSlot : Control
 		} else if (Input.IsActionJustPressed("Click-2") && !player1 && upgradeOpen){
 			
 		}
+		if(player1){
+			GetNode<Button>("Button").Disabled = Player1Manager.money<Prices.towerPrices[tower];
+		} else {
+			GetNode<Button>("Button").Disabled = Player2Manager.money<Prices.towerPrices[tower];
+		}
+		
 	}
 	
 	public void toggle(){

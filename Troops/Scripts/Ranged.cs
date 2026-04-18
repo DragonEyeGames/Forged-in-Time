@@ -4,7 +4,7 @@ using System;
 public partial class Ranged : Troop
 {
 	
-	[Export] public override float Speed { get; set; } = 30.0f;
+	[Export] public override float speed { get; set; } = 30.0f;
 	
 	[Export] public  override int health { get; set; } = 5;
 	[Export] public override int maxHealth { get; set; } = 5;

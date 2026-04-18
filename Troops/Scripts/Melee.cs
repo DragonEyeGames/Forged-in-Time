@@ -4,7 +4,7 @@ using System;
 public partial class Melee : Troop
 {
 	[Export] public override int speedLevel {get; set;}
-	[Export] public override float Speed { get; set; } = 40.0f;
+	[Export] public override float speed { get; set; } = 40.0f;
 	[Export] public override int healthLevel { get; set; } = 0;
 	[Export] public override int health { get; set; } = 5;
 	[Export] public override int maxHealth { get; set; } = 5;

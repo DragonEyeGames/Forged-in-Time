@@ -4,7 +4,7 @@ using System;
 public partial class Healer : Troop
 {
 	[Export] public override int speedLevel {get; set;}
-	[Export] public override float Speed { get; set; } = 25.0f;
+	[Export] public override float speed { get; set; } = 25.0f;
 	[Export] public override int maxHealth { get; set; } = 3;
 	[Export] public override int health { get; set; }
 	[Export] public override int healthLevel { get; set; } = 0;

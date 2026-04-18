@@ -13,7 +13,6 @@
 radius = 220.907
 
 [node name="Base" type="Sprite2D"]
-position = Vector2(64, 3)
 texture = ExtResource("1_3v5je")
 offset = Vector2(0, -4)
 script = ExtResource("2_qutmk")
