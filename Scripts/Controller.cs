@@ -7,6 +7,7 @@ public partial class Controller : Button
 	public Vector2 baseSize;
 	public Vector2 increasedSize;
 	public bool selected=false;
+	public int clickedBy = 0;
 	public override void _Ready()
 	{
 		baseSize=Scale;
@@ -25,8 +26,10 @@ public partial class Controller : Button
 		Modulate = Colors.Gray;
 	}
 	
-	public void select(){
+	public async void select(){
 		Scale=increasedSize;
 		Modulate = Colors.White;
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		GD.Print(clickedBy);
 	}
 }

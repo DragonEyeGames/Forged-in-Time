@@ -10,6 +10,10 @@ public partial class Miner : TargetBase
 
     public override void Die()
     {
+        if (playerKilled = true)
+        {
+            
+        }
         
     }
 

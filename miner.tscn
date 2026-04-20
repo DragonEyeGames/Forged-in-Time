@@ -23,6 +23,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player-1"]
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_nnceo")
+disabled = true
 
 [node name="Player-2" type="Area2D" parent="."]
 collision_layer = 16
@@ -31,14 +32,23 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player-2"]
 position = Vector2(0, -8.25806)
 shape = SubResource("CircleShape2D_s42jq")
+disabled = true
+
+[node name="Player-None" type="Area2D" parent="."]
+collision_layer = 2048
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player-None"]
+position = Vector2(0, -8.25806)
+shape = SubResource("CircleShape2D_s42jq")
 
 [node name="Button" type="Button" parent="."]
-offset_left = -258.0
-offset_top = -257.0
-offset_right = 314.0
-offset_bottom = 315.0
+offset_left = -288.0
+offset_top = -289.032
+offset_right = 284.0
+offset_bottom = 282.968
 scale = Vector2(0.895, 0.895)
-pivot_offset = Vector2(18.9944, 11.1732)
+pivot_offset = Vector2(273.077, 280.086)
 mouse_filter = 2
 flat = true
 script = ExtResource("2_383ku")
@@ -58,5 +68,10 @@ collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Button/Player2"]
 polygon = PackedVector2Array(572.073, 571.874, 572.073, -0.193542, 0.00622559, -0.193542, 0.00622559, 571.874)
+
+[node name="Sprite2D" type="Sprite2D" parent="Button"]
+position = Vector2(286.04, 276.613)
+texture = ExtResource("1_u7vtn")
+offset = Vector2(-3.40979e-05, 0)
 
 [connection signal="pressed" from="Button" to="." method="onSelect"]

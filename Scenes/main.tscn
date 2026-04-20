@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
 [ext_resource type="Script" uid="uid://d4nb8xql544r2" path="res://Scripts/Placement.cs" id="2_074og"]
 [ext_resource type="Script" uid="uid://dnc0ugi7igvey" path="res://Scripts/TerritoryChecker.cs" id="4_82xsv"]
-[ext_resource type="Texture2D" uid="uid://drk3jv3vyynsx" path="res://Assets/pixilart-drawing.png" id="4_u50mg"]
+[ext_resource type="Texture2D" uid="uid://clrlbl4tclb0q" path="res://Assets/pixil-frame-0 (2).png" id="4_u50mg"]
 [ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://Assets/icon.svg" id="5_getpj"]
 [ext_resource type="PackedScene" uid="uid://qw4hblqnmemt" path="res://Scenes/base.tscn" id="6_3pmx8"]
 [ext_resource type="PackedScene" uid="uid://cnem7ep3j786t" path="res://Towers/Scenes/turret.tscn" id="6_kek77"]
