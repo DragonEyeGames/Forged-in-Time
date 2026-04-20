@@ -198,40 +198,40 @@ player1 = false
 
 [node name="Turret2" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
-tower = 2
+tower = 1
 player1 = false
 
 [node name="Turret3" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
-tower = 3
+tower = 2
 player1 = false
 
 [node name="Turret4" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
-tower = 4
+tower = 3
 player1 = false
 
 [node name="Turret5" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
-tower = 5
+tower = 4
 player1 = false
 troop = true
 
 [node name="Turret6" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
-tower = 6
+tower = 5
 player1 = false
 troop = true
 
 [node name="Turret7" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
-tower = 7
+tower = 6
 player1 = false
 troop = true
 
 [node name="Turret8" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
-tower = 8
+tower = 7
 player1 = false
 troop = true
 

@@ -49,19 +49,19 @@ public partial class Base : Sprite2D
 	}
 
 	public void spawnTroop(Troops troopType){
-		GD.Print(troopType);
-		Troop newTroop = troop.Instantiate() as Troop;
+		GD.Print("Troop Type " + troopType);
+		BaseTroop newTroop = troop.Instantiate() as BaseTroop;
 		if(troopType==Troops.Melee){
-			newTroop = troop.Instantiate() as Troop;
+			newTroop = troop.Instantiate() as BaseTroop;
 		}
 		if(troopType==Troops.Brute){
-			newTroop = brute.Instantiate() as Troop;
+			newTroop = brute.Instantiate() as BaseTroop;
 		}
 		if(troopType==Troops.Ranged){
-			newTroop = ranged.Instantiate() as Troop;
+			newTroop = ranged.Instantiate() as BaseTroop;
 		}
 		if(troopType==Troops.Healer){
-			newTroop = healer.Instantiate() as Troop;
+			newTroop = healer.Instantiate() as BaseTroop;
 		}
 		GetParent().AddChild(newTroop);
 		newTroop.GlobalPosition=GlobalPosition;
@@ -130,6 +130,7 @@ public partial class Base : Sprite2D
 		reserveTroops.RemoveAt(0);
 		releaseTime=false;
 	}
+	
 	public void Die() 
 	{
 		if (health <= 0) 

@@ -7,7 +7,6 @@ public partial class GameManager : Node
 	
 	public enum Towers{
 		Turret,
-		Plasma_Turret,
 		Wall,
 		Watch_Tower,
 		Spikes,
@@ -15,10 +14,6 @@ public partial class GameManager : Node
 		Ranged,
 		Brute,
 		Healer
-	}
-	
-	public enum Upgrades{
-		Plasma_Turret
 	}
 	
 	public enum UpgradeTypes{
