@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://Assets/icon.svg" id="1_3v5je"]
 [ext_resource type="Script" uid="uid://g0qp36p0meoh" path="res://Scripts/Base.cs" id="2_qutmk"]
-[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/Scenes/troop.tscn" id="3_du40w"]
+[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/Scenes/melee.tscn" id="3_du40w"]
 [ext_resource type="PackedScene" uid="uid://uvioh4v0m0i8" path="res://Troops/Scenes/brute.tscn" id="4_omojh"]
 [ext_resource type="PackedScene" uid="uid://bxye5em56ls6c" path="res://Troops/Scenes/ranged.tscn" id="5_yoopj"]
 [ext_resource type="PackedScene" uid="uid://dixum1rty8vlc" path="res://Troops/Scenes/healer.tscn" id="6_u35dc"]
