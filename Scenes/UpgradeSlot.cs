@@ -7,6 +7,9 @@ public partial class UpgradeSlot : ColorRect
 	[Export] private GameManager.UpgradeTypes upgradeType;
 		
 	private bool player1=false;
+	
+	public bool disabled = false;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -35,6 +38,10 @@ public partial class UpgradeSlot : ColorRect
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(disabled){
+			Visible=false;
+			return;
+		}
 		if(GameManager.fetchUpgrades(1, GetParent().GetParent<ShopSlot>().tower).X>=TroopUpgrades.Prices.Count){
 			return;
 		}
@@ -56,6 +63,9 @@ public partial class UpgradeSlot : ColorRect
 	}
 	
 	public void upgrade(){
+		if(disabled){
+			return;
+		}
 		int price = TroopUpgrades.Prices[(int)GameManager.fetchUpgrades(1, GetParent().GetParent<ShopSlot>().tower).X];
 		if(player1){
 			if(price>Player1Manager.money){

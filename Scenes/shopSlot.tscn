@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://cayxysu631vpp"]
+[gd_scene load_steps=16 format=3 uid="uid://cayxysu631vpp"]
 
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/ShopSlot.cs" id="1_hc4pq"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="2_sedux"]
 [ext_resource type="Texture2D" uid="uid://donui7kkbkesp" path="res://Assets/Buy.png" id="3_s8imv"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="4_ly0j0"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="5_d2k2v"]
+[ext_resource type="Script" uid="uid://c47opbjk02mgo" path="res://Scenes/UpgradePopout.cs" id="6_hc4pq"]
 [ext_resource type="PackedScene" uid="uid://c4igmdu70tvwr" path="res://Scenes/upgradeSlot.tscn" id="8_sedux"]
 
 [sub_resource type="Animation" id="Animation_2cn1p"]
@@ -356,6 +357,7 @@ offset_bottom = 58.0
 scale = Vector2(1e-05, 1)
 pivot_offset = Vector2(194, 0)
 color = Color(0.504062, 0.443369, 0.252654, 1)
+script = ExtResource("6_hc4pq")
 
 [node name="Borders" type="Control" parent="UpgradePopout"]
 anchors_preset = 0
@@ -412,6 +414,13 @@ offset_top = 2.0
 offset_right = 191.0
 offset_bottom = 52.0
 upgradeType = 2
+
+[node name="TimeUpgrade" type="ColorRect" parent="UpgradePopout"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 193.0
+offset_bottom = 54.0
+color = Color(0.505882, 0.443137, 0.25098, 1)
 
 [connection signal="pressed" from="Button" to="." method="purchase"]
 [connection signal="pressed" from="Player1Upgrade" to="." method="player1Upgrade"]
