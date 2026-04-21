@@ -7,23 +7,36 @@ public partial class Miner : TargetBase
     public override int maxHealth { get; set; } = 200;
     public override bool isBase { get; set; } = false;
     public bool playerKilled;
+    private int playerClicked;
 
     public override void Die()
     {
-        if (playerKilled = true)
+        if (playerKilled == true)
         {
-            
+            GetNode<CollisionShape2D>("Player-1/Player1Territory").Disabled = false;
+            GetNode<CollisionShape2D>("Player-1/Player2Territory").Disabled = true;
+            GetNode<CollisionShape2D>("Player-1/PlayerNoneTerritory").Disabled = true;
+        }
+        else if (playerKilled == false)
+        {
+            GetNode<CollisionShape2D>("Player-1/Player1Territory").Disabled = true;
+            GetNode<CollisionShape2D>("Player-1/Player2Territory").Disabled = false;
+            GetNode<CollisionShape2D>("Player-1/PlayerNoneTerritory").Disabled = true;
+        }
+        else
+        {
+            GetNode<CollisionShape2D>("Player-1/Player1Territory").Disabled = true;
+            GetNode<CollisionShape2D>("Player-1/Player2Territory").Disabled = true;
+            GetNode<CollisionShape2D>("Player-1/PlayerNoneTerritory").Disabled = false;
         }
         
     }
 
     public void onSelect()
     {
+        
         GD.Print("onSelect");
-        if (GameManager.player1Target == this)
-        {
-            
-        }
+        
     }
 
     public override void _Ready()

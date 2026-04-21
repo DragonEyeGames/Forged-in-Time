@@ -20,7 +20,7 @@ script = ExtResource("2_u7vtn")
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player-1"]
+[node name="Player1Territory" type="CollisionShape2D" parent="Player-1"]
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_nnceo")
 disabled = true
@@ -29,7 +29,7 @@ disabled = true
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player-2"]
+[node name="Player2Territory" type="CollisionShape2D" parent="Player-2"]
 position = Vector2(0, -8.25806)
 shape = SubResource("CircleShape2D_s42jq")
 disabled = true
@@ -38,7 +38,7 @@ disabled = true
 collision_layer = 2048
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player-None"]
+[node name="PlayerNoneTerritory" type="CollisionShape2D" parent="Player-None"]
 position = Vector2(0, -8.25806)
 shape = SubResource("CircleShape2D_s42jq")
 
