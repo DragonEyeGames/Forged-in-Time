@@ -11,5 +11,5 @@ public partial class TroopUpgrades : Node
 	
 	public static List<int> Prices = new List<int> {10, 15, 25, 40, 60, 100, 150, 210, 280, 350, 500, 750};
 	
-	public static List<int> TimePeriod = new List<int> {3, 70, 101};
+	public static List<int> TimePeriod = new List<int> {3, 6, 100};
 }

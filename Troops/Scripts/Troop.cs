@@ -88,12 +88,12 @@ public abstract partial class Troop : CharacterBody2D
 
 			if (Velocity.X > 0)
 			{
-				sprite.FlipH = false;
+				sprite.FlipH = true;
 			}
 
 			if (Velocity.X < 0)
 			{
-				sprite.FlipH = true;
+				sprite.FlipH = false;
 			}
 		}
 

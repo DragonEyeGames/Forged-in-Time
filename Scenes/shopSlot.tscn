@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cayxysu631vpp"]
+[gd_scene load_steps=19 format=3 uid="uid://cayxysu631vpp"]
 
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/ShopSlot.cs" id="1_hc4pq"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="2_sedux"]
@@ -6,7 +6,10 @@
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="4_ly0j0"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="5_d2k2v"]
 [ext_resource type="Script" uid="uid://c47opbjk02mgo" path="res://Scenes/UpgradePopout.cs" id="6_hc4pq"]
+[ext_resource type="Script" uid="uid://cf3v1p2pkrot8" path="res://Scenes/TimeUpgrade.cs" id="8_ly0j0"]
+[ext_resource type="Texture2D" uid="uid://blnttaf7j45t" path="res://Assets/CharacterArt/MeleeMedevil.png" id="8_s8imv"]
 [ext_resource type="PackedScene" uid="uid://c4igmdu70tvwr" path="res://Scenes/upgradeSlot.tscn" id="8_sedux"]
+[ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="9_ly0j0"]
 
 [sub_resource type="Animation" id="Animation_2cn1p"]
 length = 0.001
@@ -422,7 +425,55 @@ offset_left = 2.0
 offset_right = 193.0
 offset_bottom = 54.0
 color = Color(0.505882, 0.443137, 0.25098, 1)
+script = ExtResource("8_ly0j0")
+
+[node name="Sprite2D" type="Sprite2D" parent="UpgradePopout/TimeUpgrade"]
+position = Vector2(21, 21)
+scale = Vector2(4.3, 4.3)
+texture = ExtResource("8_s8imv")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Description" type="RichTextLabel" parent="UpgradePopout/TimeUpgrade"]
+offset_left = 52.0
+offset_right = 641.0
+offset_bottom = 132.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 74
+text = "Medevil Knight"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="UpgradePopout/TimeUpgrade"]
+offset_left = 72.0
+offset_top = 26.0
+offset_right = 128.0
+offset_bottom = 50.0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(26.9511, 11.9081)
+mouse_filter = 2
+icon = ExtResource("9_ly0j0")
+flat = true
+script = ExtResource("4_ly0j0")
+
+[node name="Player1" type="Area2D" parent="UpgradePopout/TimeUpgrade/Button"]
+visible = false
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpgradePopout/TimeUpgrade/Button/Player1"]
+polygon = PackedVector2Array(51.4029, 8.74504, 36.8778, 4.27577, 19.0007, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 19.0007, 19.9182, 36.8778, 19.9182, 51.4029, 15.449)
+
+[node name="Player2" type="Area2D" parent="UpgradePopout/TimeUpgrade/Button"]
+visible = false
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpgradePopout/TimeUpgrade/Button/Player2"]
+polygon = PackedVector2Array(51.4029, 8.74504, 36.8778, 4.27577, 19.0007, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 19.0007, 19.9182, 36.8778, 19.9182, 51.4029, 15.449)
 
 [connection signal="pressed" from="Button" to="." method="purchase"]
 [connection signal="pressed" from="Player1Upgrade" to="." method="player1Upgrade"]
 [connection signal="pressed" from="Player2Upgrade" to="." method="toggle"]
+[connection signal="pressed" from="UpgradePopout/TimeUpgrade/Button" to="UpgradePopout/TimeUpgrade" method="Upgrade"]

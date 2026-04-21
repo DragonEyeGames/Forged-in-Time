@@ -40,7 +40,11 @@ public partial class UpgradeSlot : ColorRect
 	{
 		if(disabled){
 			Visible=false;
+			GetNode<Controller>("Button").Disabled=true;
 			return;
+		} else {
+			Visible=true;
+			GetNode<Controller>("Button").Disabled=false;
 		}
 		if(GameManager.fetchUpgrades(1, GetParent().GetParent<ShopSlot>().tower).X>=TroopUpgrades.Prices.Count){
 			return;

@@ -94,4 +94,17 @@ public partial class GameManager : Node
 		
 		return fetchUpgrades(player, troopType);
 	}
+	
+	public static Vector4 timeAdvance(Towers troopType, int player){
+		foreach (TroopUpgrade troop in player1Upgrades){
+			if(troop.troopType==troopType){
+				troop.speedLevel+=1;
+				troop.healthLevel+=1;
+				troop.damageLevel+=1;
+				troop.upgradeLevel+=1;
+				return fetchUpgrades(player, troopType);
+			}
+		}
+		return fetchUpgrades(player, troopType);
+	}
 }
