@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Melee : BaseTroop
+public partial class Melee : Troop
 {
 	[Export] public override int speedLevel {get; set;}
 	[Export] public override float speed { get; set; } = 40.0f;
@@ -24,9 +24,20 @@ public partial class Melee : BaseTroop
 		troopType=GameManager.Towers.Melee;
 		health = maxHealth;
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
-		sprite = GetNode<AnimatedSprite2D>("Sprite");
+		
 		cooldown = GetNode<Timer>("Cooldown");
 		navAgent.PathMaxDistance = 10.0f;
+		foreach (AnimatedSprite2D child in GetNode<Node2D>("Sprites").GetChildren()){
+			child.Visible=false;
+		}
 		fetchUpgrades();
+		if(upgradeLevel>3){
+			sprite = GetNode<AnimatedSprite2D>("Sprites/2");
+			 GetNode<AnimatedSprite2D>("Sprites/2").Visible=true;
+		} else {
+			sprite = GetNode<AnimatedSprite2D>("Sprites/1");
+			 GetNode<AnimatedSprite2D>("Sprites/1").Visible=true;
+		}
+		
 	}
 }

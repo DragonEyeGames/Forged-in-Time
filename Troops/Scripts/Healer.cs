@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Healer : BaseTroop
+public partial class Healer : Troop
 {
 	[Export] public override int speedLevel {get; set;}
 	[Export] public override float speed { get; set; } = 25.0f;

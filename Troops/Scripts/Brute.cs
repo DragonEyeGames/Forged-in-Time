@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Brute : BaseTroop
+public partial class Brute : Troop
 {
 	[Export] public override float speed { get; set; } = 20.0f;
 	[Export] public  override int health { get; set; } = 20;
