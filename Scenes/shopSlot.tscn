@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cayxysu631vpp"]
+[gd_scene load_steps=21 format=3 uid="uid://cayxysu631vpp"]
 
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/ShopSlot.cs" id="1_hc4pq"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="2_sedux"]
@@ -179,6 +179,15 @@ _data = {
 &"open": SubResource("Animation_hc4pq")
 }
 
+[sub_resource type="Animation" id="Animation_ly0j0"]
+resource_name = "open"
+length = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2k2v"]
+_data = {
+&"open": SubResource("Animation_ly0j0")
+}
+
 [node name="Turret" type="Control"]
 z_index = 1
 custom_minimum_size = Vector2(1.13, 59.355)
@@ -351,6 +360,19 @@ color = Color(0.78066, 0.704382, 0.474143, 1)
 position = Vector2(25, 2.99992)
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("5_d2k2v")
+
+[node name="Player1" type="Area2D" parent="Player2Upgrade"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player2Upgrade/Player1"]
+z_index = 4
+polygon = PackedVector2Array(7, 1, 1, 1, 1, 55, 7, 55)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player2Upgrade"]
+libraries = {
+&"": SubResource("AnimationLibrary_d2k2v")
+}
 
 [node name="UpgradePopout" type="ColorRect" parent="."]
 layout_mode = 0

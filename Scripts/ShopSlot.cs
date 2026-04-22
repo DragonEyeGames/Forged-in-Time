@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Godot.Collections;
 
 public partial class ShopSlot : Control
 {
@@ -8,6 +9,7 @@ public partial class ShopSlot : Control
 	[Export] public GameManager.Towers tower;
 	[Export] public bool player1 = true;
 	[Export] public bool troop = false;
+	[Export] public Array<Texture2D> Sprites = new Array<Texture2D>();
 	public bool upgradeOpen=false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -98,10 +100,15 @@ public partial class ShopSlot : Control
 		animator.Play("freeze");
 		upgradeOpen=true;
 		if(troop && GameManager.fetchUpgrades(1, tower).X>3){
-			GetNode<Sprite2D>("Base").Texture = (Texture2D)GD.Load("res://Assets/CharacterArt/MeleeMedevil.png");
+			if(Sprites.Count>=2){
+				GetNode<Sprite2D>("Base").Texture = Sprites[1];
+			}
+			
 		}
 		if(troop && GameManager.fetchUpgrades(1, tower).X>6){
-			GetNode<Sprite2D>("Base").Texture = (Texture2D)GD.Load("res://Assets/CharacterArt/MeleeModern.png");
+			if(Sprites.Count>=3){
+				GetNode<Sprite2D>("Base").Texture = Sprites[2];
+			}
 		}
 	}
 	
