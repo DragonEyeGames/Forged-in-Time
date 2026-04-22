@@ -97,6 +97,12 @@ public partial class ShopSlot : Control
 		AnimationPlayer animator = GetNode<AnimationPlayer>("Player1Upgrade/Animator");
 		animator.Play("freeze");
 		upgradeOpen=true;
+		if(troop && GameManager.fetchUpgrades(1, tower).X>3){
+			GetNode<Sprite2D>("Base").Texture = (Texture2D)GD.Load("res://Assets/CharacterArt/MeleeMedevil.png");
+		}
+		if(troop && GameManager.fetchUpgrades(1, tower).X>6){
+			GetNode<Sprite2D>("Base").Texture = (Texture2D)GD.Load("res://Assets/CharacterArt/MeleeModern.png");
+		}
 	}
 	
 }

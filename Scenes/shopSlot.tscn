@@ -427,7 +427,7 @@ offset_bottom = 54.0
 color = Color(0.505882, 0.443137, 0.25098, 1)
 script = ExtResource("8_ly0j0")
 
-[node name="Sprite2D" type="Sprite2D" parent="UpgradePopout/TimeUpgrade"]
+[node name="Sprite" type="Sprite2D" parent="UpgradePopout/TimeUpgrade"]
 position = Vector2(21, 21)
 scale = Vector2(4.3, 4.3)
 texture = ExtResource("8_s8imv")
@@ -435,6 +435,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Description" type="RichTextLabel" parent="UpgradePopout/TimeUpgrade"]
+layout_mode = 0
 offset_left = 52.0
 offset_right = 641.0
 offset_bottom = 132.0
@@ -446,6 +447,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="UpgradePopout/TimeUpgrade"]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 26.0
 offset_right = 128.0

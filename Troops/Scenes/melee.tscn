@@ -1,8 +1,45 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjjy84kigbl4n"]
+[gd_scene load_steps=23 format=3 uid="uid://bjjy84kigbl4n"]
 
 [ext_resource type="Script" uid="uid://dyhddwv8ns2sk" path="res://Troops/Scripts/Melee.cs" id="1_384nh"]
 [ext_resource type="Texture2D" uid="uid://7vh0im402jki" path="res://Assets/CharacterArt/MeleeCaveman.png" id="2_54rog"]
+[ext_resource type="Texture2D" uid="uid://ct3ctwe8d1l30" path="res://Assets/CharacterArt/MeleeModern.png" id="2_uob20"]
 [ext_resource type="Texture2D" uid="uid://blnttaf7j45t" path="res://Assets/CharacterArt/MeleeMedevil.png" id="3_caso8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wivj"]
+atlas = ExtResource("2_uob20")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0vcd"]
+atlas = ExtResource("2_uob20")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uj1m"]
+atlas = ExtResource("2_uob20")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7cya"]
+atlas = ExtResource("2_uob20")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ocjk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wivj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0vcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uj1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7cya")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pr5g"]
 atlas = ExtResource("3_caso8")
@@ -91,6 +128,15 @@ script = ExtResource("1_384nh")
 
 [node name="Sprites" type="Node2D" parent="."]
 
+[node name="3" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
+texture_filter = 1
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_6ocjk")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.147705
+
 [node name="2" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 texture_filter = 1
@@ -116,10 +162,12 @@ wait_time = 0.1
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_6da2i")
 disabled = true
 
 [node name="Player1" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 0
 
@@ -128,6 +176,7 @@ visible = false
 shape = SubResource("CircleShape2D_yv06w")
 
 [node name="Player2" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 0
 
@@ -136,6 +185,7 @@ visible = false
 shape = SubResource("CircleShape2D_yv06w")
 
 [node name="AttackRange" type="Area2D" parent="."]
+visible = false
 scale = Vector2(0.45, 0.45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
