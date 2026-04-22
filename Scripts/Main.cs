@@ -6,9 +6,14 @@ public partial class Main : Node2D
 	[Export]
 	public bool keyboard=false;
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public async override void _Ready()
 	{
 		GameManager.keyboard=keyboard;
+		
+		GD.Print("Player 1 Default IS" + GameManager.player1DefaultTarget);
+		GameManager.player1Target = GameManager.player1DefaultTarget;
+		GameManager.player2Target = GameManager.player2DefaultTarget;
+		GD.Print(GameManager.player1Target);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

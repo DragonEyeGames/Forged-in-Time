@@ -33,9 +33,9 @@ public partial class GameManager : Node
 	public static Placement player2Placement;
 	
 	public static BakeHandler baker;
-	
+
 	public static TargetBase player1Target;
-	public static TargetBase player2Target;
+	public static TargetBase player2Target; 
 	public static TargetBase player1DefaultTarget;
 	public static TargetBase player2DefaultTarget;
 }

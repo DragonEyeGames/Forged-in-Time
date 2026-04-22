@@ -31,7 +31,6 @@ public partial class Base : TargetBase
 		if(player1){
 			GD.Print("Player1");
 			GameManager.player1Base=this;
-			GameManager.player2Target=this;
 			GameManager.player2DefaultTarget=this;
 			GetNode<Area2D>("Player-2").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-2").QueueFree();
@@ -39,7 +38,6 @@ public partial class Base : TargetBase
 		} else if(!player1){
 			GD.Print("Player2");
 			GameManager.player2Base=this;
-			GameManager.player1Target=this;
 			GameManager.player1DefaultTarget=this;
 			GetNode<Area2D>("Player-1").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-1").QueueFree();
@@ -53,6 +51,19 @@ public partial class Base : TargetBase
 		}
 		await ToSignal(GetTree().CreateTimer(0.15f), SceneTreeTimer.SignalName.Timeout);
 		GameManager.territory.recalculate();
+	}
+
+	public override void _EnterTree()
+	{
+		if (player1)
+		{
+			GameManager.player1DefaultTarget=this;
+
+		}
+		else if (!player1)
+		{
+			GameManager.player2DefaultTarget=this;
+		}
 	}
 
 	public void spawnTroop(Troops troopType){

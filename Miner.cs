@@ -36,7 +36,16 @@ public partial class Miner : TargetBase
     {
         
         GD.Print("onSelect");
-        
+        if (playerClicked == 1)
+        {
+            GameManager.player1Target = this;
+            playerClicked = 0;
+        }
+        else if (playerClicked == 2) 
+        {
+            GameManager.player2Target = this;
+            playerClicked = 0;
+        }
     }
 
     public override void _Ready()
