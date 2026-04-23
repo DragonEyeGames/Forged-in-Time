@@ -10,6 +10,7 @@ public partial class ShopSlot : Control
 	[Export] public bool player1 = true;
 	[Export] public bool troop = false;
 	[Export] public Array<Texture2D> Sprites = new Array<Texture2D>();
+	[Export] public Array<String> Names = new Array<String>();
 	public bool upgradeOpen=false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
