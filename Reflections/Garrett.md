@@ -18,7 +18,8 @@ Sprint 3:
 - I need to make another enemy after I finish the miner
 
 Sprint 4:
--This sprint sucked
+- This sprint sucked
 - I am still working on the miner
 - I have an issue where the target breaks and I dont know why
 - I am going to try to get it to work next week.
+- After that I need to make the vechincle and work on getting some easy points for the rubric
