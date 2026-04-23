@@ -22,6 +22,7 @@ public partial class ShopSlot : Control
 				GetNode<ColorRect>("UpgradePopout").QueueFree();
 			}
 		} else {
+			GetNode<Sprite2D>("Base").FlipH=true;
 			GetNode<Button>("Player1Upgrade").QueueFree();
 			GetNode<Area2D>("Button/Player1").QueueFree();
 			if(!troop){
@@ -52,7 +53,7 @@ public partial class ShopSlot : Control
 		if(Input.IsActionJustPressed("Click-1") && player1 && upgradeOpen){
 			player1Upgrade();
 		} else if (Input.IsActionJustPressed("Click-2") && !player1 && upgradeOpen){
-			
+			player2Upgrade();
 		}
 		if(player1){
 			GetNode<Button>("Button").Disabled = (Player1Manager.money<Prices.towerPrices[tower] || (troop && GameManager.player1Base.reserveTroops.Count>=GameManager.player1Base.maxTroops));
@@ -95,17 +96,41 @@ public partial class ShopSlot : Control
 		
 	}
 	
+	public void player2Upgrade(){
+		AnimationPlayer animator = GetNodeOrNull<AnimationPlayer>("Player2Upgrade/Animator");
+		if(animator==null){
+			return;
+		}
+		if(upgradeOpen==false && !animator.IsPlaying()){
+			animator.Play("open");
+			upgradeOpen=true;
+		} else if (!animator.IsPlaying()){
+			animator.Play("close");
+			upgradeOpen=false;
+		}
+		
+	}
+	
 	public void upgraded(){
-		AnimationPlayer animator = GetNode<AnimationPlayer>("Player1Upgrade/Animator");
-		animator.Play("freeze");
+		if(player1){
+			AnimationPlayer animator = GetNode<AnimationPlayer>("Player1Upgrade/Animator");
+			animator.Play("freeze");
+		} else if(!player1){
+			AnimationPlayer animator = GetNode<AnimationPlayer>("Player2Upgrade/Animator");
+			animator.Play("freeze");
+		}
 		upgradeOpen=true;
-		if(troop && GameManager.fetchUpgrades(1, tower).X>3){
+		int id = 1;
+		if(!player1){
+			id=2;
+		}
+		if(troop && GameManager.fetchUpgrades(id, tower).X>3){
 			if(Sprites.Count>=2){
 				GetNode<Sprite2D>("Base").Texture = Sprites[1];
 			}
 			
 		}
-		if(troop && GameManager.fetchUpgrades(1, tower).X>6){
+		if(troop && GameManager.fetchUpgrades(id, tower).X>6){
 			if(Sprites.Count>=3){
 				GetNode<Sprite2D>("Base").Texture = Sprites[2];
 			}

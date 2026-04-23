@@ -20,7 +20,7 @@ public partial class Healer : Troop
 
 	
 
-	public override void _Ready()
+	public async override void _Ready()
 	{
 		troopType=GameManager.Towers.Healer;
 		health = maxHealth;
@@ -28,6 +28,7 @@ public partial class Healer : Troop
 		sprite = GetNode<AnimatedSprite2D>("Sprite");
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
 		navAgent.TargetDesiredDistance = 25;
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		fetchUpgrades();
 	}
 

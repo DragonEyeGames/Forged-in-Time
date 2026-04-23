@@ -33,7 +33,7 @@ public partial class GameManager : Node
 	
 	public static Placement player1Placement;
 	public static Placement player2Placement;
-	
+	public static List<TroopUpgrade> newList = new List<TroopUpgrade>();
 	public static BakeHandler baker;
 	
 	public static List<TroopUpgrade> player1Upgrades = new List<TroopUpgrade>();
@@ -41,25 +41,25 @@ public partial class GameManager : Node
 	
 	public static Vector4 fetchUpgrades(int player, Towers troopType){
 		if(player==1){
-			foreach (TroopUpgrade troop in player1Upgrades){
+			newList = player1Upgrades;
+		} else {
+			newList = player2Upgrades;
+		}
+		foreach (TroopUpgrade troop in newList){
 				if(troop.troopType==troopType){
 					return new Vector4(troop.upgradeLevel, troop.speedLevel, troop.healthLevel, troop.damageLevel);
 				}
 			}
 			return new Vector4(0, 0, 0, 0);
-		}
-		else{
-			foreach (TroopUpgrade troop in player2Upgrades){
-				if(troop.troopType==troopType){
-					return new Vector4(troop.upgradeLevel, troop.speedLevel, troop.healthLevel, troop.damageLevel);
-				}
-			}
-			return new Vector4(0, 0, 0, 0);
-		}
 	}
 	
 	public static Vector4 upgradeTroop(Towers troopType, UpgradeTypes upgradeType, int player){
-		foreach (TroopUpgrade troop in player1Upgrades){
+		if(player==1){
+			newList = player1Upgrades;
+		} else {
+			newList = player2Upgrades;
+		}
+		foreach (TroopUpgrade troop in newList){
 			if(troop.troopType==troopType){
 				if(upgradeType==UpgradeTypes.Speed){
 					troop.speedLevel+=1;
@@ -75,7 +75,7 @@ public partial class GameManager : Node
 			}
 		}
 		TroopUpgrade newTroop = new TroopUpgrade();
-		player1Upgrades.Add(newTroop);
+		newList.Add(newTroop);
 		newTroop.troopType=troopType;
 		newTroop.speedLevel=0;
 		newTroop.damageLevel=0;
@@ -96,7 +96,12 @@ public partial class GameManager : Node
 	}
 	
 	public static Vector4 timeAdvance(Towers troopType, int player){
-		foreach (TroopUpgrade troop in player1Upgrades){
+		if(player==1){
+			newList = player1Upgrades;
+		} else {
+			newList = player2Upgrades;
+		}
+		foreach (TroopUpgrade troop in newList){
 			if(troop.troopType==troopType){
 				troop.speedLevel+=1;
 				troop.healthLevel+=1;

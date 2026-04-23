@@ -27,27 +27,19 @@ public abstract partial class Troop : CharacterBody2D
 	public abstract GameManager.Towers troopType {get; set;}
 	
 	public Vector4 fetchUpgrades(){
+		int id = 2;
 		if(player1){
-			Vector4 upgrades = GameManager.fetchUpgrades(1, troopType);
-			upgradeLevel=(int)upgrades.X;
-			speedLevel=(int)upgrades.Y;
-			healthLevel=(int)upgrades.Z;
-			damageLevel=(int)upgrades.W;
-			speed+=TroopUpgrades.Speed[speedLevel];
-			damage+=TroopUpgrades.Damage[damageLevel];
-			health+=TroopUpgrades.Health[healthLevel];
-			return upgrades;
-		} else {
-			Vector4 upgrades = GameManager.fetchUpgrades(2, troopType);
-			upgradeLevel=(int)upgrades.X;
-			speedLevel=(int)upgrades.Y;
-			healthLevel=(int)upgrades.Z;
-			damageLevel=(int)upgrades.W;
-			speed+=TroopUpgrades.Speed[speedLevel];
-			damage+=TroopUpgrades.Damage[damageLevel];
-			health+=TroopUpgrades.Health[healthLevel];
-			return upgrades;
+			id=1;
 		}
+		Vector4 upgrades = GameManager.fetchUpgrades(id, troopType);
+		upgradeLevel=(int)upgrades.X;
+		speedLevel=(int)upgrades.Y;
+		healthLevel=(int)upgrades.Z;
+		damageLevel=(int)upgrades.W;
+		speed+=TroopUpgrades.Speed[speedLevel];
+		damage+=TroopUpgrades.Damage[damageLevel];
+		health+=TroopUpgrades.Health[healthLevel];
+		return upgrades;
 	}
 	public async void updateHitboxes()
 	{

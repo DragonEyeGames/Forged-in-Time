@@ -23,7 +23,7 @@ public partial class Ranged : Troop
 	public override GameManager.Towers troopType { get; set; }
 	
 
-	public override void _Ready()
+	public async override void _Ready()
 	{
 		troopType=GameManager.Towers.Ranged;
 		health = maxHealth;
@@ -31,6 +31,7 @@ public partial class Ranged : Troop
 		sprite = GetNode<AnimatedSprite2D>("Sprite");
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
 		navAgent.TargetDesiredDistance = 50;
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		fetchUpgrades();
 	}
 }

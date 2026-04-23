@@ -19,7 +19,7 @@ public partial class Melee : Troop
 	[Export] public override int upgradeLevel {get; set;} = 0;
 
 
-	public override void _Ready()
+	public async override void _Ready()
 	{
 		troopType=GameManager.Towers.Melee;
 		health = maxHealth;
@@ -30,6 +30,7 @@ public partial class Melee : Troop
 		foreach (AnimatedSprite2D child in GetNode<Node2D>("Sprites").GetChildren()){
 			child.Visible=false;
 		}
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		fetchUpgrades();
 		if(upgradeLevel>6){
 			sprite = GetNode<AnimatedSprite2D>("Sprites/3");

@@ -9,7 +9,9 @@ public partial class TimeUpgrade : ColorRect
 	{
 		player1=GetParent().GetParent<ShopSlot>().player1;
 		if(player1){
-			GetNode<Area2D>("Button/Player2");
+			GetNode<Area2D>("Button/Player2").QueueFree();
+		} else {
+			GetNode<Area2D>("Button/Player1").QueueFree();
 		}
 	}
 
@@ -17,14 +19,19 @@ public partial class TimeUpgrade : ColorRect
 	public override void _Process(double delta)
 	{
 		GetNode<Controller>("Button").Disabled=!Visible;
-		GetNode<Area2D>("Button/Player1").Monitorable=Visible;
-		if(Visible){
-			GD.Print(GetNode<Controller>("Button").Disabled);
+		if(player1){
+			GetNode<Area2D>("Button/Player1").Monitorable=Visible;
+		} else {
+			GetNode<Area2D>("Button/Player2").Monitorable=Visible;
 		}
 	}
 	
 	public void Upgrade(){
-		GD.Print(GameManager.timeAdvance(GetParent().GetParent<ShopSlot>().tower, 1));
+		int id = 1;
+		if(!player1){
+			id=2;
+		}
+		GD.Print(GameManager.timeAdvance(GetParent().GetParent<ShopSlot>().tower, id));
 		GetParent<UpgradePopout>().GetParent<ShopSlot>().upgraded();
 	}
 }

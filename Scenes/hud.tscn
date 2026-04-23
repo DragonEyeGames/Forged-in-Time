@@ -175,7 +175,7 @@ tower = 2
 layout_mode = 2
 tower = 3
 
-[node name="Turret5" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="Melee" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 4
 troop = true
