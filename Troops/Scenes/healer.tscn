@@ -114,6 +114,7 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_id8a5")
+disabled = true
 
 [node name="Player1" type="Area2D" parent="."]
 collision_layer = 2

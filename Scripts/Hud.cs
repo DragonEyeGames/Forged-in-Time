@@ -149,14 +149,14 @@ public partial class Hud : CanvasLayer
 	
 	//Upgrade Section
 	
-	public void upgradeTower(ref int upgradeLevel, NodePath nodeHolder, ref CompressedTexture2D upgradeSprite, string newName, GameManager.Upgrades upgrade){
-		if(player1 && Player1Manager.money>=Prices.upgradePrices[upgrade]){
-			Player1Manager.money-=Prices.upgradePrices[upgrade];
-		} else if(!player1 && Player2Manager.money>=Prices.upgradePrices[upgrade]){
-			Player2Manager.money-=Prices.upgradePrices[upgrade];
-		} else {
-			return;
-		}
+	//public void upgradeTower(ref int upgradeLevel, NodePath nodeHolder, ref CompressedTexture2D upgradeSprite, string newName){
+		/*if(player1 && Player1Manager.money>=Prices.upgradePrices[upgrade]){
+		//	Player1Manager.money-=Prices.upgradePrices[upgrade];
+		//} else if(!player1 && Player2Manager.money>=Prices.upgradePrices[upgrade]){
+		//	Player2Manager.money-=Prices.upgradePrices[upgrade];
+		//} else {
+		//	return;
+		//}
 		timer.Start();
 		upgradeLevel+=1;
 		if(upgradeLevel==1){
@@ -172,10 +172,10 @@ public partial class Hud : CanvasLayer
 			GetNode<Controller>(nodeHolder+"/Button").select();
 		}
 	}
-	
+	*/
 	public void upgradeTurret(){
 		if(turretUpgrade==0){
-			upgradeTower(ref turretUpgrade, "ColorRect/VBoxContainer/Turret", ref turretUpgradeSprite, "Plasma Turret", GameManager.Upgrades.Plasma_Turret);
+			//upgradeTower(ref turretUpgrade, "ColorRect/VBoxContainer/Turret", ref turretUpgradeSprite, "Plasma Turret", GameManager.Upgrades.Plasma_Turret);
 		}
 		
 	}

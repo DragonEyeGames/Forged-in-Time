@@ -7,6 +7,7 @@ public partial class Cursor : Sprite2D
 	[Export] public int ID = 0;
 	[Export] public ScreenCursor screenCounterpart;
 	private Controller selected=null;
+	private float speed=1;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -54,8 +55,16 @@ public partial class Cursor : Sprite2D
 		if(Math.Abs(rightY)<.1f){
 			rightY=0;
 		}
-		rightX*=5;
-		rightY*=5;
+		rightX*=speed;
+		rightY*=speed;
+		if(rightX!=0 || rightY!=0){
+			//speed*=1.03f;
+			if(speed>5){
+				speed=5;
+			}
+		} else {
+			speed=5;
+		}
 		Vector2 position = Position;
 		position.X+=rightX;
 		position.Y+=rightY;
@@ -77,12 +86,12 @@ public partial class Cursor : Sprite2D
 		screenCounterpart.GlobalPosition=screenPos;
 		
 		if(player1){
-			if(selected!=null && Input.IsActionJustPressed("Click-1")){
+			if(selected!=null && Input.IsActionJustPressed("Click-1") && !selected.Disabled){
 				selected.EmitSignal(Button.SignalName.Pressed);
 			}
 		}
 		else if(!player1){
-			if(selected!=null && Input.IsActionJustPressed("Click-2")){
+			if(selected!=null && Input.IsActionJustPressed("Click-2") && !selected.Disabled){
 				selected.EmitSignal(Button.SignalName.Pressed);
 			}
 		}
