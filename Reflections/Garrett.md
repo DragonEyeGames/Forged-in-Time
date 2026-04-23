@@ -16,3 +16,9 @@ Sprint 3:
 - I've spent a lot of time bug fixe=ing the new mining tower and ealing with merge conflicts.
 - This sprint it shouldnt be bad because I have to finish the miner then I have easier tasks.
 - I need to make another enemy after I finish the miner
+
+Sprint 4:
+-This sprint sucked
+- I am still working on the miner
+- I have an issue where the target breaks and I dont know why
+- I am going to try to get it to work next week.
