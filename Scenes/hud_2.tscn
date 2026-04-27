@@ -198,21 +198,25 @@ mouse_filter = 2
 [node name="Turret" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 player1 = false
+Names = Array[String]([])
 
 [node name="Turret2" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 1
 player1 = false
+Names = Array[String]([])
 
 [node name="Turret3" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 2
 player1 = false
+Names = Array[String]([])
 
 [node name="Turret4" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 3
 player1 = false
+Names = Array[String]([])
 
 [node name="Turret5" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
@@ -220,24 +224,28 @@ tower = 4
 player1 = false
 troop = true
 Sprites = Array[Texture2D]([ExtResource("4_v1w48"), ExtResource("5_uoqjr"), ExtResource("6_wiuxb")])
+Names = Array[String]([])
 
 [node name="Turret6" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 5
 player1 = false
 troop = true
+Names = Array[String]([])
 
 [node name="Turret7" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 6
 player1 = false
 troop = true
+Names = Array[String]([])
 
 [node name="Turret8" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 7
 player1 = false
 troop = true
+Names = Array[String]([])
 
 [node name="Close" type="Button" parent="ColorRect"]
 layout_mode = 0

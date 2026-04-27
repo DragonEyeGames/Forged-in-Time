@@ -317,7 +317,6 @@ layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_hc4pq")
-Names = Array[String](["Caveman", "Medevil Knight", "Modern Troop", "Techno Soldier", ""])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
