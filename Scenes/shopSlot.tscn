@@ -1,12 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://cayxysu631vpp"]
+[gd_scene load_steps=24 format=3 uid="uid://cayxysu631vpp"]
 
 [ext_resource type="Script" uid="uid://dfdutrefm4w1i" path="res://Scripts/ShopSlot.cs" id="1_hc4pq"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="2_sedux"]
 [ext_resource type="Texture2D" uid="uid://donui7kkbkesp" path="res://Assets/Buy.png" id="3_s8imv"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="4_ly0j0"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="5_d2k2v"]
-[ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="6_wfc4q"]
-[ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="7_cge6v"]
+[ext_resource type="Script" uid="uid://c47opbjk02mgo" path="res://Scenes/UpgradePopout.cs" id="6_hc4pq"]
+[ext_resource type="Script" uid="uid://cf3v1p2pkrot8" path="res://Scenes/TimeUpgrade.cs" id="8_ly0j0"]
+[ext_resource type="Texture2D" uid="uid://blnttaf7j45t" path="res://Assets/CharacterArt/MeleeMedevil.png" id="8_s8imv"]
+[ext_resource type="PackedScene" uid="uid://c4igmdu70tvwr" path="res://Scenes/upgradeSlot.tscn" id="8_sedux"]
+[ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="9_ly0j0"]
 
 [sub_resource type="Animation" id="Animation_2cn1p"]
 length = 0.001
@@ -45,24 +48,24 @@ _data = {
 &"wobble": SubResource("Animation_avu3l")
 }
 
-[sub_resource type="Animation" id="Animation_gpiub"]
+[sub_resource type="Animation" id="Animation_sedux"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Popout:scale")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 1)]
+"values": [Vector2(-7, 3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player1Upgrade/ColorRect2/Arrow:rotation")
+tracks/1/path = NodePath("ColorRect2/Arrow:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -74,36 +77,36 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player1Upgrade:position")
+tracks/2/path = NodePath("../UpgradePopout:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-7, 3)]
+"values": [Vector2(1e-05, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_amv7k"]
+[sub_resource type="Animation" id="Animation_s8imv"]
 resource_name = "close"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Popout:scale")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+"values": [Vector2(-200, 3), Vector2(-7, 3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player1Upgrade/ColorRect2/Arrow:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
@@ -114,36 +117,40 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player1Upgrade:position")
-tracks/2/interp = 1
+tracks/2/path = NodePath("../UpgradePopout:scale")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-104, 2), Vector2(-7, 2)]
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_g10ll"]
+[sub_resource type="Animation" id="Animation_4vayn"]
+resource_name = "freeze"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_hc4pq"]
 resource_name = "open"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Popout:scale")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+"values": [Vector2(-7, 3), Vector2(-200, 3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player1Upgrade/ColorRect2/Arrow:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath("ColorRect2/Arrow:rotation")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
@@ -154,29 +161,163 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player1Upgrade:position")
+tracks/2/path = NodePath("../UpgradePopout:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8imv"]
+_data = {
+&"RESET": SubResource("Animation_sedux"),
+&"close": SubResource("Animation_s8imv"),
+&"freeze": SubResource("Animation_4vayn"),
+&"open": SubResource("Animation_hc4pq")
+}
+
+[sub_resource type="Animation" id="Animation_d2k2v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(132, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UpgradePopout:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-194, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../UpgradePopout:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wfc4q"]
+resource_name = "close"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(325, 3), Vector2(132, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UpgradePopout:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(132, 4), Vector2(-61, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../UpgradePopout:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-7, 3), Vector2(-104, 2)]
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_amv7k"]
+[sub_resource type="Animation" id="Animation_cge6v"]
+resource_name = "freeze"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_ly0j0"]
+resource_name = "open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(132, 3), Vector2(325, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UpgradePopout:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-61, 4), Vector2(132, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../UpgradePopout:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2k2v"]
 _data = {
-&"RESET": SubResource("Animation_gpiub"),
-&"close": SubResource("Animation_amv7k"),
-&"open": SubResource("Animation_g10ll")
+&"RESET": SubResource("Animation_d2k2v"),
+&"close": SubResource("Animation_wfc4q"),
+&"freeze": SubResource("Animation_cge6v"),
+&"open": SubResource("Animation_ly0j0")
 }
 
 [node name="Turret" type="Control"]
+z_index = 1
 custom_minimum_size = Vector2(1.13, 59.355)
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_hc4pq")
+Names = Array[String](["Caveman", "Medevil Knight", "Modern Troop", "Techno Soldier", ""])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -194,14 +335,6 @@ texture = ExtResource("2_sedux")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="Turret" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(28.4, 29.4)
-scale = Vector2(2.925, 2.925)
-texture = ExtResource("2_sedux")
-region_enabled = true
-region_rect = Rect2(16, 0, 16, 16)
-
 [node name="Name" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 51.0
@@ -218,9 +351,9 @@ vertical_alignment = 1
 [node name="Description" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 51.0
-offset_top = 22.0
+offset_top = 21.0
 offset_right = 460.0
-offset_bottom = 140.0
+offset_bottom = 139.0
 scale = Vector2(0.19, 0.19)
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 33
@@ -228,11 +361,23 @@ text = "Shoots at the enemy furthest along the path."
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Price" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 39.0
+offset_right = 281.0
+offset_bottom = 139.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 61
+text = "$1000"
+vertical_alignment = 1
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 69.0
+offset_left = 53.0
 offset_top = 37.0
-offset_right = 109.0
+offset_right = 93.0
 offset_bottom = 61.0
 scale = Vector2(0.895, 0.895)
 pivot_offset = Vector2(18.9944, 11.1732)
@@ -284,10 +429,24 @@ mouse_filter = 2
 color = Color(0.78066, 0.704382, 0.474143, 1)
 
 [node name="Arrow" type="Sprite2D" parent="Player1Upgrade/ColorRect2"]
-position = Vector2(25, 2.75695)
+position = Vector2(27, 2.99991)
 rotation = 3.14159
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("5_d2k2v")
+
+[node name="Player1" type="Area2D" parent="Player1Upgrade"]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player1Upgrade/Player1"]
+z_index = 4
+polygon = PackedVector2Array(7, 1, 1, 1, 1, 55, 7, 55)
+
+[node name="Animator" type="AnimationPlayer" parent="Player1Upgrade"]
+libraries = {
+&"": SubResource("AnimationLibrary_s8imv")
+}
+autoplay = "RESET"
 
 [node name="Player2Upgrade" type="Button" parent="."]
 layout_mode = 0
@@ -317,79 +476,142 @@ position = Vector2(25, 2.99992)
 scale = Vector2(0.525, 0.555381)
 texture = ExtResource("5_d2k2v")
 
-[node name="UpgradeSlider" type="AnimationPlayer" parent="."]
+[node name="Player2" type="Area2D" parent="Player2Upgrade"]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player2Upgrade/Player2"]
+z_index = 4
+polygon = PackedVector2Array(7, 1, 1, 1, 1, 55, 7, 55)
+
+[node name="Animator" type="AnimationPlayer" parent="Player2Upgrade"]
 libraries = {
-&"": SubResource("AnimationLibrary_amv7k")
+&"": SubResource("AnimationLibrary_d2k2v")
 }
 
-[node name="Popout" type="ColorRect" parent="."]
-z_index = 1
+[node name="UpgradePopout" type="ColorRect" parent="."]
 layout_mode = 0
-offset_top = 57.0
-offset_right = 97.0
-offset_bottom = 111.0
-rotation = 3.14159
+offset_left = -194.0
+offset_top = 4.0
+offset_bottom = 58.0
 scale = Vector2(1e-05, 1)
-color = Color(0.639216, 0.552941, 0.345098, 1)
+pivot_offset = Vector2(194, 0)
+color = Color(0.504062, 0.443369, 0.252654, 1)
+script = ExtResource("6_hc4pq")
 
-[node name="Base" type="Sprite2D" parent="Popout"]
-position = Vector2(78.12, 27.12)
-rotation = 3.14159
-scale = Vector2(2.11, 2.11)
-texture = ExtResource("6_wfc4q")
+[node name="Borders" type="Control" parent="UpgradePopout"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="UpgradePopout/Borders"]
+layout_mode = 0
+offset_right = 2.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="UpgradePopout/Borders"]
+layout_mode = 0
+offset_left = 129.0
+offset_right = 130.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="UpgradePopout/Borders"]
+layout_mode = 0
+offset_left = 193.0
+offset_right = 194.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="UpgradePopout/Borders"]
+layout_mode = 0
+offset_left = 65.0
+offset_right = 66.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
+
+[node name="UpgradeSlot" parent="UpgradePopout" instance=ExtResource("8_sedux")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 63.0
+offset_bottom = 52.0
+
+[node name="UpgradeSlot2" parent="UpgradePopout" instance=ExtResource("8_sedux")]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 2.0
+offset_right = 127.0
+offset_bottom = 52.0
+upgradeType = 1
+
+[node name="UpgradeSlot3" parent="UpgradePopout" instance=ExtResource("8_sedux")]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 2.0
+offset_right = 191.0
+offset_bottom = 52.0
+upgradeType = 2
+
+[node name="TimeUpgrade" type="ColorRect" parent="UpgradePopout"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_right = 193.0
+offset_bottom = 54.0
+color = Color(0.505882, 0.443137, 0.25098, 1)
+script = ExtResource("8_ly0j0")
+
+[node name="Sprite" type="Sprite2D" parent="UpgradePopout/TimeUpgrade"]
+position = Vector2(21, 21)
+scale = Vector2(4.3, 4.3)
+texture = ExtResource("8_s8imv")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="Turret" type="Sprite2D" parent="Popout"]
-position = Vector2(78.12, 27.12)
-rotation = 3.14159
-scale = Vector2(2.11, 2.11)
-texture = ExtResource("6_wfc4q")
-region_enabled = true
-region_rect = Rect2(16, 0, 16, 16)
-
-[node name="Label" type="RichTextLabel" parent="Popout"]
+[node name="Description" type="RichTextLabel" parent="UpgradePopout/TimeUpgrade"]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 55.0
-offset_right = 478.0
-offset_bottom = 226.0
-rotation = 3.14159
+offset_left = 52.0
+offset_right = 641.0
+offset_bottom = 132.0
 scale = Vector2(0.19, 0.19)
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 43
-text = "Plasma Turret"
+theme_override_font_sizes/normal_font_size = 74
+text = "Medevil Knight"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="RichTextLabel" parent="Popout"]
+[node name="Button" type="Button" parent="UpgradePopout/TimeUpgrade"]
 layout_mode = 0
-offset_left = 60.0
-offset_top = 36.0
-offset_right = 373.0
-offset_bottom = 146.0
-rotation = 3.14159
-scale = Vector2(0.19, 0.19)
+offset_left = 72.0
+offset_top = 26.0
+offset_right = 128.0
+offset_bottom = 50.0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(26.9511, 11.9081)
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 25
-text = "Does more damage and looks cooler."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Popout"]
-layout_mode = 0
-offset_left = 21.0
-offset_right = 77.0
-offset_bottom = 24.0
-rotation = 3.14159
-scale = Vector2(0.895, 0.895)
-pivot_offset = Vector2(18.9944, 11.1732)
-focus_mode = 0
-mouse_filter = 2
-icon = ExtResource("7_cge6v")
+icon = ExtResource("9_ly0j0")
 flat = true
 script = ExtResource("4_ly0j0")
 
+[node name="Player1" type="Area2D" parent="UpgradePopout/TimeUpgrade/Button"]
+visible = false
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpgradePopout/TimeUpgrade/Button/Player1"]
+polygon = PackedVector2Array(51.4029, 8.74504, 36.8778, 4.27577, 19.0007, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 19.0007, 19.9182, 36.8778, 19.9182, 51.4029, 15.449)
+
+[node name="Player2" type="Area2D" parent="UpgradePopout/TimeUpgrade/Button"]
+visible = false
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpgradePopout/TimeUpgrade/Button/Player2"]
+polygon = PackedVector2Array(51.4029, 8.74504, 36.8778, 4.27577, 19.0007, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 19.0007, 19.9182, 36.8778, 19.9182, 51.4029, 15.449)
+
 [connection signal="pressed" from="Button" to="." method="purchase"]
-[connection signal="pressed" from="Player1Upgrade" to="." method="toggle"]
-[connection signal="pressed" from="Player2Upgrade" to="." method="toggle"]
+[connection signal="pressed" from="Player1Upgrade" to="." method="player1Upgrade"]
+[connection signal="pressed" from="Player2Upgrade" to="." method="player2Upgrade"]
+[connection signal="pressed" from="UpgradePopout/TimeUpgrade/Button" to="UpgradePopout/TimeUpgrade" method="Upgrade"]

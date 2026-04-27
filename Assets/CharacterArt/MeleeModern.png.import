@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct3ctwe8d1l30"
-path="res://.godot/imported/PresentCharacter.png-296b1e13a26f78e18d60b50e27821f61.ctex"
+path="res://.godot/imported/MeleeModern.png-229042dbc30c53346f7302b882034ed4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CharacterArt/PresentCharacter.png"
-dest_files=["res://.godot/imported/PresentCharacter.png-296b1e13a26f78e18d60b50e27821f61.ctex"]
+source_file="res://Assets/CharacterArt/MeleeModern.png"
+dest_files=["res://.godot/imported/MeleeModern.png-229042dbc30c53346f7302b882034ed4.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://Assets/icon.svg" id="1_3v5je"]
 [ext_resource type="Script" uid="uid://g0qp36p0meoh" path="res://Scripts/Base.cs" id="2_qutmk"]
-[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/Scenes/troop.tscn" id="3_du40w"]
+[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/Scenes/melee.tscn" id="3_du40w"]
 [ext_resource type="PackedScene" uid="uid://uvioh4v0m0i8" path="res://Troops/Scenes/brute.tscn" id="4_omojh"]
 [ext_resource type="PackedScene" uid="uid://bxye5em56ls6c" path="res://Troops/Scenes/ranged.tscn" id="5_yoopj"]
 [ext_resource type="PackedScene" uid="uid://dixum1rty8vlc" path="res://Troops/Scenes/healer.tscn" id="6_u35dc"]
@@ -14,7 +14,7 @@ radius = 220.907
 
 [node name="Base" type="Sprite2D"]
 texture = ExtResource("1_3v5je")
-offset = Vector2(64, -1)
+offset = Vector2(0, -4)
 script = ExtResource("2_qutmk")
 player1 = true
 troop = ExtResource("3_du40w")
@@ -24,6 +24,7 @@ healer = ExtResource("6_u35dc")
 
 [node name="Player-1" type="Area2D" parent="."]
 visible = false
+position = Vector2(-64, -3)
 collision_layer = 8
 collision_mask = 0
 
@@ -33,6 +34,7 @@ shape = SubResource("CircleShape2D_dg77c")
 
 [node name="Player-2" type="Area2D" parent="."]
 visible = false
+position = Vector2(-64, -3)
 collision_layer = 16
 collision_mask = 0
 
@@ -43,10 +45,10 @@ shape = SubResource("CircleShape2D_dg77c")
 [node name="HUD2" type="ColorRect" parent="."]
 visible = false
 z_index = 2
-offset_left = -12.0
-offset_top = -186.0
-offset_right = 134.0
-offset_bottom = -75.0
+offset_left = -76.0
+offset_top = -189.0
+offset_right = 70.0
+offset_bottom = -78.0
 mouse_filter = 2
 color = Color(0.780392, 0.705882, 0.47451, 1)
 
@@ -158,9 +160,10 @@ color = Color(0.509804, 0.298039, 0.0901961, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="HUD2"]
 
 [node name="Detection" type="Button" parent="."]
-offset_top = -65.0
-offset_right = 128.0
-offset_bottom = 63.0
+offset_left = -64.0
+offset_top = -68.0
+offset_right = 64.0
+offset_bottom = 60.0
 pivot_offset = Vector2(64, 69)
 focus_mode = 0
 flat = true

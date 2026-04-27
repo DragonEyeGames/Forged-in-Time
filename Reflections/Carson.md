@@ -6,3 +6,6 @@ Sprint 2:
 
 Sprint 3:
 	I have made a lot of progress on art and still have periodic issues but I am getting better. I have 30+ assets and getting ready to push this into an asset branch. 
+
+Sprint 4:
+	Made more progress on assets having little to no issuex now other than lining up the characters on the same pixels as the others. I finished the first 2 versions (time periods) of the main base along with other various assets.

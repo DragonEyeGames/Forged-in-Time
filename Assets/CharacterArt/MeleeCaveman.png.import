@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blnttaf7j45t"
-path="res://.godot/imported/MedievalCharacter.png-572517bddc5a4e3efea4cc6efb78cbc5.ctex"
+uid="uid://7vh0im402jki"
+path="res://.godot/imported/MeleeCaveman.png-35fc6749ad943465ac0c0d5802516bf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CharacterArt/MedievalCharacter.png"
-dest_files=["res://.godot/imported/MedievalCharacter.png-572517bddc5a4e3efea4cc6efb78cbc5.ctex"]
+source_file="res://Assets/CharacterArt/MeleeCaveman.png"
+dest_files=["res://.godot/imported/MeleeCaveman.png-35fc6749ad943465ac0c0d5802516bf3.ctex"]
 
 [params]
 
