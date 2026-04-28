@@ -44,7 +44,6 @@ public partial class ScreenCursor : Sprite2D
 		if(hudArea.GetParent() is Controller){
 			Controller hud = hudArea.GetParent() as Controller;
 			hud.select();
-			hud.clickedBy = player;
 			if(selected!=null){
 				selected.deselect();
 			}

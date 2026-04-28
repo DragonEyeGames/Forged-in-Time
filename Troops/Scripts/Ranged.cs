@@ -24,5 +24,6 @@ public partial class Ranged : BaseTroop
         sprite = GetNode<AnimatedSprite2D>("Sprite");
         cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
         navAgent.TargetDesiredDistance = 50;
+        TargetSet();
     }
 }

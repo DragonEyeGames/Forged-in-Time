@@ -24,9 +24,8 @@ public abstract partial class BaseTroop : CharacterBody2D
 	public abstract Timer cooldown {get; set;}
 
 	
-	public override void _Ready()
+	public void TargetSet()
 	{
-		
 		if (player1)
 		{
 			target = GameManager.player1Target;
@@ -53,7 +52,6 @@ public abstract partial class BaseTroop : CharacterBody2D
 	
 	public void recalculate()
 	{
-		GD.Print(target);
 		navAgent.TargetPosition = target.GlobalPosition;
 	}
 
@@ -107,10 +105,12 @@ public abstract partial class BaseTroop : CharacterBody2D
 					miner.playerKilled = player1;
 					if (player1)
 					{
+						target.Die();
 						target = GameManager.player1DefaultTarget;
 					}
 					else if (!player1)
 					{
+						target.Die();
 						target = GameManager.player2DefaultTarget;
 					}
 				}

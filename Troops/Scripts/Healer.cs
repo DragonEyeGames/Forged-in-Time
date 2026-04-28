@@ -24,6 +24,7 @@ public partial class Healer : BaseTroop
         sprite = GetNode<AnimatedSprite2D>("Sprite");
         cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
         navAgent.TargetDesiredDistance = 25;
+        TargetSet();
     }
 
 

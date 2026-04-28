@@ -24,6 +24,7 @@ public partial class Troop : BaseTroop
 		cooldown = GetNode<Timer>("Cooldown");
 		navAgent.PathMaxDistance = 10.0f;
 		updateHitboxes();
+		TargetSet();
 	}
 	
 	public override void _PhysicsProcess(double delta)
