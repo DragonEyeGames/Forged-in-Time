@@ -38,6 +38,13 @@ public partial class Hud : CanvasLayer
 			GetNode<RichTextLabel>("ColorRect2/Money/Money").Text=Player2Manager.money.ToString();
 		}
 		GetNode<RichTextLabel>("ColorRect2/Health/RichTextLabel").Text=playerBase.health.ToString();
+		
+		if(Input.IsActionJustPressed("1Money")){
+			Player1Manager.money+=500;
+		}
+		if(Input.IsActionJustPressed("2Money")){
+			Player2Manager.money+=500;
+		}
 	}
 	
 	public void closedPressed(){

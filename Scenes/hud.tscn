@@ -165,47 +165,39 @@ mouse_filter = 2
 
 [node name="Turret" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
-Names = Array[String]([])
 
 [node name="Turret2" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 1
-Names = Array[String]([])
 
 [node name="Turret3" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 2
-Names = Array[String]([])
 
 [node name="Turret4" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 3
-Names = Array[String]([])
 
 [node name="Melee" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 4
 troop = true
 Sprites = Array[Texture2D]([ExtResource("3_7gr8i"), ExtResource("4_5ep0j"), ExtResource("5_piegi")])
-Names = Array[String]([])
 
 [node name="Turret7" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 5
 troop = true
-Names = Array[String]([])
 
 [node name="Turret6" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 6
 troop = true
-Names = Array[String]([])
 
 [node name="Turret8" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 7
 troop = true
-Names = Array[String]([])
 
 [node name="TimeAdvancement" type="Control" parent="ColorRect/VBoxContainer"]
 z_index = 1
@@ -253,7 +245,7 @@ offset_bottom = 123.0
 scale = Vector2(0.19, 0.19)
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 33
-text = "Sends your forces to medieval times and out of the stone age."
+text = "Puts your troops right in modern day America. Strong and powerful towers."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -270,10 +262,11 @@ text = "$1500"
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer/TimeAdvancement"]
+layout_mode = 0
 offset_left = 16.9574
-offset_top = 34.2138
+offset_top = 33.2138
 offset_right = 72.9574
-offset_bottom = 58.2138
+offset_bottom = 57.2138
 scale = Vector2(0.85, 0.85)
 pivot_offset = Vector2(26.9511, 11.9081)
 mouse_filter = 2
@@ -444,6 +437,7 @@ texture = ExtResource("12_piegi")
 region_enabled = true
 region_rect = Rect2(0, 34.009, 16, 12.9607)
 
+[connection signal="pressed" from="ColorRect/VBoxContainer/TimeAdvancement/Button" to="ColorRect/VBoxContainer/TimeAdvancement" method="timeAdvance"]
 [connection signal="pressed" from="ColorRect/Close" to="." method="toggle"]
 [connection signal="pressed" from="Button" to="." method="closedPressed"]
 [connection signal="pressed" from="BigClose" to="." method="closedPressed"]
