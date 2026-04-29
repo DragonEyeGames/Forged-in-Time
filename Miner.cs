@@ -16,21 +16,19 @@ public partial class Miner : TargetBase
     }
     public async override void Die()
     {
-        GD.Print("ben should die");
-        if (playerKilled == true)
+        if (playerKilled)
         {
-            GetNode<CollisionShape2D>("Player-1/Player1Territory").SetDeferred("Disabled", false);
-            GetNode<CollisionShape2D>("Player-2/Player2Territory").SetDeferred("Disabled", true);
-            GetNode<CollisionShape2D>("Player-None/PlayerNoneTerritory").SetDeferred("Disabled", true);
-            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            GD.Print("aplles");
+            GetNode<CollisionShape2D>("Player-1/Player1Territory").Disabled = false;
+            GetNode<CollisionShape2D>("Player-2/Player2Territory").Disabled = true;
+            GetNode<CollisionShape2D>("Player-None/PlayerNoneTerritory").Disabled = true;
             GetNode<TerritoryChecker>("../Territory").recalculate();
         }
         else if (playerKilled == false)
         {
-            GetNode<CollisionShape2D>("Player-1/Player1Territory").SetDeferred("Disabled", true);
-            GetNode<CollisionShape2D>("Player-2/Player2Territory").SetDeferred("Disabled", false);
-            GetNode<CollisionShape2D>("Player-None/PlayerNoneTerritory").SetDeferred("Disabled", true);
-            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            GetNode<CollisionShape2D>("Player-1/Player1Territory").Disabled = true;
+            GetNode<CollisionShape2D>("Player-2/Player2Territory").Disabled = false;
+            GetNode<CollisionShape2D>("Player-None/PlayerNoneTerritory").Disabled = true;
             GetNode<TerritoryChecker>("../Territory").recalculate();
 
         }

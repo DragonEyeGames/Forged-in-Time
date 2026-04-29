@@ -11,8 +11,7 @@ radius = 592.4
 radius = 584.57
 
 [node name="Miner" type="Sprite2D"]
-position = Vector2(1, -0.5)
-scale = Vector2(0.0625, 0.0605469)
+scale = Vector2(0.095, 0.095)
 texture = ExtResource("1_u7vtn")
 script = ExtResource("2_u7vtn")
 
