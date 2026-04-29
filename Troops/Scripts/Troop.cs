@@ -1,61 +1,126 @@
 using Godot;
 using System;
 
-public partial class Troop : BaseTroop
+public abstract partial class Troop : CharacterBody2D
 {
-	[Export] public override int speedLevel {get; set;}
-	[Export] public override float Speed { get; set; } = 40.0f;
-	[Export] public override int healthLevel { get; set; } = 0;
-	[Export] public override int health { get; set; } = 5;
-	[Export] public override int maxHealth { get; set; } = 5;
-	[Export] public override int damageLevel { get; set; } = 0;
-	[Export] public override int damage { get; set; } = 1;
-	public override NavigationAgent2D navAgent { get; set; }
-	public override AnimatedSprite2D sprite  {get; set;}
-	public override Timer cooldown {get; set;}
-	public override bool healer { get; set; } = false;
+	public bool player1 = true;
+	public abstract float speed {get; set;}
+	public abstract int health {get; set;}
+	public abstract int maxHealth {get; set;}
+	public abstract int damage {get; set;}
+	public abstract bool healer {get; set;}
+	
+	public abstract int upgradeLevel {get; set;}
+	public abstract int healthLevel  {get; set;}
+	public abstract int speedLevel  {get; set;}
+	public abstract int damageLevel  {get; set;}
+	
+	public bool attacking = false;
+	public bool pathfinding = true;
 
+	public abstract NavigationAgent2D navAgent {get; set;}
+	public abstract Base target {get; set;}
+	public abstract AnimatedSprite2D sprite  {get; set;}
+	public abstract Timer cooldown {get; set;}
+	
+	public abstract GameManager.Towers troopType {get; set;}
 
-	public override void _Ready()
-	{
-		health = maxHealth;
-		navAgent = GetNode<NavigationAgent2D>("NavAgent");
-		sprite = GetNode<AnimatedSprite2D>("Sprite");
-		cooldown = GetNode<Timer>("Cooldown");
-		navAgent.PathMaxDistance = 10.0f;
-		updateHitboxes();
-		TargetSet();
-	}
 	
-	public override void _PhysicsProcess(double delta)
-	{
-		Vector2 velocity=Vector2.Zero;
-		var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
-		velocity = dir * 40;
-		Velocity=velocity;
-		if(!navAgent.IsNavigationFinished()){
-			MoveAndSlide();
-		}
-		if(health<=0){
-			QueueFree();
-			
-		}
-		if(Velocity.X>0){
-			sprite.FlipH=false;
-		}
-		if(Velocity.X<0){
-			sprite.FlipH=true;
-		}
-	}
-	
-	
-	public async void updateHitboxes(){
-		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+	public Vector4 fetchUpgrades(){
+		int id = 2;
 		if(player1){
+			id=1;
+		}
+		Vector4 upgrades = GameManager.fetchUpgrades(id, troopType);
+		upgradeLevel=(int)upgrades.X;
+		speedLevel=(int)upgrades.Y;
+		healthLevel=(int)upgrades.Z;
+		damageLevel=(int)upgrades.W;
+		speed+=TroopUpgrades.Speed[speedLevel];
+		damage+=TroopUpgrades.Damage[damageLevel];
+		health+=TroopUpgrades.Health[healthLevel];
+		return upgrades;
+	}
+	public async void updateHitboxes()
+	{
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		if (player1)
+		{
 			GetNode("Player2").QueueFree();
-		} else if(!player1){
+		}
+		else if (!player1)
+		{
 			GetNode("Player1").QueueFree();
 		}
 	}
-		
+	
+	
+	public void recalculate()
+	{
+		navAgent.TargetPosition = target.GlobalPosition;
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		if (pathfinding)
+		{
+			Vector2 velocity = Vector2.Zero;
+			Vector2 velocity = Vector2.Zero;
+			var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
+			velocity = dir * speed;
+			Velocity = velocity;
+			if (!navAgent.IsNavigationFinished())
+			{
+				MoveAndSlide();
+			}
+
+			if (health <= 0)
+			{
+				QueueFree();
+			}
+
+			if (Velocity.X > 0)
+			{
+				sprite.FlipH = true;
+			}
+
+			if (Velocity.X < 0)
+			{
+				sprite.FlipH = false;
+			}
+		}
+
+		if (target.health <= 0)
+		{
+			QueueFree();
+		}
+
+	}
+
+	public void attack(int damage)
+	{
+		if (!attacking)
+		{
+			target.health  -= damage;
+			GD.Print(target.health);
+			if (target.health <= 0)
+			{
+				target.Die();
+			}
+			attacking = false;
+			cooldown.Start();
+		}
+	}
+	
+	public void on_path_finished()
+	{
+		attack(damage);
+		pathfinding =  false;
+	}
+	
+	public void on_cooldown()
+	{
+		attacking = false;
+		attack(damage);
+	}
 }

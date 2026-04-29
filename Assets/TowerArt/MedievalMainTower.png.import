@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blnttaf7j45t"
-path="res://.godot/imported/MedievalCharacter.png-572517bddc5a4e3efea4cc6efb78cbc5.ctex"
+uid="uid://dlqb01poniiuf"
+path="res://.godot/imported/MedievalMainTower.png-43846bdded5b6fa188ba18764b0017fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CharacterArt/MedievalCharacter.png"
-dest_files=["res://.godot/imported/MedievalCharacter.png-572517bddc5a4e3efea4cc6efb78cbc5.ctex"]
+source_file="res://Assets/TowerArt/MedievalMainTower.png"
+dest_files=["res://.godot/imported/MedievalMainTower.png-43846bdded5b6fa188ba18764b0017fb.ctex"]
 
 [params]
 

@@ -67,20 +67,14 @@ public partial class Base : TargetBase
 	}
 
 	public void spawnTroop(Troops troopType){
-		GD.Print(troopType);
-		BaseTroop newTroop = troop.Instantiate() as BaseTroop;
-		if(troopType==Troops.Melee){
-			newTroop = troop.Instantiate() as BaseTroop;
-		}
-		if(troopType==Troops.Brute){
-			newTroop = brute.Instantiate() as BaseTroop;
-		}
-		if(troopType==Troops.Ranged){
-			newTroop = ranged.Instantiate() as BaseTroop;
-		}
-		if(troopType==Troops.Healer){
-			newTroop = healer.Instantiate() as BaseTroop;
-		}
+		PackedScene sceneToSpawn = troop;
+		if (troopType == Troops.Brute)
+			sceneToSpawn = brute;
+		else if (troopType == Troops.Ranged)
+			sceneToSpawn = ranged;
+		else if (troopType == Troops.Healer)
+			sceneToSpawn = healer;
+		Troop newTroop = sceneToSpawn.Instantiate<Troop>();;
 		GetParent().AddChild(newTroop);
 		newTroop.GlobalPosition=GlobalPosition;
 		newTroop.player1=player1;
@@ -92,6 +86,15 @@ public partial class Base : TargetBase
 			releaseTroop();
 		} else if (reserveTroops.Count==0){
 			releasing=false;
+		}
+		if(player1 && Input.IsActionJustPressed("Click-1")){
+			if(GetNode<ColorRect>("HUD2").Visible){
+				toggle();
+			}
+		} else if(!player1 && Input.IsActionJustPressed("Click-2")){
+			if(GetNode<ColorRect>("HUD2").Visible){
+				toggle();
+			}
 		}
 		GetNode<RichTextLabel>("HUD2/Storage/Troops").Text=reserveTroops.Count.ToString() + "/" + maxTroops.ToString() + " Troops";
 		if(player1 && GameManager.player1HUDOpen!=GetNode<CollisionPolygon2D>("Detection/Player-1/CollisionPolygon2D").Disabled){
@@ -123,7 +126,7 @@ public partial class Base : TargetBase
 	public void release(){
 		GetNode<ColorRect>("HUD2").Visible=false;
 		GetNode<Controller>("HUD2/Storage/Release").deselect();
-		GetNode<Controller>("Detection").select();
+		//GetNode<Controller>("Detection").select();
 		releasing=true;
 		if(releasing && reserveTroops.Count>=1){
 			spawnTroop(reserveTroops[0]);
@@ -142,6 +145,7 @@ public partial class Base : TargetBase
 	{
 		if (health <= 0) 
 		{
+			GetNode<SignalBus>("/root/SignalBus").EmitSignal(SignalBus.SignalName.PlayerKilled, player1);
 			QueueFree();
 		} 
 	}

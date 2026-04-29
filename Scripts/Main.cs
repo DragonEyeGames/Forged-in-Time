@@ -14,8 +14,21 @@ public partial class Main : Node2D
 		GameManager.player1Target = GameManager.player1DefaultTarget;
 		GameManager.player2Target = GameManager.player2DefaultTarget;
 		GD.Print(GameManager.player1Target);
+		GetNode<SignalBus>("/root/SignalBus").Connect(
+			SignalBus.SignalName.PlayerKilled,
+			new Callable(this, nameof(OnPlayerKilled))
+		);
 	}
 
+public void OnPlayerKilled(bool player1)
+{
+	int player=1;
+	if(player1==false){
+		player=2;
+	}
+	GD.Print("Player " + player + " died!");
+}
+	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{

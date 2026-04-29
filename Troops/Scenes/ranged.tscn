@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://bxye5em56ls6c"]
 
 [ext_resource type="Script" uid="uid://c4f10g1r2q511" path="res://Troops/Scripts/Ranged.cs" id="1_6my5x"]
-[ext_resource type="Texture2D" uid="uid://dbvc0o64ox1vc" path="res://Assets/icon.svg" id="1_a70jy"]
+[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://Assets/icon.svg" id="1_a70jy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6my5x"]
 atlas = ExtResource("1_a70jy")
@@ -148,6 +148,7 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pcruc")
+disabled = true
 
 [node name="Player1" type="Area2D" parent="."]
 collision_layer = 2

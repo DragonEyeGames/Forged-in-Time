@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct3ctwe8d1l30"
-path="res://.godot/imported/PresentCharacter.png-296b1e13a26f78e18d60b50e27821f61.ctex"
+uid="uid://3bb3jjlbabk3"
+path="res://.godot/imported/BlueBaseCaveman.png-4dc12f538d3295200457cf10a5a09e16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CharacterArt/PresentCharacter.png"
-dest_files=["res://.godot/imported/PresentCharacter.png-296b1e13a26f78e18d60b50e27821f61.ctex"]
+source_file="res://Assets/TowerArt/BlueBaseCaveman.png"
+dest_files=["res://.godot/imported/BlueBaseCaveman.png-4dc12f538d3295200457cf10a5a09e16.ctex"]
 
 [params]
 

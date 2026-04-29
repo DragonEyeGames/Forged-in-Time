@@ -25,14 +25,32 @@ public partial class ScreenCursor : Sprite2D
 	public override void _Process(double delta)
 	{
 		if(player1){
-			if(selected!=null && Input.IsActionJustPressed("Click-1")){
+			if(selected!=null && Input.IsActionJustPressed("Click-1") && !selected.Disabled){
 				selected.EmitSignal(Button.SignalName.Pressed);
 			}
 		}
 		else if(!player1){
-			if(selected!=null && Input.IsActionJustPressed("Click-2")){
+			if(selected!=null && Input.IsActionJustPressed("Click-2") && !selected.Disabled){
 				selected.EmitSignal(Button.SignalName.Pressed);
 			}
+		}
+		var bodies = GetChild<Area2D>(0).GetOverlappingAreas();
+		if(bodies.Count>0){
+			if(selected!=null && selected!=bodies[0].GetParent<Controller>()){
+				selected.deselect();
+			}
+			if(selected!=bodies[0].GetParent<Controller>()){
+				bodies[0].GetParent<Controller>().select();
+			}
+			selected=bodies[0].GetParent<Controller>();
+		} else {
+			if(selected!=null){
+				if(IsInstanceValid(selected)){
+					selected.deselect();
+				}
+				selected=null;
+			}
+			
 		}
 		
 	}
@@ -42,23 +60,23 @@ public partial class ScreenCursor : Sprite2D
 		//	return;
 		//}
 		if(hudArea.GetParent() is Controller){
-			Controller hud = hudArea.GetParent() as Controller;
-			hud.select();
-			if(selected!=null){
-				selected.deselect();
-			}
-			selected=hud;
+			//Controller hud = hudArea.GetParent() as Controller;
+			//hud.select();
+			//if(selected!=null){
+				//selected.deselect();
+			//}
+			//selected=hud;
 		}
 	}
 	
 	public void hudLeave(Node2D hudArea){
-		if(hudArea.GetParent() is Controller){
-			Controller hud = hudArea.GetParent() as Controller;
-			if(hud==selected){
-				hud.deselect();
-				selected=null;
-			}
+		//if(hudArea.GetParent() is Controller){
+		//	Controller hud = hudArea.GetParent() as Controller;
+		//	if(hud==selected){
+		//		hud.deselect();
+		//		//selected=null;
+		//	}
 			
-		}
+		//}
 	}
 }
