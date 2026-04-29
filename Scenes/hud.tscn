@@ -159,46 +159,38 @@ mouse_filter = 2
 
 [node name="Turret" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
-Names = Array[String]([])
 
 [node name="Turret2" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 1
-Names = Array[String]([])
 
 [node name="Turret3" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 2
-Names = Array[String]([])
 
 [node name="Turret4" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 3
-Names = Array[String]([])
 
 [node name="Melee" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 4
 troop = true
-Names = Array[String]([])
 
 [node name="Turret7" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 5
 troop = true
-Names = Array[String]([])
 
 [node name="Turret6" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 6
 troop = true
-Names = Array[String]([])
 
 [node name="Turret8" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 7
 troop = true
-Names = Array[String]([])
 
 [node name="Close" type="Button" parent="ColorRect"]
 layout_mode = 0
