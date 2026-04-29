@@ -117,3 +117,4 @@ public partial class GameManager : Node
 		}
 		return fetchUpgrades(player, troopType);
 	}
+}

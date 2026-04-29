@@ -16,7 +16,7 @@ public partial class Ranged : Troop
 	[Export] public override int damage { get; set; } = 2;
 	public override NavigationAgent2D navAgent { get; set; }
 	public override AnimatedSprite2D sprite  {get; set;}
-	[Export] public override Base target { get; set; }
+	[Export] public override TargetBase target { get; set; }
 	public override Timer cooldown {get; set;}
 	public override bool healer { get; set; } = false;
 	public override GameManager.Towers troopType { get; set; }

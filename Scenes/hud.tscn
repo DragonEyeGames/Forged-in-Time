@@ -1,12 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=13 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_640wx"]
 [ext_resource type="PackedScene" uid="uid://cayxysu631vpp" path="res://Scenes/shopSlot.tscn" id="2_36asn"]
-[ext_resource type="Texture2D" uid="uid://7vh0im402jki" path="res://Assets/CharacterArt/MeleeCaveman.png" id="3_7gr8i"]
-[ext_resource type="Texture2D" uid="uid://blnttaf7j45t" path="res://Assets/CharacterArt/MeleeMedevil.png" id="4_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="4_36asn"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="5_4f5kr"]
-[ext_resource type="Texture2D" uid="uid://ct3ctwe8d1l30" path="res://Assets/CharacterArt/MeleeModern.png" id="5_piegi"]
 [ext_resource type="Texture2D" uid="uid://dnl8v8edmxtfn" path="res://Assets/01PixelCoinGold.png" id="12_i2avg"]
 [ext_resource type="Texture2D" uid="uid://dr234cuj5lh51" path="res://Assets/hearts.png" id="12_piegi"]
 
@@ -162,39 +159,46 @@ mouse_filter = 2
 
 [node name="Turret" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
+Names = Array[String]([])
 
 [node name="Turret2" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 1
+Names = Array[String]([])
 
 [node name="Turret3" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 2
+Names = Array[String]([])
 
 [node name="Turret4" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 3
+Names = Array[String]([])
 
 [node name="Melee" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 4
 troop = true
-Sprites = Array[Texture2D]([ExtResource("3_7gr8i"), ExtResource("4_5ep0j"), ExtResource("5_piegi")])
+Names = Array[String]([])
 
 [node name="Turret7" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 5
 troop = true
+Names = Array[String]([])
 
 [node name="Turret6" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 6
 troop = true
+Names = Array[String]([])
 
 [node name="Turret8" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 7
 troop = true
+Names = Array[String]([])
 
 [node name="Close" type="Button" parent="ColorRect"]
 layout_mode = 0
@@ -244,7 +248,6 @@ offset_bottom = 651.0
 mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
-transformLock = true
 
 [node name="Area2D" type="Area2D" parent="BigClose"]
 collision_layer = 64

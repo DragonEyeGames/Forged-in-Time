@@ -12,7 +12,7 @@ public partial class Melee : Troop
 	[Export] public override int damage { get; set; } = 1;
 	public override NavigationAgent2D navAgent { get; set; }
 	public override AnimatedSprite2D sprite  {get; set;}
-	public override Base target { get; set; }
+	public override TargetBase target { get; set; }
 	public override Timer cooldown {get; set;}
 	public override bool healer { get; set; } = false;
 	public override GameManager.Towers troopType { get; set; }
@@ -32,6 +32,7 @@ public partial class Melee : Troop
 		}
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		fetchUpgrades();
+		TargetSet();
 		if(upgradeLevel>6){
 			sprite = GetNode<AnimatedSprite2D>("Sprites/3");
 			 GetNode<AnimatedSprite2D>("Sprites/3").Visible=true;

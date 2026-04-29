@@ -89,7 +89,7 @@ public partial class Cursor : Sprite2D
 		screenCounterpart.GlobalPosition=screenPos;
 		
 		if(player1){
-			if(selected!=null && Input.IsActionJustPressed("Click-1") && !selected.Disabled)){
+			if(selected!=null && Input.IsActionJustPressed("Click-1") && !selected.Disabled){
 				selected.clickedBy = player;
 				selected.EmitSignal(Button.SignalName.Pressed);
 			}

@@ -86,14 +86,12 @@ z_index = -1
 tile_set = SubResource("TileSet_w48qg")
 script = ExtResource("4_82xsv")
 
-[node name="Player-1" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_3pmx8")]
+[node name="Player-1" parent="." instance=ExtResource("6_3pmx8")]
 position = Vector2(928, 355)
-target = NodePath("../Player-2")
 
-[node name="Player-2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_3pmx8")]
+[node name="Player-2" parent="." instance=ExtResource("6_3pmx8")]
 position = Vector2(144, 340)
 player1 = false
-target = NodePath("../Player-1")
 
 [node name="NavHandler" type="Node2D" parent="."]
 script = ExtResource("10_wsu2k")
@@ -226,7 +224,6 @@ shape = SubResource("CircleShape2D_3pmx8")
 
 [node name="pause" parent="." instance=ExtResource("28_ueoa1")]
 
-
 [node name="Miner" parent="." instance=ExtResource("25_cbgmd")]
 position = Vector2(538, 166)
 
@@ -237,7 +234,6 @@ offset_top = -16.0
 offset_right = 1108.0
 offset_bottom = 653.0
 color = Color(0.129412, 0.396078, 0.0431373, 1)
-
 
 [connection signal="bake_finished" from="TestPlacement/TestRegion" to="NavHandler" method="TestFinished"]
 [connection signal="bake_finished" from="TestPlacement/NavRegion" to="NavHandler" method="TestFinished"]

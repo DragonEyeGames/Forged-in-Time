@@ -12,7 +12,7 @@ public partial class Brute : Troop
 	[Export] public override int speedLevel {get; set;} = 0;
 	[Export] public override int healthLevel { get; set; } = 0;
 	[Export] public override int damageLevel { get; set; } = 0;
-	
+	public override TargetBase target { get; set; }
 	public override NavigationAgent2D navAgent { get; set; }
 	public override AnimatedSprite2D sprite  {get; set;}
 	public override Timer cooldown {get; set;}
@@ -21,7 +21,7 @@ public partial class Brute : Troop
 
 	
 
-	public async override void _Ready()
+	public override void _Ready()
 	{
 		troopType=GameManager.Towers.Brute;
 		health = maxHealth;

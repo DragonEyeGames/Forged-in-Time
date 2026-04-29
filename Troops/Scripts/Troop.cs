@@ -18,14 +18,14 @@ public abstract partial class Troop : CharacterBody2D
 	public bool attacking = false;
 	public bool pathfinding = true;
 
+	
 	public abstract NavigationAgent2D navAgent {get; set;}
-	public abstract Base target {get; set;}
+	public abstract TargetBase target {get; set;}
 	public abstract AnimatedSprite2D sprite  {get; set;}
 	public abstract Timer cooldown {get; set;}
-	
+
 	public abstract GameManager.Towers troopType {get; set;}
 
-	
 	public Vector4 fetchUpgrades(){
 		int id = 2;
 		if(player1){
@@ -41,6 +41,19 @@ public abstract partial class Troop : CharacterBody2D
 		health+=TroopUpgrades.Health[healthLevel];
 		return upgrades;
 	}
+	
+	public void TargetSet()
+	{
+		if (player1)
+		{
+			target = GameManager.player1Target;
+		}
+		else if (!player1)
+		{
+			target = GameManager.player2Target;
+		}
+	}
+
 	public async void updateHitboxes()
 	{
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -62,9 +75,12 @@ public abstract partial class Troop : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if(target==null){
+			TargetSet();
+			return;
+		}
 		if (pathfinding)
 		{
-			Vector2 velocity = Vector2.Zero;
 			Vector2 velocity = Vector2.Zero;
 			var dir = ToLocal(navAgent.GetNextPathPosition()).Normalized();
 			velocity = dir * speed;
@@ -81,16 +97,16 @@ public abstract partial class Troop : CharacterBody2D
 
 			if (Velocity.X > 0)
 			{
-				sprite.FlipH = true;
+				sprite.FlipH = false;
 			}
 
 			if (Velocity.X < 0)
 			{
-				sprite.FlipH = false;
+				sprite.FlipH = true;
 			}
 		}
 
-		if (target.health <= 0)
+		if (target.health <= 0 && ((player1 && target==GameManager.player1DefaultTarget) || (!player1 && target==GameManager.player2DefaultTarget)))
 		{
 			QueueFree();
 		}
@@ -99,28 +115,67 @@ public abstract partial class Troop : CharacterBody2D
 
 	public void attack(int damage)
 	{
+		/*if (!navAgent.IsNavigationFinished())
+		{
+			attacking = false;
+			pathfinding = true;
+			return;
+		}*/
 		if (!attacking)
 		{
+			attacking=true;
 			target.health  -= damage;
 			GD.Print(target.health);
 			if (target.health <= 0)
 			{
-				target.Die();
+				if (!target.isBase)
+				{
+					Miner miner = target as Miner;
+					miner.playerKilled = player1;
+					if (player1)
+					{
+						target.Die();
+						target = GameManager.player1DefaultTarget;
+					}
+					else if (!player1)
+					{
+						target.Die();
+						target = GameManager.player2DefaultTarget;
+					}
+					attacking = false;
+					pathfinding = true;
+					recalculate();
+				}
+
 			}
-			attacking = false;
+			//attacking = false;
 			cooldown.Start();
 		}
 	}
 	
 	public void on_path_finished()
 	{
-		attack(damage);
 		pathfinding =  false;
+		attack(damage);
 	}
 	
 	public void on_cooldown()
 	{
 		attacking = false;
 		attack(damage);
+	}
+
+	public void targetSwitch()
+	{
+		if (player1)
+		{
+			target = GameManager.player1Target;
+			recalculate();
+		}
+		else
+		{
+			target = GameManager.player2Target;
+			recalculate();
+		}	
 	}
 }
