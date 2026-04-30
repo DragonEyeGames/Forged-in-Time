@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Ranged : Troop
+public partial class Ranged : BaseTroop
 {
 	[Export] public override float speed { get; set; } = 30.0f;
 	

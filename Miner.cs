@@ -14,24 +14,36 @@ public partial class Miner : TargetBase
 	public void money()
 	{
 	}
-	public override void Die()
+	public async override void Die()
 	{
 		if (playerKilled)
 		{
 			GameManager.player1Target=GameManager.player1DefaultTarget;
 			GD.Print("aplles");
-			GetNode<CollisionShape2D>("Player-1/Player1Territory").Disabled = false;
-			GetNode<CollisionShape2D>("Player-2/Player2Territory").Disabled = true;
-			GetNode<CollisionShape2D>("Player-None/PlayerNoneTerritory").Disabled = true;
+			GetNode<Area2D>("Player-2").SetCollisionLayerValue(6, true);
+			GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, true);
+			await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 			GetNode<TerritoryChecker>("../Territory").recalculate();
+			GetNode<Area2D>("Player-2").SetCollisionLayerValue(6, false);
+			GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, false);
+			GetNode<Area2D>("Player-1").SetCollisionLayerValue(4, true);
+			await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
+			GetNode<TerritoryChecker>("../Territory").recalculate();
+
+
 		}
 		else if (playerKilled == false)
 		{
 			GameManager.player2Target=GameManager.player2DefaultTarget;
-			GetNode<CollisionShape2D>("Player-1/Player1Territory").Disabled = true;
-			GetNode<CollisionShape2D>("Player-2/Player2Territory").Disabled = false;
-			GetNode<CollisionShape2D>("Player-None/PlayerNoneTerritory").Disabled = true;
+			GetNode<Area2D>("Player-1").SetCollisionLayerValue(6, true);
+			GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, true);
 			GetNode<TerritoryChecker>("../Territory").recalculate();
+			GetNode<Area2D>("Player-1").SetCollisionLayerValue(6, false);
+			GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, false);
+			GetNode<Area2D>("Player-2").SetCollisionLayerValue(5, true);
+			GetNode<TerritoryChecker>("../Territory").recalculate();
+
+
 
 		}
 

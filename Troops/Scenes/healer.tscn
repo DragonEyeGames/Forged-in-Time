@@ -132,6 +132,7 @@ shape = SubResource("CircleShape2D_fv2m7")
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.331
+one_shot = true
 
 [node name="Healzone" type="Area2D" parent="."]
 

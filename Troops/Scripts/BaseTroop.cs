@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract partial class Troop : CharacterBody2D
+public abstract partial class BaseTroop : CharacterBody2D
 {
 	public bool player1 = true;
 	public abstract float speed {get; set;}
@@ -162,7 +162,10 @@ public abstract partial class Troop : CharacterBody2D
 	public void on_cooldown()
 	{
 		attacking = false;
-		attack(damage);
+		if (!pathfinding)
+		{
+			attack(damage);
+		}
 	}
 
 	public void targetSwitch()
