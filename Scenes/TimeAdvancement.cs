@@ -10,7 +10,7 @@ public partial class TimeAdvancement : Control
 	int level=0;
 	[Export] public bool player1 = true;
 	public bool upgradeOpen=false;
-	private int maxLevel=2
+	private int maxLevel=2;
 	private List<string> newList = new List<string>{"Sends your forces to medieval times and out of the stone age.", "Puts your troops right in modern day America. Strong and powerful towers."};
 	
 	// Called when the node enters the scene tree for the first time.

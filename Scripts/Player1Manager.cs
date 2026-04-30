@@ -8,7 +8,7 @@ public partial class Player1Manager : Node
 	public static bool validPlacement=true;
 	public static Cursor cursor;
 	public static bool hudOpen=false;
-	
+	public static int upgradeLevel=0;
 	public static int money=1000;
 	
 	public override void _Ready()
@@ -20,7 +20,9 @@ public partial class Player1Manager : Node
 	}
 	
 	public void OnTimeAdvance(bool player1, int level){
-		GD.Print(player1);
-		GD.Print(level);
+		if(player1){
+			upgradeLevel=level;
+			GD.Print(upgradeLevel);
+		}
 	}
 }

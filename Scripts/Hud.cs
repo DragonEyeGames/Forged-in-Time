@@ -26,6 +26,18 @@ public partial class Hud : CanvasLayer
 		} else {
 			ID=1;
 		}
+		GetNode<SignalBus>("/root/SignalBus").Connect(
+			SignalBus.SignalName.TimeAdvance,
+			new Callable(this, nameof(OnTimeAdvance))
+		);
+	}
+	
+	public void OnTimeAdvance(bool upgradePlayer, int level){
+		if(player1==upgradePlayer){
+			
+		}
+		GD.Print(player1);
+		GD.Print(level);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
