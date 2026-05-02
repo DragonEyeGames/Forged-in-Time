@@ -338,7 +338,6 @@ offset_bottom = 651.0
 mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
-transformLock = true
 
 [node name="Area2D" type="Area2D" parent="BigClose"]
 collision_layer = 64
