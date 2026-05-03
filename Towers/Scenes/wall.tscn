@@ -15,7 +15,7 @@ size = Vector2(16, 16)
 [node name="Tower" type="Node2D"]
 material = ExtResource("1_empu3")
 script = ExtResource("1_y4f30")
-towerType = 2
+towerType = 1
 
 [node name="Base" type="Sprite2D" parent="."]
 use_parent_material = true

@@ -23,6 +23,10 @@ public partial class Cursor : Sprite2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(!player1){
+			GD.Print(GetNode<Area2D>("Area2D").GetOverlappingAreas());
+		}
+		
 		if(player1){
 		//	Visible=!Player1Manager.hudOpen;
 		}
@@ -98,6 +102,7 @@ public partial class Cursor : Sprite2D
 	}
 	
 	public void towerInteract(Node2D towerArea){
+		GD.Print("Entered");
 		//if(selected!=null){
 		//	return;
 		//}
@@ -112,6 +117,7 @@ public partial class Cursor : Sprite2D
 	}
 	
 	public void towerLeave(Node2D towerArea){
+		GD.Print("Exited");
 		if(towerArea.GetParent() is Controller){
 			Controller tower = towerArea.GetParent() as Controller;
 			if(tower==selected){

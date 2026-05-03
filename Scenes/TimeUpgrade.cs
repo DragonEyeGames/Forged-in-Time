@@ -33,10 +33,10 @@ public partial class TimeUpgrade : ColorRect
 		if(!player1){
 			id=2;
 		}
-		GD.Print(GameManager.timeAdvance(GetParent().GetParent<ShopSlot>().tower, id));
+		//GD.Print(GameManager.timeAdvance(GetParent().GetParent<ShopSlot>().tower, id));
 		GetParent<UpgradePopout>().GetParent<ShopSlot>().upgraded();
 		upgrade+=1;
-		GD.Print(GetParent().GetParent<ShopSlot>().Names[upgrade]);
+		//GD.Print(GetParent().GetParent<ShopSlot>().Names[upgrade]);
 		GetNode<RichTextLabel>("Description").Text=GetParent().GetParent<ShopSlot>().Names[upgrade];
 	}
 }

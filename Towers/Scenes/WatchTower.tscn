@@ -16,7 +16,7 @@ height = 18.0
 [node name="WatchTower" type="Node2D"]
 material = ExtResource("1_gujf3")
 script = ExtResource("1_vedim")
-towerType = 3
+towerType = 2
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(8, 8)

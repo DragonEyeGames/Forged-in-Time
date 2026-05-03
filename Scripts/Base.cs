@@ -25,7 +25,7 @@ public partial class Base : Sprite2D
 
 	public async override void _Ready(){
 		if(!player1){
-			SelfModulate=new Color(1, .2f, .2f, 1);
+			SelfModulate=new Color(1, .6f, .6f, 1);
 		}
 		if(player1){
 			GD.Print("Player1");
