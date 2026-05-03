@@ -161,22 +161,26 @@ color = Color(0.508878, 0.29694, 0.0894001, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 0
+offset_top = -62.0
 offset_right = 131.0
-offset_bottom = 648.0
+offset_bottom = 586.0
 mouse_filter = 2
+
+[node name="IGNORE" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+layout_mode = 2
 
 [node name="Turret" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 
-[node name="Turret2" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="Wall" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 1
 
-[node name="Turret3" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="WatchTower" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 2
 
-[node name="Turret4" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="Spikes" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 3
 
@@ -199,7 +203,6 @@ tower = 6
 troop = true
 
 [node name="Healer" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
-visible = false
 layout_mode = 2
 tower = 7
 troop = true

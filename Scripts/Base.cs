@@ -25,7 +25,12 @@ public partial class Base : Sprite2D
 
 	public async override void _Ready(){
 		if(!player1){
-			SelfModulate=new Color(1, .6f, .6f, 1);
+			GetNode<CpuParticles2D>("Smoke").Visible=true;
+			Texture=(Texture2D)GD.Load("res://Assets/TowerArt/player2Base.png");
+			randomEmission();
+		} else {
+			GetNode<CpuParticles2D>("Smoke").Visible=false;
+			Texture=(Texture2D)GD.Load("res://Assets/TowerArt/player1Base.png");
 		}
 		if(player1){
 			GD.Print("Player1");
@@ -134,4 +139,13 @@ public partial class Base : Sprite2D
 		} 
 	}
 
+	public async void randomEmission(){
+		float randomWait = (float)GD.RandRange(10.0f, 25.0f);
+   		await ToSignal(GetTree().CreateTimer(randomWait), SceneTreeTimer.SignalName.Timeout);
+		GetNode<CpuParticles2D>("Smoke").Emitting=true;
+		randomWait = (float)GD.RandRange(5.0f, 8.0f);
+   		await ToSignal(GetTree().CreateTimer(randomWait), SceneTreeTimer.SignalName.Timeout);
+		GetNode<CpuParticles2D>("Smoke").Emitting=false;
+		randomEmission();
+	}
 }

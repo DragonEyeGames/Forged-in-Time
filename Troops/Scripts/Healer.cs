@@ -27,7 +27,7 @@ public partial class Healer : Troop
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
 		sprite = GetNode<AnimatedSprite2D>("Sprite");
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
-		navAgent.TargetDesiredDistance = 25;
+		navAgent.TargetDesiredDistance = 80;
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		fetchUpgrades();
 	}

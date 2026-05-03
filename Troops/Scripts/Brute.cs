@@ -29,7 +29,7 @@ public partial class Brute : Troop
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
 		sprite = GetNode<AnimatedSprite2D>("Sprite");
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
-		navAgent.TargetDesiredDistance = 25;
+		navAgent.TargetDesiredDistance = 64;
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		Vector4 upgradeSpread=fetchUpgrades();
 		GD.Print(upgradeSpread);

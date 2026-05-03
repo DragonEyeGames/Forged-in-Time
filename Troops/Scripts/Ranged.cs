@@ -30,7 +30,7 @@ public partial class Ranged : Troop
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
 		sprite = GetNode<AnimatedSprite2D>("Sprite");
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
-		navAgent.TargetDesiredDistance = 50;
+		navAgent.TargetDesiredDistance = 300;
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		fetchUpgrades();
 	}

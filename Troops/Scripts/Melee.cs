@@ -26,7 +26,7 @@ public partial class Melee : Troop
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
 		
 		cooldown = GetNode<Timer>("Cooldown");
-		navAgent.PathMaxDistance = 10.0f;
+		navAgent.TargetDesiredDistance = 64;
 		foreach (AnimatedSprite2D child in GetNode<Node2D>("Sprites").GetChildren()){
 			child.Visible=false;
 		}
