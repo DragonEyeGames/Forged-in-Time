@@ -22,7 +22,18 @@ public abstract partial class Tower : Node2D
 				GetNode<Area2D>("Checker/Player2").QueueFree();
 			}
 		}
+		if(Player1){
+			upgrade(Player1Manager.upgradeLevel);
+		}
+		GetNode<SignalBus>("/root/SignalBus").Connect(
+			SignalBus.SignalName.TimeAdvance,
+			new Callable(this, nameof(OnTimeAdvance))
+		);
 	}
+	
+	public virtual void OnTimeAdvance(bool upgradePlayer, int level){}
+	
+	public virtual void upgrade(int level){}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

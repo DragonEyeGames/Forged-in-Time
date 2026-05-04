@@ -191,13 +191,11 @@ troop = true
 Sprites = Array[Texture2D]([ExtResource("3_7gr8i"), ExtResource("4_5ep0j"), ExtResource("5_piegi")])
 
 [node name="Turret7" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
-visible = false
 layout_mode = 2
 tower = 5
 troop = true
 
 [node name="Turret6" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
-visible = false
 layout_mode = 2
 tower = 6
 troop = true
@@ -210,7 +208,6 @@ Sprites = Array[Texture2D]([ExtResource("6_1a2va"), ExtResource("7_ssfue")])
 Names = Array[String](["Healer"])
 
 [node name="TimeAdvancement" type="Control" parent="ColorRect/VBoxContainer"]
-visible = false
 z_index = 1
 custom_minimum_size = Vector2(1.13, 59.355)
 layout_mode = 2
@@ -312,8 +309,9 @@ script = ExtResource("5_4f5kr")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 1018.0
+offset_top = 634.0
 offset_right = 1150.0
-offset_bottom = 14.0
+offset_bottom = 648.0
 mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")

@@ -229,14 +229,12 @@ troop = true
 Sprites = Array[Texture2D]([ExtResource("4_v1w48"), ExtResource("5_uoqjr"), ExtResource("6_wiuxb")])
 
 [node name="Turret6" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
-visible = false
 layout_mode = 2
 tower = 5
 player1 = false
 troop = true
 
 [node name="Turret7" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
-visible = false
 layout_mode = 2
 tower = 6
 player1 = false
