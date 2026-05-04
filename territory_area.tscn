@@ -1,9 +1,14 @@
 [gd_scene load_steps=2 format=3 uid="uid://86kwv037c27a"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bci6l"]
+[sub_resource type="CSharpScript" id="CSharpScript_bci6l"]
+script/source = "using Godot;
+using System;
+
+public partial class TerritoryArea : Area2D
+{
+    piblic TargetBase owner = GetParent
+}
+"
 
 [node name="TerritoryArea" type="Area2D"]
-
-[node name="TerritoryCollider" type="CollisionShape2D" parent="."]
-scale = Vector2(2.02, 2.02)
-shape = SubResource("CircleShape2D_bci6l")
+script = SubResource("CSharpScript_bci6l")
