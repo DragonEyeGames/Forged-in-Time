@@ -44,6 +44,16 @@ public partial class ShopSlot : Control
 		if(Names.Count>=2){
 			GetNode<RichTextLabel>("UpgradePopout/TimeUpgrade/Description").Text=Names[1];
 		}
+		GetNode<SignalBus>("/root/SignalBus").Connect(
+				SignalBus.SignalName.TimeAdvance,
+				new Callable(this, nameof(OnTimeAdvance))
+			);
+	}
+		
+	public void OnTimeAdvance(bool upgradePlayer, int level){
+		if(player1==upgradePlayer && Sprites.Count>=level){
+			GetNode<Sprite2D>("Base").Texture = Sprites[level];
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

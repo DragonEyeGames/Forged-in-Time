@@ -32,7 +32,7 @@ public partial class Melee : Troop
 		}
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		fetchUpgrades();
-		if(upgradeLevel>60){
+		/*if(upgradeLevel>60){
 			sprite = GetNode<AnimatedSprite2D>("Sprites/3");
 			 GetNode<AnimatedSprite2D>("Sprites/3").Visible=true;
 		} else if(upgradeLevel>30){
@@ -41,7 +41,10 @@ public partial class Melee : Troop
 		} else {
 			sprite = GetNode<AnimatedSprite2D>("Sprites/1");
 			 GetNode<AnimatedSprite2D>("Sprites/1").Visible=true;
-		}
+		}*/
+		//if(Player1){
+		//	Player1Manager.upgradeLevel;
+		//}
 		
 	}
 }
