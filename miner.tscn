@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://s627dlo2xofq" path="res://Miner.cs" id="2_u7vtn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nnceo"]
-radius = 592.4
+radius = 578.947
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s42jq"]
 radius = 584.57
@@ -16,25 +16,20 @@ texture = ExtResource("1_u7vtn")
 script = ExtResource("2_u7vtn")
 
 [node name="Player-1" type="Area2D" parent="."]
-position = Vector2(-16, 8.25806)
 collision_layer = 0
 collision_mask = 0
 
 [node name="Player1Territory" type="CollisionShape2D" parent="Player-1"]
-position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_nnceo")
 
 [node name="Player-2" type="Area2D" parent="."]
-position = Vector2(-16, 8.25806)
 collision_layer = 0
 collision_mask = 0
 
 [node name="Player2Territory" type="CollisionShape2D" parent="Player-2"]
-position = Vector2(0, -8.25806)
 shape = SubResource("CircleShape2D_s42jq")
 
 [node name="Player-None" type="Area2D" parent="."]
-position = Vector2(-16, 8.25806)
 collision_layer = 2048
 collision_mask = 0
 
