@@ -9,63 +9,44 @@ public partial class Miner : TargetBase
 	public bool playerKilled;
 	private int playerOwned = 0;
 	[Export] public int moneyGenerated = 100;
-	private bool dieing = false;
 
 
-	public void money(int money)
+	public void money()
 	{
-		if (playerOwned == 1)
-		{
-			Player1Manager.money += money;
-		}
-		else if  (playerOwned == 2)
-		{
-			Player2Manager.money += money;
-		}
-		else
-		{
-			GD.Print("Something has gone horribly wrong and were all gonna die");
-		}
-		GetNode<Timer>("money").Start();
 	}
 	public async override void Die()
 	{
-		if (!dieing)
+		if (playerKilled)
 		{
-			dieing = true;
-			if (playerKilled)
-			{
-				GameManager.player1Target = GameManager.player1DefaultTarget;
-				GetNode<Area2D>("Player-2").SetCollisionLayerValue(6, true);
-				GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, true);
-				await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
-				GetNode<TerritoryChecker>("../Territory").recalculate();
-				GetNode<Area2D>("Player-2").SetCollisionLayerValue(6, false);
-				GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, false);
-				GetNode<Area2D>("Player-1").SetCollisionLayerValue(4, true);
-				await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
-				GetNode<TerritoryChecker>("../Territory").recalculate();
-				playerOwned = 1;
+			GameManager.player1Target=GameManager.player1DefaultTarget;
+			GD.Print("aplles");
+			GetNode<Area2D>("Player-2").SetCollisionLayerValue(6, true);
+			GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, true);
+			await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
+			GetNode<TerritoryChecker>("../Territory").recalculate();
+			GetNode<Area2D>("Player-2").SetCollisionLayerValue(6, false);
+			GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, false);
+			GetNode<Area2D>("Player-1").SetCollisionLayerValue(4, true);
+			await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
+			GetNode<TerritoryChecker>("../Territory").recalculate();
 
 
-			}
-			else if (playerKilled == false)
-			{
-				GameManager.player2Target = GameManager.player2DefaultTarget;
-				if (playerOwned != 2)
-				GetNode<Area2D>("Player-1").SetCollisionLayerValue(6, true);
-				GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, true);
-				GetNode<TerritoryChecker>("../Territory").recalculate();
-				GetNode<Area2D>("Player-1").SetCollisionLayerValue(6, false);
-				GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, false);
-				GetNode<Area2D>("Player-2").SetCollisionLayerValue(5, true);
-				GetNode<TerritoryChecker>("../Territory").recalculate();
-				playerOwned = 2;
-			}
-		
+		}
+		else if (playerKilled == false)
+		{
+			GameManager.player2Target=GameManager.player2DefaultTarget;
+			GetNode<Area2D>("Player-1").SetCollisionLayerValue(6, true);
+			GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, true);
+			GetNode<TerritoryChecker>("../Territory").recalculate();
+			GetNode<Area2D>("Player-1").SetCollisionLayerValue(6, false);
+			GetNode<Area2D>("Player-None").SetCollisionLayerValue(6, false);
+			GetNode<Area2D>("Player-2").SetCollisionLayerValue(5, true);
+			GetNode<TerritoryChecker>("../Territory").recalculate();
+
+
+
 		}
 
-		GetNode<Timer>("money").Start();
 	}
 
 	public void onSelect()
@@ -85,10 +66,6 @@ public partial class Miner : TargetBase
 
 		GD.Print("onSelect Target Changed " + GameManager.player1Target.GetType());
 	}
-
-	public void on_money_timeout()
-	{
-		money(moneyGenerated);
-	}
-
-
+	
+	
+}
