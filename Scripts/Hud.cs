@@ -35,8 +35,11 @@ public partial class Hud : CanvasLayer
 	}
 	
 	public void OnTimeAdvance(bool upgradePlayer, int level){
-		if(player1==upgradePlayer){
-			
+		if(player1 && upgradePlayer){
+			GD.Print(GameManager.timeAdvance(GameManager.Towers.Melee, 1));
+			GameManager.timeAdvance(GameManager.Towers.Ranged, 1);
+			GameManager.timeAdvance(GameManager.Towers.Brute, 1);
+			GameManager.timeAdvance(GameManager.Towers.Healer, 1);
 		}
 		GD.Print(player1);
 		GD.Print(level);

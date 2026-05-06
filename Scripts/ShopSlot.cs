@@ -51,7 +51,7 @@ public partial class ShopSlot : Control
 	}
 		
 	public void OnTimeAdvance(bool upgradePlayer, int level){
-		if(player1==upgradePlayer && Sprites.Count>=level){
+		if(player1==upgradePlayer && Sprites.Count>level){
 			GetNode<Sprite2D>("Base").Texture = Sprites[level];
 		}
 	}

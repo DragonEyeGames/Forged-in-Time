@@ -110,6 +110,13 @@ public partial class GameManager : Node
 				return fetchUpgrades(player, troopType);
 			}
 		}
+		TroopUpgrade newTroop = new TroopUpgrade();
+		newList.Add(newTroop);
+		newTroop.troopType=troopType;
+		newTroop.speedLevel=1;
+		newTroop.damageLevel=1;
+		newTroop.healthLevel=1;
+		newTroop.upgradeLevel=1;
 		return fetchUpgrades(player, troopType);
 	}
 }
