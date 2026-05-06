@@ -39,12 +39,16 @@ public partial class Melee : Troop
 			sprite = GetNode<AnimatedSprite2D>("Sprites/2");
 			 GetNode<AnimatedSprite2D>("Sprites/2").Visible=true;
 		} else {
-			sprite = GetNode<AnimatedSprite2D>("Sprites/1");
-			 GetNode<AnimatedSprite2D>("Sprites/1").Visible=true;
 		}*/
-		//if(Player1){
-		//	Player1Manager.upgradeLevel;
-		//}
+		sprite = GetNode<AnimatedSprite2D>("Sprites/1");
+		//GetNode<AnimatedSprite2D>("Sprites/1").Visible=true;
+		if(player1){
+			if(Player1Manager.upgradeLevel==1){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/2");
+			 	GetNode<AnimatedSprite2D>("Sprites/2").Visible=true;
+			}
+		}
+		sprite.Visible=true;
 		
 	}
 }
