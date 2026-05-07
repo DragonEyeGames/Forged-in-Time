@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=34 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_640wx"]
 [ext_resource type="PackedScene" uid="uid://cayxysu631vpp" path="res://Scenes/shopSlot.tscn" id="2_36asn"]
@@ -21,8 +21,12 @@
 [ext_resource type="Texture2D" uid="uid://c5daq3s2762xb" path="res://Assets/CharacterArt/RobotCharacter.png" id="12_lkt4f"]
 [ext_resource type="Texture2D" uid="uid://dr234cuj5lh51" path="res://Assets/hearts.png" id="12_piegi"]
 [ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="12_yidpd"]
+[ext_resource type="Texture2D" uid="uid://ddabbuqap0qck" path="res://Assets/CharacterArt/BruteCavemanCharacter.png" id="15_q562m"]
 [ext_resource type="Texture2D" uid="uid://cygsmj665o0rj" path="res://Assets/CharacterArt/Healer Modern.png" id="15_wfkbc"]
+[ext_resource type="Texture2D" uid="uid://beobpfmtkuani" path="res://Assets/CharacterArt/BruteMedievalCharacter.png" id="16_l8r83"]
 [ext_resource type="Texture2D" uid="uid://dftq0gfyr77yj" path="res://Assets/CharacterArt/Healer Future.png" id="16_s17ah"]
+[ext_resource type="Texture2D" uid="uid://c8f0iton6dqd8" path="res://Assets/CharacterArt/BrutePresentCharacter.png" id="17_v5hjn"]
+[ext_resource type="Texture2D" uid="uid://dl86ycwksfli8" path="res://Assets/CharacterArt/BruteRobot.png" id="18_buji0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1a2va"]
 size = Vector2(132, 14)
@@ -201,15 +205,16 @@ tower = 4
 troop = true
 Sprites = Array[Texture2D]([ExtResource("3_7gr8i"), ExtResource("4_5ep0j"), ExtResource("5_piegi"), ExtResource("12_lkt4f")])
 
-[node name="Turret7" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="Ranged" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 5
 troop = true
 
-[node name="Turret6" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="Brute" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 6
 troop = true
+Sprites = Array[Texture2D]([ExtResource("15_q562m"), ExtResource("16_l8r83"), ExtResource("17_v5hjn"), ExtResource("18_buji0")])
 
 [node name="Healer" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
@@ -320,8 +325,9 @@ script = ExtResource("5_4f5kr")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 1018.0
+offset_top = 634.0
 offset_right = 1150.0
-offset_bottom = 14.0
+offset_bottom = 648.0
 mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")

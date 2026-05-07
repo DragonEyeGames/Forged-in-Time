@@ -11,8 +11,8 @@ public partial class Cosmetics : Node
 		{ GameManager.Towers.Watch_Tower, "res://Towers/Assets/Watch Tower.png" },
 		{ GameManager.Towers.Spikes, "res://Assets/spikeDisplay.png" },
 		{ GameManager.Towers.Melee, "res://Assets/CharacterArt/MeleeCaveman.png" },
-		{ GameManager.Towers.Brute, "res://Towers/Assets/WallTower.png" },
-		{ GameManager.Towers.Ranged, "res://Towers/Assets/WallTower.png" },
+		{ GameManager.Towers.Brute, "res://Assets/CharacterArt/BruteCavemanCharacter.png" },
+		{ GameManager.Towers.Ranged, "res://Assets/CharacterArt/RangedCavemanCharacter.png" },
 		{ GameManager.Towers.Healer, "res://Assets/CharacterArt/HealerCaveman.png" }
 	};
 	
