@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdhyr2rcfdx0l"]
+[gd_scene load_steps=18 format=3 uid="uid://bdhyr2rcfdx0l"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_v1w48"]
 [ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="2_uoqjr"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://blnttaf7j45t" path="res://Assets/CharacterArt/MeleeMedevil.png" id="5_uoqjr"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="6_2cn1p"]
 [ext_resource type="Texture2D" uid="uid://ct3ctwe8d1l30" path="res://Assets/CharacterArt/MeleeModern.png" id="6_wiuxb"]
+[ext_resource type="Texture2D" uid="uid://cbo5h0wk0vyeh" path="res://Assets/CharacterArt/HealerCaveman.png" id="7_wiuxb"]
+[ext_resource type="Texture2D" uid="uid://bfee6yv5v0ey3" path="res://Assets/CharacterArt/HealerMedieval.png" id="8_qoig8"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="11_uoqjr"]
 [ext_resource type="Texture2D" uid="uid://dnl8v8edmxtfn" path="res://Assets/01PixelCoinGold.png" id="12_qoig8"]
 [ext_resource type="Texture2D" uid="uid://dr234cuj5lh51" path="res://Assets/hearts.png" id="13_ms25i"]
@@ -191,30 +193,35 @@ color = Color(0.508878, 0.29694, 0.0894001, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 0
+offset_top = -62.0
 offset_right = 131.0
-offset_bottom = 648.0
+offset_bottom = 586.0
 mouse_filter = 2
+
+[node name="IGNORE" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+layout_mode = 2
+player1 = false
 
 [node name="Turret" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 player1 = false
 
-[node name="Turret2" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+[node name="Wall" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 1
 player1 = false
 
-[node name="Turret3" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+[node name="WatchTower" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 2
 player1 = false
 
-[node name="Turret4" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+[node name="Spikes" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 3
 player1 = false
 
-[node name="Turret5" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+[node name="Melee" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 4
 player1 = false
@@ -233,11 +240,12 @@ tower = 6
 player1 = false
 troop = true
 
-[node name="Turret8" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+[node name="Healer" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 tower = 7
 player1 = false
 troop = true
+Sprites = Array[Texture2D]([ExtResource("7_wiuxb"), ExtResource("8_qoig8")])
 
 [node name="Close" type="Button" parent="ColorRect"]
 layout_mode = 0
@@ -250,8 +258,10 @@ mouse_filter = 2
 flat = true
 
 [node name="Button" type="Button" parent="."]
-offset_right = 132.0
-offset_bottom = 14.0
+offset_left = 1.715
+offset_top = 633.795
+offset_right = 133.715
+offset_bottom = 647.795
 pivot_offset = Vector2(65, 8)
 focus_mode = 0
 mouse_filter = 2
@@ -374,7 +384,6 @@ offset_bottom = 651.0
 mouse_filter = 2
 flat = true
 script = ExtResource("11_uoqjr")
-transformLock = true
 
 [node name="Area2D" type="Area2D" parent="BigClose"]
 collision_layer = 0

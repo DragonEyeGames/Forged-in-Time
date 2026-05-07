@@ -23,6 +23,7 @@ public partial class Cursor : Sprite2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
 		if(player1){
 		//	Visible=!Player1Manager.hudOpen;
 		}

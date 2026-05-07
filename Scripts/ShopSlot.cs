@@ -35,6 +35,25 @@ public partial class ShopSlot : Control
 		GetNode<RichTextLabel>("Name").Text=Cosmetics.towerNames[tower].ToString();
 		GetNode<RichTextLabel>("Description").Text=Cosmetics.towerDescriptions[tower].ToString();
 		GetNode<RichTextLabel>("Price").Text="$" + Prices.towerPrices[tower].ToString();
+		if(Sprites.Count>=2){
+			GetNode<Sprite2D>("UpgradePopout/TimeUpgrade/Sprite").Texture=Sprites[1];//(Texture2D)GD.Load(Sprites[1]);
+			GD.Print("Changed: ", Name);
+		} else {
+			//GD.Print(Sprites.Count, Name);
+		}
+		if(Names.Count>=2){
+			GetNode<RichTextLabel>("UpgradePopout/TimeUpgrade/Description").Text=Names[1];
+		}
+		GetNode<SignalBus>("/root/SignalBus").Connect(
+				SignalBus.SignalName.TimeAdvance,
+				new Callable(this, nameof(OnTimeAdvance))
+			);
+	}
+		
+	public void OnTimeAdvance(bool upgradePlayer, int level){
+		if(player1==upgradePlayer && Sprites.Count>level){
+			GetNode<Sprite2D>("Base").Texture = Sprites[level];
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -125,6 +144,7 @@ public partial class ShopSlot : Control
 		if(!player1){
 			id=2;
 		}
+		return;
 		if(troop && GameManager.fetchUpgrades(id, tower).X>3){
 			if(Sprites.Count>=2){
 				GetNode<Sprite2D>("Base").Texture = Sprites[1];

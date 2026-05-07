@@ -135,7 +135,7 @@ size = Vector2(32, 32)
 material = ExtResource("1_ksl42")
 script = ExtResource("1_4jy7w")
 cooldown = NodePath("Cooldown")
-towerType = 4
+towerType = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false

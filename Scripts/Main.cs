@@ -24,6 +24,10 @@ public void OnPlayerKilled(bool player1)
 	GD.Print("Player " + player + " died!");
 }
 	
+	public void addMoney(){
+		Player1Manager.money+=50;
+		Player2Manager.money+=50;
+	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
