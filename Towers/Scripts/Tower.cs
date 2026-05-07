@@ -12,6 +12,10 @@ public abstract partial class Tower : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public async override void _Ready()
 	{
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		if(Player1){
+			upgrade(Player1Manager.upgradeLevel);
+		}
 		while (hovering){
 			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		}
@@ -21,9 +25,6 @@ public abstract partial class Tower : Node2D
 			} else {
 				GetNode<Area2D>("Checker/Player2").QueueFree();
 			}
-		}
-		if(Player1){
-			upgrade(Player1Manager.upgradeLevel);
 		}
 		GetNode<SignalBus>("/root/SignalBus").Connect(
 			SignalBus.SignalName.TimeAdvance,
