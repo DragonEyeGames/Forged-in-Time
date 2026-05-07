@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bvym8b7sd7gh6"]
 
 [ext_resource type="Material" uid="uid://cyddiu60rhrga" path="res://TowerShader.tres" id="1_empu3"]
-[ext_resource type="Script" uid="uid://c2cnqo6uqcarb" path="res://Towers/Scripts/StaticTower.cs" id="1_y4f30"]
+[ext_resource type="Script" uid="uid://bqxkpyx43fd4u" path="res://Towers/Scenes/wall.cs" id="2_empu3"]
 [ext_resource type="Texture2D" uid="uid://cpu1prpqefjps" path="res://Towers/Assets/WallTower.png" id="2_y4f30"]
 [ext_resource type="Script" uid="uid://td32hbea8c2d" path="res://Scripts/TowerController.cs" id="3_fyubp"]
 [ext_resource type="PackedScene" uid="uid://b8qjxq5m1jorh" path="res://Scenes/towerInfo.tscn" id="4_empu3"]
@@ -14,8 +14,7 @@ size = Vector2(16, 16)
 
 [node name="Tower" type="Node2D"]
 material = ExtResource("1_empu3")
-script = ExtResource("1_y4f30")
-towerType = 2
+script = ExtResource("2_empu3")
 
 [node name="Base" type="Sprite2D" parent="."]
 use_parent_material = true

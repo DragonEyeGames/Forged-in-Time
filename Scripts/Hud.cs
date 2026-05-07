@@ -23,21 +23,61 @@ public partial class Hud : CanvasLayer
 		animator=GetNode<AnimationPlayer>("Animator");
 		if(player1){
 			ID=0;
+			GetNode<RichTextLabel>("ColorRect2/Money/Money").Text=Player1Manager.money.ToString();
 		} else {
 			ID=1;
+			GetNode<RichTextLabel>("ColorRect2/Money/Money").Text=Player2Manager.money.ToString();
 		}
+		GetNode<SignalBus>("/root/SignalBus").Connect(
+			SignalBus.SignalName.TimeAdvance,
+			new Callable(this, nameof(OnTimeAdvance))
+		);
+	}
+	
+	public void OnTimeAdvance(bool upgradePlayer, int level){
+		if(player1 && upgradePlayer){
+			GD.Print(GameManager.timeAdvance(GameManager.Towers.Melee, 1));
+			GameManager.timeAdvance(GameManager.Towers.Ranged, 1);
+			GameManager.timeAdvance(GameManager.Towers.Brute, 1);
+			GameManager.timeAdvance(GameManager.Towers.Healer, 1);
+		}
+		GD.Print(player1);
+		GD.Print(level);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if(player1){
-			GetNode<RichTextLabel>("ColorRect2/Money/Money").Text=Player1Manager.money.ToString();
+			if (int.TryParse(GetNode<RichTextLabel>("ColorRect2/Money/Money").Text, out int currentDisplay))
+			{
+				int targetVal = Player1Manager.money;
+				
+				if (currentDisplay != targetVal)
+				{
+					int difference = targetVal - currentDisplay;
+					int step = (int)Math.Ceiling(Math.Abs(difference) * 0.1f); 
+
+					if (difference > 0)
+						currentDisplay += step;
+					else
+						currentDisplay -= step;
+
+					GetNode<RichTextLabel>("ColorRect2/Money/Money").Text = currentDisplay.ToString();
+				}
+			}
 		}
 		if(!player1){
 			GetNode<RichTextLabel>("ColorRect2/Money/Money").Text=Player2Manager.money.ToString();
 		}
 		GetNode<RichTextLabel>("ColorRect2/Health/RichTextLabel").Text=playerBase.health.ToString();
+		
+		if(Input.IsActionJustPressed("1Money")){
+			//Player1Manager.money+=500;
+		}
+		if(Input.IsActionJustPressed("2Money")){
+			//Player2Manager.money+=500;
+		}
 	}
 	
 	public void closedPressed(){

@@ -62,6 +62,11 @@ public abstract partial class Troop : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (health <= 0)
+		{
+			QueueFree();
+		}
+			
 		if (pathfinding)
 		{
 			Vector2 velocity = Vector2.Zero;
@@ -71,11 +76,6 @@ public abstract partial class Troop : CharacterBody2D
 			if (!navAgent.IsNavigationFinished())
 			{
 				MoveAndSlide();
-			}
-
-			if (health <= 0)
-			{
-				QueueFree();
 			}
 
 			if (Velocity.X > 0)

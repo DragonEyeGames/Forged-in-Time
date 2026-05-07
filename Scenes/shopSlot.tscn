@@ -317,7 +317,6 @@ layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_hc4pq")
-Names = Array[String](["Caveman", "Medevil Knight", "Modern Troop", "Techno Soldier", ""])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -578,7 +577,7 @@ offset_bottom = 132.0
 scale = Vector2(0.19, 0.19)
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 74
-text = "Medevil Knight"
+text = "Medieval Knight"
 horizontal_alignment = 1
 vertical_alignment = 1
 
