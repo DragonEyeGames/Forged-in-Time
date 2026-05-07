@@ -36,6 +36,11 @@ public partial class TimeAdvancement : Control
 	}
 	
 	public void timeAdvance(){
+		if(player1){
+			Player1Manager.money-=500;
+		} else {
+			Player2Manager.money-=500;
+		}
 		level+=1;
 		GetNode<SignalBus>("/root/SignalBus").EmitSignal(SignalBus.SignalName.TimeAdvance, player1, level);
 		if(level==maxLevel){
