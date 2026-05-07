@@ -163,24 +163,24 @@ script = ExtResource("1_7uflk")
 visible = false
 sprite_frames = SubResource("SpriteFrames_wluxv")
 autoplay = "default"
-frame_progress = 0.723698
+frame_progress = 0.71353
 
 [node name="2" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_02tx8")
 autoplay = "default"
-frame_progress = 0.124984
+frame_progress = 0.114812
 
 [node name="3" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_bjafm")
 autoplay = "default"
-frame_progress = 0.870121
+frame_progress = 0.859953
 
 [node name="4" type="AnimatedSprite2D" parent="Sprites"]
 sprite_frames = SubResource("SpriteFrames_cchn6")
 autoplay = "default"
-frame_progress = 0.598687
+frame_progress = 0.588517
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
 
