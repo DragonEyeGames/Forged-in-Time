@@ -22,6 +22,8 @@ public void OnPlayerKilled(bool player1)
 		player=2;
 	}
 	GD.Print("Player " + player + " died!");
+	GameManager.winner=player;
+	GetTree().ChangeSceneToFile("res://Scenes/end_screen.tscn");
 }
 	
 	public void addMoney(){
@@ -32,10 +34,12 @@ public void OnPlayerKilled(bool player1)
 	public override void _Process(double delta)
 	{
 		if(Input.IsActionJustPressed("Player1")){
-			GameManager.player1=true;
+			//GameManager.player1=true;
+			//OnPlayerKilled(true);
 		}
 		if(Input.IsActionJustPressed("Player2")){
-			GameManager.player1=false;
+			//GameManager.player1=false;
+			//OnPlayerKilled(false);
 		}
 	}
 }
