@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmddd1o7nnt2g"
-path="res://.godot/imported/Medeival turret (2).png-048402719fcc172cefd180f0559dd4c0.ctex"
+uid="uid://da6p2n3bq1mn7"
+path="res://.godot/imported/medeival turret (3).png-39f19f9d98e63831e360d84c20603284.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TowerArt/Medeival turret (2).png"
-dest_files=["res://.godot/imported/Medeival turret (2).png-048402719fcc172cefd180f0559dd4c0.ctex"]
+source_file="res://Assets/TowerArt/medeival turret (3).png"
+dest_files=["res://.godot/imported/medeival turret (3).png-39f19f9d98e63831e360d84c20603284.ctex"]
 
 [params]
 
