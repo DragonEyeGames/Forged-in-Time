@@ -69,4 +69,8 @@ position = Vector2(286.04, 276.613)
 texture = ExtResource("1_u7vtn")
 offset = Vector2(-3.40979e-05, 0)
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="pressed" from="Button" to="." method="onSelect"]
+[connection signal="timeout" from="Timer" to="." method="moneyTimer"]

@@ -9,18 +9,25 @@ public partial class Miner : TargetBase
 	public bool playerKilled;
 	private int playerOwned = 0;
 	[Export] public int moneyGenerated = 100;
+	private bool needHealth = false;
 
 
 	public void money(int moneyAmount)
 	{
-		if (playerOwned == 1) ;
+		GD.Print("ben is not cool");
+		if (playerOwned == 1);
 		{
-			
+			Player1Manager.money += moneyAmount;
+			GetNode<Timer>("Timer").Start();
+		}
+		if (playerOwned == 2);
+		{
+			Player2Manager.money += moneyAmount;
+			GetNode<Timer>("Timer").Start();
 		}
 	}
 	public async override void Die()
 	{
-		GD.Print(playerOwned);
 		if (playerKilled)
 		{
 			if (playerOwned != 1)
@@ -38,7 +45,8 @@ public partial class Miner : TargetBase
 				GetNode<Area2D>("Player-1").SetCollisionLayerValue(4, true);
 				await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 				GetNode<TerritoryChecker>("../Territory").recalculate();
-				
+				money(moneyGenerated);
+				//health = maxHealth;
 			}
 
 		}
@@ -57,11 +65,11 @@ public partial class Miner : TargetBase
 				GetNode<Area2D>("Player-2").SetCollisionLayerValue(5, true);
 				GetNode<TerritoryChecker>("../Territory").recalculate();
 				playerOwned = 2;
+				money(moneyGenerated);
+				//health = maxHealth;	
 			}
-			health = maxHealth;
 
 		}
-
 	}
 
 	public void onSelect()
@@ -81,6 +89,11 @@ public partial class Miner : TargetBase
 
 		GD.Print("onSelect Target Changed " + GameManager.player1Target.GetType());
 	}
-	
+
+	public void moneyTimer()
+	{
+		GD.Print("I like cheese");
+		money(moneyGenerated);
+	}
 	
 }

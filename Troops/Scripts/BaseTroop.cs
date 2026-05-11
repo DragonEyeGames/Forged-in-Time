@@ -71,6 +71,14 @@ public abstract partial class BaseTroop : CharacterBody2D
 	public void recalculate()
 	{
 		navAgent.TargetPosition = target.GlobalPosition;
+		if (player1)
+		{
+			target = GameManager.player1Target;
+		}
+		else if (!player1)
+		{
+			target = GameManager.player2Target;
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -124,13 +132,16 @@ public abstract partial class BaseTroop : CharacterBody2D
 		if (!attacking)
 		{
 			attacking=true;
-			target.health  -= damage;
-			GD.Print(target.health);
+			if (!target.isBase)
+			{
+				Miner miner = target as Miner;
+				if (player1)
+				{
+					
+				target.health  -= damage;
 			if (target.health <= 0)
 			{
-				if (!target.isBase)
 				{
-					Miner miner = target as Miner;
 					miner.playerKilled = player1;
 					if (player1)
 					{
