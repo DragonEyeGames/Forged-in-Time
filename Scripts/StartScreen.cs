@@ -7,7 +7,7 @@ public partial class StartScreen : Node2D
 	private Button optionsButton;
 	private Button exitButton;
 
-	private const string MainScenePath = "res://Scenes/main.tscn";
+	private const string LevelSelectScenePath = "res://Scenes/level_select.tscn";
 
 	public override void _Ready()
 	{
@@ -18,19 +18,16 @@ public partial class StartScreen : Node2D
 		// Focus the first button
 		startButton.GrabFocus();
 
-		// Connect signals
-		startButton.Pressed += OnStartButtonPressed;
-		optionsButton.Pressed += OnOptionsButtonPressed;
-		exitButton.Pressed += OnExitButtonPressed;
+
 	}
 
 	private void OnStartButtonPressed()
 	{
-		var mainScene = ResourceLoader.Load<PackedScene>(MainScenePath);
-		if (mainScene != null)
-			GetTree().ChangeSceneToPacked(mainScene);
+		var LevelSelectScene = ResourceLoader.Load<PackedScene>(LevelSelectScenePath);
+		if (LevelSelectScene != null)
+			GetTree().ChangeSceneToPacked(LevelSelectScene);
 		else
-			GD.Print("Error: Game scene not found at " + MainScenePath);
+			GD.Print("Error: Game scene not found at " + LevelSelectScene);
 	}
 
 	private void OnOptionsButtonPressed()
