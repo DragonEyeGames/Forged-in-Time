@@ -7,9 +7,9 @@ public partial class Miner : TargetBase
 	public override int maxHealth { get; set; } = 100;
 	public override bool isBase { get; set; } = false;
 	public bool playerKilled;
-	private int playerOwned = 0;
+	public int playerOwned = 0;
 	[Export] public int moneyGenerated = 100;
-	private bool needHealth = false;
+	public bool needHealth = false;
 
 
 	public void money(int moneyAmount)
@@ -46,7 +46,7 @@ public partial class Miner : TargetBase
 				await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 				GetNode<TerritoryChecker>("../Territory").recalculate();
 				money(moneyGenerated);
-				//health = maxHealth;
+				needHealth = true;
 			}
 
 		}
@@ -66,7 +66,7 @@ public partial class Miner : TargetBase
 				GetNode<TerritoryChecker>("../Territory").recalculate();
 				playerOwned = 2;
 				money(moneyGenerated);
-				//health = maxHealth;	
+				needHealth = true;	
 			}
 
 		}
