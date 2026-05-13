@@ -144,9 +144,25 @@ public abstract partial class BaseTroop : CharacterBody2D
 				{
 					GD.Print("MIner health is" + miner.health);
 				}
-				if (player1 && miner.playerCon)
+				if (player1 && miner.playerOwned != 1)
 				{
 					target.health -= damage;
+				}
+				else if (!player1 && miner.playerOwned != 2)
+				{
+					target.health -= damage;
+				}
+				else if (player1 && miner.playerOwned == 1)
+				{
+					target = GameManager.player1Target;
+					recalculate();
+				}
+				else if (!player1 && miner.playerOwned == 2)
+				{
+					target = GameManager.player2Target;
+					recalculate();
+				}
+				
 					if (target.health <= 0)
 					{
 						{
@@ -179,7 +195,7 @@ public abstract partial class BaseTroop : CharacterBody2D
 				}
 			}
 		}
-	}
+	
 
 	public void on_path_finished()
 	{
@@ -187,7 +203,7 @@ public abstract partial class BaseTroop : CharacterBody2D
 		attack(damage);
 	}
 
-	void on_cooldown()
+	public void on_cooldown()
 	{
 		attacking = false;
 		if (!pathfinding)
