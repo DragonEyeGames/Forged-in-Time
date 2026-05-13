@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxee2iqm0fmt6"
-path="res://.godot/imported/RangedPresentCharacter.png-7de2dcc121f71ad5729a43cbc4718b8b.ctex"
+uid="uid://c4d6q4drrmrt2"
+path="res://.godot/imported/Hill-Wall-Tower.png-06ee773b332be001e467f1f9d95cb1bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CharacterArt/RangedPresentCharacter.png"
-dest_files=["res://.godot/imported/RangedPresentCharacter.png-7de2dcc121f71ad5729a43cbc4718b8b.ctex"]
+source_file="res://Assets/TowerArt/Hill-Wall-Tower.png"
+dest_files=["res://.godot/imported/Hill-Wall-Tower.png-06ee773b332be001e467f1f9d95cb1bc.ctex"]
 
 [params]
 
