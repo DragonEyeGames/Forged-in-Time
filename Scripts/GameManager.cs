@@ -39,6 +39,8 @@ public partial class GameManager : Node
 	public static List<TroopUpgrade> player1Upgrades = new List<TroopUpgrade>();
 	public static List<TroopUpgrade> player2Upgrades = new List<TroopUpgrade>();
 	
+	public static int winner = 0;
+	
 	public static Vector4 fetchUpgrades(int player, Towers troopType){
 		if(player==1){
 			newList = player1Upgrades;

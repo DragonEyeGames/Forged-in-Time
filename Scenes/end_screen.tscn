@@ -18,14 +18,14 @@ offset_right = 856.0
 offset_bottom = 240.0
 color = Color(0.25, 0, 0.75, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Winner" type="RichTextLabel" parent="."]
 offset_left = 256.0
 offset_top = 128.0
 offset_right = 896.0
 offset_bottom = 240.0
 theme_override_fonts/normal_font = ExtResource("2_bhpww")
 theme_override_font_sizes/normal_font_size = 100
-text = "FORGED IN TIME"
+text = "Player 1 Wins!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
