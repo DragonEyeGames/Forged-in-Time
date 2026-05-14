@@ -11,16 +11,19 @@ public partial class Miner : TargetBase
 	[Export] public int moneyGenerated = 100;
 	public bool needHealth = false;
 
+	[Signal] public delegate void OwnerChanged1EventHandler();
+	[Signal] public delegate void OwnerChanged2EventHandler();
+
+
 
 	public void money(int moneyAmount)
 	{
-		GD.Print("ben is not cool");
-		if (playerOwned == 1);
+		if (playerOwned == 1)
 		{
 			Player1Manager.money += moneyAmount;
 			GetNode<Timer>("Timer").Start();
 		}
-		if (playerOwned == 2);
+		else if (playerOwned == 2)
 		{
 			Player2Manager.money += moneyAmount;
 			GetNode<Timer>("Timer").Start();
@@ -46,11 +49,13 @@ public partial class Miner : TargetBase
 				await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 				GetNode<TerritoryChecker>("../Territory").recalculate();
 				money(moneyGenerated);
-				needHealth = true;
+				EmitSignal(SignalName.OwnerChanged1);
+				health = maxHealth;
+
 			}
 
 		}
-		else if (playerKilled == false)
+		else if (!playerKilled)
 		{
 			if (playerOwned != 2)
 			{
@@ -66,7 +71,8 @@ public partial class Miner : TargetBase
 				GetNode<TerritoryChecker>("../Territory").recalculate();
 				playerOwned = 2;
 				money(moneyGenerated);
-				needHealth = true;	
+				EmitSignal(SignalName.OwnerChanged2);
+				health = maxHealth; 
 			}
 
 		}
@@ -92,8 +98,7 @@ public partial class Miner : TargetBase
 
 	public void moneyTimer()
 	{
-		GD.Print("I like cheese");
-		money(moneyGenerated);
+	money(moneyGenerated);
 	}
 	
 }
