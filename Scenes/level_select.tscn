@@ -16,34 +16,34 @@ layout_mode = 0
 offset_left = 256.0
 offset_top = 24.0
 offset_right = 896.0
-offset_bottom = 303.0
+offset_bottom = 624.0
 
 [node name="Level_1_Button" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_lx4vd")
-theme_override_font_sizes/font_size = 76
+theme_override_font_sizes/font_size = 125
 text = "The Plains"
 
 [node name="Level_2_Button" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_lx4vd")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 125
 text = "The Desert"
 
 [node name="Level_3_Button" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_lx4vd")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 125
 text = "The Jungle"
 
 [node name="Level_4_Button" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_lx4vd")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 125
 text = "The Tundra"
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Level_1_Button" to="." method="OnLevel1ButtonPressed"]
