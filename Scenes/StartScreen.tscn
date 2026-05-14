@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfv3xbll1nk1r"]
+[gd_scene load_steps=5 format=3 uid="uid://cfv3xbll1nk1r"]
 
 [ext_resource type="Script" uid="uid://bivyw8v445vg4" path="res://Scripts/StartScreen.cs" id="1_0on6r"]
 [ext_resource type="Texture2D" uid="uid://dburtftuahlqu" path="res://Assets/backgroundforgamestartscreen.png" id="2_3u666"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_usjih"]
+[ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://uiTheme.tres" id="3_3u666"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_0on6r")
@@ -13,22 +14,13 @@ scale = Vector2(1.82857, 1.296)
 texture = ExtResource("2_3u666")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 offset_left = 296.0
 offset_top = 120.0
 offset_right = 856.0
 offset_bottom = 240.0
+theme = ExtResource("3_3u666")
 color = Color(0.25, 0, 0.75, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 256.0
-offset_top = 128.0
-offset_right = 896.0
-offset_bottom = 240.0
-theme_override_fonts/normal_font = ExtResource("2_usjih")
-theme_override_font_sizes/normal_font_size = 100
-text = "FORGED IN TIME"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 256.0
@@ -39,8 +31,8 @@ offset_bottom = 624.0
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_3u666")
 theme_override_fonts/font = ExtResource("2_usjih")
-theme_override_font_sizes/font_size = 76
 text = "Start"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
@@ -54,9 +46,30 @@ text = "Options"
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_3u666")
 theme_override_fonts/font = ExtResource("2_usjih")
-theme_override_font_sizes/font_size = 75
 text = "Exit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 207.0
+offset_top = 135.0
+offset_right = 877.0
+offset_bottom = 260.0
+scale = Vector2(1.085, 1.085)
+theme = ExtResource("3_3u666")
+text = "Forged In Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="RichTextLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_3u666")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
