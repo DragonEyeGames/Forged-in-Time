@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://df5scb8ns130h"]
 
-[ext_resource type="Script" uid="uid://csl7f40njf774" path="res://Scenes/EndScreen.cs" id="1_1gwaw"]
+[ext_resource type="Script" uid="uid://csl7f40njf774" path="res://Scripts/EndScreen.cs" id="1_1gwaw"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_bhpww"]
 
 [node name="EndScreen" type="Node2D"]

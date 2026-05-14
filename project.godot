@@ -22,6 +22,7 @@ Player1Manager="*res://Scripts/Player1Manager.cs"
 Player2Manager="*res://Scripts/Player2Manager.cs"
 Prices="*res://Scripts/Prices.cs"
 Cosmetics="*res://Scripts/Cosmetics.cs"
+SignalBus="*res://Scripts/SignalBus.cs"
 
 [display]
 
@@ -31,10 +32,6 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="Forged in Time"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [file_customization]
 
@@ -189,6 +186,7 @@ Click-2={
 2d_physics/layer_3="Player 2 Troop"
 2d_physics/layer_4="Player 1 Territory"
 2d_physics/layer_5="Player 2 Territory"
+2d_physics/layer_6="Territory Removal"
 2d_physics/layer_7="Player 1 HUD"
 2d_physics/layer_8="Player 2 HUD"
 2d_physics/layer_9="Player 1 Tower"
