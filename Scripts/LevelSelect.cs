@@ -9,9 +9,9 @@ public partial class LevelSelect : Node2D
 	private Button Level4Button;
 	
 	private const string Level1Path = "res://Scenes/main.tscn";
-	//private const string Level2Path = ;
-	//private const string Level3Path = ;
-	//private const string Level4Path = ;
+	private const string Level2Path = "";
+	private const string Level3Path = "";
+	private const string Level4Path = "";
 
 	public override void _Ready()
 	{
@@ -32,7 +32,7 @@ public partial class LevelSelect : Node2D
 			GetTree().ChangeSceneToPacked(Level1Scene);
 		else
 			GD.Print("Error: Game scene not found at " + Level1Scene);
-	
+	}
 	public void OnLevel2ButtonPressed()
 	{
 		var Level2Scene = ResourceLoader.Load<PackedScene>(Level2Path);
@@ -41,21 +41,20 @@ public partial class LevelSelect : Node2D
 		else
 			GD.Print("Error: Game scene not found at " + Level2Scene);
 	}
-	/*public void OnLevel3ButtonPressed()
+	public void OnLevel3ButtonPressed()
 	{
 		var Level3Scene = ResourceLoader.Load<PackedScene>(Level3Path);
 		if (Level3Scene != null)
 			GetTree().ChangeSceneToPacked(Level3Scene);
 		else
-			GD.Print("Error: Game scene not found at " + Level3Scene);*/
-	
-	/*public void OnLevel4ButtonPressed()
+			GD.Print("Error: Game scene not found at " + Level3Scene);
+	}
+	public void OnLevel4ButtonPressed()
 	{
 		var Level4Scene = ResourceLoader.Load<PackedScene>(Level4Path);
 		if (Level4Scene != null)
 			GetTree().ChangeSceneToPacked(Level4Scene);
 		else
-			GD.Print("Error: Game scene not found at " + Level4Scene);*/
-			
+			GD.Print("Error: Game scene not found at " + Level4Scene);
 	}
 }
