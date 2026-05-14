@@ -1,46 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcs7g671onmkq"]
+[gd_scene load_steps=3 format=3 uid="uid://dcs7g671onmkq"]
 
 [ext_resource type="Script" uid="uid://8nghgm4fysl2" path="res://Scripts/Pause.cs" id="1_v2lfg"]
+[ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://uiTheme.tres" id="2_drk18"]
 
 [node name="pause" type="CanvasLayer"]
 process_mode = 3
-visible = false
 script = ExtResource("1_v2lfg")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 384.0
-offset_top = 64.0
-offset_right = 704.0
-offset_bottom = 584.0
-color = Color(100, 0.615, 0.04, 1)
+[node name="ColorRect" type="Panel" parent="."]
+offset_left = 379.0
+offset_top = 44.0
+offset_right = 756.0
+offset_bottom = 564.0
+scale = Vector2(1.085, 1.085)
+theme = ExtResource("2_drk18")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 384.0
-offset_top = 64.0
-offset_right = -448.0
-offset_bottom = -64.0
+offset_left = 379.0
+offset_top = 44.0
+offset_right = -393.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.085, 1.085)
+theme = ExtResource("2_drk18")
 
 [node name="resume" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(250, 125)
+custom_minimum_size = Vector2(334.89, 125)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "Resume"
 
 [node name="options" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(250, 125)
+custom_minimum_size = Vector2(334.89, 125)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "Options"
 
 [node name="exit" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(250, 125)
+custom_minimum_size = Vector2(334.89, 125)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
