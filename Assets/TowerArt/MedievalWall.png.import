@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnnqsq31nw64q"
-path="res://.godot/imported/ArmyPewPew.png-8dca127d161d0b60b4432f3cedb660d9.ctex"
+uid="uid://c6lcuqicj02x3"
+path="res://.godot/imported/MedievalWall.png-b3f3a39b7a7c0b7fe5a81280743e8861.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CharacterArt/ArmyPewPew.png"
-dest_files=["res://.godot/imported/ArmyPewPew.png-8dca127d161d0b60b4432f3cedb660d9.ctex"]
+source_file="res://Assets/TowerArt/MedievalWall.png"
+dest_files=["res://.godot/imported/MedievalWall.png-b3f3a39b7a7c0b7fe5a81280743e8861.ctex"]
 
 [params]
 
