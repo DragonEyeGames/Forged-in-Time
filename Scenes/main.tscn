@@ -225,6 +225,7 @@ shape = SubResource("CircleShape2D_3pmx8")
 [node name="Sprite2D" type="Sprite2D" parent="Screen"]
 
 [node name="pause" parent="." instance=ExtResource("28_ueoa1")]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -20
