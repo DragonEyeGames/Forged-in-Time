@@ -23,10 +23,11 @@ theme = ExtResource("3_3u666")
 color = Color(0.25, 0, 0.75, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 256.0
-offset_top = 346.0
-offset_right = 896.0
-offset_bottom = 624.0
+offset_left = 309.0
+offset_top = 327.0
+offset_right = 949.0
+offset_bottom = 695.0
+scale = Vector2(0.825, 0.825)
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -35,13 +36,12 @@ theme = ExtResource("3_3u666")
 theme_override_fonts/font = ExtResource("2_usjih")
 text = "Start"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-visible = false
+[node name="ScoreButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_3u666")
 theme_override_fonts/font = ExtResource("2_usjih")
-theme_override_font_sizes/font_size = 75
-text = "Options"
+text = "High Scores"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -72,5 +72,5 @@ grow_vertical = 2
 theme = ExtResource("3_3u666")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="OnStartButtonPressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="OnOptionsButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/ScoreButton" to="." method="OnScoresPressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="OnExitButtonPressed"]

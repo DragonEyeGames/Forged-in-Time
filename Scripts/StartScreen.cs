@@ -12,8 +12,8 @@ public partial class StartScreen : Node2D
 	public override void _Ready()
 	{
 		startButton = GetNode<Button>("VBoxContainer/StartButton");
-		optionsButton = GetNode<Button>("VBoxContainer/OptionsButton");
-		exitButton = GetNode<Button>("VBoxContainer/ExitButton");
+		//optionsButton = GetNode<Button>("VBoxContainer/OptionsButton");
+		//exitButton = GetNode<Button>("VBoxContainer/ExitButton");
 
 		// Focus the first button
 		startButton.GrabFocus();
@@ -33,6 +33,10 @@ public partial class StartScreen : Node2D
 	private void OnOptionsButtonPressed()
 	{
 		GD.Print("Options clicked!");
+	}
+
+	private void OnScoresPressed(){
+		GetTree().ChangeSceneToFile("res://Scenes/highScores.tscn");
 	}
 
 	private void OnExitButtonPressed()
