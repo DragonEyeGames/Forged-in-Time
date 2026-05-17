@@ -41,6 +41,18 @@ public abstract partial class Troop : CharacterBody2D
 		health+=TroopUpgrades.Health[healthLevel];
 		return upgrades;
 	}
+	
+	public void initialize(){
+		if (player1)
+		{
+			GetNode("Player2").CallDeferred("queue_free");
+		}
+		else
+		{
+			GetNode("Player1").CallDeferred("queue_free");
+		}
+	}
+	
 	public async void updateHitboxes()
 	{
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);

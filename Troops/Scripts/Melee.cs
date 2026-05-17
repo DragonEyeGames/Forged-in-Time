@@ -31,6 +31,7 @@ public partial class Melee : Troop
 			child.Visible=false;
 		}
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		initialize();
 		fetchUpgrades();
 		/*if(upgradeLevel>60){
 			sprite = GetNode<AnimatedSprite2D>("Sprites/3");
