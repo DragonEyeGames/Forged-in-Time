@@ -76,7 +76,7 @@ public abstract partial class Troop : CharacterBody2D
 	{
 		if (health <= 0)
 		{
-			QueueFree();
+			die();
 		}
 			
 		if (pathfinding)
@@ -133,5 +133,16 @@ public abstract partial class Troop : CharacterBody2D
 	{
 		attacking = false;
 		attack(damage);
+	}
+	
+	private void die(){
+		if(player1){
+			Player2Manager.score+=Prices.towerPrices[troopType];
+		} else {
+			Player1Manager.score+=Prices.towerPrices[troopType];
+		}
+		GD.Print(Player2Manager.score);
+		GD.Print(Player1Manager.score);
+		QueueFree();
 	}
 }

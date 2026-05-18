@@ -27,7 +27,7 @@ public partial class Brute : Troop
 		troopType=GameManager.Towers.Brute;
 		health = maxHealth;
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
-		sprite = GetNode<AnimatedSprite2D>("Sprite");
+		//sprite = GetNode<AnimatedSprite2D>("Sprite");
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
 		navAgent.TargetDesiredDistance = 64;
 		foreach (AnimatedSprite2D child in GetNode<Node2D>("Sprites").GetChildren()){
