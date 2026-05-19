@@ -17,6 +17,8 @@ public partial class EndScreen: Node2D
 		} else {
 			GetNode<RichTextLabel>("Winner").Text="Player 1 Wins!";
 		}
+		GetNode<RichTextLabel>("Player1/Score").Text=Player1Manager.score.ToString();
+		GetNode<RichTextLabel>("Player2/Score").Text=Player2Manager.score.ToString();
 		mainButton = GetNode<Button>("VBoxContainer/MainButton");
 		scoresButton = GetNode<Button>("VBoxContainer/ScoresButton");
 		exitButton = GetNode<Button>("VBoxContainer/ExitButton");
