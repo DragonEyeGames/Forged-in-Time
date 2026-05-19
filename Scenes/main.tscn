@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bywcqda0sombh"]
+[gd_scene load_steps=33 format=4 uid="uid://bywcqda0sombh"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_fevyy"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="1_yaehf"]
@@ -22,8 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://bdhyr2rcfdx0l" path="res://Scenes/hud_2.tscn" id="18_b3802"]
 [ext_resource type="Texture2D" uid="uid://dkgrnn8xbc61t" path="res://Assets/Cursor.png" id="21_pdsj5"]
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_ee4r6"]
+[ext_resource type="PackedScene" uid="uid://bai0yvubgp463" path="res://Scenes/desert_level.tscn" id="25_cbgmd"]
 [ext_resource type="Script" uid="uid://hhncf58ocdwm" path="res://Scripts/ScreenCursor.cs" id="25_u50mg"]
-[ext_resource type="PackedScene" uid="uid://dcs7g671onmkq" path="res://Scenes/Pause.tscn" id="28_ueoa1"]
+[ext_resource type="PackedScene" path="res://Scenes/Pause.tscn" id="28_ueoa1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_yaehf")
@@ -226,13 +227,9 @@ shape = SubResource("CircleShape2D_3pmx8")
 
 [node name="pause" parent="." instance=ExtResource("28_ueoa1")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="DesertLevel" parent="." instance=ExtResource("25_cbgmd")]
 z_index = -20
-offset_left = -11.0
-offset_top = -16.0
-offset_right = 1108.0
-offset_bottom = 653.0
-color = Color(0.245967, 0.47, 0.1645, 1)
+position = Vector2(-11, -16)
 
 [node name="MoneyTimer" type="Timer" parent="."]
 wait_time = 5.0
