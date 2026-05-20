@@ -27,7 +27,7 @@ public partial class HighScores : Node2D
 		}
 	}
 	
-	public void SaveData(int health, Vector2 pos)
+	public void SaveData()
 	{
 		var saveGame = new SaveGame();
 
