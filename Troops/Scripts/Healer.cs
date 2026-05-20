@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Healer : Troop
+public partial class Healer : BaseTroop
 {
 	[Export] public override int speedLevel {get; set;}
 	[Export] public override float speed { get; set; } = 25.0f;
@@ -12,7 +12,7 @@ public partial class Healer : Troop
 	[Export] public override int damage { get; set; } = 1;
 	public override NavigationAgent2D navAgent { get; set; }
 	public override AnimatedSprite2D sprite  {get; set;}
-	[Export] public override Base target { get; set; }
+	[Export] public override TargetBase target { get; set; }
 	public override Timer cooldown {get; set;}
 	public override bool healer { get; set; } = true;
 	public override GameManager.Towers troopType { get; set; }
@@ -30,6 +30,7 @@ public partial class Healer : Troop
 		sprite = GetNode<AnimatedSprite2D>("Sprites/1");
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		fetchUpgrades();
+		TargetSet();
 		foreach (AnimatedSprite2D child in GetNode<Node2D>("Sprites").GetChildren()){
 			child.Visible=false;
 		}

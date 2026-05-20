@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://crdn1d2ugpbq8" path="res://Assets/TowerArt/player2Base.png" id="1_du40w"]
 [ext_resource type="Texture2D" uid="uid://cpr3ofkyasbcb" path="res://Assets/TowerArt/player1Base.png" id="1_qutmk"]
 [ext_resource type="Script" uid="uid://g0qp36p0meoh" path="res://Scripts/Base.cs" id="2_qutmk"]
-[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/Scenes/melee.tscn" id="3_du40w"]
+[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/Scenes/melee.tscn" id="3_3v5je"]
 [ext_resource type="PackedScene" uid="uid://uvioh4v0m0i8" path="res://Troops/Scenes/brute.tscn" id="4_omojh"]
 [ext_resource type="PackedScene" uid="uid://bxye5em56ls6c" path="res://Troops/Scenes/ranged.tscn" id="5_yoopj"]
 [ext_resource type="PackedScene" uid="uid://dixum1rty8vlc" path="res://Troops/Scenes/healer.tscn" id="6_u35dc"]
@@ -23,7 +23,7 @@ texture = ExtResource("1_du40w")
 offset = Vector2(-4, -57)
 script = ExtResource("2_qutmk")
 player1 = true
-troop = ExtResource("3_du40w")
+troop = ExtResource("3_3v5je")
 brute = ExtResource("4_omojh")
 ranged = ExtResource("5_yoopj")
 healer = ExtResource("6_u35dc")

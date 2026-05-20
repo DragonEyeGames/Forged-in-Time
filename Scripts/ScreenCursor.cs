@@ -5,11 +5,20 @@ public partial class ScreenCursor : Sprite2D
 {
 	public bool player1=false;
 	private Controller selected=null;
+	private int player;
 	
 	[Export] public Cursor worldCounterpart;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (player == 0)
+		{
+			player = 1;
+		}
+		else
+		{
+			player = 2;
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

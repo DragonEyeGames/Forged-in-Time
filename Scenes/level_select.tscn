@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1nyn5t63bs3n"]
+[gd_scene load_steps=3 format=3 uid="uid://ba4ynqxd825te"]
 
 [ext_resource type="Script" uid="uid://c7dvo84ew12fy" path="res://Scripts/LevelSelect.cs" id="1_nkys2"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_lx4vd"]

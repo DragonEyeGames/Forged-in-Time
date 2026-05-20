@@ -23,6 +23,7 @@ public partial class TerritoryChecker : TileMapLayer
 		clearNonexistent();
 		betterTerritory(3, 0);
 		betterTerritory(4, 1);
+		betterTerritory(11, 2);
 	}
 	
 	private void clearNonexistent(){

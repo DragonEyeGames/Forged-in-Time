@@ -28,7 +28,7 @@ public partial class AoeTower :  Tower
 				shoot();
 				for (int i = 0; i <= player2Colliding.Count - 1; i++)
 				{
-					Troop troop = player2Colliding[i] as Troop;
+					BaseTroop troop = player2Colliding[i] as BaseTroop;
 					troop.health -= damage;
 					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Attack");
 				}
@@ -42,7 +42,7 @@ public partial class AoeTower :  Tower
 				shoot();
 				for (int i = 0; i <= player1Colliding.Count - 1; i++)
 				{
-					Troop troop = player1Colliding[i] as Troop;
+					BaseTroop troop = player1Colliding[i] as BaseTroop;
 					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Attack");
 					troop.health -= damage;
 					GD.Print("Damagin");

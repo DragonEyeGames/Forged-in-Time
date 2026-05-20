@@ -237,6 +237,7 @@ scale = Vector2(0.45, 0.45)
 shape = SubResource("CircleShape2D_xm30j")
 
 [node name="Cooldown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="navigation_finished" from="NavAgent" to="." method="on_path_finished"]
 [connection signal="timeout" from="Timer" to="." method="recalculate"]
