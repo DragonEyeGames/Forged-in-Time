@@ -1,14 +1,16 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class HighScores : Node2D
 {
 	private string _savePath = "user://highscores.tres";
-	private Godot.Collections.Array<int> Highscores = new();
+	private List<int> Highscores = new();
 	
 	public override void _Ready()
 	{
-		Highscores=LoadData().Highscores;
+		Highscores=LoadData().Highscores.OrderByDescending(score => score).ToList();
 		GD.Print(Highscores);
 		if(Highscores.Count<0){
 			GD.Print("NADA");
