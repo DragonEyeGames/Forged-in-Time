@@ -46,6 +46,17 @@ public abstract partial class BaseTroop : CharacterBody2D
 		return upgrades;
 	}
 
+	public void initialize(){
+		if (player1)
+		{
+			GetNode("Player2").CallDeferred("queue_free");
+		}
+		else
+		{
+			GetNode("Player1").CallDeferred("queue_free");
+		}
+	}
+	
 	public void TargetSet()
 	{
 		if (player1)
@@ -102,6 +113,27 @@ public abstract partial class BaseTroop : CharacterBody2D
 			return;
 		}
 		
+		if (target!=null && !target.isBase)
+		{
+
+			Miner miner = target as Miner;
+
+			if (player1 && miner.playerOwned == 1)
+			{
+				target = GameManager.player1DefaultTarget;
+				pathfinding = true;
+				attacking=false;
+				recalculate();
+			}
+			else if (!player1 && miner.playerOwned == 2)
+			{
+				target = GameManager.player2DefaultTarget;
+				pathfinding = true;
+				attacking=false;
+				recalculate();
+			}
+		}
+		
 		if (pathfinding)
 		{
 			Vector2 velocity = Vector2.Zero;
@@ -131,82 +163,95 @@ public abstract partial class BaseTroop : CharacterBody2D
 
 	}
 
-	public void attack(int damage)
+public void attack(int damage)
+{
+	GD.Print("ATTACK");
+
+	if (!attacking)
 	{
-		if (!attacking)
+		GD.Print("PROCEDING");
+		attacking = true;
+
+		if (!target.isBase)
 		{
-			attacking = true;
-			if (!target.isBase)
-			{
-				Miner miner = target as Miner;
-				if (player1 && miner.playerOwned != 1)
-				{
-					target.health -= damage;
-				}
-				else if (!player1 && miner.playerOwned != 2)
-				{
-					target.health -= damage;
-				}
-				else if (player1 && miner.playerOwned == 1)
-				{
-					target = GameManager.player1DefaultTarget;
-					pathfinding = true;
-					recalculate();
-					return;
-				}
-				else if (!player1 && miner.playerOwned == 2)
-				{
-					target = GameManager.player2DefaultTarget;
-					pathfinding = true;
-					recalculate();
-					return;
-				}
+			
 
-				if (target.health <= 0)
-				{
-					{
-						miner.playerKilled = player1;
-						if (player1)
-						{
-							target.Die();
-							target = GameManager.player1DefaultTarget;
-						}
-						else if (!player1)
-						{
-							target.Die();
-							target = GameManager.player2DefaultTarget;
-						}
-
-						attacking = false;
-						pathfinding = true;
-						recalculate();
-						return;
-					}
-				}
-				else
-				{
-					cooldown.Start();
-				}
-
-			if (target.isBase)
+			Miner miner = target as Miner;
+			
+			GD.Print(miner.playerOwned.ToString());
+			
+			if (player1 && miner.playerOwned != 1)
 			{
 				target.health -= damage;
-				if (target.health <= 0)
+			}
+			else if (!player1 && miner.playerOwned != 2)
+			{
+				target.health -= damage;
+			}
+			else if (player1 && miner.playerOwned == 1)
+			{
+				GameManager.player1Target=GameManager.player1DefaultTarget;
+				target = GameManager.player1DefaultTarget;
+				pathfinding = true;
+				recalculate();
+				GD.Print("Fuzzag");
+				return;
+			}
+			else if (!player1 && miner.playerOwned == 2)
+			{
+				GameManager.player2Target=GameManager.player2DefaultTarget;
+				target = GameManager.player2DefaultTarget;
+				pathfinding = true;
+				recalculate();
+				return;
+			}
+
+			if (target.health <= 0)
+			{
+				miner.playerKilled = player1;
+
+				target.Die();
+
+				if (player1)
 				{
-					GD.Print("YOI ONE YIPEEEEEEEE");
-					QueueFree();
-					return;
+					target = GameManager.player1DefaultTarget;
 				}
 				else
 				{
-					cooldown.Start();
+					target = GameManager.player2DefaultTarget;
 				}
-			}
 
 				attacking = false;
+				pathfinding = true;
+				recalculate();
+				return;
+			}
+			else
+			{
+				cooldown.Start();
 			}
 		}
+		else
+		{
+			GD.Print("BAsed");
+
+			target.health -= damage;
+
+			if (target.health <= 0)
+			{
+				GD.Print("YOI ONE YIPEEEEEEEE");
+				QueueFree();
+				return;
+			}
+			else
+			{
+				cooldown.Start();
+			}
+		}
+
+		attacking = false;
 	}
+}
 
 	public void on_path_finished()
 	{

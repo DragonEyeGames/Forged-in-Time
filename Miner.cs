@@ -8,7 +8,7 @@ public partial class Miner : TargetBase
 	public override bool isBase { get; set; } = false;
 	public bool playerKilled;
 	public int playerOwned = 0;
-	[Export] public int moneyGenerated = 100;
+	[Export] public int moneyGenerated = 10;
 	public bool needHealth = false;
 
 	[Signal] public delegate void OwnerChanged1EventHandler();
