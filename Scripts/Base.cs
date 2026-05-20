@@ -2,18 +2,21 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Base : Sprite2D
+public partial class Base : TargetBase
 {
-	[Export] public bool player1=false;
+	[Export] public bool player1 = false;
 	private NavigationAgent2D navAgent;
-	[Export] public Base target;
-	[Export] public int health=100;
 	[Export] public PackedScene troop;
 	[Export] public PackedScene brute;
 	[Export] public PackedScene ranged;
 	[Export] public PackedScene healer;
-	[Export] public int maxTroops=15;
-	private bool releaseTime=false;
+	[Export] public int maxTroops = 15;
+	private bool releaseTime = false;
+	[Export] public override int health { get; set; } = 200;
+	[Export] public override int maxHealth { get; set; } = 200;
+	[Export] public override bool isBase { get; set; } = true;
+
+
 	public enum Troops{
 		Melee,
 		Ranged,
@@ -35,15 +38,19 @@ public partial class Base : Sprite2D
 		if(player1){
 			GD.Print("Player1");
 			GameManager.player1Base=this;
+			GameManager.player2DefaultTarget=this;
 			GetNode<Area2D>("Player-2").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-2").QueueFree();
 			GetNode<Area2D>("Detection/Player-2").QueueFree();
 		} else if(!player1){
 			GD.Print("Player2");
 			GameManager.player2Base=this;
+			GameManager.player1DefaultTarget=this;
 			GetNode<Area2D>("Player-1").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-1").QueueFree();
 			GetNode<Area2D>("Detection/Player-1").QueueFree();
+			//SelfModulate=new Color(1, .2f, .2f, 1);
+
 		}
 		if (health > 0) 
 		{
@@ -51,6 +58,19 @@ public partial class Base : Sprite2D
 		}
 		await ToSignal(GetTree().CreateTimer(0.15f), SceneTreeTimer.SignalName.Timeout);
 		GameManager.territory.recalculate();
+	}
+
+	public override void _EnterTree()
+	{
+		if (player1)
+		{
+			GameManager.player1DefaultTarget=this;
+
+		}
+		else if (!player1)
+		{
+			GameManager.player2DefaultTarget=this;
+		}
 	}
 
 	public void spawnTroop(Troops troopType){
@@ -61,10 +81,9 @@ public partial class Base : Sprite2D
 			sceneToSpawn = ranged;
 		else if (troopType == Troops.Healer)
 			sceneToSpawn = healer;
-		Troop newTroop = sceneToSpawn.Instantiate<Troop>();;
+		BaseTroop newTroop = sceneToSpawn.Instantiate<BaseTroop>();;
 		GetParent().AddChild(newTroop);
 		newTroop.GlobalPosition=GlobalPosition;
-		newTroop.target=target;
 		newTroop.player1=player1;
 	}
 	
@@ -129,8 +148,7 @@ public partial class Base : Sprite2D
 		reserveTroops.RemoveAt(0);
 		releaseTime=false;
 	}
-	
-	public void Die() 
+	public override void Die() 
 	{
 		if (health <= 0) 
 		{
