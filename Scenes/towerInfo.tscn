@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://td32hbea8c2d" path="res://Scripts/TowerController.cs" id="5_j38eu"]
 
 [node name="TowerInfo" type="ColorRect"]
+z_index = 5
 offset_left = -10.0
 offset_top = -50.0
 offset_right = -10.0
@@ -45,6 +46,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(350, 366.667)
 scale = Vector2(15, 15)
 texture = ExtResource("3_j38eu")
@@ -53,10 +55,10 @@ region_rect = Rect2(0, 0, 16, 16)
 
 [node name="sellPrice" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 475.0
-offset_top = 258.333
-offset_right = 1055.0
-offset_bottom = 395.333
+offset_left = 433.0
+offset_top = 258.0
+offset_right = 1066.0
+offset_bottom = 395.0
 scale = Vector2(0.79, 0.79)
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_e84qp")
@@ -66,10 +68,10 @@ text = "Sell For: 0
 
 [node name="SellButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 633.0
-offset_top = 350.0
-offset_right = 741.0
-offset_bottom = 458.0
+offset_left = 525.0
+offset_top = 358.333
+offset_right = 633.0
+offset_bottom = 466.333
 scale = Vector2(4.5, 4.5)
 pivot_offset = Vector2(50.8955, 49.1054)
 mouse_filter = 2

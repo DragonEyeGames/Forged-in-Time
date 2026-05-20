@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://qw4hblqnmemt"]
+[gd_scene load_steps=13 format=3 uid="uid://qw4hblqnmemt"]
 
-[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://Assets/icon.svg" id="1_3v5je"]
+[ext_resource type="Texture2D" uid="uid://crdn1d2ugpbq8" path="res://Assets/TowerArt/player2Base.png" id="1_du40w"]
+[ext_resource type="Texture2D" uid="uid://cpr3ofkyasbcb" path="res://Assets/TowerArt/player1Base.png" id="1_qutmk"]
 [ext_resource type="Script" uid="uid://g0qp36p0meoh" path="res://Scripts/Base.cs" id="2_qutmk"]
 [ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/Scenes/melee.tscn" id="3_3v5je"]
 [ext_resource type="PackedScene" uid="uid://uvioh4v0m0i8" path="res://Troops/Scenes/brute.tscn" id="4_omojh"]
@@ -8,13 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://dixum1rty8vlc" path="res://Troops/Scenes/healer.tscn" id="6_u35dc"]
 [ext_resource type="Texture2D" uid="uid://xihe12b6vlvk" path="res://Assets/Release.png" id="7_jlfiv"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="8_kgqh3"]
+[ext_resource type="Texture2D" uid="uid://cl0xdsbm3g5ta" path="res://Assets/TowerArt/player2Smoke.png" id="10_du40w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dg77c"]
-radius = 220.907
+radius = 178.101
+
+[sub_resource type="Gradient" id="Gradient_omojh"]
+offsets = PackedFloat32Array(0, 0.193333, 0.873333, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.353333, 0.353333, 0.353333, 1, 0.873333, 0.873333, 0.873333, 1, 1, 1, 1, 0)
 
 [node name="Base" type="Sprite2D"]
-texture = ExtResource("1_3v5je")
-offset = Vector2(0, -4)
+texture = ExtResource("1_du40w")
+offset = Vector2(-4, -57)
 script = ExtResource("2_qutmk")
 player1 = true
 troop = ExtResource("3_3v5je")
@@ -170,10 +176,11 @@ flat = true
 script = ExtResource("8_kgqh3")
 
 [node name="Icon" type="Sprite2D" parent="Detection"]
+visible = false
 z_index = -1
 position = Vector2(64, 64)
 scale = Vector2(0.93, 0.93)
-texture = ExtResource("1_3v5je")
+texture = ExtResource("1_qutmk")
 
 [node name="Player-1" type="Area2D" parent="Detection"]
 visible = false
@@ -194,6 +201,20 @@ collision_mask = 0
 polygon = PackedVector2Array(0, -65, 0, 63, 128, 63, 128, -65)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Smoke" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-3, -47)
+emitting = false
+amount = 100
+texture = ExtResource("10_du40w")
+lifetime = 1.5
+direction = Vector2(0, -1)
+spread = 22.33
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 75.0
+color_ramp = SubResource("Gradient_omojh")
 
 [connection signal="pressed" from="HUD2/Storage/Release" to="." method="release"]
 [connection signal="pressed" from="Detection" to="." method="toggle"]

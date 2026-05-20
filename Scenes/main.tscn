@@ -81,16 +81,17 @@ script = ExtResource("2_074og")
 tester = NodePath("../../TestPlacement/Player")
 
 [node name="Territory" type="TileMapLayer" parent="."]
-modulate = Color(1, 1, 1, 0.294118)
+modulate = Color(1, 1, 1, 0.435294)
 z_index = -1
 tile_set = SubResource("TileSet_w48qg")
 script = ExtResource("4_82xsv")
 
-[node name="Player-1" parent="." instance=ExtResource("6_3pmx8")]
-position = Vector2(928, 355)
+[node name="Player-1" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_3pmx8")]
+position = Vector2(932, 408)
+target = NodePath("../Player-2")
 
-[node name="Player-2" parent="." instance=ExtResource("6_3pmx8")]
-position = Vector2(144, 340)
+[node name="Player-2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_3pmx8")]
+position = Vector2(148, 393)
 player1 = false
 
 [node name="NavHandler" type="Node2D" parent="."]
@@ -222,6 +223,8 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Screen/Player2Cursor/Area2D2"]
 shape = SubResource("CircleShape2D_3pmx8")
 
+[node name="Sprite2D" type="Sprite2D" parent="Screen"]
+
 [node name="pause" parent="." instance=ExtResource("28_ueoa1")]
 
 [node name="Miner" parent="." instance=ExtResource("25_cbgmd")]
@@ -233,7 +236,11 @@ offset_left = -11.0
 offset_top = -16.0
 offset_right = 1108.0
 offset_bottom = 653.0
-color = Color(0.129412, 0.396078, 0.0431373, 1)
+color = Color(0.245967, 0.47, 0.1645, 1)
+
+[node name="MoneyTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 
 [connection signal="bake_finished" from="TestPlacement/TestRegion" to="NavHandler" method="TestFinished"]
 [connection signal="bake_finished" from="TestPlacement/NavRegion" to="NavHandler" method="TestFinished"]
@@ -245,3 +252,4 @@ color = Color(0.129412, 0.396078, 0.0431373, 1)
 [connection signal="area_exited" from="Screen/Player1Cursor/Area2D" to="Screen/Player1Cursor" method="hudLeave"]
 [connection signal="area_entered" from="Screen/Player2Cursor/Area2D2" to="Screen/Player2Cursor" method="hudInteract"]
 [connection signal="area_exited" from="Screen/Player2Cursor/Area2D2" to="Screen/Player2Cursor" method="hudLeave"]
+[connection signal="timeout" from="MoneyTimer" to="." method="addMoney"]

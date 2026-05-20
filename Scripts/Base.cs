@@ -26,8 +26,15 @@ public partial class Base : TargetBase
 	public bool releasing=false;
 	public List<Troops> reserveTroops = new List<Troops>();
 
-	public async override void _Ready()
-	{
+	public async override void _Ready(){
+		if(!player1){
+			GetNode<CpuParticles2D>("Smoke").Visible=true;
+			Texture=(Texture2D)GD.Load("res://Assets/TowerArt/player2Base.png");
+			randomEmission();
+		} else {
+			GetNode<CpuParticles2D>("Smoke").Visible=false;
+			Texture=(Texture2D)GD.Load("res://Assets/TowerArt/player1Base.png");
+		}
 		if(player1){
 			GD.Print("Player1");
 			GameManager.player1Base=this;
@@ -150,4 +157,13 @@ public partial class Base : TargetBase
 		} 
 	}
 
+	public async void randomEmission(){
+		float randomWait = (float)GD.RandRange(10.0f, 25.0f);
+   		await ToSignal(GetTree().CreateTimer(randomWait), SceneTreeTimer.SignalName.Timeout);
+		GetNode<CpuParticles2D>("Smoke").Emitting=true;
+		randomWait = (float)GD.RandRange(5.0f, 8.0f);
+   		await ToSignal(GetTree().CreateTimer(randomWait), SceneTreeTimer.SignalName.Timeout);
+		GetNode<CpuParticles2D>("Smoke").Emitting=false;
+		randomEmission();
+	}
 }

@@ -1,9 +1,46 @@
-[gd_scene load_steps=23 format=3 uid="uid://bjjy84kigbl4n"]
+[gd_scene load_steps=29 format=3 uid="uid://bjjy84kigbl4n"]
 
 [ext_resource type="Script" uid="uid://dyhddwv8ns2sk" path="res://Troops/Scripts/Melee.cs" id="1_384nh"]
 [ext_resource type="Texture2D" uid="uid://7vh0im402jki" path="res://Assets/CharacterArt/MeleeCaveman.png" id="2_54rog"]
+[ext_resource type="Texture2D" uid="uid://dftq0gfyr77yj" path="res://Assets/CharacterArt/Healer Future.png" id="2_jruer"]
 [ext_resource type="Texture2D" uid="uid://ct3ctwe8d1l30" path="res://Assets/CharacterArt/MeleeModern.png" id="2_uob20"]
 [ext_resource type="Texture2D" uid="uid://blnttaf7j45t" path="res://Assets/CharacterArt/MeleeMedevil.png" id="3_caso8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ocjk"]
+atlas = ExtResource("2_jruer")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw0ok"]
+atlas = ExtResource("2_jruer")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfjme"]
+atlas = ExtResource("2_jruer")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r5m1"]
+atlas = ExtResource("2_jruer")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jt6v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ocjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw0ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfjme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r5m1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wivj"]
 atlas = ExtResource("2_uob20")
@@ -127,6 +164,14 @@ collision_layer = 2
 script = ExtResource("1_384nh")
 
 [node name="Sprites" type="Node2D" parent="."]
+
+[node name="4" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
+texture_filter = 1
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_6jt6v")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="3" type="AnimatedSprite2D" parent="Sprites"]
 visible = false

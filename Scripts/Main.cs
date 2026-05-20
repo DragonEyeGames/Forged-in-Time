@@ -16,14 +16,31 @@ public partial class Main : Node2D
 		GD.Print(GameManager.player1Target);
 	}
 
+public void OnPlayerKilled(bool player1)
+{
+	int player=1;
+	if(player1==false){
+		player=2;
+	}
+	GD.Print("Player " + player + " died!");
+	GameManager.winner=player;
+	GetTree().ChangeSceneToFile("res://Scenes/end_screen.tscn");
+}
+	
+	public void addMoney(){
+		Player1Manager.money+=50;
+		Player2Manager.money+=50;
+	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if(Input.IsActionJustPressed("Player1")){
-			GameManager.player1=true;
+			//GameManager.player1=true;
+			//OnPlayerKilled(true);
 		}
 		if(Input.IsActionJustPressed("Player2")){
-			GameManager.player1=false;
+			//GameManager.player1=false;
+			//OnPlayerKilled(false);
 		}
 	}
 }

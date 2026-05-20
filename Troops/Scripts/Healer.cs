@@ -25,12 +25,24 @@ public partial class Healer : BaseTroop
 		troopType=GameManager.Towers.Healer;
 		health = maxHealth;
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
-		sprite = GetNode<AnimatedSprite2D>("Sprite");
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
-		navAgent.TargetDesiredDistance = 25;
+		navAgent.TargetDesiredDistance = 80;
+		sprite = GetNode<AnimatedSprite2D>("Sprites/1");
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		fetchUpgrades();
 		TargetSet();
+		foreach (AnimatedSprite2D child in GetNode<Node2D>("Sprites").GetChildren()){
+			child.Visible=false;
+		}
+		//GetNode<AnimatedSprite2D>("Sprites/1").Visible=true;
+		if(player1){
+			if(Player1Manager.upgradeLevel==1){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/2");
+			 	GetNode<AnimatedSprite2D>("Sprites/2").Visible=true;
+			}
+		}
+		
+		sprite.Visible=true;
 	}
 
 

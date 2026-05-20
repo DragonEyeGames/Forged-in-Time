@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4d6q4drrmrt2"
-path="res://.godot/imported/Hill-Wall-Tower.png-06ee773b332be001e467f1f9d95cb1bc.ctex"
+uid="uid://c8a7c5jd0mnu2"
+path="res://.godot/imported/Turretfutureshute.png-c3f641bd36be55079249e3879effef30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TowerArt/Hill-Wall-Tower.png"
-dest_files=["res://.godot/imported/Hill-Wall-Tower.png-06ee773b332be001e467f1f9d95cb1bc.ctex"]
+source_file="res://Assets/TowerArt/Turretfutureshute.png"
+dest_files=["res://.godot/imported/Turretfutureshute.png-c3f641bd36be55079249e3879effef30.ctex"]
 
 [params]
 

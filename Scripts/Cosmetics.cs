@@ -6,14 +6,14 @@ public partial class Cosmetics : Node
 {
 	public static Dictionary<GameManager.Towers, String> towerDisplays = new Dictionary<GameManager.Towers, String>
 	{
-		{ GameManager.Towers.Turret, "res://Towers/Assets/Turret.png" },
-		{ GameManager.Towers.Wall, "res://Towers/Assets/WallTower.png" },
-		{ GameManager.Towers.Watch_Tower, "res://Towers/Assets/Watch Tower.png" },
-		{ GameManager.Towers.Spikes, "res://Towers/Assets/Spikes.png" },
+		{ GameManager.Towers.Turret, "res://Assets/turretdisplay.png" },
+		{ GameManager.Towers.Wall, "res://Assets/TowerArt/CavemanWoodWall.png" },
+		{ GameManager.Towers.Watch_Tower, "res://Assets/TowerArt/stick-watchtower.png" },
+		{ GameManager.Towers.Spikes, "res://Assets/spikeDisplay.png" },
 		{ GameManager.Towers.Melee, "res://Assets/CharacterArt/MeleeCaveman.png" },
-		{ GameManager.Towers.Brute, "res://Towers/Assets/WallTower.png" },
-		{ GameManager.Towers.Ranged, "res://Towers/Assets/WallTower.png" },
-		{ GameManager.Towers.Healer, "res://Towers/Assets/WallTower.png" }
+		{ GameManager.Towers.Brute, "res://Assets/CharacterArt/BruteCavemanCharacter.png" },
+		{ GameManager.Towers.Ranged, "res://Assets/CharacterArt/RangedCavemanCharacter.png" },
+		{ GameManager.Towers.Healer, "res://Assets/CharacterArt/HealerCaveman.png" }
 	};
 	
 	public static Dictionary<GameManager.Towers, String> towerNames = new Dictionary<GameManager.Towers, String>

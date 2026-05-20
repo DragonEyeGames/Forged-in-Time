@@ -1,11 +1,37 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1d1jeujhaov2"]
+
+[gd_scene load_steps=38 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_640wx"]
 [ext_resource type="PackedScene" uid="uid://cayxysu631vpp" path="res://Scenes/shopSlot.tscn" id="2_36asn"]
+[ext_resource type="Texture2D" uid="uid://7vh0im402jki" path="res://Assets/CharacterArt/MeleeCaveman.png" id="3_7gr8i"]
+[ext_resource type="Texture2D" uid="uid://dopqsrwtgl8kq" path="res://Assets/turretdisplay.png" id="3_36s6t"]
+[ext_resource type="Texture2D" uid="uid://blnttaf7j45t" path="res://Assets/CharacterArt/MeleeMedevil.png" id="4_5ep0j"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="4_36asn"]
+[ext_resource type="Texture2D" uid="uid://dpd60ibyqs2jp" path="res://Assets/TowerArt/FuturisticWatchTower.png" id="4_ba8gd"]
+[ext_resource type="Texture2D" uid="uid://cta3lr1f1iov6" path="res://Assets/plasmaTurretDisplay.png" id="4_pbtju"]
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="5_4f5kr"]
+[ext_resource type="Texture2D" uid="uid://ct3ctwe8d1l30" path="res://Assets/CharacterArt/MeleeModern.png" id="5_piegi"]
+[ext_resource type="Texture2D" uid="uid://h0hjlnhwd1vd" path="res://Assets/TowerArt/CavemanWoodWall.png" id="5_q562m"]
+[ext_resource type="Texture2D" uid="uid://np7u46c44xll" path="res://Assets/TowerArt/stick-watchtower.png" id="5_vxf74"]
+[ext_resource type="Texture2D" uid="uid://cbo5h0wk0vyeh" path="res://Assets/CharacterArt/HealerCaveman.png" id="6_1a2va"]
+[ext_resource type="Texture2D" uid="uid://c6lcuqicj02x3" path="res://Assets/TowerArt/MedievalWall.png" id="6_l8r83"]
+[ext_resource type="Texture2D" uid="uid://8ihaqjb3y1vj" path="res://Assets/TowerArt/medieval-watchtower.png" id="6_oersf"]
+[ext_resource type="Script" uid="uid://dwa632hmmx2ir" path="res://Scenes/TimeAdvancement.cs" id="6_piegi"]
+[ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="6_ssfue"]
+[ext_resource type="Texture2D" uid="uid://b44vs7jc6up26" path="res://Assets/TowerArt/Modern-Watchtower.png" id="7_484xk"]
+[ext_resource type="Texture2D" uid="uid://bfee6yv5v0ey3" path="res://Assets/CharacterArt/HealerMedieval.png" id="7_ssfue"]
+[ext_resource type="Texture2D" uid="uid://dw2oodckyk11c" path="res://Assets/TowerArt/SandbagWallwithBarbwire.png" id="7_v5hjn"]
+[ext_resource type="Texture2D" uid="uid://d0vs2od0t6nd5" path="res://Assets/TowerArt/LazzzzzzzerrrrWall.png" id="8_buji0"]
 [ext_resource type="Texture2D" uid="uid://dnl8v8edmxtfn" path="res://Assets/01PixelCoinGold.png" id="12_i2avg"]
+[ext_resource type="Texture2D" uid="uid://c5daq3s2762xb" path="res://Assets/CharacterArt/RobotCharacter.png" id="12_lkt4f"]
 [ext_resource type="Texture2D" uid="uid://dr234cuj5lh51" path="res://Assets/hearts.png" id="12_piegi"]
+[ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="12_yidpd"]
+[ext_resource type="Texture2D" uid="uid://ddabbuqap0qck" path="res://Assets/CharacterArt/BruteCavemanCharacter.png" id="15_q562m"]
+[ext_resource type="Texture2D" uid="uid://cygsmj665o0rj" path="res://Assets/CharacterArt/Healer Modern.png" id="15_wfkbc"]
+[ext_resource type="Texture2D" uid="uid://beobpfmtkuani" path="res://Assets/CharacterArt/BruteMedievalCharacter.png" id="16_l8r83"]
+[ext_resource type="Texture2D" uid="uid://dftq0gfyr77yj" path="res://Assets/CharacterArt/Healer Future.png" id="16_s17ah"]
+[ext_resource type="Texture2D" uid="uid://c8f0iton6dqd8" path="res://Assets/CharacterArt/BrutePresentCharacter.png" id="17_v5hjn"]
+[ext_resource type="Texture2D" uid="uid://dl86ycwksfli8" path="res://Assets/CharacterArt/BruteRobot.png" id="18_buji0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1a2va"]
 size = Vector2(132, 14)
@@ -153,22 +179,29 @@ color = Color(0.508878, 0.29694, 0.0894001, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 0
+offset_top = -62.0
 offset_right = 131.0
-offset_bottom = 648.0
+offset_bottom = 586.0
 mouse_filter = 2
+
+[node name="IGNORE" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+layout_mode = 2
 
 [node name="Turret" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
+Sprites = Array[Texture2D]([ExtResource("3_36s6t"), ExtResource("4_pbtju")])
 
-[node name="Turret2" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="Wall" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 1
+Sprites = Array[Texture2D]([ExtResource("5_q562m"), ExtResource("6_l8r83"), ExtResource("7_v5hjn"), ExtResource("8_buji0")])
 
-[node name="Turret3" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="WatchTower" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 2
+Sprites = Array[Texture2D]([ExtResource("5_vxf74"), ExtResource("6_oersf"), ExtResource("7_484xk"), ExtResource("4_ba8gd")])
 
-[node name="Turret4" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="Spikes" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 3
 
@@ -176,21 +209,116 @@ tower = 3
 layout_mode = 2
 tower = 4
 troop = true
+Sprites = Array[Texture2D]([ExtResource("3_7gr8i"), ExtResource("4_5ep0j"), ExtResource("5_piegi"), ExtResource("12_lkt4f")])
 
-[node name="Turret7" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="Ranged" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 5
 troop = true
 
-[node name="Turret6" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="Brute" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 6
 troop = true
+Sprites = Array[Texture2D]([ExtResource("15_q562m"), ExtResource("16_l8r83"), ExtResource("17_v5hjn"), ExtResource("18_buji0")])
 
-[node name="Turret8" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+[node name="Healer" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2
 tower = 7
 troop = true
+Sprites = Array[Texture2D]([ExtResource("6_1a2va"), ExtResource("7_ssfue"), ExtResource("15_wfkbc"), ExtResource("16_s17ah")])
+Names = Array[String](["Healer"])
+
+[node name="TimeAdvancement" type="Control" parent="ColorRect/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(1.13, 59.355)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("6_piegi")
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/VBoxContainer/TimeAdvancement"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 131.0
+offset_bottom = 58.0
+mouse_filter = 2
+color = Color(0.78066, 0.704382, 0.474143, 1)
+
+[node name="Base" type="Sprite2D" parent="ColorRect/VBoxContainer/TimeAdvancement"]
+visible = false
+position = Vector2(28.4, 29.4)
+scale = Vector2(2.925, 2.925)
+texture = ExtResource("6_ssfue")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Name" type="RichTextLabel" parent="ColorRect/VBoxContainer/TimeAdvancement"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 665.0
+offset_bottom = 91.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 54
+text = "Time Upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="ColorRect/VBoxContainer/TimeAdvancement"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 18.0
+offset_right = 657.0
+offset_bottom = 123.0
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 33
+text = "Puts your troops right in modern day America. Strong and powerful towers."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="RichTextLabel" parent="ColorRect/VBoxContainer/TimeAdvancement"]
+layout_mode = 0
+offset_left = 72.9574
+offset_top = 37.2138
+offset_right = 261.957
+offset_bottom = 137.214
+scale = Vector2(0.19, 0.19)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 61
+text = "$500"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/TimeAdvancement"]
+layout_mode = 0
+offset_left = 16.9574
+offset_top = 33.2138
+offset_right = 72.9574
+offset_bottom = 57.2138
+scale = Vector2(0.85, 0.85)
+pivot_offset = Vector2(26.9511, 11.9081)
+mouse_filter = 2
+icon = ExtResource("12_yidpd")
+flat = true
+script = ExtResource("5_4f5kr")
+
+[node name="Player1" type="Area2D" parent="ColorRect/VBoxContainer/TimeAdvancement/Button"]
+visible = false
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/TimeAdvancement/Button/Player1"]
+polygon = PackedVector2Array(51.4029, 8.74504, 36.8778, 4.27577, 19.0007, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 19.0007, 19.9182, 36.8778, 19.9182, 51.4029, 15.449)
+
+[node name="Player2" type="Area2D" parent="ColorRect/VBoxContainer/TimeAdvancement/Button"]
+visible = false
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ColorRect/VBoxContainer/TimeAdvancement/Button/Player2"]
+polygon = PackedVector2Array(51.4029, 8.74504, 36.8778, 4.27577, 19.0007, 4.27577, 4.47559, 8.74504, 4.47559, 15.449, 19.0007, 19.9182, 36.8778, 19.9182, 51.4029, 15.449)
 
 [node name="Close" type="Button" parent="ColorRect"]
 layout_mode = 0
@@ -203,8 +331,9 @@ script = ExtResource("5_4f5kr")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 1018.0
+offset_top = 634.0
 offset_right = 1150.0
-offset_bottom = 14.0
+offset_bottom = 648.0
 mouse_filter = 2
 flat = true
 script = ExtResource("5_4f5kr")
@@ -338,6 +467,7 @@ texture = ExtResource("12_piegi")
 region_enabled = true
 region_rect = Rect2(0, 34.009, 16, 12.9607)
 
+[connection signal="pressed" from="ColorRect/VBoxContainer/TimeAdvancement/Button" to="ColorRect/VBoxContainer/TimeAdvancement" method="timeAdvance"]
 [connection signal="pressed" from="ColorRect/Close" to="." method="toggle"]
 [connection signal="pressed" from="Button" to="." method="closedPressed"]
 [connection signal="pressed" from="BigClose" to="." method="closedPressed"]

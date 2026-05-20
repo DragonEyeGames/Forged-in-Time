@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnnqsq31nw64q"
-path="res://.godot/imported/ArmyPewPew.png-8dca127d161d0b60b4432f3cedb660d9.ctex"
+uid="uid://dtbfun6ch6gnt"
+path="res://.godot/imported/grass.png-0ae2a843c1ddcf23d7f0fe617952a58f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CharacterArt/ArmyPewPew.png"
-dest_files=["res://.godot/imported/ArmyPewPew.png-8dca127d161d0b60b4432f3cedb660d9.ctex"]
+source_file="res://Assets/LevelArt/grass.png"
+dest_files=["res://.godot/imported/grass.png-0ae2a843c1ddcf23d7f0fe617952a58f.ctex"]
 
 [params]
 

@@ -13,6 +13,22 @@ public partial class Turret : Tower
 	[Export] public Timer cooldown;
 	// Called when the node enters the scene tree for the first time.
 
+	public override void OnTimeAdvance(bool upgradePlayer, int level){
+		if(Player1==upgradePlayer){
+			upgrade(level);
+		}
+	}
+
+	public override void upgrade(int level){
+		if(level==1){
+			GetNode<Sprite2D>("Base").Texture=(Texture2D)GD.Load("res://Towers/Assets/PlasmaTurret.png");
+			GetNode<Sprite2D>("Turret").Texture=(Texture2D)GD.Load("res://Towers/Assets/PlasmaTurret.png");
+			GetNode<Sprite2D>("Turret/Fire").Texture=(Texture2D)GD.Load("res://Towers/Assets/PlasmaTurret.png");
+			damage=3;
+			cooldown.WaitTime=.1;
+		}
+	}
+
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
