@@ -21,7 +21,7 @@ public partial class Brute : BaseTroop
 
 	
 
-	public override void _Ready()
+	public async override void _Ready()
 	{
 		troopType=GameManager.Towers.Brute;
 		health = maxHealth;

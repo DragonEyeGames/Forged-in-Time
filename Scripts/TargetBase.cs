@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract partial class TargetBase : Node2D
+public abstract partial class TargetBase : Sprite2D
 {
 	public abstract int health { get; set; }
 	public abstract int maxHealth { get; set; }

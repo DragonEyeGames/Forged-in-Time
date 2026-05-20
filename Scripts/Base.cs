@@ -49,7 +49,7 @@ public partial class Base : TargetBase
 			GetNode<Area2D>("Player-1").QueueFree();
 			GetNode<Area2D>("HUD2/Storage/Release/Player-1").QueueFree();
 			GetNode<Area2D>("Detection/Player-1").QueueFree();
-			SelfModulate=new Color(1, .2f, .2f, 1);
+			//SelfModulate=new Color(1, .2f, .2f, 1);
 
 		}
 		if (health > 0) 

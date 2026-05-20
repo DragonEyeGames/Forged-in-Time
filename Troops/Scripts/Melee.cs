@@ -58,6 +58,6 @@ public partial class Melee : BaseTroop
 			}
 		}
 		sprite.Visible=true;
-		
+		sprite.Scale = new Vector2(-1, 1);
 	}
 }
