@@ -13,7 +13,8 @@ public partial class GameManager : Node
 		Melee,
 		Ranged,
 		Brute,
-		Healer
+		Healer,
+		Vehicle
 	}
 	
 	public enum UpgradeTypes{
