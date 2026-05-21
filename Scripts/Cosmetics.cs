@@ -6,7 +6,7 @@ public partial class Cosmetics : Node
 {
 	public static Dictionary<GameManager.Towers, String> towerDisplays = new Dictionary<GameManager.Towers, String>
 	{
-		{ GameManager.Towers.Turret, "res://Assets/turretdisplay.png" },
+		{ GameManager.Towers.Turret, "res://Assets/TowerArt/Caveman turret.png" },
 		{ GameManager.Towers.Wall, "res://Assets/TowerArt/CavemanWoodWall.png" },
 		{ GameManager.Towers.Watch_Tower, "res://Assets/TowerArt/stick-watchtower.png" },
 		{ GameManager.Towers.Spikes, "res://Assets/spikeDisplay.png" },

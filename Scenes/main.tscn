@@ -225,6 +225,7 @@ shape = SubResource("CircleShape2D_3pmx8")
 [node name="Sprite2D" type="Sprite2D" parent="Screen"]
 
 [node name="pause" parent="." instance=ExtResource("28_ueoa1")]
+visible = false
 
 [node name="DesertLevel" parent="." instance=ExtResource("25_cbgmd")]
 [node name="Miner" parent="." instance=ExtResource("25_cbgmd")]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba4ynqxd825te"]
+[gd_scene load_steps=4 format=3 uid="uid://cskth4qsjjjgp"]
 
 [ext_resource type="Script" uid="uid://c7dvo84ew12fy" path="res://Scripts/LevelSelect.cs" id="1_nkys2"]
+[ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://uiTheme.tres" id="2_2sqnl"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_lx4vd"]
 
 [node name="Level Select" type="Node2D"]
@@ -13,14 +14,16 @@ color = Color(0.00766666, 0, 0.23, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 24.0
-offset_right = 896.0
-offset_bottom = 624.0
+offset_left = 325.0
+offset_top = 180.0
+offset_right = 965.0
+offset_bottom = 780.0
+scale = Vector2(0.74, 0.74)
 
 [node name="Level_1_Button" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_2sqnl")
 theme_override_fonts/font = ExtResource("2_lx4vd")
 theme_override_font_sizes/font_size = 125
 text = "The Plains"
@@ -28,6 +31,7 @@ text = "The Plains"
 [node name="Level_2_Button" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_2sqnl")
 theme_override_fonts/font = ExtResource("2_lx4vd")
 theme_override_font_sizes/font_size = 125
 text = "The Desert"
@@ -35,6 +39,7 @@ text = "The Desert"
 [node name="Level_3_Button" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_2sqnl")
 theme_override_fonts/font = ExtResource("2_lx4vd")
 theme_override_font_sizes/font_size = 125
 text = "The Jungle"
@@ -42,9 +47,29 @@ text = "The Jungle"
 [node name="Level_4_Button" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_2sqnl")
 theme_override_fonts/font = ExtResource("2_lx4vd")
 theme_override_font_sizes/font_size = 125
 text = "The Tundra"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 195.0
+offset_top = 21.0
+offset_right = 917.0
+offset_bottom = 157.0
+theme = ExtResource("2_2sqnl")
+text = "Level Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="RichTextLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Level_1_Button" to="." method="OnLevel1ButtonPressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Level_2_Button" to="." method="OnLevel2ButtonPressed"]

@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://pwf8a2eev03y"]
+
+[ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="1_niasb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_earos"]
+bg_color = Color(0.189405, 0.0783198, 0.317606, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6hi4"]
+bg_color = Color(0.321597, 0.153419, 0.519515, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7uyn"]
+bg_color = Color(0.119935, 1.7658e-06, 0.0870593, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_niasb"]
+bg_color = Color(0.464978, 2.34156e-05, 0.367066, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opekn"]
+bg_color = Color(0.25098, 0, 0.74902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41msq"]
+bg_color = Color(0.25098, 0, 0.74902, 1)
+
+[resource]
+default_font = ExtResource("1_niasb")
+default_font_size = 16
+Button/font_sizes/font_size = 112
+Button/fonts/font = ExtResource("1_niasb")
+Button/styles/hover = SubResource("StyleBoxFlat_earos")
+Button/styles/normal = SubResource("StyleBoxFlat_f6hi4")
+Button/styles/pressed = SubResource("StyleBoxFlat_n7uyn")
+Panel/styles/panel = SubResource("StyleBoxFlat_niasb")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/font_sizes/normal_font_size = 112
+RichTextLabel/fonts/normal_font = ExtResource("1_niasb")
+RichTextLabel/styles/background = SubResource("StyleBoxFlat_opekn")
+RichTextLabel/styles/fill = SubResource("StyleBoxFlat_41msq")

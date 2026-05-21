@@ -15,6 +15,13 @@ public abstract partial class Tower : Node2D
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		if(Player1){
 			upgrade(Player1Manager.upgradeLevel);
+		} else if(!Player1){
+			upgrade(Player2Manager.upgradeLevel);
+		}
+		if(!Player1){
+			Player2Manager.score+=Prices.towerPrices[towerType];
+		} else {
+			Player1Manager.score+=Prices.towerPrices[towerType];
 		}
 		while (hovering){
 			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);

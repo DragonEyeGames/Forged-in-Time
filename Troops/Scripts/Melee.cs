@@ -31,6 +31,7 @@ public partial class Melee : BaseTroop
 			child.Visible=false;
 		}
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		initialize();
 		fetchUpgrades();
 		TargetSet();
 		if(upgradeLevel>6){

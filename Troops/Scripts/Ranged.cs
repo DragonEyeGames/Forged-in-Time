@@ -31,6 +31,7 @@ public partial class Ranged : BaseTroop
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
 		navAgent.TargetDesiredDistance = 300;
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		initialize();
 		fetchUpgrades();
 		TargetSet();
 	}

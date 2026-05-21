@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://df5scb8ns130h"]
+[gd_scene load_steps=4 format=3 uid="uid://df5scb8ns130h"]
 
 [ext_resource type="Script" uid="uid://csl7f40njf774" path="res://Scripts/EndScreen.cs" id="1_1gwaw"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_bhpww"]
+[ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://uiTheme.tres" id="2_gdxnu"]
 
 [node name="EndScreen" type="Node2D"]
 script = ExtResource("1_1gwaw")
@@ -11,29 +12,35 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.00766666, 0, 0.23, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 296.0
-offset_top = 120.0
-offset_right = 856.0
-offset_bottom = 240.0
-color = Color(0.25, 0, 0.75, 1)
-
 [node name="Winner" type="RichTextLabel" parent="."]
-offset_left = 256.0
-offset_top = 128.0
-offset_right = 896.0
-offset_bottom = 240.0
+offset_left = 179.0
+offset_top = 89.0
+offset_right = 819.0
+offset_bottom = 201.0
+scale = Vector2(1.24, 1.24)
+theme = ExtResource("2_gdxnu")
 theme_override_fonts/normal_font = ExtResource("2_bhpww")
 theme_override_font_sizes/normal_font_size = 100
 text = "Player 1 Wins!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Panel" type="Panel" parent="Winner"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 256.0
-offset_top = 346.0
-offset_right = 896.0
-offset_bottom = 624.0
+offset_left = 227.0
+offset_top = 440.0
+offset_right = 867.0
+offset_bottom = 540.0
+scale = Vector2(1.1, 1.1)
+theme = ExtResource("2_gdxnu")
 
 [node name="MainButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -43,6 +50,7 @@ theme_override_font_sizes/font_size = 76
 text = "Main Menu"
 
 [node name="ScoresButton" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_bhpww")
@@ -50,8 +58,93 @@ theme_override_font_sizes/font_size = 75
 text = "Scores"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_bhpww")
 theme_override_font_sizes/font_size = 75
 text = "Quit"
+
+[node name="Player2" type="ColorRect" parent="."]
+offset_left = 180.0
+offset_top = 266.0
+offset_right = 544.0
+offset_bottom = 403.0
+color = Color(0.533324, 1.09497e-06, 2.88785e-07, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Player2"]
+layout_mode = 0
+offset_right = 364.0
+offset_bottom = 49.0
+theme_override_fonts/normal_font = ExtResource("2_bhpww")
+theme_override_font_sizes/normal_font_size = 44
+text = "Player 2 Final Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="RichTextLabel" parent="Player2"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 364.0
+offset_bottom = 156.0
+theme_override_fonts/normal_font = ExtResource("2_bhpww")
+theme_override_font_sizes/normal_font_size = 106
+text = "10025"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Player2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Player1" type="ColorRect" parent="."]
+offset_left = 598.0
+offset_top = 268.0
+offset_right = 962.0
+offset_bottom = 405.0
+color = Color(0, 0, 0.713726, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Player1"]
+layout_mode = 0
+offset_right = 364.0
+offset_bottom = 49.0
+theme_override_fonts/normal_font = ExtResource("2_bhpww")
+theme_override_font_sizes/normal_font_size = 44
+text = "Player 1 Final Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="RichTextLabel" parent="Player1"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 364.0
+offset_bottom = 156.0
+theme_override_fonts/normal_font = ExtResource("2_bhpww")
+theme_override_font_sizes/normal_font_size = 106
+text = "10025"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Player1"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

@@ -29,6 +29,7 @@ public partial class Healer : BaseTroop
 		navAgent.TargetDesiredDistance = 80;
 		sprite = GetNode<AnimatedSprite2D>("Sprites/1");
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		initialize();
 		fetchUpgrades();
 		TargetSet();
 		foreach (AnimatedSprite2D child in GetNode<Node2D>("Sprites").GetChildren()){

@@ -153,6 +153,13 @@ public partial class Base : TargetBase
 		if (health <= 0) 
 		{
 			GetNode<SignalBus>("/root/SignalBus").EmitSignal(SignalBus.SignalName.PlayerKilled, player1);
+			if(player1){
+				Player2Manager.score+=500;
+				Player2Manager.score*=2;
+			} else {
+				Player1Manager.score+=500;
+				Player1Manager.score*=2;
+			}
 			QueueFree();
 		} 
 	}

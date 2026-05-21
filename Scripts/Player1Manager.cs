@@ -11,6 +11,8 @@ public partial class Player1Manager : Node
 	public static int upgradeLevel=0;
 	public static int money=1000;
 	
+	public static int score=0;
+	
 	public override void _Ready()
 	{
 		GetNode<SignalBus>("/root/SignalBus").Connect(

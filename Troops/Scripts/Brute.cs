@@ -26,14 +26,17 @@ public partial class Brute : BaseTroop
 		troopType=GameManager.Towers.Brute;
 		health = maxHealth;
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
-		sprite = GetNode<AnimatedSprite2D>("Sprite");
+		//sprite = GetNode<AnimatedSprite2D>("Sprite");
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		initialize();
+		fetchUpgrades();
 		TargetSet();
 		navAgent.TargetDesiredDistance = 64;
 		foreach (AnimatedSprite2D child in GetNode<Node2D>("Sprites").GetChildren()){
 			child.Visible=false;
 		}
-		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		
 		Vector4 upgradeSpread=fetchUpgrades();
 		GD.Print(upgradeSpread);
 		sprite = GetNode<AnimatedSprite2D>("Sprites/1");
