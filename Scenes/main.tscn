@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_ee4r6"]
 [ext_resource type="PackedScene" uid="uid://ssdf7h45x4d0" path="res://miner.tscn" id="25_cbgmd"]
 [ext_resource type="Script" uid="uid://hhncf58ocdwm" path="res://Scripts/ScreenCursor.cs" id="25_u50mg"]
-[ext_resource type="PackedScene" uid="uid://dcs7g671onmkq" path="res://Scenes/Pause.tscn" id="28_ueoa1"]
+[ext_resource type="PackedScene" path="res://Scenes/Pause.tscn" id="28_ueoa1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_yaehf")
@@ -226,16 +226,13 @@ shape = SubResource("CircleShape2D_3pmx8")
 
 [node name="pause" parent="." instance=ExtResource("28_ueoa1")]
 
+[node name="DesertLevel" parent="." instance=ExtResource("25_cbgmd")]
 [node name="Miner" parent="." instance=ExtResource("25_cbgmd")]
 position = Vector2(538, 166)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -20
-offset_left = -11.0
-offset_top = -16.0
-offset_right = 1108.0
-offset_bottom = 653.0
-color = Color(0.245967, 0.47, 0.1645, 1)
+position = Vector2(-11, -16)
 
 [node name="MoneyTimer" type="Timer" parent="."]
 wait_time = 5.0
