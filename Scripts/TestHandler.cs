@@ -75,6 +75,7 @@ public partial class TestHandler : Node2D
 			}
 		}
 		if(selectedTower==null && player1){
+			GD.Print(Player1Manager.toPlace);
 			if(Player1Manager.toPlace==GameManager.Towers.Spikes){
 				selectedTower=parentNode.spikes.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);
@@ -90,7 +91,9 @@ public partial class TestHandler : Node2D
 				GetParent().AddChild(selectedTower);
 			}
 			if(Player1Manager.toPlace==GameManager.Towers.Wall){
+				GD.Print("ASDASDASdasd");
 				selectedTower=parentNode.wall.Instantiate() as Tower;
+				GD.Print(parentNode.wall);
 				GetParent().AddChild(selectedTower);
 			}
 			if(Player1Manager.toPlace==GameManager.Towers.Watch_Tower){
