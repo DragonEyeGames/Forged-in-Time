@@ -23,3 +23,13 @@ Sprint 4:
 - I have an issue where the target breaks and I dont know why
 - I am going to try to get it to work next week.
 - After that I need to make the vechincle and work on getting some easy points for the rubric
+
+Sprint 5:
+- Same stuff as the last two sprints basically
+- More reworks and bug fixing
+- Just need to finishg bug fixing and close out the project
+
+Sprint 6: 
+-Finnaly Finished the Miner
+-Relativly Easy Sprint still just bug fixing
+-Got really sick for most of the second half.
