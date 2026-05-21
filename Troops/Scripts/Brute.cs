@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Brute : Troop
+public partial class Brute : BaseTroop
 {
 	[Export] public override float speed { get; set; } = 20.0f;
 	[Export] public  override int health { get; set; } = 20;
@@ -12,10 +12,9 @@ public partial class Brute : Troop
 	[Export] public override int speedLevel {get; set;} = 0;
 	[Export] public override int healthLevel { get; set; } = 0;
 	[Export] public override int damageLevel { get; set; } = 0;
-	
+	public override TargetBase target { get; set; }
 	public override NavigationAgent2D navAgent { get; set; }
 	public override AnimatedSprite2D sprite  {get; set;}
-	[Export] public override Base target { get; set; }
 	public override Timer cooldown {get; set;}
 	public override bool healer { get; set; } = false;
 	public override GameManager.Towers troopType { get; set; }
@@ -29,6 +28,7 @@ public partial class Brute : Troop
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
 		sprite = GetNode<AnimatedSprite2D>("Sprite");
 		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
+		TargetSet();
 		navAgent.TargetDesiredDistance = 64;
 		foreach (AnimatedSprite2D child in GetNode<Node2D>("Sprites").GetChildren()){
 			child.Visible=false;

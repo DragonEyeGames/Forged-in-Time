@@ -35,6 +35,11 @@ public partial class GameManager : Node
 	public static Placement player2Placement;
 	public static List<TroopUpgrade> newList = new List<TroopUpgrade>();
 	public static BakeHandler baker;
+
+	public static TargetBase player1Target;
+	public static TargetBase player2Target; 
+	public static TargetBase player1DefaultTarget;
+	public static TargetBase player2DefaultTarget;
 	
 	public static List<TroopUpgrade> player1Upgrades = new List<TroopUpgrade>();
 	public static List<TroopUpgrade> player2Upgrades = new List<TroopUpgrade>();

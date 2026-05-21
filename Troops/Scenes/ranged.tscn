@@ -166,6 +166,7 @@ shape = SubResource("CircleShape2D_y57lb")
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 1.55
+one_shot = true
 
 [connection signal="navigation_finished" from="NavAgent" to="." method="on_path_finished"]
 [connection signal="timeout" from="Timer" to="." method="recalculate"]

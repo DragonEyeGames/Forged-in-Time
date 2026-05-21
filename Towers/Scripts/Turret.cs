@@ -39,7 +39,7 @@ public partial class Turret : Tower
 				cooldown.Start();
 				turret.LookAt(player2Colliding[0].GlobalPosition);
 				turret.GlobalRotation-=(float)Math.PI/2;
-				Troop troop = player2Colliding[0] as Troop;
+				BaseTroop troop = player2Colliding[0] as BaseTroop;
 				troop.health-=damage;
 				GetNode<AnimationPlayer>("Animator").Play("pew");
 			}
@@ -48,7 +48,7 @@ public partial class Turret : Tower
 				cooldown.Start();
 				turret.LookAt(player1Colliding[0].GlobalPosition);
 				turret.GlobalRotation-=(float)Math.PI/2;
-				Troop troop = player1Colliding[0] as Troop;
+				BaseTroop troop = player1Colliding[0] as BaseTroop;
 				troop.health-=damage;
 				GetNode<AnimationPlayer>("Animator").Play("pew");
 			}

@@ -9,10 +9,11 @@ public partial class Main : Node2D
 	public override void _Ready()
 	{
 		GameManager.keyboard=keyboard;
-		GetNode<SignalBus>("/root/SignalBus").Connect(
-			SignalBus.SignalName.PlayerKilled,
-			new Callable(this, nameof(OnPlayerKilled))
-		);
+		
+		GD.Print("Player 1 Default IS" + GameManager.player1DefaultTarget);
+		GameManager.player1Target = GameManager.player1DefaultTarget;
+		GameManager.player2Target = GameManager.player2DefaultTarget;
+		GD.Print(GameManager.player1Target);
 	}
 
 public void OnPlayerKilled(bool player1)
