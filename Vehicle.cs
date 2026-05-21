@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class Melee : BaseTroop
+public partial class Vehicle : BaseTroop
 {
-	[Export] public override int speedLevel {get; set;}
+    [Export] public override int speedLevel {get; set;}
 	[Export] public override float speed { get; set; } = 50.0f;
 	[Export] public override int healthLevel { get; set; } = 0;
 	[Export] public override int health { get; set; } = 8;
@@ -17,11 +17,12 @@ public partial class Melee : BaseTroop
 	public override bool healer { get; set; } = false;
 	public override GameManager.Towers troopType { get; set; }
 	[Export] public override int upgradeLevel {get; set;} = 0;
+	[Export] public PackedScene troop;
 
 
 	public async override void _Ready()
 	{
-		troopType=GameManager.Towers.Melee;
+		troopType=GameManager.Towers.Vehicle;
 		health = maxHealth;
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
 		
@@ -31,7 +32,6 @@ public partial class Melee : BaseTroop
 			child.Visible=false;
 		}
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-		initialize();
 		fetchUpgrades();
 		TargetSet();
 		if(upgradeLevel>6){
@@ -60,6 +60,18 @@ public partial class Melee : BaseTroop
 		}
 		sprite.Visible=true;
 		sprite.Scale = new Vector2(-1, 1);
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		if (health <= 0)
+		{
+			BaseTroop newTroop = troop.Instantiate<BaseTroop>();;
+			GetParent().AddChild(newTroop);
+			newTroop.GlobalPosition = GlobalPosition;
+			newTroop.player1 = player1;
+			this.QueueFree();
+		}
 	}
 
 }

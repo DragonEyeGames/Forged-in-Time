@@ -1,0 +1,204 @@
+[gd_scene load_steps=25 format=3 uid="uid://d00t5jltf4obj"]
+
+[ext_resource type="Script" uid="uid://bcg1j2w3n4ff0" path="res://Vehicle.cs" id="1_0k2kk"]
+[ext_resource type="Texture2D" uid="uid://bjvffuoq6mi6x" path="res://Assets/VehicleArt/GruMobile.png" id="2_6tt44"]
+[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/Scenes/melee.tscn" id="2_q0puc"]
+[ext_resource type="Texture2D" uid="uid://g7xi8pdt3g7r" path="res://Assets/VehicleArt/PresentVehicle.png" id="3_q0puc"]
+[ext_resource type="Texture2D" uid="uid://cuqftb8xryq85" path="res://Assets/VehicleArt/HorseVehicle.png" id="4_uoan2"]
+[ext_resource type="Texture2D" uid="uid://bkivpb7vb6mc7" path="res://Assets/VehicleArt/DinoSpriteSheet.png" id="5_vfd0p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaeqw"]
+atlas = ExtResource("2_6tt44")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jek0n"]
+atlas = ExtResource("2_6tt44")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4mks"]
+atlas = ExtResource("2_6tt44")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cy0ul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaeqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jek0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4mks")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qou6k"]
+atlas = ExtResource("3_q0puc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k88o"]
+atlas = ExtResource("3_q0puc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k44m6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qou6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k88o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqwv0"]
+atlas = ExtResource("4_uoan2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr88q"]
+atlas = ExtResource("4_uoan2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtwbp"]
+atlas = ExtResource("4_uoan2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4u26f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqwv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr88q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtwbp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvfyt"]
+atlas = ExtResource("5_vfd0p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52a4n"]
+atlas = ExtResource("5_vfd0p")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkd4o"]
+atlas = ExtResource("5_vfd0p")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1lcie"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvfyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52a4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkd4o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6da2i"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yv06w"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xm30j"]
+radius = 20.1231
+
+[node name="Vehicle" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
+script = ExtResource("1_0k2kk")
+maxHealth = 8
+troop = ExtResource("2_q0puc")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="4" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
+texture_filter = 1
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_cy0ul")
+
+[node name="3" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
+texture_filter = 1
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_k44m6")
+
+[node name="2" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
+texture_filter = 1
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_4u26f")
+frame_progress = 0.389742
+
+[node name="1" type="AnimatedSprite2D" parent="Sprites"]
+texture_filter = 1
+position = Vector2(-1, 0)
+sprite_frames = SubResource("SpriteFrames_1lcie")
+autoplay = "default"
+frame_progress = 0.819352
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+target_desired_distance = 30.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_6da2i")
+disabled = true
+
+[node name="Player1" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+visible = false
+shape = SubResource("CircleShape2D_yv06w")
+
+[node name="Player2" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+visible = false
+shape = SubResource("CircleShape2D_yv06w")
+
+[node name="AttackRange" type="Area2D" parent="."]
+visible = false
+scale = Vector2(0.45, 0.45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_xm30j")
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="navigation_finished" from="NavAgent" to="." method="on_path_finished"]
+[connection signal="timeout" from="Timer" to="." method="recalculate"]
+[connection signal="timeout" from="Cooldown" to="." method="on_cooldown"]
