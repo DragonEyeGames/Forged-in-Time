@@ -8,10 +8,10 @@ public partial class LevelSelect : Node2D
 	private Button Level3Button;
 	private Button Level4Button;
 	
-	private const string Level1Path = "res://Scenes/main.tscn";
-	private const string Level2Path = "";
-	private const string Level3Path = "";
-	private const string Level4Path = "";
+	private const string Level1Path = "res://Scenes/plains_level.tscn";
+	private const string Level2Path = "res://Scenes/desert_level.tscn";
+	private const string Level3Path = "res://Scenes/forest_level.tscn";
+	private const string Level4Path = "res://Scenes/tundra_level.tscn";
 
 	public override void _Ready()
 	{
