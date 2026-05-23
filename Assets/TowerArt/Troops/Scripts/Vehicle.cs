@@ -1,44 +1,47 @@
 using Godot;
 using System;
 
-public partial class Brute : BaseTroop
+public partial class Vehicle : BaseTroop
 {
-	[Export] public override float speed { get; set; } = 20.0f;
-	[Export] public  override int health { get; set; } = 20;
-	[Export] public override int maxHealth { get; set; } = 20;
-	[Export] public override int damage { get; set; } = 2;
-	
-	[Export] public override int upgradeLevel {get; set;} = 0;
-	[Export] public override int speedLevel {get; set;} = 0;
+	[Export] public override int speedLevel {get; set;}
+	[Export] public override float speed { get; set; } = 50.0f;
 	[Export] public override int healthLevel { get; set; } = 0;
+	[Export] public override int health { get; set; } = 8;
+	[Export] public override int maxHealth { get; set; } = 5;
 	[Export] public override int damageLevel { get; set; } = 0;
-	public override TargetBase target { get; set; }
+	[Export] public override int damage { get; set; } = 0;
 	public override NavigationAgent2D navAgent { get; set; }
 	public override AnimatedSprite2D sprite  {get; set;}
+	public override TargetBase target { get; set; }
 	public override Timer cooldown {get; set;}
 	public override bool healer { get; set; } = false;
 	public override GameManager.Towers troopType { get; set; }
+	[Export] public override int upgradeLevel {get; set;} = 0;
+	[Export] public PackedScene troop;
 
-	
 
 	public async override void _Ready()
 	{
-		troopType=GameManager.Towers.Brute;
+		troopType=GameManager.Towers.Vehicle;
 		health = maxHealth;
 		navAgent = GetNode<NavigationAgent2D>("NavAgent");
-		//sprite = GetNode<AnimatedSprite2D>("Sprite");
-		cooldown = GetNode<Timer>("Cooldown"); updateHitboxes();
-		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-		initialize();
-		fetchUpgrades();
-		TargetSet();
+		
+		cooldown = GetNode<Timer>("Cooldown");
 		navAgent.TargetDesiredDistance = 64;
 		foreach (AnimatedSprite2D child in GetNode<Node2D>("Sprites").GetChildren()){
 			child.Visible=false;
 		}
-		
-		Vector4 upgradeSpread=fetchUpgrades();
-		GD.Print(upgradeSpread);
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		fetchUpgrades();
+		TargetSet();
+		if(upgradeLevel>6){
+			sprite = GetNode<AnimatedSprite2D>("Sprites/3");
+			 GetNode<AnimatedSprite2D>("Sprites/3").Visible=true;
+		} else if(upgradeLevel>30){
+			sprite = GetNode<AnimatedSprite2D>("Sprites/2");
+			 GetNode<AnimatedSprite2D>("Sprites/2").Visible=true;
+		} else {
+		}
 		sprite = GetNode<AnimatedSprite2D>("Sprites/1");
 		//GetNode<AnimatedSprite2D>("Sprites/1").Visible=true;
 		if(player1){
@@ -56,5 +59,19 @@ public partial class Brute : BaseTroop
 			}
 		}
 		sprite.Visible=true;
+		sprite.Scale = new Vector2(-1, 1);
 	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		if (health <= 0)
+		{
+			BaseTroop newTroop = troop.Instantiate<BaseTroop>();;
+			GetParent().AddChild(newTroop);
+			newTroop.GlobalPosition = GlobalPosition;
+			newTroop.player1 = player1;
+			this.QueueFree();
+		}
+	}
+
 }

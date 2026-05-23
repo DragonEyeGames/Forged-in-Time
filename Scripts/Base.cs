@@ -81,7 +81,7 @@ public partial class Base : TargetBase
 			sceneToSpawn = ranged;
 		else if (troopType == Troops.Healer)
 			sceneToSpawn = healer;
-		BaseTroop newTroop = sceneToSpawn.Instantiate<BaseTroop>();;
+		BaseTroop newTroop = sceneToSpawn.Instantiate<BaseTroop>();
 		GetParent().AddChild(newTroop);
 		newTroop.GlobalPosition=GlobalPosition;
 		newTroop.player1=player1;

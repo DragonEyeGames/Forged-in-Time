@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://bjjy84kigbl4n"]
 
-[ext_resource type="Script" uid="uid://dyhddwv8ns2sk" path="res://Troops/Scripts/Melee.cs" id="1_384nh"]
+[ext_resource type="Script" uid="uid://dyhddwv8ns2sk" path="res://Assets/TowerArt/Troops/Scripts/Melee.cs" id="1_384nh"]
 [ext_resource type="Texture2D" uid="uid://7vh0im402jki" path="res://Assets/CharacterArt/MeleeCaveman.png" id="2_54rog"]
 [ext_resource type="Texture2D" uid="uid://dftq0gfyr77yj" path="res://Assets/CharacterArt/Healer Future.png" id="2_jruer"]
 [ext_resource type="Texture2D" uid="uid://ct3ctwe8d1l30" path="res://Assets/CharacterArt/MeleeModern.png" id="2_uob20"]
@@ -146,7 +146,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8brh6")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -197,7 +197,6 @@ position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_2cqfq")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.422866
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
 target_desired_distance = 30.0

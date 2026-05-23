@@ -1,22 +1,22 @@
 [gd_scene load_steps=25 format=3 uid="uid://d00t5jltf4obj"]
 
-[ext_resource type="Script" uid="uid://bcg1j2w3n4ff0" path="res://Vehicle.cs" id="1_0k2kk"]
-[ext_resource type="Texture2D" uid="uid://bjvffuoq6mi6x" path="res://Assets/VehicleArt/GruMobile.png" id="2_6tt44"]
-[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Troops/Scenes/melee.tscn" id="2_q0puc"]
-[ext_resource type="Texture2D" uid="uid://g7xi8pdt3g7r" path="res://Assets/VehicleArt/PresentVehicle.png" id="3_q0puc"]
-[ext_resource type="Texture2D" uid="uid://cuqftb8xryq85" path="res://Assets/VehicleArt/HorseVehicle.png" id="4_uoan2"]
-[ext_resource type="Texture2D" uid="uid://bkivpb7vb6mc7" path="res://Assets/VehicleArt/DinoSpriteSheet.png" id="5_vfd0p"]
+[ext_resource type="Script" uid="uid://bcg1j2w3n4ff0" path="res://Assets/TowerArt/Troops/Scripts/Vehicle.cs" id="1_r43v0"]
+[ext_resource type="PackedScene" uid="uid://bjjy84kigbl4n" path="res://Assets/TowerArt/Troops/Scenes/melee.tscn" id="2_vu7ep"]
+[ext_resource type="Texture2D" uid="uid://bjvffuoq6mi6x" path="res://Assets/VehicleArt/GruMobile.png" id="3_fd868"]
+[ext_resource type="Texture2D" uid="uid://g7xi8pdt3g7r" path="res://Assets/VehicleArt/PresentVehicle.png" id="4_hhlqk"]
+[ext_resource type="Texture2D" uid="uid://cuqftb8xryq85" path="res://Assets/VehicleArt/HorseVehicle.png" id="5_4aa60"]
+[ext_resource type="Texture2D" uid="uid://bkivpb7vb6mc7" path="res://Assets/VehicleArt/DinoSpriteSheet.png" id="6_x3ii5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qaeqw"]
-atlas = ExtResource("2_6tt44")
+atlas = ExtResource("3_fd868")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jek0n"]
-atlas = ExtResource("2_6tt44")
+atlas = ExtResource("3_fd868")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4mks"]
-atlas = ExtResource("2_6tt44")
+atlas = ExtResource("3_fd868")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cy0ul"]
@@ -37,11 +37,11 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qou6k"]
-atlas = ExtResource("3_q0puc")
+atlas = ExtResource("4_hhlqk")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6k88o"]
-atlas = ExtResource("3_q0puc")
+atlas = ExtResource("4_hhlqk")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k44m6"]
@@ -59,15 +59,15 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqwv0"]
-atlas = ExtResource("4_uoan2")
+atlas = ExtResource("5_4aa60")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nr88q"]
-atlas = ExtResource("4_uoan2")
+atlas = ExtResource("5_4aa60")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wtwbp"]
-atlas = ExtResource("4_uoan2")
+atlas = ExtResource("5_4aa60")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4u26f"]
@@ -88,15 +88,15 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hvfyt"]
-atlas = ExtResource("5_vfd0p")
+atlas = ExtResource("6_x3ii5")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52a4n"]
-atlas = ExtResource("5_vfd0p")
+atlas = ExtResource("6_x3ii5")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkd4o"]
-atlas = ExtResource("5_vfd0p")
+atlas = ExtResource("6_x3ii5")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1lcie"]
@@ -127,9 +127,9 @@ radius = 20.1231
 
 [node name="Vehicle" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
-script = ExtResource("1_0k2kk")
+script = ExtResource("1_r43v0")
 maxHealth = 8
-troop = ExtResource("2_q0puc")
+troop = ExtResource("2_vu7ep")
 
 [node name="Sprites" type="Node2D" parent="."]
 

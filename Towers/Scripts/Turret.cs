@@ -8,8 +8,8 @@ public partial class Turret : Tower
 	private bool canShoot = true;
 	private List<CharacterBody2D> player1Colliding = new List<CharacterBody2D> {};
 	private List<CharacterBody2D> player2Colliding = new List<CharacterBody2D> {};
-	private Sprite2D turret => GetNode<Sprite2D>("Turret");
-	[Export] public int damage=1;
+	private AnimatedSprite2D turret;
+	[Export] public int damage=3;
 	[Export] public Timer cooldown;
 	// Called when the node enters the scene tree for the first time.
 
@@ -20,10 +20,27 @@ public partial class Turret : Tower
 	}
 
 	public override void upgrade(int level){
+		if(turret==null){
+			turret= GetNode<AnimatedSprite2D>("Sprites/1");
+		}
 		if(level==1){
-			GetNode<Sprite2D>("Base").Texture=(Texture2D)GD.Load("res://Towers/Assets/PlasmaTurret.png");
-			GetNode<Sprite2D>("Turret").Texture=(Texture2D)GD.Load("res://Towers/Assets/PlasmaTurret.png");
-			GetNode<Sprite2D>("Turret/Fire").Texture=(Texture2D)GD.Load("res://Towers/Assets/PlasmaTurret.png");
+			turret.Visible=false;
+			turret=GetNode<AnimatedSprite2D>("Sprites/2");
+			turret.Visible=true;
+			damage=4;
+			cooldown.WaitTime=.6;
+		}
+		if(level==2){
+			turret.Visible=false;
+			turret=GetNode<AnimatedSprite2D>("Sprites/3");
+			turret.Visible=true;
+			damage=4;
+			cooldown.WaitTime=.2;
+		}
+		if(level==3){
+			turret.Visible=false;
+			turret=GetNode<AnimatedSprite2D>("Sprites/4");
+			turret.Visible=true;
 			damage=3;
 			cooldown.WaitTime=.1;
 		}
@@ -32,25 +49,32 @@ public partial class Turret : Tower
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(turret==null){
+			turret= GetNode<AnimatedSprite2D>("Sprites/1");
+		}
 		TowerGenerics();
 		if(!hovering && canShoot){
 			if(Player1 && player2Colliding.Count>0){
 				canShoot=false;
 				cooldown.Start();
-				turret.LookAt(player2Colliding[0].GlobalPosition);
-				turret.GlobalRotation-=(float)Math.PI/2;
+				if(turret!=GetNode<AnimatedSprite2D>("Sprites/1")){
+					turret.LookAt(player2Colliding[0].GlobalPosition);
+					turret.GlobalRotation+=(float)Math.PI/2;
+				}
 				BaseTroop troop = player2Colliding[0] as BaseTroop;
 				troop.health-=damage;
-				GetNode<AnimationPlayer>("Animator").Play("pew");
+				turret.Play("default");
 			}
 			if(!Player1 && player1Colliding.Count>0){
 				canShoot=false;
 				cooldown.Start();
-				turret.LookAt(player1Colliding[0].GlobalPosition);
-				turret.GlobalRotation-=(float)Math.PI/2;
+				if(turret!=GetNode<AnimatedSprite2D>("Sprites/1")){
+					turret.LookAt(player2Colliding[0].GlobalPosition);
+					turret.GlobalRotation+=(float)Math.PI/2;
+				}
 				BaseTroop troop = player1Colliding[0] as BaseTroop;
 				troop.health-=damage;
-				GetNode<AnimationPlayer>("Animator").Play("pew");
+				turret.Play("default");
 			}
 		}
 		

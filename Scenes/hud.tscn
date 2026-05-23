@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=44 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_640wx"]
 [ext_resource type="PackedScene" uid="uid://cayxysu631vpp" path="res://Scenes/shopSlot.tscn" id="2_36asn"]
@@ -33,6 +33,10 @@
 [ext_resource type="Texture2D" uid="uid://dftq0gfyr77yj" path="res://Assets/CharacterArt/Healer Future.png" id="16_s17ah"]
 [ext_resource type="Texture2D" uid="uid://c8f0iton6dqd8" path="res://Assets/CharacterArt/BrutePresentCharacter.png" id="17_v5hjn"]
 [ext_resource type="Texture2D" uid="uid://dl86ycwksfli8" path="res://Assets/CharacterArt/BruteRobot.png" id="18_buji0"]
+[ext_resource type="Texture2D" uid="uid://c6e37kt5ru71x" path="res://Assets/CharacterArt/RangedCavemanCharacter.png" id="19_lr1mr"]
+[ext_resource type="Texture2D" uid="uid://kh1mgeb7aixh" path="res://Assets/CharacterArt/MedievalRangedCharacter.png" id="20_vs582"]
+[ext_resource type="Texture2D" uid="uid://bxee2iqm0fmt6" path="res://Assets/CharacterArt/RangedPresentCharacter.png" id="21_53yd6"]
+[ext_resource type="Texture2D" uid="uid://bsw8gx45o4kn8" path="res://Assets/CharacterArt/RangedRobotCharacter.png" id="22_0vjej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1a2va"]
 size = Vector2(132, 14)
@@ -216,6 +220,7 @@ Sprites = Array[Texture2D]([ExtResource("3_7gr8i"), ExtResource("4_5ep0j"), ExtR
 layout_mode = 2
 tower = 5
 troop = true
+Sprites = Array[Texture2D]([ExtResource("19_lr1mr"), ExtResource("20_vs582"), ExtResource("21_53yd6"), ExtResource("22_0vjej")])
 
 [node name="Brute" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
 layout_mode = 2

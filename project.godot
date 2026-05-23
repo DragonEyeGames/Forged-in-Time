@@ -37,12 +37,12 @@ project/assembly_name="Forged in Time"
 
 folder_colors={
 "res://Assets/": "red",
+"res://Assets/TowerArt/Troops/": "green",
 "res://Reflections/": "pink",
 "res://Saving/": "blue",
 "res://Scenes/": "orange",
 "res://Scripts/": "yellow",
 "res://Towers/": "purple",
-"res://Troops/": "green",
 "res://addons/": "gray",
 "res://images/": "gray"
 }

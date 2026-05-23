@@ -107,6 +107,10 @@ public abstract partial class BaseTroop : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (health <= 0)
+		{
+			QueueFree();
+		}
 		if (target == null)
 		{
 			TargetSet();
@@ -143,11 +147,6 @@ public abstract partial class BaseTroop : CharacterBody2D
 			if (!navAgent.IsNavigationFinished())
 			{
 				MoveAndSlide();
-			}
-
-			if (health <= 0)
-			{
-				QueueFree();
 			}
 
 			if (Velocity.X > 0)

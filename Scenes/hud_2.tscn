@@ -1,13 +1,15 @@
-[gd_scene load_steps=42 format=3 uid="uid://bdhyr2rcfdx0l"]
+[gd_scene load_steps=44 format=3 uid="uid://bdhyr2rcfdx0l"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_v1w48"]
 [ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="2_uoqjr"]
 [ext_resource type="PackedScene" uid="uid://cayxysu631vpp" path="res://Scenes/shopSlot.tscn" id="3_fsxo6"]
-[ext_resource type="Texture2D" uid="uid://dopqsrwtgl8kq" path="res://Assets/turretdisplay.png" id="4_78j5b"]
+[ext_resource type="Texture2D" uid="uid://otuu81wukoci" path="res://Assets/TowerArt/Caveman turret.png" id="4_e2ygl"]
 [ext_resource type="Texture2D" uid="uid://7vh0im402jki" path="res://Assets/CharacterArt/MeleeCaveman.png" id="4_v1w48"]
-[ext_resource type="Texture2D" uid="uid://cta3lr1f1iov6" path="res://Assets/plasmaTurretDisplay.png" id="5_e2ygl"]
+[ext_resource type="Texture2D" uid="uid://da6p2n3bq1mn7" path="res://Assets/TowerArt/medeival turret (3).png" id="5_7hiuu"]
+[ext_resource type="Texture2D" uid="uid://cdx8o8hemqack" path="res://Assets/TowerArt/ModernTurret.png" id="5_inwr5"]
 [ext_resource type="Texture2D" uid="uid://blnttaf7j45t" path="res://Assets/CharacterArt/MeleeMedevil.png" id="5_uoqjr"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="6_2cn1p"]
+[ext_resource type="Texture2D" uid="uid://cxhuu767mw3li" path="res://Assets/TowerArt/futureturret.png" id="6_7hiuu"]
 [ext_resource type="Texture2D" uid="uid://h0hjlnhwd1vd" path="res://Assets/TowerArt/CavemanWoodWall.png" id="6_inwr5"]
 [ext_resource type="Texture2D" uid="uid://ct3ctwe8d1l30" path="res://Assets/CharacterArt/MeleeModern.png" id="6_wiuxb"]
 [ext_resource type="Texture2D" uid="uid://c6lcuqicj02x3" path="res://Assets/TowerArt/MedievalWall.png" id="7_7hiuu"]
@@ -229,7 +231,7 @@ player1 = false
 [node name="Turret" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 player1 = false
-Sprites = Array[Texture2D]([ExtResource("4_78j5b"), ExtResource("5_e2ygl")])
+Sprites = Array[Texture2D]([ExtResource("4_e2ygl"), ExtResource("5_7hiuu"), ExtResource("5_inwr5"), ExtResource("6_7hiuu")])
 
 [node name="Wall" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
@@ -379,10 +381,8 @@ mouse_filter = 2
 flat = true
 
 [node name="Button" type="Button" parent="."]
-offset_left = 1.715
-offset_top = 633.795
-offset_right = 133.715
-offset_bottom = 647.795
+offset_right = 132.0
+offset_bottom = 14.0
 pivot_offset = Vector2(65, 8)
 focus_mode = 0
 mouse_filter = 2
