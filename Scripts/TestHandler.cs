@@ -91,9 +91,7 @@ public partial class TestHandler : Node2D
 				GetParent().AddChild(selectedTower);
 			}
 			if(Player1Manager.toPlace==GameManager.Towers.Wall){
-				GD.Print("ASDASDASdasd");
 				selectedTower=parentNode.wall.Instantiate() as Tower;
-				GD.Print(parentNode.wall);
 				GetParent().AddChild(selectedTower);
 			}
 			if(Player1Manager.toPlace==GameManager.Towers.Watch_Tower){

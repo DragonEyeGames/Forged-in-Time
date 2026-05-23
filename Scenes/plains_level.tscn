@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://3f2r47oxxr7x"]
+[gd_scene load_steps=52 format=4 uid="uid://3f2r47oxxr7x"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_i5q0t"]
 [ext_resource type="Texture2D" uid="uid://dyt4qnoal5tmv" path="res://Assets/LevelArt/DryCrackingGround.png" id="1_nibey"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cnem7ep3j786t" path="res://Towers/Scenes/turret.tscn" id="10_ghp1u"]
 [ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://Towers/Scenes/plasmaTurret.tscn" id="11_0u5em"]
 [ext_resource type="PackedScene" uid="uid://dtmcn270epgmd" path="res://Towers/Scenes/WatchTower.tscn" id="12_oirug"]
-[ext_resource type="PackedScene" uid="uid://bvym8b7sd7gh6" path="res://Towers/Scenes/wall.tscn" id="13_wgriv"]
+[ext_resource type="PackedScene" uid="uid://d37j25dmyu6r7" path="res://Towers/Scenes/wall2.tscn" id="13_i5q0t"]
 [ext_resource type="PackedScene" uid="uid://lweq3a258rm7" path="res://Towers/Scenes/spikes.tscn" id="14_d1wjg"]
 [ext_resource type="Script" uid="uid://cus6gkq2ktt8e" path="res://Scripts/TestHandler.cs" id="15_o4skf"]
 [ext_resource type="PackedScene" uid="uid://c1d1jeujhaov2" path="res://Scenes/hud.tscn" id="16_hv56p"]
@@ -81,12 +81,6 @@ texture = ExtResource("2_3i80m")
 texture = ExtResource("3_rifts")
 0:0/0 = 0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nmmgp"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwpg7"]
-texture = SubResource("CompressedTexture2D_nmmgp")
-0:0/0 = 0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k2e45"]
 texture = ExtResource("4_bee7j")
 0:0/0 = 0
@@ -115,7 +109,6 @@ texture = ExtResource("9_t2c3x")
 sources/0 = SubResource("TileSetAtlasSource_neg2b")
 sources/1 = SubResource("TileSetAtlasSource_r33sp")
 sources/2 = SubResource("TileSetAtlasSource_hdf80")
-sources/3 = SubResource("TileSetAtlasSource_jwpg7")
 sources/4 = SubResource("TileSetAtlasSource_k2e45")
 sources/5 = SubResource("TileSetAtlasSource_536cc")
 sources/6 = SubResource("TileSetAtlasSource_aqgau")
@@ -163,7 +156,7 @@ bigPolygon = ExtResource("9_y0kfi")
 turret = ExtResource("10_ghp1u")
 plasmaTurret = ExtResource("11_0u5em")
 tower = ExtResource("12_oirug")
-wall = ExtResource("13_wgriv")
+wall = ExtResource("13_i5q0t")
 spikes = ExtResource("14_d1wjg")
 
 [node name="Player1" type="Node2D" parent="NavHandler" node_paths=PackedStringArray("tester")]
