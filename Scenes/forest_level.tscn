@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://dbrrnxttrwgc0"]
+[gd_scene load_steps=55 format=4 uid="uid://dbrrnxttrwgc0"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_e3nxp"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="2_v15gk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dnc0ugi7igvey" path="res://Scripts/TerritoryChecker.cs" id="5_3chem"]
 [ext_resource type="PackedScene" uid="uid://qw4hblqnmemt" path="res://Scenes/base.tscn" id="6_8ufp5"]
 [ext_resource type="Script" uid="uid://dtffmvch4ihls" path="res://Scripts/BakeHandler.cs" id="7_8s5ql"]
+[ext_resource type="PackedScene" uid="uid://d00t5jltf4obj" path="res://Assets/TowerArt/Troops/vehicle.tscn" id="7_v15gk"]
 [ext_resource type="PackedScene" uid="uid://b7ljmxdd0fddv" path="res://Scenes/TestPoly.tscn" id="8_6rucv"]
 [ext_resource type="PackedScene" uid="uid://di50ddfw14x1g" path="res://Scenes/BigPoly.tscn" id="9_t80gh"]
 [ext_resource type="PackedScene" uid="uid://cnem7ep3j786t" path="res://Towers/Scenes/turret.tscn" id="10_pfnhx"]
@@ -151,10 +152,12 @@ script = ExtResource("5_3chem")
 
 [node name="Player-1" parent="." instance=ExtResource("6_8ufp5")]
 position = Vector2(932, 409)
+vehicle = ExtResource("7_v15gk")
 
 [node name="Player-2" parent="." instance=ExtResource("6_8ufp5")]
 position = Vector2(148, 393)
 player1 = false
+vehicle = ExtResource("7_v15gk")
 
 [node name="NavHandler" type="Node2D" parent="."]
 script = ExtResource("7_8s5ql")

@@ -128,7 +128,6 @@ radius = 20.1231
 [node name="Vehicle" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_r43v0")
-maxHealth = 8
 troop = ExtResource("2_vu7ep")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -138,21 +137,25 @@ visible = false
 texture_filter = 1
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_cy0ul")
+autoplay = "default"
 
 [node name="3" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 texture_filter = 1
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_k44m6")
+autoplay = "default"
 
 [node name="2" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 texture_filter = 1
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_4u26f")
+autoplay = "default"
 frame_progress = 0.389742
 
 [node name="1" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
 texture_filter = 1
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_1lcie")

@@ -47,6 +47,56 @@ public partial class GameManager : Node
 	
 	public static int winner = 0;
 	
+	public static void ResetGame()
+	{
+		
+		player1Base = null;
+		player2Base = null;
+		territory = null;
+
+		player1 = true;
+		keyboard = false;
+
+		player1HUDOpen = false;
+		player2HUDOpen = false;
+
+		player1Placement = null;
+		player2Placement = null;
+
+		newList = new List<TroopUpgrade>();
+
+		baker = null;
+
+		player1Target = null;
+		player2Target = null;
+
+		player1DefaultTarget = null;
+		player2DefaultTarget = null;
+
+		player1Upgrades = new List<TroopUpgrade>();
+		player2Upgrades = new List<TroopUpgrade>();
+
+		winner = 0;
+
+		Player1Manager.toPlace = default;
+		Player1Manager.placing = false;
+		Player1Manager.validPlacement = true;
+		Player1Manager.cursor = null;
+		Player1Manager.hudOpen = false;
+		Player1Manager.upgradeLevel = 0;
+		Player1Manager.money = 1000;
+		Player1Manager.score = 0;
+
+		Player2Manager.toPlace = default;
+		Player2Manager.placing = false;
+		Player2Manager.validPlacement = true;
+		Player2Manager.cursor = null;
+		Player2Manager.hudOpen = false;
+		Player2Manager.upgradeLevel = 0;
+		Player2Manager.money = 1000;
+		Player2Manager.score = 0;
+	}
+	
 	public static Vector4 fetchUpgrades(int player, Towers troopType){
 		if(player==1){
 			newList = player1Upgrades;

@@ -14,6 +14,7 @@ public partial class Prices : Node
 		{ GameManager.Towers.Melee, 25 },
 		{ GameManager.Towers.Brute, 50 },
 		{ GameManager.Towers.Ranged, 25 },
-		{ GameManager.Towers.Healer, 75 }
+		{ GameManager.Towers.Healer, 75 },
+		{ GameManager.Towers.Vehicle, 150 }
 	};
 }

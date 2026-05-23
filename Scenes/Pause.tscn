@@ -9,9 +9,9 @@ script = ExtResource("1_v2lfg")
 
 [node name="ColorRect" type="Panel" parent="."]
 offset_left = 379.0
-offset_top = 44.0
+offset_top = 108.0
 offset_right = 756.0
-offset_bottom = 564.0
+offset_bottom = 537.0
 scale = Vector2(1.085, 1.085)
 theme = ExtResource("2_drk18")
 
@@ -20,9 +20,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 379.0
-offset_top = 44.0
+offset_top = 115.0
 offset_right = -393.0
-offset_bottom = -84.0
+offset_bottom = -115.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.085, 1.085)
@@ -36,6 +36,7 @@ size_flags_vertical = 6
 text = "Resume"
 
 [node name="options" type="Button" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(334.89, 125)
 layout_mode = 2
 size_flags_horizontal = 4

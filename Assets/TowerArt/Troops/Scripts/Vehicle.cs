@@ -7,9 +7,9 @@ public partial class Vehicle : BaseTroop
 	[Export] public override float speed { get; set; } = 50.0f;
 	[Export] public override int healthLevel { get; set; } = 0;
 	[Export] public override int health { get; set; } = 8;
-	[Export] public override int maxHealth { get; set; } = 5;
+	[Export] public override int maxHealth { get; set; } = 8;
 	[Export] public override int damageLevel { get; set; } = 0;
-	[Export] public override int damage { get; set; } = 0;
+	[Export] public override int damage { get; set; } = 2;
 	public override NavigationAgent2D navAgent { get; set; }
 	public override AnimatedSprite2D sprite  {get; set;}
 	public override TargetBase target { get; set; }
@@ -34,16 +34,7 @@ public partial class Vehicle : BaseTroop
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		fetchUpgrades();
 		TargetSet();
-		if(upgradeLevel>6){
-			sprite = GetNode<AnimatedSprite2D>("Sprites/3");
-			 GetNode<AnimatedSprite2D>("Sprites/3").Visible=true;
-		} else if(upgradeLevel>30){
-			sprite = GetNode<AnimatedSprite2D>("Sprites/2");
-			 GetNode<AnimatedSprite2D>("Sprites/2").Visible=true;
-		} else {
-		}
 		sprite = GetNode<AnimatedSprite2D>("Sprites/1");
-		//GetNode<AnimatedSprite2D>("Sprites/1").Visible=true;
 		if(player1){
 			if(Player1Manager.upgradeLevel==1){
 				sprite = GetNode<AnimatedSprite2D>("Sprites/2");
@@ -58,20 +49,33 @@ public partial class Vehicle : BaseTroop
 			 	GetNode<AnimatedSprite2D>("Sprites/4").Visible=true;
 			}
 		}
+		if(!player1){
+			if(Player2Manager.upgradeLevel==1){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/2");
+			 	GetNode<AnimatedSprite2D>("Sprites/2").Visible=true;
+			}
+			if(Player2Manager.upgradeLevel==2){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/3");
+			 	GetNode<AnimatedSprite2D>("Sprites/3").Visible=true;
+			}
+			if(Player2Manager.upgradeLevel==3){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/4");
+			 	GetNode<AnimatedSprite2D>("Sprites/4").Visible=true;
+			}
+		}
 		sprite.Visible=true;
 		sprite.Scale = new Vector2(-1, 1);
 	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-		if (health <= 0)
+	
+	public override void Die(){
+		for (int i = 0; i < 2; i++)
 		{
 			BaseTroop newTroop = troop.Instantiate<BaseTroop>();;
 			GetParent().AddChild(newTroop);
 			newTroop.GlobalPosition = GlobalPosition;
 			newTroop.player1 = player1;
-			this.QueueFree();
 		}
+		this.QueueFree();
 	}
 
 }

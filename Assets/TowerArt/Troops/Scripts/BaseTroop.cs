@@ -94,6 +94,10 @@ public abstract partial class BaseTroop : CharacterBody2D
 
 	public void recalculate()
 	{
+		if (!GodotObject.IsInstanceValid(target))
+		{
+			return;
+		}
 		navAgent.TargetPosition = target.GlobalPosition;
 		if (player1)
 		{
@@ -105,11 +109,15 @@ public abstract partial class BaseTroop : CharacterBody2D
 		}
 	}
 
+	public virtual void Die(){
+		QueueFree();
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		if (health <= 0)
 		{
-			QueueFree();
+			Die();
 		}
 		if (target == null)
 		{

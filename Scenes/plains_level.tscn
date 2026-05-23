@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://3f2r47oxxr7x"]
+[gd_scene load_steps=53 format=4 uid="uid://3f2r47oxxr7x"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_i5q0t"]
 [ext_resource type="Texture2D" uid="uid://dyt4qnoal5tmv" path="res://Assets/LevelArt/DryCrackingGround.png" id="1_nibey"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://qw4hblqnmemt" path="res://Scenes/base.tscn" id="6_e8qrp"]
 [ext_resource type="Texture2D" uid="uid://bgn8up5mdqx74" path="res://Assets/LevelArt/TundraGrass.png" id="7_2ylhm"]
 [ext_resource type="Script" uid="uid://dtffmvch4ihls" path="res://Scripts/BakeHandler.cs" id="7_3hkr8"]
+[ext_resource type="PackedScene" uid="uid://d00t5jltf4obj" path="res://Assets/TowerArt/Troops/vehicle.tscn" id="7_jfkmu"]
 [ext_resource type="PackedScene" uid="uid://b7ljmxdd0fddv" path="res://Scenes/TestPoly.tscn" id="8_eqsvq"]
 [ext_resource type="Texture2D" uid="uid://boygayicw54sf" path="res://Assets/LevelArt/TundraTree.png" id="8_fvx7b"]
 [ext_resource type="Texture2D" uid="uid://cq5mi6efgqbop" path="res://Assets/LevelArt/water.png" id="9_t2c3x"]
@@ -144,10 +145,12 @@ script = ExtResource("5_a0s6m")
 
 [node name="Player-1" parent="." instance=ExtResource("6_e8qrp")]
 position = Vector2(932, 409)
+vehicle = ExtResource("7_jfkmu")
 
 [node name="Player-2" parent="." instance=ExtResource("6_e8qrp")]
 position = Vector2(148, 393)
 player1 = false
+vehicle = ExtResource("7_jfkmu")
 
 [node name="NavHandler" type="Node2D" parent="."]
 script = ExtResource("7_3hkr8")

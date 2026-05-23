@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c1d1jeujhaov2"]
+[gd_scene load_steps=48 format=3 uid="uid://c1d1jeujhaov2"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_640wx"]
 [ext_resource type="PackedScene" uid="uid://cayxysu631vpp" path="res://Scenes/shopSlot.tscn" id="2_36asn"]
@@ -37,6 +37,10 @@
 [ext_resource type="Texture2D" uid="uid://kh1mgeb7aixh" path="res://Assets/CharacterArt/MedievalRangedCharacter.png" id="20_vs582"]
 [ext_resource type="Texture2D" uid="uid://bxee2iqm0fmt6" path="res://Assets/CharacterArt/RangedPresentCharacter.png" id="21_53yd6"]
 [ext_resource type="Texture2D" uid="uid://bsw8gx45o4kn8" path="res://Assets/CharacterArt/RangedRobotCharacter.png" id="22_0vjej"]
+[ext_resource type="Texture2D" uid="uid://bkivpb7vb6mc7" path="res://Assets/VehicleArt/DinoSpriteSheet.png" id="31_tj5bi"]
+[ext_resource type="Texture2D" uid="uid://cuqftb8xryq85" path="res://Assets/VehicleArt/HorseVehicle.png" id="32_dn45h"]
+[ext_resource type="Texture2D" uid="uid://g7xi8pdt3g7r" path="res://Assets/VehicleArt/PresentVehicle.png" id="33_7jysg"]
+[ext_resource type="Texture2D" uid="uid://bjvffuoq6mi6x" path="res://Assets/VehicleArt/GruMobile.png" id="34_jmo6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1a2va"]
 size = Vector2(132, 14)
@@ -234,6 +238,12 @@ tower = 7
 troop = true
 Sprites = Array[Texture2D]([ExtResource("6_1a2va"), ExtResource("7_ssfue"), ExtResource("15_wfkbc"), ExtResource("16_s17ah")])
 Names = Array[String](["Healer"])
+
+[node name="Vehicle" parent="ColorRect/VBoxContainer" instance=ExtResource("2_36asn")]
+layout_mode = 2
+tower = 8
+troop = true
+Sprites = Array[Texture2D]([ExtResource("31_tj5bi"), ExtResource("32_dn45h"), ExtResource("33_7jysg"), ExtResource("34_jmo6y")])
 
 [node name="TimeAdvancement" type="Control" parent="ColorRect/VBoxContainer"]
 z_index = 1
