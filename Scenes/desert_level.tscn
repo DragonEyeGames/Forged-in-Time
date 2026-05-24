@@ -34,7 +34,7 @@
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_ici1l"]
 [ext_resource type="Script" uid="uid://hhncf58ocdwm" path="res://Scripts/ScreenCursor.cs" id="23_mp2cg"]
 [ext_resource type="PackedScene" uid="uid://dcs7g671onmkq" path="res://Scenes/Pause.tscn" id="24_r1g14"]
-[ext_resource type="PackedScene" uid="uid://ssdf7h45x4d0" path="res://miner.tscn" id="25_7c3j8"]
+[ext_resource type="PackedScene" uid="uid://ssdf7h45x4d0" path="res://Towers/Scenes/miner.tscn" id="25_7c3j8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_rwr1k")

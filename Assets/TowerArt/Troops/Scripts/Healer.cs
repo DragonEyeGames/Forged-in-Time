@@ -6,7 +6,7 @@ public partial class Healer : BaseTroop
 	[Export] public override int speedLevel {get; set;}
 	[Export] public override float speed { get; set; } = 25.0f;
 	[Export] public override int maxHealth { get; set; } = 3;
-	[Export] public override int health { get; set; }
+	[Export] public override int health { get; set; } = 3;
 	[Export] public override int healthLevel { get; set; } = 0;
 	[Export] public override int damageLevel { get; set; } = 0;
 	[Export] public override int damage { get; set; } = 1;

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bvym8b7sd7gh6"]
 
-[ext_resource type="Material" uid="uid://cyddiu60rhrga" path="res://TowerShader.tres" id="1_empu3"]
-[ext_resource type="Script" uid="uid://bqxkpyx43fd4u" path="res://Towers/Scenes/Wall.cs" id="2_empu3"]
+[ext_resource type="Material" uid="uid://cyddiu60rhrga" path="res://misc/TowerShader.tres" id="1_empu3"]
+[ext_resource type="Script" uid="uid://bqxkpyx43fd4u" path="res://Towers/Scripts/Wall.cs" id="2_empu3"]
 [ext_resource type="Texture2D" uid="uid://h0hjlnhwd1vd" path="res://Assets/TowerArt/CavemanWoodWall.png" id="3_empu3"]
 [ext_resource type="Script" uid="uid://td32hbea8c2d" path="res://Scripts/TowerController.cs" id="3_fyubp"]
 [ext_resource type="PackedScene" uid="uid://b8qjxq5m1jorh" path="res://Scenes/towerInfo.tscn" id="4_empu3"]

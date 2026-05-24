@@ -25,7 +25,7 @@
 [ext_resource type="Script" uid="uid://dpbvfskdvfsvc" path="res://Scripts/Cursor.cs" id="22_pwj8l"]
 [ext_resource type="Script" uid="uid://hhncf58ocdwm" path="res://Scripts/ScreenCursor.cs" id="23_amo5k"]
 [ext_resource type="PackedScene" uid="uid://dcs7g671onmkq" path="res://Scenes/Pause.tscn" id="24_dahge"]
-[ext_resource type="PackedScene" uid="uid://ssdf7h45x4d0" path="res://miner.tscn" id="25_x4mno"]
+[ext_resource type="PackedScene" uid="uid://ssdf7h45x4d0" path="res://Towers/Scenes/miner.tscn" id="25_x4mno"]
 [ext_resource type="Texture2D" uid="uid://dyt4qnoal5tmv" path="res://Assets/LevelArt/DryCrackingGround.png" id="26_y2kaf"]
 [ext_resource type="Texture2D" uid="uid://djfuff7l63pef" path="res://Assets/LevelArt/sand.png" id="27_hl30b"]
 [ext_resource type="Texture2D" uid="uid://bkwlkritmr44f" path="res://Assets/LevelArt/Rock.png" id="28_ej41j"]

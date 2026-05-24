@@ -43,6 +43,7 @@ public abstract partial class BaseTroop : CharacterBody2D
 		speed += TroopUpgrades.Speed[speedLevel];
 		damage += TroopUpgrades.Damage[damageLevel];
 		health += TroopUpgrades.Health[healthLevel];
+		maxHealth += TroopUpgrades.Health[healthLevel];
 		return upgrades;
 	}
 
@@ -111,6 +112,10 @@ public abstract partial class BaseTroop : CharacterBody2D
 
 	public virtual void Die(){
 		QueueFree();
+	}
+
+	public void Hit(){
+		GetNode<AnimationPlayer>("Hit").Play("hit");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -240,7 +245,7 @@ public void attack(int damage)
 		}
 		else
 		{
-			GD.Print("BAsed");
+			GD.Print(damage);
 
 			target.health -= damage;
 

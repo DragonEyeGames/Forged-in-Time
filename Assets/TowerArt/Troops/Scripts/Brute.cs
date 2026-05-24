@@ -4,9 +4,9 @@ using System;
 public partial class Brute : BaseTroop
 {
 	[Export] public override float speed { get; set; } = 20.0f;
-	[Export] public  override int health { get; set; } = 20;
-	[Export] public override int maxHealth { get; set; } = 20;
-	[Export] public override int damage { get; set; } = 2;
+	[Export] public  override int health { get; set; } = 25;
+	[Export] public override int maxHealth { get; set; } = 25;
+	[Export] public override int damage { get; set; } = 4;
 	
 	[Export] public override int upgradeLevel {get; set;} = 0;
 	[Export] public override int speedLevel {get; set;} = 0;

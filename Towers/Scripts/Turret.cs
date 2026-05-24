@@ -11,6 +11,7 @@ public partial class Turret : Tower
 	private AnimatedSprite2D turret;
 	[Export] public int damage=3;
 	[Export] public Timer cooldown;
+	[Export] private PackedScene arrow;
 	// Called when the node enters the scene tree for the first time.
 
 	public override void OnTimeAdvance(bool upgradePlayer, int level){
@@ -61,19 +62,25 @@ public partial class Turret : Tower
 					turret.LookAt(player2Colliding[0].GlobalPosition);
 					turret.GlobalRotation+=(float)Math.PI/2;
 				}
-				BaseTroop troop = player2Colliding[0] as BaseTroop;
-				troop.health-=damage;
+				if(turret!=GetNode<AnimatedSprite2D>("Sprites/1") && turret!=GetNode<AnimatedSprite2D>("Sprites/2")){
+					BaseTroop troop = player2Colliding[0] as BaseTroop;
+					troop.health-=damage;
+					troop.Hit();
+				}
 				turret.Play("default");
 			}
 			if(!Player1 && player1Colliding.Count>0){
 				canShoot=false;
 				cooldown.Start();
 				if(turret!=GetNode<AnimatedSprite2D>("Sprites/1")){
-					turret.LookAt(player2Colliding[0].GlobalPosition);
+					turret.LookAt(player1Colliding[0].GlobalPosition);
 					turret.GlobalRotation+=(float)Math.PI/2;
 				}
-				BaseTroop troop = player1Colliding[0] as BaseTroop;
-				troop.health-=damage;
+				if(turret!=GetNode<AnimatedSprite2D>("Sprites/1") && turret!=GetNode<AnimatedSprite2D>("Sprites/2")){
+					BaseTroop troop = player1Colliding[0] as BaseTroop;
+					troop.health-=damage;
+					troop.Hit();
+				}
 				turret.Play("default");
 			}
 		}
@@ -98,5 +105,17 @@ public partial class Turret : Tower
 	
 	public void cooled(){
 		canShoot=true;
+	}
+	
+	public void fireArrow(){
+		if(GetNode<AnimatedSprite2D>("Sprites/2").Animation=="default"){
+			GetNode<AnimatedSprite2D>("Sprites/2").Play("shoot_end");
+			Arrow newArrow = arrow.Instantiate<Arrow>();
+			GetParent().AddChild(newArrow);
+			newArrow.GlobalPosition=GetNode<AnimatedSprite2D>("Sprites/2").GlobalPosition;
+			newArrow.GlobalRotation=GetNode<AnimatedSprite2D>("Sprites/2").GlobalRotation;
+			newArrow.player1=Player1;
+		}
+			
 	}
 }

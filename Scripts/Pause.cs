@@ -62,4 +62,15 @@ public partial class Pause : CanvasLayer
 		GetTree().Paused = false;
 		GetTree().ChangeSceneToFile("res://Scenes/StartScreen.tscn");
 	}
+	
+	private void OnRestartPressed()
+	{
+		GetTree().Paused = false;
+		GameManager.ResetGame();
+		GetTree().ReloadCurrentScene();
+	}
+	
+	private void QuitGame(){
+		GetTree().Quit();
+	}
 }

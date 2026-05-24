@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ssdf7h45x4d0"]
 
 [ext_resource type="Script" uid="uid://cws14ml62q3kc" path="res://Scripts/Controller.cs" id="2_383ku"]
-[ext_resource type="Script" uid="uid://s627dlo2xofq" path="res://Miner.cs" id="2_u7vtn"]
+[ext_resource type="Script" uid="uid://s627dlo2xofq" path="res://Towers/Scripts/Miner.cs" id="2_u7vtn"]
 [ext_resource type="Texture2D" uid="uid://cbbrvijigdfl1" path="res://Assets/village.png" id="3_u7vtn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nnceo"]

@@ -1,10 +1,16 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjjy84kigbl4n"]
+[gd_scene load_steps=34 format=3 uid="uid://bjjy84kigbl4n"]
 
+[ext_resource type="Shader" uid="uid://1ayhdp4srlow" path="res://Assets/TowerArt/Troops/Scenes/flash.gdshader" id="1_58ce4"]
 [ext_resource type="Script" uid="uid://dyhddwv8ns2sk" path="res://Assets/TowerArt/Troops/Scripts/Melee.cs" id="1_384nh"]
 [ext_resource type="Texture2D" uid="uid://7vh0im402jki" path="res://Assets/CharacterArt/MeleeCaveman.png" id="2_54rog"]
 [ext_resource type="Texture2D" uid="uid://dftq0gfyr77yj" path="res://Assets/CharacterArt/Healer Future.png" id="2_jruer"]
 [ext_resource type="Texture2D" uid="uid://ct3ctwe8d1l30" path="res://Assets/CharacterArt/MeleeModern.png" id="2_uob20"]
 [ext_resource type="Texture2D" uid="uid://blnttaf7j45t" path="res://Assets/CharacterArt/MeleeMedevil.png" id="3_caso8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kln1"]
+resource_local_to_scene = true
+shader = ExtResource("1_58ce4")
+shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ocjk"]
 atlas = ExtResource("2_jruer")
@@ -159,15 +165,55 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_xm30j"]
 radius = 20.1231
 
+[sub_resource type="Animation" id="Animation_58ce4"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4kln1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8rf4d"]
+_data = {
+&"RESET": SubResource("Animation_4kln1"),
+&"hit": SubResource("Animation_58ce4")
+}
+
 [node name="Troop" type="CharacterBody2D" groups=["Player"]]
+material = SubResource("ShaderMaterial_4kln1")
 collision_layer = 2
 script = ExtResource("1_384nh")
 
 [node name="Sprites" type="Node2D" parent="."]
+use_parent_material = true
 
 [node name="4" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 texture_filter = 1
+use_parent_material = true
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_6jt6v")
 animation = &"idle"
@@ -176,6 +222,7 @@ autoplay = "idle"
 [node name="3" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 texture_filter = 1
+use_parent_material = true
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_6ocjk")
 animation = &"idle"
@@ -185,6 +232,7 @@ frame_progress = 0.147705
 [node name="2" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 texture_filter = 1
+use_parent_material = true
 position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_0wivj")
 animation = &"idle"
@@ -193,6 +241,7 @@ frame_progress = 0.885858
 
 [node name="1" type="AnimatedSprite2D" parent="Sprites"]
 texture_filter = 1
+use_parent_material = true
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_2cqfq")
 animation = &"idle"
@@ -237,6 +286,11 @@ shape = SubResource("CircleShape2D_xm30j")
 
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="Hit" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8rf4d")
+}
 
 [connection signal="navigation_finished" from="NavAgent" to="." method="on_path_finished"]
 [connection signal="timeout" from="Timer" to="." method="recalculate"]

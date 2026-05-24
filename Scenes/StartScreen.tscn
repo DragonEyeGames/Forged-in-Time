@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bivyw8v445vg4" path="res://Scripts/StartScreen.cs" id="1_0on6r"]
 [ext_resource type="Texture2D" uid="uid://dburtftuahlqu" path="res://Assets/backgroundforgamestartscreen.png" id="2_3u666"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_usjih"]
-[ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://uiTheme.tres" id="3_3u666"]
+[ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://misc/uiTheme.tres" id="3_3u666"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_0on6r")

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public partial class TroopUpgrades : Node
 {
-	public static List<int> Health = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+	public static List<int> Health = new List<int> { 0, 2, 4, 6, 9, 12, 15, 19, 23, 27, 31, 34, 37, 39, 41, 43, 44};
 	public static List<int> Damage = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
 	public static List<int> Speed = new List<int> { 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160};
 	

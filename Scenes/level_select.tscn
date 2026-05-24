@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cskth4qsjjjgp"]
 
 [ext_resource type="Script" uid="uid://c7dvo84ew12fy" path="res://Scripts/LevelSelect.cs" id="1_nkys2"]
-[ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://uiTheme.tres" id="2_2sqnl"]
+[ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://misc/uiTheme.tres" id="2_2sqnl"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_lx4vd"]
 
 [node name="Level Select" type="Node2D"]
