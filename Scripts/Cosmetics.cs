@@ -13,7 +13,8 @@ public partial class Cosmetics : Node
 		{ GameManager.Towers.Melee, "res://Assets/CharacterArt/MeleeCaveman.png" },
 		{ GameManager.Towers.Brute, "res://Assets/CharacterArt/BruteCavemanCharacter.png" },
 		{ GameManager.Towers.Ranged, "res://Assets/CharacterArt/RangedCavemanCharacter.png" },
-		{ GameManager.Towers.Healer, "res://Assets/CharacterArt/HealerCaveman.png" }
+		{ GameManager.Towers.Healer, "res://Assets/CharacterArt/HealerCaveman.png" },
+		{ GameManager.Towers.Vehicle, "res://Assets/VehicleArt/DinoSpriteSheet.png" }
 	};
 	
 	public static Dictionary<GameManager.Towers, String> towerNames = new Dictionary<GameManager.Towers, String>
@@ -25,7 +26,8 @@ public partial class Cosmetics : Node
 		{ GameManager.Towers.Melee, "Melee Troop" },
 		{ GameManager.Towers.Ranged, "Ranged Troop" },
 		{ GameManager.Towers.Brute, "Brute" },
-		{ GameManager.Towers.Healer, "Healer" }
+		{ GameManager.Towers.Healer, "Healer" },
+		{ GameManager.Towers.Vehicle, "Vehicle" }
 	};
 	
 	public static Dictionary<GameManager.Towers, String> towerDescriptions = new Dictionary<GameManager.Towers, String>
@@ -37,6 +39,7 @@ public partial class Cosmetics : Node
 		{ GameManager.Towers.Melee, "A troop that attacks with a sword. Stab" },
 		{ GameManager.Towers.Ranged, "A troop that can attack from a distance." },
 		{ GameManager.Towers.Brute, "A buff guy. Strong" },
-		{ GameManager.Towers.Healer, "A healer. Heals things." }
+		{ GameManager.Towers.Healer, "A healer. Heals things." },
+		{ GameManager.Towers.Vehicle, "Goes fast and drops troops on death." }
 	};
 }

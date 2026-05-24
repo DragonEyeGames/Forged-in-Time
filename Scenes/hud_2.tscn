@@ -1,20 +1,22 @@
-[gd_scene load_steps=42 format=3 uid="uid://bdhyr2rcfdx0l"]
+[gd_scene load_steps=48 format=3 uid="uid://bdhyr2rcfdx0l"]
 
 [ext_resource type="Script" uid="uid://csgfrx8u46dhb" path="res://Scripts/Hud.cs" id="1_v1w48"]
 [ext_resource type="Texture2D" uid="uid://cflg0gvr58l8j" path="res://Towers/Assets/PlasmaTurret.png" id="2_uoqjr"]
 [ext_resource type="PackedScene" uid="uid://cayxysu631vpp" path="res://Scenes/shopSlot.tscn" id="3_fsxo6"]
-[ext_resource type="Texture2D" uid="uid://dopqsrwtgl8kq" path="res://Assets/turretdisplay.png" id="4_78j5b"]
+[ext_resource type="Texture2D" uid="uid://otuu81wukoci" path="res://Assets/TowerArt/Caveman turret.png" id="4_e2ygl"]
 [ext_resource type="Texture2D" uid="uid://7vh0im402jki" path="res://Assets/CharacterArt/MeleeCaveman.png" id="4_v1w48"]
-[ext_resource type="Texture2D" uid="uid://cta3lr1f1iov6" path="res://Assets/plasmaTurretDisplay.png" id="5_e2ygl"]
+[ext_resource type="Texture2D" uid="uid://da6p2n3bq1mn7" path="res://Assets/TowerArt/medeival turret (3).png" id="5_7hiuu"]
+[ext_resource type="Texture2D" uid="uid://cdx8o8hemqack" path="res://Assets/TowerArt/ModernTurret.png" id="5_inwr5"]
 [ext_resource type="Texture2D" uid="uid://blnttaf7j45t" path="res://Assets/CharacterArt/MeleeMedevil.png" id="5_uoqjr"]
 [ext_resource type="Texture2D" uid="uid://bmdvois1ek5pn" path="res://Assets/Arrow (new).png" id="6_2cn1p"]
+[ext_resource type="Texture2D" uid="uid://cxhuu767mw3li" path="res://Assets/TowerArt/futureturret.png" id="6_7hiuu"]
 [ext_resource type="Texture2D" uid="uid://h0hjlnhwd1vd" path="res://Assets/TowerArt/CavemanWoodWall.png" id="6_inwr5"]
 [ext_resource type="Texture2D" uid="uid://ct3ctwe8d1l30" path="res://Assets/CharacterArt/MeleeModern.png" id="6_wiuxb"]
 [ext_resource type="Texture2D" uid="uid://c6lcuqicj02x3" path="res://Assets/TowerArt/MedievalWall.png" id="7_7hiuu"]
 [ext_resource type="Texture2D" uid="uid://cbo5h0wk0vyeh" path="res://Assets/CharacterArt/HealerCaveman.png" id="7_wiuxb"]
 [ext_resource type="Texture2D" uid="uid://bfee6yv5v0ey3" path="res://Assets/CharacterArt/HealerMedieval.png" id="8_qoig8"]
 [ext_resource type="Texture2D" uid="uid://dw2oodckyk11c" path="res://Assets/TowerArt/SandbagWallwithBarbwire.png" id="8_wyw1a"]
-[ext_resource type="Script" uid="uid://dwa632hmmx2ir" path="res://Scenes/TimeAdvancement.cs" id="9_2cn1p"]
+[ext_resource type="Script" uid="uid://dwa632hmmx2ir" path="res://Scripts/TimeAdvancement.cs" id="9_2cn1p"]
 [ext_resource type="Texture2D" uid="uid://d0vs2od0t6nd5" path="res://Assets/TowerArt/LazzzzzzzerrrrWall.png" id="9_kc3qn"]
 [ext_resource type="Texture2D" uid="uid://np7u46c44xll" path="res://Assets/TowerArt/stick-watchtower.png" id="10_0bh0o"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="10_avu3l"]
@@ -36,6 +38,10 @@
 [ext_resource type="Texture2D" uid="uid://dl86ycwksfli8" path="res://Assets/CharacterArt/BruteRobot.png" id="25_x8642"]
 [ext_resource type="Texture2D" uid="uid://cygsmj665o0rj" path="res://Assets/CharacterArt/Healer Modern.png" id="28_mu10k"]
 [ext_resource type="Texture2D" uid="uid://dftq0gfyr77yj" path="res://Assets/CharacterArt/Healer Future.png" id="29_4gw5s"]
+[ext_resource type="Texture2D" uid="uid://bkivpb7vb6mc7" path="res://Assets/VehicleArt/DinoSpriteSheet.png" id="32_0bh0o"]
+[ext_resource type="Texture2D" uid="uid://cuqftb8xryq85" path="res://Assets/VehicleArt/HorseVehicle.png" id="33_rblva"]
+[ext_resource type="Texture2D" uid="uid://g7xi8pdt3g7r" path="res://Assets/VehicleArt/PresentVehicle.png" id="34_taxkr"]
+[ext_resource type="Texture2D" uid="uid://bjvffuoq6mi6x" path="res://Assets/VehicleArt/GruMobile.png" id="35_vlp4x"]
 
 [sub_resource type="Animation" id="Animation_a2258"]
 length = 0.001
@@ -229,7 +235,7 @@ player1 = false
 [node name="Turret" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
 player1 = false
-Sprites = Array[Texture2D]([ExtResource("4_78j5b"), ExtResource("5_e2ygl")])
+Sprites = Array[Texture2D]([ExtResource("4_e2ygl"), ExtResource("5_7hiuu"), ExtResource("5_inwr5"), ExtResource("6_7hiuu")])
 
 [node name="Wall" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
 layout_mode = 2
@@ -275,6 +281,13 @@ tower = 7
 player1 = false
 troop = true
 Sprites = Array[Texture2D]([ExtResource("7_wiuxb"), ExtResource("8_qoig8"), ExtResource("28_mu10k"), ExtResource("29_4gw5s")])
+
+[node name="Vehicle" parent="ColorRect/VBoxContainer" instance=ExtResource("3_fsxo6")]
+layout_mode = 2
+tower = 8
+player1 = false
+troop = true
+Sprites = Array[Texture2D]([ExtResource("32_0bh0o"), ExtResource("33_rblva"), ExtResource("34_taxkr"), ExtResource("35_vlp4x")])
 
 [node name="TimeAdvancement" type="Control" parent="ColorRect/VBoxContainer"]
 z_index = 1

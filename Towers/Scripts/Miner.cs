@@ -36,6 +36,7 @@ public partial class Miner : TargetBase
 			if (playerOwned != 1)
 			{
 				playerOwned = 1;
+				GetNode<AnimatedSprite2D>("Button/Control/Sprite2D").Play("blue");
 				GameManager.player1Target = GameManager.player1DefaultTarget;
 				GetNode<Area2D>("Player-2").SetCollisionLayerValue(5, false);
 				GetNode<Area2D>("Player-2").SetCollisionLayerValue(6, true);
@@ -59,6 +60,7 @@ public partial class Miner : TargetBase
 		{
 			if (playerOwned != 2)
 			{
+				GetNode<AnimatedSprite2D>("Button/Control/Sprite2D").Play("red");
 				GameManager.player2Target = GameManager.player2DefaultTarget;
 				GetNode<Area2D>("Player-1").SetCollisionLayerValue(4, false);
 				GetNode<Area2D>("Player-1").SetCollisionLayerValue(6, true);

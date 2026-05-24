@@ -11,6 +11,7 @@ public partial class StartScreen : Node2D
 
 	public override void _Ready()
 	{
+		GameManager.ResetGame();
 		startButton = GetNode<Button>("VBoxContainer/StartButton");
 		//optionsButton = GetNode<Button>("VBoxContainer/OptionsButton");
 		//exitButton = GetNode<Button>("VBoxContainer/ExitButton");

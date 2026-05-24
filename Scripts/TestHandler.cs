@@ -75,6 +75,7 @@ public partial class TestHandler : Node2D
 			}
 		}
 		if(selectedTower==null && player1){
+			GD.Print(Player1Manager.toPlace);
 			if(Player1Manager.toPlace==GameManager.Towers.Spikes){
 				selectedTower=parentNode.spikes.Instantiate() as Tower;
 				GetParent().AddChild(selectedTower);

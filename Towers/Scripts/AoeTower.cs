@@ -30,6 +30,7 @@ public partial class AoeTower :  Tower
 				{
 					BaseTroop troop = player2Colliding[i] as BaseTroop;
 					troop.health -= damage;
+					troop.Hit();
 					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Attack");
 				}
 			}
@@ -45,6 +46,7 @@ public partial class AoeTower :  Tower
 					BaseTroop troop = player1Colliding[i] as BaseTroop;
 					GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("Attack");
 					troop.health -= damage;
+					troop.Hit();
 					GD.Print("Damagin");
 				}
 			}

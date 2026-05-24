@@ -9,7 +9,7 @@ public partial class Melee : BaseTroop
 	[Export] public override int health { get; set; } = 8;
 	[Export] public override int maxHealth { get; set; } = 5;
 	[Export] public override int damageLevel { get; set; } = 0;
-	[Export] public override int damage { get; set; } = 0;
+	[Export] public override int damage { get; set; } = 2;
 	public override NavigationAgent2D navAgent { get; set; }
 	public override AnimatedSprite2D sprite  {get; set;}
 	public override TargetBase target { get; set; }
@@ -58,8 +58,21 @@ public partial class Melee : BaseTroop
 			 	GetNode<AnimatedSprite2D>("Sprites/4").Visible=true;
 			}
 		}
+		if(!player1){
+			if(Player2Manager.upgradeLevel==1){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/2");
+			 	GetNode<AnimatedSprite2D>("Sprites/2").Visible=true;
+			}
+			if(Player2Manager.upgradeLevel==2){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/3");
+			 	GetNode<AnimatedSprite2D>("Sprites/3").Visible=true;
+			}
+			if(Player2Manager.upgradeLevel==3){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/4");
+			 	GetNode<AnimatedSprite2D>("Sprites/4").Visible=true;
+			}
+		}
 		sprite.Visible=true;
 		sprite.Scale = new Vector2(-1, 1);
 	}
-
 }

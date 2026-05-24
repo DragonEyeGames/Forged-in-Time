@@ -43,6 +43,7 @@ public abstract partial class BaseTroop : CharacterBody2D
 		speed += TroopUpgrades.Speed[speedLevel];
 		damage += TroopUpgrades.Damage[damageLevel];
 		health += TroopUpgrades.Health[healthLevel];
+		maxHealth += TroopUpgrades.Health[healthLevel];
 		return upgrades;
 	}
 
@@ -94,6 +95,10 @@ public abstract partial class BaseTroop : CharacterBody2D
 
 	public void recalculate()
 	{
+		if (!GodotObject.IsInstanceValid(target))
+		{
+			return;
+		}
 		navAgent.TargetPosition = target.GlobalPosition;
 		if (player1)
 		{
@@ -105,8 +110,20 @@ public abstract partial class BaseTroop : CharacterBody2D
 		}
 	}
 
+	public virtual void Die(){
+		QueueFree();
+	}
+
+	public void Hit(){
+		GetNode<AnimationPlayer>("Hit").Play("hit");
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
+		if (health <= 0)
+		{
+			Die();
+		}
 		if (target == null)
 		{
 			TargetSet();
@@ -143,11 +160,6 @@ public abstract partial class BaseTroop : CharacterBody2D
 			if (!navAgent.IsNavigationFinished())
 			{
 				MoveAndSlide();
-			}
-
-			if (health <= 0)
-			{
-				QueueFree();
 			}
 
 			if (Velocity.X > 0)
@@ -233,7 +245,7 @@ public void attack(int damage)
 		}
 		else
 		{
-			GD.Print("BAsed");
+			GD.Print(damage);
 
 			target.health -= damage;
 

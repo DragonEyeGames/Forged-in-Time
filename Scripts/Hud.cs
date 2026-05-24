@@ -191,6 +191,9 @@ public partial class Hud : CanvasLayer
 			if(troop==GameManager.Towers.Healer){
 				GameManager.player1Base.reserveTroops.Add(Base.Troops.Healer);
 			}
+			if(troop==GameManager.Towers.Vehicle){
+				GameManager.player1Base.reserveTroops.Add(Base.Troops.Vehicle);
+			}
 			Player1Manager.money-=Prices.towerPrices[troop];
 			buttonAnimator.Play("wobble");
 		} else if(!player1 && GameManager.player2Base.reserveTroops.Count<GameManager.player2Base.maxTroops && Player2Manager.money>=Prices.towerPrices[troop]){
@@ -205,6 +208,9 @@ public partial class Hud : CanvasLayer
 			}
 			if(troop==GameManager.Towers.Healer){
 				GameManager.player2Base.reserveTroops.Add(Base.Troops.Healer);
+			}
+			if(troop==GameManager.Towers.Vehicle){
+				GameManager.player2Base.reserveTroops.Add(Base.Troops.Vehicle);
 			}
 			Player2Manager.money-=Prices.towerPrices[troop];
 			buttonAnimator.Play("wobble");

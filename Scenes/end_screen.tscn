@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://csl7f40njf774" path="res://Scripts/EndScreen.cs" id="1_1gwaw"]
 [ext_resource type="FontFile" uid="uid://dxwxpwa4qicgp" path="res://Assets/Jersey10-Regular.ttf" id="2_bhpww"]
-[ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://uiTheme.tres" id="2_gdxnu"]
+[ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://misc/uiTheme.tres" id="2_gdxnu"]
 
 [node name="EndScreen" type="Node2D"]
 script = ExtResource("1_1gwaw")

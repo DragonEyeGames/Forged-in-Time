@@ -10,6 +10,7 @@ public partial class Base : TargetBase
 	[Export] public PackedScene brute;
 	[Export] public PackedScene ranged;
 	[Export] public PackedScene healer;
+	[Export] public PackedScene vehicle;
 	[Export] public int maxTroops = 15;
 	private bool releaseTime = false;
 	[Export] public override int health { get; set; } = 200;
@@ -21,7 +22,8 @@ public partial class Base : TargetBase
 		Melee,
 		Ranged,
 		Brute,
-		Healer
+		Healer,
+		Vehicle
 	}
 	public bool releasing=false;
 	public List<Troops> reserveTroops = new List<Troops>();
@@ -81,14 +83,19 @@ public partial class Base : TargetBase
 			sceneToSpawn = ranged;
 		else if (troopType == Troops.Healer)
 			sceneToSpawn = healer;
-		BaseTroop newTroop = sceneToSpawn.Instantiate<BaseTroop>();;
+		else if (troopType == Troops.Vehicle)
+			sceneToSpawn = vehicle;
+		BaseTroop newTroop = sceneToSpawn.Instantiate<BaseTroop>();
 		GetParent().AddChild(newTroop);
 		newTroop.GlobalPosition=GlobalPosition;
 		newTroop.player1=player1;
 	}
 	
 	public override void _Process(double delta){
-		
+		if (health <= 0) 
+		{
+			Die();
+		}
 		if(releasing && reserveTroops.Count>=1 && !releaseTime){
 			releaseTroop();
 		} else if (reserveTroops.Count==0){

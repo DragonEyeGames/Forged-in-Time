@@ -43,8 +43,7 @@ folder_colors={
 "res://Scripts/": "yellow",
 "res://Towers/": "purple",
 "res://Troops/": "green",
-"res://addons/": "gray",
-"res://images/": "gray"
+"res://misc/": "teal"
 }
 
 [global_group]

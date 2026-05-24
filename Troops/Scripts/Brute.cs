@@ -4,9 +4,9 @@ using System;
 public partial class Brute : BaseTroop
 {
 	[Export] public override float speed { get; set; } = 20.0f;
-	[Export] public  override int health { get; set; } = 20;
-	[Export] public override int maxHealth { get; set; } = 20;
-	[Export] public override int damage { get; set; } = 2;
+	[Export] public  override int health { get; set; } = 25;
+	[Export] public override int maxHealth { get; set; } = 25;
+	[Export] public override int damage { get; set; } = 4;
 	
 	[Export] public override int upgradeLevel {get; set;} = 0;
 	[Export] public override int speedLevel {get; set;} = 0;
@@ -51,6 +51,20 @@ public partial class Brute : BaseTroop
 			 	GetNode<AnimatedSprite2D>("Sprites/3").Visible=true;
 			}
 			if(Player1Manager.upgradeLevel==3){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/4");
+			 	GetNode<AnimatedSprite2D>("Sprites/4").Visible=true;
+			}
+		}
+		if(!player1){
+			if(Player2Manager.upgradeLevel==1){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/2");
+			 	GetNode<AnimatedSprite2D>("Sprites/2").Visible=true;
+			}
+			if(Player2Manager.upgradeLevel==2){
+				sprite = GetNode<AnimatedSprite2D>("Sprites/3");
+			 	GetNode<AnimatedSprite2D>("Sprites/3").Visible=true;
+			}
+			if(Player2Manager.upgradeLevel==3){
 				sprite = GetNode<AnimatedSprite2D>("Sprites/4");
 			 	GetNode<AnimatedSprite2D>("Sprites/4").Visible=true;
 			}
