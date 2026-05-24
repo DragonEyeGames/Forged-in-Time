@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3aeg38tnrfft"]
 
-[ext_resource type="Script" uid="uid://bdrd464yerqa6" path="res://Towers/Scenes/Arrow.cs" id="1_h5x2m"]
+[ext_resource type="Script" uid="uid://bdrd464yerqa6" path="res://Towers/Scripts/Arrow.cs" id="1_h5x2m"]
 [ext_resource type="Texture2D" uid="uid://c4fo5i4fi2t7g" path="res://Assets/TowerArt/arrow.png" id="2_40cdi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nasht"]

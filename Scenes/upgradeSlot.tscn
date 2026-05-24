@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4igmdu70tvwr"]
 
 [ext_resource type="Texture2D" uid="uid://bx0im1khoyesc" path="res://Assets/attack.png" id="1_bgr1y"]
-[ext_resource type="Script" uid="uid://bejawi6tg4v6q" path="res://Scenes/UpgradeSlot.cs" id="1_ktlpv"]
+[ext_resource type="Script" uid="uid://bejawi6tg4v6q" path="res://Scripts/UpgradeSlot.cs" id="1_ktlpv"]
 [ext_resource type="Texture2D" uid="uid://c3n3ekg8mrd5u" path="res://Assets/defense.png" id="2_36jjb"]
 [ext_resource type="Texture2D" uid="uid://drabwi0xu5e7f" path="res://Assets/speed.png" id="3_punle"]
 [ext_resource type="Texture2D" uid="uid://b5gvy7docugec" path="res://Assets/Upgrade.png" id="4_oucde"]

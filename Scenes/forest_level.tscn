@@ -1,17 +1,16 @@
-[gd_scene load_steps=55 format=4 uid="uid://dbrrnxttrwgc0"]
+[gd_scene load_steps=54 format=4 uid="uid://dbrrnxttrwgc0"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_e3nxp"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="2_v15gk"]
 [ext_resource type="Script" uid="uid://d4nb8xql544r2" path="res://Scripts/Placement.cs" id="3_rirwv"]
 [ext_resource type="Texture2D" uid="uid://clrlbl4tclb0q" path="res://Assets/pixil-frame-0 (2).png" id="4_byajg"]
 [ext_resource type="Script" uid="uid://dnc0ugi7igvey" path="res://Scripts/TerritoryChecker.cs" id="5_3chem"]
-[ext_resource type="PackedScene" uid="uid://qw4hblqnmemt" path="res://Scenes/base.tscn" id="6_8ufp5"]
+[ext_resource type="PackedScene" uid="uid://qw4hblqnmemt" path="res://Towers/Scenes/base.tscn" id="6_8ufp5"]
 [ext_resource type="Script" uid="uid://dtffmvch4ihls" path="res://Scripts/BakeHandler.cs" id="7_8s5ql"]
-[ext_resource type="PackedScene" uid="uid://d00t5jltf4obj" path="res://Assets/TowerArt/Troops/vehicle.tscn" id="7_v15gk"]
+[ext_resource type="PackedScene" uid="uid://d00t5jltf4obj" path="res://Troops/Scenes/vehicle.tscn" id="7_v15gk"]
 [ext_resource type="PackedScene" uid="uid://b7ljmxdd0fddv" path="res://Scenes/TestPoly.tscn" id="8_6rucv"]
 [ext_resource type="PackedScene" uid="uid://di50ddfw14x1g" path="res://Scenes/BigPoly.tscn" id="9_t80gh"]
 [ext_resource type="PackedScene" uid="uid://cnem7ep3j786t" path="res://Towers/Scenes/turret.tscn" id="10_pfnhx"]
-[ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://Towers/Scenes/plasmaTurret.tscn" id="11_meetf"]
 [ext_resource type="PackedScene" uid="uid://dtmcn270epgmd" path="res://Towers/Scenes/WatchTower.tscn" id="12_ckhs5"]
 [ext_resource type="PackedScene" uid="uid://bvym8b7sd7gh6" path="res://Towers/Scenes/wall.tscn" id="13_5ov4b"]
 [ext_resource type="PackedScene" uid="uid://lweq3a258rm7" path="res://Towers/Scenes/spikes.tscn" id="14_k3ibi"]
@@ -164,7 +163,6 @@ script = ExtResource("7_8s5ql")
 polygon = ExtResource("8_6rucv")
 bigPolygon = ExtResource("9_t80gh")
 turret = ExtResource("10_pfnhx")
-plasmaTurret = ExtResource("11_meetf")
 tower = ExtResource("12_ckhs5")
 wall = ExtResource("13_5ov4b")
 spikes = ExtResource("14_k3ibi")

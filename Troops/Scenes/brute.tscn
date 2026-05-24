@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://uvioh4v0m0i8"]
 
-[ext_resource type="Script" uid="uid://vxk4u0wcpa0d" path="res://Assets/TowerArt/Troops/Scripts/Brute.cs" id="1_7uflk"]
+[ext_resource type="Script" uid="uid://vxk4u0wcpa0d" path="res://Troops/Scripts/Brute.cs" id="1_7uflk"]
 [ext_resource type="Texture2D" uid="uid://ddabbuqap0qck" path="res://Assets/CharacterArt/BruteCavemanCharacter.png" id="2_1ctar"]
 [ext_resource type="Texture2D" uid="uid://beobpfmtkuani" path="res://Assets/CharacterArt/BruteMedievalCharacter.png" id="3_tp408"]
 [ext_resource type="Texture2D" uid="uid://c8f0iton6dqd8" path="res://Assets/CharacterArt/BrutePresentCharacter.png" id="4_jo6gs"]

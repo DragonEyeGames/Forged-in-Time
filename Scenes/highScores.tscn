@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://20khy0etd6dv"]
 
-[ext_resource type="Script" uid="uid://dhik7255qmjhd" path="res://Scenes/HighScores.cs" id="1_3jg6g"]
+[ext_resource type="Script" uid="uid://dhik7255qmjhd" path="res://Scripts/HighScores.cs" id="1_3jg6g"]
 [ext_resource type="Theme" uid="uid://pwf8a2eev03y" path="res://misc/uiTheme.tres" id="2_h0e8v"]
 
 [node name="HighScores" type="Node2D"]

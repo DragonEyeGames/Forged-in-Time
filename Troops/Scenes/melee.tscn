@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://bjjy84kigbl4n"]
 
-[ext_resource type="Shader" uid="uid://1ayhdp4srlow" path="res://Assets/TowerArt/Troops/Scenes/flash.gdshader" id="1_58ce4"]
-[ext_resource type="Script" uid="uid://dyhddwv8ns2sk" path="res://Assets/TowerArt/Troops/Scripts/Melee.cs" id="1_384nh"]
+[ext_resource type="Shader" uid="uid://1ayhdp4srlow" path="res://misc/flash.gdshader" id="1_58ce4"]
+[ext_resource type="Script" uid="uid://dyhddwv8ns2sk" path="res://Troops/Scripts/Melee.cs" id="1_384nh"]
 [ext_resource type="Texture2D" uid="uid://7vh0im402jki" path="res://Assets/CharacterArt/MeleeCaveman.png" id="2_54rog"]
 [ext_resource type="Texture2D" uid="uid://dftq0gfyr77yj" path="res://Assets/CharacterArt/Healer Future.png" id="2_jruer"]
 [ext_resource type="Texture2D" uid="uid://ct3ctwe8d1l30" path="res://Assets/CharacterArt/MeleeModern.png" id="2_uob20"]
@@ -165,6 +165,21 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_xm30j"]
 radius = 20.1231
 
+[sub_resource type="Animation" id="Animation_4kln1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_58ce4"]
 resource_name = "hit"
 length = 0.1
@@ -179,21 +194,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_4kln1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8rf4d"]

@@ -108,7 +108,7 @@ public partial class Turret : Tower
 		canShoot=true;
 	}
 	
-	public void fireArrow(){
+	private void fireArrow(){
 		if(GetNode<AnimatedSprite2D>("Sprites/2").Animation=="default"){
 			GetNode<AnimatedSprite2D>("Sprites/2").Play("shoot_end");
 			Arrow newArrow = arrow.Instantiate<Arrow>();
@@ -120,7 +120,7 @@ public partial class Turret : Tower
 			
 	}
 	
-	public void fireRock(){
+	private void fireRock(){
 		if(GetNode<AnimatedSprite2D>("Sprites/1").Animation=="default"){
 			GetNode<AnimatedSprite2D>("Sprites/1").Play("throw_end");
 			Rock newRock = rock.Instantiate<Rock>();

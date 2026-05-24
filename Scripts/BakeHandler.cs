@@ -9,7 +9,7 @@ public partial class BakeHandler : Node2D
 	[Export] public PackedScene bigPolygon;
 	[Export] public PackedScene turret;
 	//[Export] public PackedScene wall2;
-	[Export] public PackedScene plasmaTurret;
+	//[Export] public PackedScene plasmaTurret;
 	[Export] public PackedScene tower;
 	[Export] public PackedScene wall;
 	[Export] public PackedScene spikes;

@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cbo5h0wk0vyeh" path="res://Assets/CharacterArt/HealerCaveman.png" id="6_1a2va"]
 [ext_resource type="Texture2D" uid="uid://c6lcuqicj02x3" path="res://Assets/TowerArt/MedievalWall.png" id="6_l8r83"]
 [ext_resource type="Texture2D" uid="uid://8ihaqjb3y1vj" path="res://Assets/TowerArt/medieval-watchtower.png" id="6_oersf"]
-[ext_resource type="Script" uid="uid://dwa632hmmx2ir" path="res://Scenes/TimeAdvancement.cs" id="6_piegi"]
+[ext_resource type="Script" uid="uid://dwa632hmmx2ir" path="res://Scripts/TimeAdvancement.cs" id="6_piegi"]
 [ext_resource type="Texture2D" uid="uid://bj18oet07jrb" path="res://Towers/Assets/Turret.png" id="6_ssfue"]
 [ext_resource type="Texture2D" uid="uid://cxhuu767mw3li" path="res://Assets/TowerArt/futureturret.png" id="6_xbkfx"]
 [ext_resource type="Texture2D" uid="uid://b44vs7jc6up26" path="res://Assets/TowerArt/Modern-Watchtower.png" id="7_484xk"]

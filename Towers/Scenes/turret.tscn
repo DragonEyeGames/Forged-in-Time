@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cxp422a4i3a8g" path="res://Towers/Scripts/Turret.cs" id="1_tjdg3"]
 [ext_resource type="Material" uid="uid://cyddiu60rhrga" path="res://misc/TowerShader.tres" id="1_v1d04"]
-[ext_resource type="PackedScene" uid="uid://d3aeg38tnrfft" path="res://Scenes/arrow.tscn" id="3_nasht"]
+[ext_resource type="PackedScene" uid="uid://d3aeg38tnrfft" path="res://Towers/Scenes/arrow.tscn" id="3_nasht"]
 [ext_resource type="Texture2D" uid="uid://otuu81wukoci" path="res://Assets/TowerArt/Caveman turret.png" id="3_vux0q"]
 [ext_resource type="Script" uid="uid://td32hbea8c2d" path="res://Scripts/TowerController.cs" id="4_0ofnu"]
 [ext_resource type="Texture2D" uid="uid://da6p2n3bq1mn7" path="res://Assets/TowerArt/medeival turret (3).png" id="4_nasht"]
 [ext_resource type="Texture2D" uid="uid://bl2ne3insduqt" path="res://Assets/TowerArt/ModernTurretFire.png" id="5_4dlle"]
 [ext_resource type="PackedScene" uid="uid://b8qjxq5m1jorh" path="res://Scenes/towerInfo.tscn" id="5_7btwq"]
 [ext_resource type="Texture2D" uid="uid://c8a7c5jd0mnu2" path="res://Assets/TowerArt/Turretfutureshute.png" id="6_8x0js"]
-[ext_resource type="PackedScene" uid="uid://wmg64urygfi8" path="res://Scenes/rock.tscn" id="10_4dlle"]
+[ext_resource type="PackedScene" uid="uid://wmg64urygfi8" path="res://Towers/Scenes/rock.tscn" id="10_4dlle"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1dtr"]
 atlas = ExtResource("3_vux0q")
