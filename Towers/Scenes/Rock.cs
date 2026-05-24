@@ -1,14 +1,14 @@
 using Godot;
 using System;
 
-public partial class Arrow : CharacterBody2D
+public partial class Rock : CharacterBody2D
 {
 	public bool player1=false;
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 direction = Vector2.Right.Rotated(Rotation - (float)Math.PI/2);
-		Velocity = direction * 500;
+		Vector2 direction = Vector2.Right.Rotated(Rotation);// - (float)Math.PI/2
+		Velocity = direction * 400;
 		MoveAndSlide();
 	}
 	
@@ -17,7 +17,7 @@ public partial class Arrow : CharacterBody2D
 			return;
 		}
 		BaseTroop troop = body.GetParent() as BaseTroop;
-		troop.health-=2;
+		troop.health-=1;
 		troop.Hit();
 		QueueFree();
 	}
@@ -27,7 +27,7 @@ public partial class Arrow : CharacterBody2D
 			return;
 		}
 		BaseTroop troop = body.GetParent() as BaseTroop;
-		troop.health-=2;
+		troop.health-=1;
 		troop.Hit();
 		QueueFree();
 	}

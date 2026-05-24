@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cnem7ep3j786t"]
+[gd_scene load_steps=54 format=3 uid="uid://cnem7ep3j786t"]
 
 [ext_resource type="Script" uid="uid://cxp422a4i3a8g" path="res://Towers/Scripts/Turret.cs" id="1_tjdg3"]
 [ext_resource type="Material" uid="uid://cyddiu60rhrga" path="res://misc/TowerShader.tres" id="1_v1d04"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bl2ne3insduqt" path="res://Assets/TowerArt/ModernTurretFire.png" id="5_4dlle"]
 [ext_resource type="PackedScene" uid="uid://b8qjxq5m1jorh" path="res://Scenes/towerInfo.tscn" id="5_7btwq"]
 [ext_resource type="Texture2D" uid="uid://c8a7c5jd0mnu2" path="res://Assets/TowerArt/Turretfutureshute.png" id="6_8x0js"]
+[ext_resource type="PackedScene" uid="uid://wmg64urygfi8" path="res://Scenes/rock.tscn" id="10_4dlle"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1dtr"]
 atlas = ExtResource("3_vux0q")
@@ -318,14 +319,18 @@ material = ExtResource("1_v1d04")
 script = ExtResource("1_tjdg3")
 cooldown = NodePath("Cooldown")
 arrow = ExtResource("3_nasht")
+rock = ExtResource("10_4dlle")
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="1" type="AnimatedSprite2D" parent="Sprites"]
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_x4rrh")
+animation = &"throw_end"
+autoplay = "throw_end"
 
 [node name="2" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_de77y")
 animation = &"shoot_end"
@@ -414,6 +419,10 @@ shape = SubResource("RectangleShape2D_xsl5c")
 [node name="TowerInfo" parent="." instance=ExtResource("5_7btwq")]
 visible = false
 
+[node name="RockSpawn" type="Marker2D" parent="."]
+position = Vector2(7, 7)
+
+[connection signal="animation_finished" from="Sprites/1" to="." method="fireRock"]
 [connection signal="animation_finished" from="Sprites/2" to="." method="fireArrow"]
 [connection signal="area_entered" from="Player1" to="." method="Player1Entered"]
 [connection signal="area_exited" from="Player1" to="." method="Player1Exited"]

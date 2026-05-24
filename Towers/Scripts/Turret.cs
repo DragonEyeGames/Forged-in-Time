@@ -12,6 +12,7 @@ public partial class Turret : Tower
 	[Export] public int damage=3;
 	[Export] public Timer cooldown;
 	[Export] private PackedScene arrow;
+	[Export] private PackedScene rock;
 	// Called when the node enters the scene tree for the first time.
 
 	public override void OnTimeAdvance(bool upgradePlayer, int level){
@@ -35,14 +36,14 @@ public partial class Turret : Tower
 			turret.Visible=false;
 			turret=GetNode<AnimatedSprite2D>("Sprites/3");
 			turret.Visible=true;
-			damage=4;
+			damage=1;
 			cooldown.WaitTime=.2;
 		}
 		if(level==3){
 			turret.Visible=false;
 			turret=GetNode<AnimatedSprite2D>("Sprites/4");
 			turret.Visible=true;
-			damage=3;
+			damage=1;
 			cooldown.WaitTime=.1;
 		}
 	}
@@ -115,6 +116,31 @@ public partial class Turret : Tower
 			newArrow.GlobalPosition=GetNode<AnimatedSprite2D>("Sprites/2").GlobalPosition;
 			newArrow.GlobalRotation=GetNode<AnimatedSprite2D>("Sprites/2").GlobalRotation;
 			newArrow.player1=Player1;
+		}
+			
+	}
+	
+	public void fireRock(){
+		if(GetNode<AnimatedSprite2D>("Sprites/1").Animation=="default"){
+			GetNode<AnimatedSprite2D>("Sprites/1").Play("throw_end");
+			Rock newRock = rock.Instantiate<Rock>();
+			GetParent().AddChild(newRock);
+			newRock.GlobalPosition=GetNode<Marker2D>("RockSpawn").GlobalPosition;
+			float angleRadians = 0.0f;
+			if(Player1)
+			{
+				if(player2Colliding.Count<=0){
+					return;
+				}
+				angleRadians = newRock.GlobalPosition.AngleToPoint(player2Colliding[0].GlobalPosition);
+			} else {
+				if(player1Colliding.Count<=0){
+					return;
+				}
+				angleRadians = newRock.GlobalPosition.AngleToPoint(player1Colliding[0].GlobalPosition);
+			}
+			newRock.GlobalRotation=angleRadians;
+			newRock.player1=Player1;
 		}
 			
 	}
