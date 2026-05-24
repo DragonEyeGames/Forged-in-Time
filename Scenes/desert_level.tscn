@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://dycctmdbotlyy"]
+[gd_scene load_steps=54 format=4 uid="uid://dycctmdbotlyy"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_lrwdq"]
 [ext_resource type="Texture2D" uid="uid://dyt4qnoal5tmv" path="res://Assets/LevelArt/DryCrackingGround.png" id="1_uevhu"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://di50ddfw14x1g" path="res://Scenes/BigPoly.tscn" id="9_gy7li"]
 [ext_resource type="PackedScene" uid="uid://cnem7ep3j786t" path="res://Towers/Scenes/turret.tscn" id="10_s4s0t"]
 [ext_resource type="Texture2D" uid="uid://cq5mi6efgqbop" path="res://Assets/LevelArt/water.png" id="10_yqlg3"]
-[ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://Towers/Scenes/plasmaTurret.tscn" id="11_jb32q"]
 [ext_resource type="PackedScene" uid="uid://dtmcn270epgmd" path="res://Towers/Scenes/WatchTower.tscn" id="12_j3ddr"]
 [ext_resource type="PackedScene" uid="uid://bvym8b7sd7gh6" path="res://Towers/Scenes/wall.tscn" id="13_6aamk"]
 [ext_resource type="PackedScene" uid="uid://lweq3a258rm7" path="res://Towers/Scenes/spikes.tscn" id="14_hi6ad"]
@@ -165,7 +164,6 @@ script = ExtResource("7_umqpr")
 polygon = ExtResource("8_m7rtf")
 bigPolygon = ExtResource("9_gy7li")
 turret = ExtResource("10_s4s0t")
-plasmaTurret = ExtResource("11_jb32q")
 tower = ExtResource("12_j3ddr")
 wall = ExtResource("13_6aamk")
 spikes = ExtResource("14_hi6ad")

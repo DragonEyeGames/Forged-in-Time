@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://gke74sqgqgsu"]
+[gd_scene load_steps=54 format=4 uid="uid://gke74sqgqgsu"]
 
 [ext_resource type="Script" uid="uid://dbu3gknc8pvv6" path="res://Scripts/Main.cs" id="1_i7v7f"]
 [ext_resource type="Texture2D" uid="uid://cl2ufaduns0vq" path="res://Assets/Tiles.png" id="2_0weas"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b7ljmxdd0fddv" path="res://Scenes/TestPoly.tscn" id="8_llevf"]
 [ext_resource type="PackedScene" uid="uid://di50ddfw14x1g" path="res://Scenes/BigPoly.tscn" id="9_1gr4j"]
 [ext_resource type="PackedScene" uid="uid://cnem7ep3j786t" path="res://Towers/Scenes/turret.tscn" id="10_3v5t0"]
-[ext_resource type="PackedScene" uid="uid://dwlu7pfersd5r" path="res://Towers/Scenes/plasmaTurret.tscn" id="11_r7gbf"]
 [ext_resource type="PackedScene" uid="uid://dtmcn270epgmd" path="res://Towers/Scenes/WatchTower.tscn" id="12_fohsr"]
 [ext_resource type="PackedScene" uid="uid://bvym8b7sd7gh6" path="res://Towers/Scenes/wall.tscn" id="13_qjr1n"]
 [ext_resource type="PackedScene" uid="uid://lweq3a258rm7" path="res://Towers/Scenes/spikes.tscn" id="14_r2vv8"]
@@ -164,7 +163,6 @@ script = ExtResource("7_jppky")
 polygon = ExtResource("8_llevf")
 bigPolygon = ExtResource("9_1gr4j")
 turret = ExtResource("10_3v5t0")
-plasmaTurret = ExtResource("11_r7gbf")
 tower = ExtResource("12_fohsr")
 wall = ExtResource("13_qjr1n")
 spikes = ExtResource("14_r2vv8")
